@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Lint & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Syntax-check JavaScript
+        run: |
+          for f in store.js hud-theme.js; do
+            echo "node --check $f"
+            node --check "$f"
+          done
+
+      - name: Run storefront tests
+        run: node --test
+
+      - name: Check HTML pages are well-formed
+        run: |
+          # Every page must declare a doctype and balance its <script> tags.
+          for f in index.html product.html checkout.html; do
+            head -1 "$f" | grep -qi '<!doctype html>' || { echo "$f: missing doctype"; exit 1; }
+            open=$(grep -o '<script' "$f" | wc -l)
+            close=$(grep -o '</script>' "$f" | wc -l)
+            [ "$open" -eq "$close" ] || { echo "$f: unbalanced <script> tags ($open open, $close close)"; exit 1; }
+            echo "$f OK"
+          done

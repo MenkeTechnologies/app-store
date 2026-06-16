@@ -1,5 +1,7 @@
 # app-store
 
+[![CI](https://github.com/MenkeTechnologies/app-store/actions/workflows/ci.yml/badge.svg)](https://github.com/MenkeTechnologies/app-store/actions/workflows/ci.yml)
+
 MenkeTechnologies App Store — a static storefront for the MenkeTechnologies
 stack.
 
@@ -55,6 +57,21 @@ directory:
 ```
 python3 -m http.server 8000   # then visit http://localhost:8000
 ```
+
+## Tests / CI
+
+The storefront logic is covered by a dependency-free `node:test` suite that
+loads `store.js` into a minimal DOM shim and asserts on the rendered HTML —
+catalog size and unique ids, free-vs-paid download wiring, per-major-version
+pricing copy, every detail page having an overview + rich features, and the
+HTML pages referencing the shared assets. Run locally with:
+
+```
+node --test
+```
+
+`.github/workflows/ci.yml` runs this plus `node --check` on the JS and an
+HTML sanity check on every push and pull request.
 
 ## Layout
 
