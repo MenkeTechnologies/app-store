@@ -80,6 +80,8 @@ HTML sanity check on every push and pull request.
 | `index.html`    | Storefront: hero, search, category filters, product grid      |
 | `product.html`  | Product detail page, reads `?id=<product>` from the URL        |
 | `checkout.html` | Shopify-style checkout: express wallets, card form, summary    |
+| `docs/index.html`  | Developer documentation (HUD-themed)                       |
+| `docs/report.html` | Engineering report (live catalog stats + metrics)         |
 | `store.js`      | Product catalog (single source of truth) + grid/cart/checkout |
 | `store.css`     | Commerce surfaces (cards, prices, cart, modal, checkout)      |
 | `hud-static.css`| Vendored design system — CSS variables, header, buttons, CRT  |

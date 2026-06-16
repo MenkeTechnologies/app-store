@@ -31,7 +31,7 @@ jobs:
       - name: Check HTML pages are well-formed
         run: |
           # Every page must declare a doctype and balance its <script> tags.
-          for f in index.html product.html checkout.html; do
+          for f in index.html product.html checkout.html docs/index.html docs/report.html; do
             head -1 "$f" | grep -qi '<!doctype html>' || { echo "$f: missing doctype"; exit 1; }
             open=$(grep -o '<script' "$f" | wc -l)
             close=$(grep -o '</script>' "$f" | wc -l)
