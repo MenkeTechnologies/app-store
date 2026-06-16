@@ -1,8 +1,9 @@
 # app-store
 
 MenkeTechnologies App Store — a static storefront for selling the
-MenkeTechnologies software stack (zshrs, stryke, zpwr, zsh-more-completions,
-audio haxor, and the Tauri GUI apps).
+MenkeTechnologies audio products: **audio haxor** (Tauri/JUCE plugin scanner),
+**traderview** (self-hosted trading journal), **zpwr-synth** (JUCE synthesizer
+plugin), and **zpwr-fx** (JUCE multi-effect plugin).
 
 Uses the same HUD / cyberpunk design system as the strykelang docs
 (`hud-static.css`, `tutorial.css`, `hud-theme.js`) so the store and the docs
