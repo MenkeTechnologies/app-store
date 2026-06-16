@@ -154,7 +154,157 @@
       download: 'https://github.com/MenkeTechnologies/strykelang/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/strykelang',
     },
+    {
+      id: 'awkrs', name: 'awkrs', glyph: 'ak', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'The world’s fastest awk — a parallel bytecode-engine awk written in Rust, with parallel record processing.',
+      pills: ['Rust', 'awk', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Bytecode-engine awk with parallel record processing',
+        'Drop-in awk-shaped CLI',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/awkrs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/awkrs',
+    },
+    {
+      id: 'lsofrs', name: 'lsofrs', glyph: 'ls', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'List open system files, 5–21× faster than lsof — Rust core, lsof-shaped CLI.',
+      pills: ['Rust', '5–21× faster', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        '5–21× faster than the classic lsof',
+        'lsof-compatible command surface',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/lsofrs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/lsofrs',
+    },
+    {
+      id: 'nmaprs', name: 'nmaprs', glyph: 'nm', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A parallel network scanner with an nmap-shaped CLI and Rust sockets.',
+      pills: ['Rust', 'scanner', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Parallel socket scanning',
+        'nmap-shaped command-line interface',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/nmaprs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/nmaprs',
+    },
+    {
+      id: 'iftoprs', name: 'iftoprs', glyph: 'if', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A network bandwidth monitor — iftop reimagined in Rust, jacking into your packet stream.',
+      pills: ['Rust', 'net', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Live per-connection bandwidth monitoring',
+        'iftop-style interface',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/iftoprs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/iftoprs',
+    },
+    {
+      id: 'temprs', name: 'temprs', glyph: 'tm', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A temporary-file stack manager — full-spectrum control over scratch files and data.',
+      pills: ['Rust', 'CLI', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Push/pop temporary files as a stack',
+        'Fast Rust core',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/temprs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/temprs',
+    },
+    {
+      id: 'powerliners', name: 'powerliners', glyph: '>_', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'Powerline without the Python import cost — a fast Rust prompt / statusline toolkit.',
+      pills: ['Rust', 'prompt', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Powerline-style prompt and statusline rendering',
+        'No Python runtime — native Rust binaries (config, daemon, lint, render)',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/powerliners/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/powerliners',
+    },
+    {
+      id: 'storageshower', name: 'storageshower', glyph: 'ss', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A neon-drenched terminal UI for monitoring disk usage.',
+      pills: ['Rust', 'TUI', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Interactive terminal UI for disk-usage exploration',
+        'Fast scanning over large trees',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/storageshower/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/storageshower',
+    },
+    {
+      id: 'zpwrchrome', name: 'zpwrchrome', glyph: 'zc', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'The browser power-tool — password store, downloads, tabs, history, and userscripts via a native messaging host.',
+      pills: ['Rust', 'browser', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        'Drive the browser from the terminal: pass, downloads, tabs, history, userscripts',
+        'Native messaging host architecture',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/zpwrchrome/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zpwrchrome',
+    },
   ];
+
+  // stryke ecosystem packages — all free, all ship prebuilt binaries.
+  // Compact table -> full product objects (DRY: identical shape, only the
+  // id / glyph / one-line description differ). Append to PRODUCTS.
+  function strykePkg(id, glyph, desc) {
+    return {
+      id: id, name: id, glyph: glyph, category: 'stryke Packages', badge: 'FREE',
+      tagline: desc,
+      pills: ['Rust', 'stryke pkg', 'Free / OSS'],
+      price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      features: [
+        desc,
+        'Loads as a stryke package (dynamically-loaded cdylib)',
+        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
+      ],
+      download: 'https://github.com/MenkeTechnologies/' + id + '/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/' + id,
+    };
+  }
+
+  [
+    ['stryke-arrow', 'AR', 'Apache Arrow, Parquet, Feather, and Arrow CSV/JSON for stryke.'],
+    ['stryke-aws', 'AWS', 'AWS client for stryke — S3, DynamoDB, SQS, Lambda, STS, SNS, SSM, Secrets, SES, and CloudWatch.'],
+    ['stryke-azure', 'AZ', 'Azure cloud client for stryke — Blob Storage with Entra credential auth.'],
+    ['stryke-docker', 'DK', 'Docker client for stryke — containers, images, networks, volumes, logs, exec, and prune.'],
+    ['stryke-duckdb', 'DB', 'Embedded DuckDB SQL engine for stryke — direct-query Parquet, CSV, and JSON.'],
+    ['stryke-fleet', 'FL', 'Expect, but N sessions at once — parallel interactive session automation for stryke.'],
+    ['stryke-gcp', 'GCP', 'Google Cloud client for stryke — Cloud Storage, Pub/Sub, Secret Manager, BigQuery, and Firestore.'],
+    ['stryke-grpc', 'GR', 'Reflection-based gRPC client for stryke — grpcurl, as a stryke package.'],
+    ['stryke-gui', 'GUI', 'GUI automation for stryke — mouse, keyboard, screen, pixel, and clipboard.'],
+    ['stryke-k8s', 'K8', 'Kubernetes client for stryke — get, apply, delete, scale, rollout, logs, events, top, and wait.'],
+    ['stryke-kafka', 'KK', 'Apache Kafka client for stryke — producer, consumer, and topic/cluster admin.'],
+    ['stryke-mcpd', 'MCP', 'MCP servers without a runtime — a Model Context Protocol daemon for stryke.'],
+    ['stryke-mongo', 'MGO', 'MongoDB client for stryke — CRUD, aggregation, and index admin.'],
+    ['stryke-mysql', 'MY', 'MySQL / MariaDB client for stryke.'],
+    ['stryke-office', 'OF', 'Office document I/O for stryke — Excel, Word, PowerPoint, ODF, and PDF.'],
+    ['stryke-parquet', 'PQ', 'Parquet toolkit for stryke — schema, stats, row-groups, head/tail, CSV/JSON I/O, merge, and recompress.'],
+    ['stryke-polars', 'PL', 'Polars, ndarray, linalg, FFT, and random for stryke.'],
+    ['stryke-postgres', 'PG', 'PostgreSQL client for stryke.'],
+    ['stryke-redis', 'RD', 'Redis / Valkey client for stryke — KV, lists, sets, hashes, zsets, streams, geo, scripting, pub/sub, and pipelines.'],
+    ['stryke-selenium', 'SE', 'Browser automation for stryke — WebDriver, DOM, JS, and cookies.'],
+    ['stryke-spark', 'SK', 'Apache Spark client for stryke.'],
+    ['stryke-utils', 'UT', 'Boundary helpers for stryke — everything else is a builtin.'],
+    ['stryke-zmq', 'ZQ', 'ZeroMQ client for stryke — REQ/REP, PUB/SUB, PUSH/PULL, and DEALER/ROUTER.'],
+  ].forEach(function (e) { PRODUCTS.push(strykePkg(e[0], e[1], e[2])); });
 
   // ---- Helpers --------------------------------------------------------
   var CART_KEY = 'appstore-cart';

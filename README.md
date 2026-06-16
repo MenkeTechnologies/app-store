@@ -1,16 +1,27 @@
 # app-store
 
 MenkeTechnologies App Store — a static storefront for the MenkeTechnologies
-stack. Paid: **audio haxor** (Tauri/JUCE plugin scanner), **traderview**
-(self-hosted trading journal), **zpwr-synth** (JUCE synthesizer plugin), and
-**zpwr-fx** (JUCE multi-effect plugin). Free / open source: **zshrs** (the first
-compiled Unix shell) and **stryke** (parallel Perl 5 superset) — these show a
-**Download** button that links to their GitHub `releases/latest` instead of
-going through the cart.
+stack.
+
+- **Paid** — `audio haxor` (Tauri/JUCE plugin scanner), `traderview`
+  (self-hosted trading journal), `zpwr-synth` (JUCE synthesizer plugin),
+  `zpwr-fx` (JUCE multi-effect plugin).
+- **Free / open source** — every MenkeTechnologies repo with a binary release:
+  `zshrs`, `stryke`, the Rust CLI tools (`awkrs`, `lsofrs`, `nmaprs`,
+  `iftoprs`, `temprs`, `powerliners`, `storageshower`, `zpwrchrome`), and the
+  whole **stryke package ecosystem** (`stryke-aws`, `-gcp`, `-k8s`, `-docker`,
+  `-polars`, `-duckdb`, … 23 packages).
 
 A product is treated as free whenever its first tier price is `0` (the `isFree`
-helper in `store.js`); free products render Download CTAs from their `download`
-URL, paid products render Add-to-cart.
+helper in `store.js`); free products render a **Download** button linking to
+their GitHub `releases/latest`, paid products render Add-to-cart.
+
+The stryke packages share an identical shape, so they are generated from a
+compact `[id, glyph, description]` table via `strykePkg()` rather than written
+out as 23 near-duplicate objects. The distinct products are explicit objects in
+the `PRODUCTS` array. To add another binary-release repo, append one row to the
+table (or one object) — the grid, filters, stats, detail pages, and download
+CTAs all pick it up automatically.
 
 Uses the same HUD / cyberpunk design system as the strykelang docs
 (`hud-static.css`, `tutorial.css`, `hud-theme.js`) so the store and the docs
