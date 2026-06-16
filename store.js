@@ -34,7 +34,6 @@
         'Full changelog of every scan',
         'Cyberpunk CRT interface: neon glow, scanline overlays, glitch effects, color schemes',
       ],
-      repo: 'https://github.com/MenkeTechnologies/Audio-Haxor',
     },
     {
       id: 'traderview',
@@ -58,7 +57,6 @@
         'Schedule C business expenses + Schedule E rental property tracking',
         'Same crates ship a Tauri desktop app and a multi-user axum web server',
       ],
-      repo: 'https://github.com/MenkeTechnologies/traderview',
     },
     {
       id: 'zpwr-synth',
@@ -82,7 +80,6 @@
         'Routable mod matrix (ModSlot sources → destinations)',
         'Ships as VST3, AU, and CLAP via JUCE + clap-juce-extensions',
       ],
-      repo: 'https://github.com/MenkeTechnologies/zpwr-synth',
     },
     {
       id: 'zpwr-fx',
@@ -106,7 +103,26 @@
         'Output gain staging',
         'Ships as VST3, AU, and CLAP via JUCE + clap-juce-extensions',
       ],
-      repo: 'https://github.com/MenkeTechnologies/zpwr-fx',
+    },
+    {
+      id: 'zpwr-midi-fx',
+      name: 'zpwr-midi-fx',
+      glyph: 'M',
+      category: 'Audio Plugins',
+      badge: 'NEW',
+      tagline: 'A MIDI-effects plugin built on JUCE — transform the note and controller stream in your DAW before it reaches an instrument. Shipping as VST3, AU, and CLAP with the cyberpunk HUD interface.',
+      pills: ['JUCE', 'VST3/AU/CLAP', 'MIDI FX', 'macOS/Linux/Win'],
+      price: 39,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all formats', price: 39 },
+        { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 89 },
+      ],
+      features: [
+        'Processes MIDI in the signal chain ahead of your instrument',
+        'Factory + user preset system (PresetManager)',
+        'Cyberpunk HUD interface with the shared Orbitron / Share Tech Mono look',
+        'Ships as VST3, AU, and CLAP via JUCE + clap-juce-extensions',
+      ],
     },
     {
       id: 'zshrs',
@@ -467,11 +483,13 @@
       ? '<div class="price detail-price"><span class="amt free">Free</span><span class="per">open source</span></div>'
       : '<div class="license-pick">' + tiersHtml + '</div>' +
         '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span></div>';
+    // "Source" only when a public repo is set — proprietary paid products omit it.
+    var sourceBtn = p.repo
+      ? '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
+      : '';
     var actionsHtml = free
-      ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' +
-        '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
-      : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' +
-        '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>';
+      ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn
+      : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' + sourceBtn;
 
     root.innerHTML = '' +
       '<div class="detail-top">' +
