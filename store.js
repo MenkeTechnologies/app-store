@@ -24,7 +24,7 @@
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all platforms', price: 39 },
-        { name: 'Pro', desc: 'Commercial use + lifetime updates', price: 89 },
+        { name: 'Pro', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
     },
     {
@@ -52,7 +52,7 @@
       price: 49,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 49 },
-        { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 99 },
+        { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 99 },
       ],
     },
     {
@@ -66,7 +66,7 @@
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
-        { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 89 },
+        { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
     },
     {
@@ -80,7 +80,7 @@
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
-        { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 89 },
+        { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
     },
     {
@@ -1107,7 +1107,7 @@
         '</div>' +
         '<div class="product-foot">' +
           '<span class="price"><span class="amt' + priceCls + '">' + fmtPrice(tier.price) + '</span>' +
-            (tier.price ? '<span class="per">one-time</span>' : '') + '</span>' +
+            (tier.price ? '<span class="per">per major version</span>' : '') + '</span>' +
           (isFree(p)
             ? '<button type="button" class="btn btn-buy" data-download="' + (p.download || p.repo) + '">Download ↗</button>'
             : '<button type="button" class="btn btn-buy" data-add="' + p.id + '">Add</button>') +
@@ -1186,7 +1186,8 @@
     var pricingHtml = free
       ? '<div class="price detail-price"><span class="amt free">Free</span><span class="per">open source</span></div>'
       : '<div class="license-pick">' + tiersHtml + '</div>' +
-        '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span></div>';
+        '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span><span class="per">per major version</span></div>' +
+        '<p class="version-note">Each purchase licenses the current major version, including all minor &amp; patch updates within it. Future major versions are a separate purchase.</p>';
     // "Source" only when a public repo is set — proprietary paid products omit it.
     var sourceBtn = p.repo
       ? '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
