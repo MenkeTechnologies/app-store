@@ -247,13 +247,13 @@
   line-height: 1.5;
   flex: 1;
 }
-.product-card .p-meta {
+.p-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
   margin-top: 0.15rem;
 }
-.product-card .p-pill {
+.p-pill {
   font-family: 'Share Tech Mono', monospace;
   font-size: 9px;
   letter-spacing: 0.5px;
@@ -956,3 +956,13 @@
 .discount-applied.bad { color: var(--red); }
 
 .hidden { display: none !important; }
+
+/* Detail page: pills get a bit of breathing room above pricing */
+.detail-buy .p-meta { margin: 0.2rem 0 0.4rem; }
+.detail-overview {
+  font-family: 'Share Tech Mono', ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-dim);
+  margin: 0;
+}

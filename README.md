@@ -3,25 +3,43 @@
 MenkeTechnologies App Store — a static storefront for the MenkeTechnologies
 stack.
 
-- **Paid** — `audio haxor` (Tauri/JUCE plugin scanner), `traderview`
-  (self-hosted trading journal), `zpwr-synth` (JUCE synthesizer plugin),
-  `zpwr-fx` (JUCE multi-effect plugin).
-- **Free / open source** — every MenkeTechnologies repo with a binary release:
-  `zshrs`, `stryke`, the Rust CLI tools (`awkrs`, `lsofrs`, `nmaprs`,
-  `iftoprs`, `temprs`, `powerliners`, `storageshower`, `zpwrchrome`), and the
-  whole **stryke package ecosystem** (`stryke-aws`, `-gcp`, `-k8s`, `-docker`,
-  `-polars`, `-duckdb`, … 23 packages).
+Every MenkeTechnologies-authored repo in the meta collection is listed, across
+six categories (Desktop Apps, Audio Plugins, Developer Tools, CLI Tools, Zsh
+Plugins, stryke Packages):
 
-A product is treated as free whenever its first tier price is `0` (the `isFree`
-helper in `store.js`); free products render a **Download** button linking to
-their GitHub `releases/latest`, paid products render Add-to-cart.
+- **Paid** — `audio haxor`, `traderview`, `zpwr-synth`, `zpwr-fx`,
+  `zpwr-midi-fx`.
+- **Free / open source** — everything else: `zshrs`, `stryke`, the Rust CLI
+  tools, the **stryke package ecosystem** (23 packages), `zpwr`,
+  `zsh-more-completions`, `fusevm`, and the rest of the zsh-plugin family.
 
-The stryke packages share an identical shape, so they are generated from a
-compact `[id, glyph, description]` table via `strykePkg()` rather than written
-out as 23 near-duplicate objects. The distinct products are explicit objects in
-the `PRODUCTS` array. To add another binary-release repo, append one row to the
-table (or one object) — the grid, filters, stats, detail pages, and download
-CTAs all pick it up automatically.
+**Third-party forks are intentionally excluded** (`fzf-tab`, `zsh-z`, `zunit`,
+`kubectl-aliases`, `revolver`, `tmux-fzf-url`, `fasd-simple`, etc.) — they are
+other people's projects mirrored in the org, not MenkeTechnologies products, so
+storefronting them would misattribute authorship.
+
+### Free vs paid, and download targets
+
+A product is free whenever its first tier price is `0` (the `isFree` helper).
+Free products render a **Download** button; paid products render Add-to-cart.
+The download target is chosen automatically:
+
+- a GitHub **release** exists → links to `releases/latest`;
+- **no release** → links to the repo's `/tags` page (per-tag source archives).
+
+### Catalog structure (single source of truth = `store.js`)
+
+- Distinct products (apps, plugins, CLI tools) are explicit objects in the
+  `PRODUCTS` array.
+- The 23 stryke packages are generated from a compact table via `strykePkg()`.
+- The other repos (zsh plugins, dev tools) are generated via `metaProduct()`.
+- Long-form detail copy (`overview` + rich `features`) lives in the `DETAILS`
+  map — ported from each repo's README/source — and is merged into `PRODUCTS`
+  at load. The product-detail page renders the overview and the full feature
+  list; cards/search/filters/stats are all derived, no hardcoded counts.
+
+To add another repo: append one object (or one table row) and, optionally, a
+`DETAILS` entry for the rich copy.
 
 Uses the same HUD / cyberpunk design system as the strykelang docs
 (`hud-static.css`, `tutorial.css`, `hud-theme.js`) so the store and the docs

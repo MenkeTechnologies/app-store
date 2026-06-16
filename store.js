@@ -26,14 +26,6 @@
         { name: 'Personal', desc: 'Single user, all platforms', price: 39 },
         { name: 'Pro', desc: 'Commercial use + lifetime updates', price: 89 },
       ],
-      features: [
-        'Maps every VST2 / VST3 / AU / CLAP plugin on your system into a live grid',
-        'Architecture badges (ARM64 / x86_64 / Universal) from direct Mach-O / PE parsing',
-        'Scans audio sample libraries and discovers DAW project files',
-        'Checks the web for newer plugin versions and flags available updates',
-        'Full changelog of every scan',
-        'Cyberpunk CRT interface: neon glow, scanline overlays, glitch effects, color schemes',
-      ],
     },
     {
       id: 'traderview',
@@ -47,15 +39,6 @@
       tiers: [
         { name: 'Desktop', desc: 'Single user, embedded Postgres', price: 79 },
         { name: 'Self-Hosted Web', desc: 'Multi-user axum server + JWT auth', price: 199 },
-      ],
-      features: [
-        'Replaces TraderVue ($30/mo) + DayTradeDash ($187/mo) + StockInvest.us — data stays on your machine',
-        'Executions are the atom; trades are FIFO-derived per (account, symbol)',
-        'Embedded Postgres downloads on first launch — zero external dependencies on desktop',
-        '13 broker CSV importers; 20+ reports at TraderVue parity',
-        'Stocks, options, futures, and forex across one workspace',
-        'Schedule C business expenses + Schedule E rental property tracking',
-        'Same crates ship a Tauri desktop app and a multi-user axum web server',
       ],
     },
     {
@@ -71,15 +54,6 @@
         { name: 'Personal', desc: 'Single user, all formats', price: 49 },
         { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 99 },
       ],
-      features: [
-        'Multi-layer voice architecture — stack independent oscillator layers per voice',
-        'Oscillators with selectable waveforms, coarse/fine tune, and per-osc level',
-        'State-variable filter: cutoff, resonance, filter type, envelope amount',
-        'Per-voice ADSR amplitude and filter envelopes',
-        'LFOs with rate and waveform control',
-        'Routable mod matrix (ModSlot sources → destinations)',
-        'Ships as VST3, AU, and CLAP via JUCE + clap-juce-extensions',
-      ],
     },
     {
       id: 'zpwr-fx',
@@ -93,15 +67,6 @@
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
         { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 89 },
-      ],
-      features: [
-        'Dynamics: compressor with threshold, ratio, attack, release',
-        'Drive / distortion with selectable modes',
-        'Filter section: cutoff, resonance, Q',
-        'Modulation: chorus and tremolo (rate, depth, width)',
-        'Time-based: delay (time, feedback, mix) and reverb (size, damp, width)',
-        'Output gain staging',
-        'Ships as VST3, AU, and CLAP via JUCE + clap-juce-extensions',
       ],
     },
     {
@@ -117,12 +82,6 @@
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
         { name: 'Studio', desc: 'Commercial use + lifetime updates', price: 89 },
       ],
-      features: [
-        'Processes MIDI in the signal chain ahead of your instrument',
-        'Factory + user preset system (PresetManager)',
-        'Cyberpunk HUD interface with the shared Orbitron / Share Tech Mono look',
-        'Ships as VST3, AU, and CLAP via JUCE + clap-juce-extensions',
-      ],
     },
     {
       id: 'zshrs',
@@ -135,14 +94,6 @@
       price: 0,
       tiers: [
         { name: 'Open Source', desc: 'MIT licensed', price: 0 },
-      ],
-      features: [
-        'World’s first compiled Unix shell — every shell since 1970 has been an interpreter',
-        'Rkyv-backed bytecode + completion caches with zero-copy mmap reads',
-        'Cranelift JIT execution via the embedded fusevm VM',
-        'Persistent worker pool — zero per-command fork overhead',
-        'Drop-in compatible with .zshrc, zinit plugins, and zpwr',
-        'No startup banners or instant-prompt fakery — first paint = full functionality',
       ],
       download: 'https://github.com/MenkeTechnologies/zshrs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zshrs',
@@ -159,14 +110,6 @@
       tiers: [
         { name: 'Open Source', desc: 'MIT licensed', price: 0 },
       ],
-      features: [
-        'Parallel Perl 5 interpreter in Rust — NaN-boxed values, work-stealing across every CPU',
-        '347-opcode bytecode VM with Cranelift Block JIT',
-        '10,435 builtins (11,168 keys in %all) with pipe-forward syntax',
-        'Syntactic synthesis: Clojure →→, Racket ~>, Scala _, Perl sigils, Ruby p',
-        'Bundled LSP server, DAP debugger, and JetBrains plugin',
-        'Server-farms-first: distributed load testing with stryke agent + controller',
-      ],
       download: 'https://github.com/MenkeTechnologies/strykelang/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/strykelang',
     },
@@ -175,11 +118,6 @@
       tagline: 'The world’s fastest awk — a parallel bytecode-engine awk written in Rust, with parallel record processing.',
       pills: ['Rust', 'awk', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Bytecode-engine awk with parallel record processing',
-        'Drop-in awk-shaped CLI',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
-      ],
       download: 'https://github.com/MenkeTechnologies/awkrs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/awkrs',
     },
@@ -188,11 +126,6 @@
       tagline: 'List open system files, 5–21× faster than lsof — Rust core, lsof-shaped CLI.',
       pills: ['Rust', '5–21× faster', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        '5–21× faster than the classic lsof',
-        'lsof-compatible command surface',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
-      ],
       download: 'https://github.com/MenkeTechnologies/lsofrs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/lsofrs',
     },
@@ -201,11 +134,6 @@
       tagline: 'A parallel network scanner with an nmap-shaped CLI and Rust sockets.',
       pills: ['Rust', 'scanner', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Parallel socket scanning',
-        'nmap-shaped command-line interface',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
-      ],
       download: 'https://github.com/MenkeTechnologies/nmaprs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/nmaprs',
     },
@@ -214,11 +142,6 @@
       tagline: 'A network bandwidth monitor — iftop reimagined in Rust, jacking into your packet stream.',
       pills: ['Rust', 'net', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Live per-connection bandwidth monitoring',
-        'iftop-style interface',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
-      ],
       download: 'https://github.com/MenkeTechnologies/iftoprs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/iftoprs',
     },
@@ -227,11 +150,6 @@
       tagline: 'A temporary-file stack manager — full-spectrum control over scratch files and data.',
       pills: ['Rust', 'CLI', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Push/pop temporary files as a stack',
-        'Fast Rust core',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
-      ],
       download: 'https://github.com/MenkeTechnologies/temprs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/temprs',
     },
@@ -240,11 +158,6 @@
       tagline: 'Powerline without the Python import cost — a fast Rust prompt / statusline toolkit.',
       pills: ['Rust', 'prompt', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Powerline-style prompt and statusline rendering',
-        'No Python runtime — native Rust binaries (config, daemon, lint, render)',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
-      ],
       download: 'https://github.com/MenkeTechnologies/powerliners/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/powerliners',
     },
@@ -253,11 +166,6 @@
       tagline: 'A neon-drenched terminal UI for monitoring disk usage.',
       pills: ['Rust', 'TUI', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Interactive terminal UI for disk-usage exploration',
-        'Fast scanning over large trees',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64, gnu + musl)',
-      ],
       download: 'https://github.com/MenkeTechnologies/storageshower/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/storageshower',
     },
@@ -266,11 +174,6 @@
       tagline: 'The browser power-tool — password store, downloads, tabs, history, and userscripts via a native messaging host.',
       pills: ['Rust', 'browser', 'Free / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        'Drive the browser from the terminal: pass, downloads, tabs, history, userscripts',
-        'Native messaging host architecture',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
-      ],
       download: 'https://github.com/MenkeTechnologies/zpwrchrome/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zpwrchrome',
     },
@@ -286,11 +189,6 @@
       pills: ['Rust', 'stryke pkg', 'Free / OSS'],
       price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
-      features: [
-        desc,
-        'Loads as a stryke package (dynamically-loaded cdylib)',
-        'Prebuilt binaries for macOS + Linux (aarch64 / x86_64)',
-      ],
       download: 'https://github.com/MenkeTechnologies/' + id + '/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/' + id,
     };
@@ -321,6 +219,812 @@
     ['stryke-utils', 'UT', 'Boundary helpers for stryke — everything else is a builtin.'],
     ['stryke-zmq', 'ZQ', 'ZeroMQ client for stryke — REQ/REP, PUB/SUB, PUSH/PULL, and DEALER/ROUTER.'],
   ].forEach(function (e) { PRODUCTS.push(strykePkg(e[0], e[1], e[2])); });
+
+  // Other MenkeTechnologies repos (free). download -> releases/latest when a
+  // release exists, else the repo's /tags page (per-tag source archives).
+  function metaProduct(id, glyph, category, tagline, pills, hasRelease) {
+    return {
+      id: id, name: id, glyph: glyph, category: category, badge: 'FREE',
+      tagline: tagline, pills: pills, price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      download: hasRelease
+        ? 'https://github.com/MenkeTechnologies/' + id + '/releases/latest'
+        : 'https://github.com/MenkeTechnologies/' + id + '/tags',
+      repo: 'https://github.com/MenkeTechnologies/' + id,
+    };
+  }
+
+  [["fusevm","VM","Developer Tools","Language-agnostic bytecode VM with fused superinstructions and a three-tier Cranelift JIT — the engine behind stryke, zshrs, and awkrs.",["Rust","VM","JIT","Free / OSS"],false],["api-rest-generator","API","Developer Tools","Parses SQL DDL dumps and generates a fully-wired REST backend — Spring Boot (Java/Kotlin/Groovy) or Loco (Rust/Axum/SeaORM).",["codegen","JVM/Rust","Free / OSS"],false],["LearningCollectionAPI","LC","Developer Tools","A Spring Boot + Kotlin REST API for managing a personal collection of learning notes, backed by MySQL.",["Kotlin","Spring Boot","Free / OSS"],false],["stryke-demo","SD","Developer Tools","Live demo scripts for every stryke-* package — one .stk per package, one install pulls them all.",["stryke","demos","Free / OSS"],false],["VimColorSchemes","VC","Developer Tools","The largest curated Vim colorscheme bundle — 732 working :colorscheme targets in one plugin.",["Vim","732 themes","Free / OSS"],false],["zpwr","zp","Zsh Plugins","The world’s most advanced UNIX terminal environment — 500+ subcommands, 2000+ aliases, 40k completions, vim + tmux integration.",["zsh","terminal env","Free / OSS"],true],["zsh-more-completions","mc","Zsh Plugins","The largest curated zsh completion corpus in existence — 30k+ command completions wired into compsys.",["zsh","completions","Free / OSS"],false],["zsh-expand","ze","Zsh Plugins","The most powerful zsh expansion plugin — spacebar-expands aliases, globs, history, params, and typo fixes in pure zsh.",["zsh","expansion","Free / OSS"],true],["zsh-learn","zl","Zsh Plugins","Turn your terminal into a MySQL-backed knowledge base — save, search, and quiz yourself on snippets and notes.",["zsh","MySQL","Free / OSS"],false],["zsh-git-acp","ga","Zsh Plugins","Stage, commit, and push in one keybinding — ZLE widgets that use the command line as your commit message, plus 159 git aliases.",["zsh","git","Free / OSS"],false],["zsh-git-repo-cache","rc","Zsh Plugins","Finds and caches every git repo on your machine for instant prompts and fzf-powered cd.",["zsh","git","fzf","Free / OSS"],false],["zsh-zinit-final","zf","Zsh Plugins","An intentionally-empty plugin that loads last under zinit — a deterministic carrier for trailing atinit/atload hooks.",["zsh","zinit","Free / OSS"],false],["zsh-sudo","su","Zsh Plugins","Toggle sudo on the current command line with a single keybind — prepend or strip without retyping.",["zsh","ZLE","Free / OSS"],false],["zsh-cargo-completion","cg","Zsh Plugins","Zsh tab-completion for Rust’s Cargo, with live crates.io search for add and install.",["zsh","completion","Free / OSS"],false],["zsh-cpan-completion","cpn","Zsh Plugins","Zsh completion that pulls live Perl module names from CPAN for cpan and cpanm.",["zsh","completion","Free / OSS"],false],["zsh-dotnet-completion","dn","Zsh Plugins","Zsh tab-completion and aliases for the .NET (dotnet) CLI.",["zsh","completion","Free / OSS"],false],["zsh-gem-completion","gm","Zsh Plugins","Zsh completion for Ruby’s gem, with live remote gem search on install.",["zsh","completion","Free / OSS"],false],["zsh-nginx","ng","Zsh Plugins","Zsh tab-completion for nginx commands.",["zsh","completion","Free / OSS"],false],["zsh-openshift-aliases","oc","Zsh Plugins","53 short aliases over the OpenShift oc CLI, plus login macros and oc completion.",["zsh","oc","Free / OSS"],false],["zsh-pip-description-completion","pp","Zsh Plugins","Zsh completion for pip with package version and description shown in the menu.",["zsh","completion","Free / OSS"],false],["zsh-sed-sub","sb","Zsh Plugins","A ZLE keybinding for global sed-style search-and-replace on the current command line.",["zsh","ZLE","Free / OSS"],false],["zsh-very-colorful-manuals","mn","Zsh Plugins","Renders man pages in cyberpunk ANSI colors via scoped LESS_TERMCAP_* injection.",["zsh","man","Free / OSS"],false]]
+    .forEach(function (e) { PRODUCTS.push(metaProduct(e[0], e[1], e[2], e[3], e[4], e[5])); });
+
+  // Long-form detail copy (overview + rich features), ported from each repo's
+  // README / source. Authoritative source for the product-detail page; merged
+  // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
+  var DETAILS = {
+    "zshrs": {
+      "overview": "A drop-in zsh replacement written in Rust that compiles shell commands to bytecode and runs them on a virtual machine instead of forking, with a persistent worker thread pool replacing fork+exec. Framed as the first compiled Unix shell.",
+      "features": [
+        "658k+ lines, 614 source files across a 2-crate Rust workspace",
+        "Compiles commands to fusevm bytecode with Cranelift JIT",
+        "Persistent worker thread pool (2–18 threads) replaces fork+exec",
+        "23 coreutils builtins run in-process, zero fork",
+        "100× warm-start speedup (717ms cold to 7ms warm)",
+        "rkyv-backed bytecode image cache, mmap hot path",
+        "193 ZLE widgets, 47 fish-ported builtins",
+        "180+ builtins; full zsh and bash compatibility",
+        "Built-in LSP server, DAP debug adapter, JetBrains plugin",
+        "224 opcodes, AOP intercepts, parallel primitives (pmap/pgrep/peach)"
+      ]
+    },
+    "strykelang": {
+      "overview": "A Perl 5 compatible interpreter written in Rust with native parallel primitives, a bytecode VM plus Cranelift JIT, three-tier regex, and rayon work-stealing across all cores. Framed as the fastest dynamic language for parallel operations and 2nd-fastest single-threaded after LuaJIT.",
+      "features": [
+        "Perl 5 compatible interpreter in Rust",
+        "NaN-boxed StrykeValue runtime values",
+        "Three-tier regex: regex, fancy-regex, pcre2",
+        "Bytecode VM plus Cranelift block and linear JIT",
+        "Rayon work-stealing parallelism across all cores",
+        "10,435 stdlib primaries (11,168 keys including aliases)",
+        "44 MB single static binary, sub-10ms cold start",
+        "Parallel primitives: pmap/pgrep/psort/preduce, streaming iterators",
+        "rkyv KV store, sketch algebra, zsh glob qualifiers",
+        "Built-in HTTP, JSON, CSV, SQLite, crypto, AI primitives"
+      ]
+    },
+    "audio-haxor": {
+      "overview": "A Tauri v2/JUCE cyberpunk desktop app that scans your system's audio plugin directories, sample libraries, and DAW project files, checks the web for newer plugin versions, and keeps a full changelog of every scan.",
+      "features": [
+        "Detects VST2 / VST3 / AU / CLAP plugins on macOS, Windows, Linux",
+        "Architecture badges (ARM64 / x86_64 / Universal) via Mach-O / PE parsing",
+        "Indexes 14+ DAW project formats: Ableton, Logic, FL Studio, REAPER",
+        "Checks KVR Audio for each plugin's latest version with rate limiting",
+        "Generates Ableton Live Set (.als) files from the sample library",
+        "BPM estimation, LUFS loudness, and musical key detection per sample",
+        "Export/import all tabs to JSON, TOML, CSV, or TSV",
+        "JUCE-powered audio engine sidecar for low-latency playback",
+        "SQLite backend with timestamped scan history and diff engine",
+        "Full PTY-backed embedded terminal, Vim keybindings, Cmd+K palette"
+      ]
+    },
+    "traderview": {
+      "overview": "A self-hosted TraderVue-style trading journal that imports broker CSVs into atomic execution rows, FIFO-rolls them into trades, and produces equity curves, summary stats, and a markdown journal. One Rust workspace ships a Tauri v2 desktop app with embedded Postgres and an axum multi-user web server sharing the same crates and frontend.",
+      "features": [
+        "Replaces TraderVue + DayTradeDash + StockInvest.us; $2,604/yr saved",
+        "Two binaries: Tauri desktop (embedded Postgres) + axum web server",
+        "FIFO trade roll-up from atomic execution rows per account/symbol",
+        "12 broker importers plus a Generic CSV column-mapping wizard",
+        "17 reports plus R-multiple, Monte Carlo, fill-quality TCA, tax-lot tracker",
+        "139 stateless financial calculators under /calc",
+        "Asset classes: stocks, options, futures, forex",
+        "On-device receipt OCR with 20-bucket Schedule C taxonomy",
+        "stryke-JIT backtest engine, walk-forward sweeper, strategy alerts",
+        "Schema: 83 tables, 115 indexes; money is NUMERIC(20,8)"
+      ]
+    },
+    "awkrs": {
+      "overview": "A Rust awk implementation running pattern-action programs like POSIX awk/gawk/mawk via a fused-superinstruction bytecode VM with parallel record processing, accepting the union of POSIX, gawk, and mawk options.",
+      "features": [
+        "First awk to pair a bytecode VM with a persistent on-disk cache",
+        "Default-on fusevm/Cranelift JIT offload for numeric chunks",
+        "Parallel record processing via rayon, deterministic reordered output",
+        "Memory-mapped files scanned with raw-byte field extraction",
+        "JIT loops measured 14–110× over the bytecode interpreter",
+        "4–31× faster than mawk/gawk/BSD awk across benchmarks",
+        "gawk extensions: CSV mode, PROCINFO, SYMTAB, @include, /inet sockets",
+        "MPFR bignum via -M flag (256-bit default)",
+        "Bytecode cache memoized to ~/.awkrs/scripts.rkyv for -f scripts"
+      ]
+    },
+    "lsofrs": {
+      "overview": "A Rust rewrite of lsofng (modernized lsof) that maps which files, sockets, pipes, and devices each process holds open — 5–21× faster than traditional lsof.",
+      "features": [
+        "5–21× faster than lsof 4.91 and lsofng",
+        "Filters by PID, command, user, network, FD range, regex",
+        "Unified TUI with 7 tabs, 31 themes, mouse support",
+        "Modes: --top, --watch, --stale, --ports, --tree, --net-map",
+        "JSON, CSV (RFC 4180), field, and terse output formats",
+        "FD leak detection flagging monotonically increasing FD counts",
+        "macOS (libproc), Linux (/proc), FreeBSD (sysctl)",
+        "Zero-copy FFI structs with rayon-parallel per-PID enumeration",
+        "Selection combinators: multiple/excluded PIDs, users, AND logic"
+      ]
+    },
+    "nmaprs": {
+      "overview": "A Rust-native network scanner speaking nmap's CLI dialect with parallel sockets and real TCP/UDP/ICMP and raw half-open scans, without the embedded NSE Lua runtime.",
+      "features": [
+        "1.5–5.1× faster than nmap 7.99 across port counts",
+        "Raw half-open TCP: SYN, NULL, FIN, Xmas, ACK, Window, Maimon",
+        "SCTP (-sY/-sZ), idle scan (-sI), IP protocol (-sO), FTP bounce",
+        "UDP probes, ICMP ping discovery, IPv6 (-6), traceroute",
+        "Evasion at packet level: decoys, spoofing, fragmentation",
+        "Service version scan (-sV) with rustls TLS",
+        "IPv4 OS detection (-O) scoring nmap-os-db",
+        "SOCKS4/HTTP proxies, custom DNS via hickory-resolver",
+        "Output: -oN, -oG, -oX, -oA, -oS (nmap-compatible XML)"
+      ]
+    },
+    "iftoprs": {
+      "overview": "A neon terminal UI for real-time bandwidth monitoring built in Rust with ratatui, crossterm, and pcap, featuring per-flow tracking, process attribution, and JSON streaming.",
+      "features": [
+        "Live libpcap capture with BPF filters and auto-restart",
+        "Per-flow bandwidth tracking with 2s/10s/40s sliding windows",
+        "Flow-to-process attribution via lsof socket mapping",
+        "31 cyberpunk themes with live chooser and config persistence",
+        "Per-flow sparklines, mouse support, hover/right-click tooltips",
+        "Headless --json NDJSON streaming to stdout",
+        "Bandwidth threshold alerts: border flash, bell, status message",
+        "macOS and Linux (requires libpcap)",
+        "Completions for zsh, bash, fish, elvish, powershell"
+      ]
+    },
+    "temprs": {
+      "overview": "A temporary-file stack manager in Rust (binary: tp) with stack-based push/pop/shift/unshift operations and an atomic, flock-protected master record.",
+      "features": [
+        "Stack ops: push, pop, shift, unshift, insert, move",
+        "Dual indexing by numeric position or @name tags",
+        "head, tail, wc, size, and path on any tempfile",
+        "Find-and-replace, grep, diff, concat across tempfiles",
+        "Atomic flock-protected null-byte-delimited master record",
+        "Auto-recovery skips corrupt records on next write",
+        "Sort stack by name, size, or mtime; reverse stack",
+        "Expire tempfiles older than N hours; $EDITOR integration",
+        "Two binaries (tp + temprs), zsh completions, man pages"
+      ]
+    },
+    "powerliners": {
+      "overview": "A Rust port of Python's powerline-status statusline/prompt renderer, shipping as a 5-binary suite with zero Python runtime and sub-millisecond render.",
+      "features": [
+        "134/137 upstream files ported (97.8%), 2473 lib tests",
+        "462 parity tests byte-compared against live upstream Python",
+        "5 binaries: powerline, -daemon, -config, -render, -lint",
+        "UNIX-socket daemon speaks the upstream powerline wire format",
+        "54 segment adapters including git_status, ci_status, kubecontext",
+        "Drop-in compatible with existing powerline JSON theme files",
+        "Targets tmux, zsh, bash, vim, ipython prompts",
+        "Bundled vim plugin via include_str!, no +python3 needed",
+        "Net-new segments: gpu_usage, thermal, aws/gcp context"
+      ]
+    },
+    "storageshower": {
+      "overview": "A neon-themed terminal UI for monitoring disk usage, built in Rust with ratatui and crossterm.",
+      "features": [
+        "Live disk usage with gradient, solid, thin, ascii bars",
+        "Real-time system stats via background thread (3s)",
+        "Directory drill-down with recursive size calculation",
+        "Network filesystem latency badges (NFS/SMB/CIFS/SSHFS)",
+        "Live per-mount disk I/O throughput overlay",
+        "SMART drive health status per device",
+        "30 builtin palettes plus custom TOML themes",
+        "Threshold alerts with bell, border flash, row highlight",
+        "In-app theme editor and chooser with live preview"
+      ]
+    },
+    "zpwrchrome": {
+      "overview": "A Chrome MV3 extension bundling six daily-driver browser tools into one toolbar icon, with a vendored Rust native-messaging host and 54 keyboard commands.",
+      "features": [
+        "UNIX pass integration: fill, copy, OTP, full CRUD manager",
+        "Profile + credit-card autofill from pass entries",
+        "Segmented multi-connection download manager via Range GETs",
+        "JetBrains-style tab switcher with MRU, scenes, minimap",
+        "fzf-fuzzy search over up to 5000 history entries",
+        "Tampermonkey-equivalent userscript engine with GM_* shim",
+        "Wappalyzer-compatible detection, 3,993-fingerprint corpus",
+        "Full-page screenshot capture with OffscreenCanvas stitching",
+        "54 commands; 2993 node:test + 117 cargo test cases"
+      ]
+    },
+    "zpwr-synth": {
+      "overview": "A polyphonic multi-layer subtractive/wavetable synthesizer (up to 16 layers) with three switchable oscillator slots per voice — Basic PolyBLEP, JP-8000 supersaw virtual-analog, and wavetable — routed through a TPT state-variable filter, ADSR envelopes, LFOs, and a modulation matrix.",
+      "features": [
+        "Three per-voice oscillator slots (Basic, Virtual Analog, Wavetable)",
+        "Band-limited PolyBLEP sine/saw/square/triangle oscillators",
+        "JP-8000 supersaw with up to 16-voice unison, detune, drift",
+        "Linear-interpolated wavetable oscillator with frame morphing",
+        "Sub oscillator (sine/square) plus white-noise source",
+        "TPT state-variable filter: lowpass, highpass, bandpass",
+        "Amp, filter, and assignable Env3 ADSR envelopes",
+        "Three LFOs and four macros feeding a 12-slot mod matrix",
+        "Up to 16 stackable layers, each its own voice pool",
+        "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
+      ]
+    },
+    "zpwr-fx": {
+      "overview": "A multi-slot ordered effects rack hosting eight pluggable DSP modules, where each slot's type, bypass, and dry/wet mix are host-automatable and selected from a factory of effect types.",
+      "features": [
+        "Ordered multi-slot effect chain with per-slot bypass",
+        "Per-slot dry/wet mix and master in/out gain",
+        "Gain module (dB)",
+        "tanh Drive saturation with pre-drive and output trim",
+        "Compressor with threshold, ratio, attack, release",
+        "State-variable Filter with LP/HP/BP modes",
+        "Chorus with rate, depth, delay, feedback",
+        "Tremolo sine amplitude modulation",
+        "Feedback Delay up to 2000 ms",
+        "Reverb with size, damp, width"
+      ]
+    },
+    "zpwr-midi-fx": {
+      "overview": "A MIDI effect/generator plugin (audio pass-through) that turns single keys into voiced chords, scale-locks notes for intelligent harmony, and runs them through a polymetric step arpeggiator with Euclidean rhythm generation.",
+      "features": [
+        "Single-key chord voicing from a runtime chord dictionary",
+        "Chord inversion, octave-doubling, spread, transpose, strum",
+        "Per-key chord mapping (Chromatic, Circle-of-Fifths, Lowest-Note)",
+        "Scale-lock quantizer across 20 scale/mode types",
+        "Step arpeggiator: Up/Down/UpDown/Converge/AsPlayed/Random/Chord",
+        "Per-step velocity, gate, transpose, ratchet, probability, tie",
+        "Euclidean (Bjorklund) gate overlay with pulses and rotation",
+        "Latch, swing, octave span, timing/velocity humanize",
+        "Disk-backed .zpwrpreset manager (name/category/author)",
+        "CyberLookAndFeel neon UI with step-indicator readout"
+      ]
+    },
+    "stryke-arrow": {
+      "overview": "Apache Arrow + Parquet + Feather + Arrow IPC + arrow-CSV/JSON columnar data support for stryke, shipped as an opt-in dlopened cdylib kept out of core.",
+      "features": [
+        "Read/write Parquet, Arrow IPC, Feather, CSV, NDJSON",
+        "Streaming row reads via per-row callback",
+        "Footer-only schema, row_count, and column stats",
+        "Server-side filter/select/drop/sort/head/tail/slice",
+        "Concat, rename, and cast columns file-to-file",
+        "Format conversion without round-tripping through stryke",
+        "Compression: snappy, zstd, gzip, lz4, brotli",
+        "DataFrame bridge over columnar load"
+      ]
+    },
+    "stryke-aws": {
+      "overview": "AWS client for stryke covering S3, DynamoDB, SQS, Lambda, STS, SNS, SSM, Secrets Manager, SES, and CloudWatch via an in-process cdylib.",
+      "features": [
+        "S3 ls/get/put/head/rm plus copy and batch delete",
+        "DynamoDB get/put/query/scan/describe with plain JSON",
+        "SQS send/receive/delete/purge plus pump auto-delete loop",
+        "Lambda invoke/call/list functions",
+        "STS caller_identity and assume_role",
+        "SNS topics/publish/subscribe, SES email send",
+        "SSM Parameter Store and Secrets Manager get/put",
+        "ARN and s3:// URI parse/build helpers"
+      ]
+    },
+    "stryke-azure": {
+      "overview": "Azure client for stryke mapping the stryke-aws surface onto Azure's GA Rust SDK, exposed as the dlopened Azure package.",
+      "features": [
+        "Blob Storage ls/get/put/head/rm and containers",
+        "Storage Queues send/receive/delete/clear/count/pump",
+        "Cosmos DB databases/containers/put/get/delete/query",
+        "Key Vault Secrets get/set/ls/rm with param aliases",
+        "Key Vault Keys RSA encrypt/decrypt",
+        "Entra identity token connectivity probe",
+        "Resource ID and connection-string parse helpers",
+        "Storage account and container name validation"
+      ]
+    },
+    "stryke-docker": {
+      "overview": "Docker client for stryke driving any reachable Docker daemon for containers, images, networks, volumes, logs, exec, and prune.",
+      "features": [
+        "Container run/create/start/stop/kill/rm/pause/rename",
+        "ps/inspect/top/wait/commit and buffered logs",
+        "Exec with captured stdout+stderr",
+        "Images pull/rmi/tag plus history and inspect",
+        "Networks and volumes create/inspect/rm",
+        "One-shot stats, diff, df, port, live update",
+        "Prune containers/images/volumes/networks",
+        "Image-ref, port-spec, and mount parse helpers"
+      ]
+    },
+    "stryke-duckdb": {
+      "overview": "Embedded DuckDB SQL engine for stryke that direct-queries Parquet/CSV/JSON with no import step, plus persistent .duckdb files and full standard SQL.",
+      "features": [
+        "query/query_one/query_col/query_scalar/query_stream",
+        "Direct-query Parquet/CSV/JSON from disk or URL",
+        "DDL/DML execute, insert_many, native appender bulk load",
+        "import/export tables, update/delete/truncate/upsert",
+        "Transactions: begin/commit/rollback/transaction block",
+        "Metadata: tables/views/functions/settings/schema/inspect",
+        "Analytics: summarize/describe/group_count/aggregate/sample",
+        "Extensions httpfs/aws/iceberg/delta/spatial/excel on connect"
+      ]
+    },
+    "stryke-gcp": {
+      "overview": "Google Cloud client for stryke covering Cloud Storage, Pub/Sub, Secret Manager, BigQuery, and Firestore over GCP REST APIs via a dlopened cdylib.",
+      "features": [
+        "GCS ls/get/put/head/cp/rm/compose and buckets",
+        "Pub/Sub publish/pull/ack plus topic and sub admin",
+        "Pub/Sub pump pull-callback-ack loop",
+        "Secret Manager access/create/add-version",
+        "BigQuery jobs.query and streaming insert",
+        "Firestore get/set/delete/list/query/create",
+        "ADC auth with project resolution",
+        "gs:// URI and resource-name parse helpers"
+      ]
+    },
+    "stryke-grpc": {
+      "overview": "Generic reflection-based gRPC client for stryke — like grpcurl but a stryke package, discovering services at call time with JSON in/out.",
+      "features": [
+        "List services and describe service/method/message",
+        "Unary call with JSON-mapped input messages",
+        "Server-, client-, and bidi-streaming as JSON arrays",
+        "Server reflection with no local .proto files",
+        "TLS, mTLS client cert, and custom CA root",
+        "ASCII and binary (-bin) gRPC metadata headers",
+        "Per-call deadline plus gzip/zstd/deflate compression",
+        "status_code and parse_method string helpers"
+      ]
+    },
+    "stryke-gui": {
+      "overview": "GUI automation for stryke covering mouse, keyboard, screen, pixel, clipboard, and screenshots via a precompiled dlopened cdylib.",
+      "features": [
+        "Mouse move/drag/click/scroll with tweened motion",
+        "Keyboard press/down/up/type and hotkey chords",
+        "Mouse pos, screen size, and on-screen checks",
+        "Pixel reads and color-match tolerance",
+        "Full, region, and per-display screenshots",
+        "Clipboard get/set",
+        "Multi-monitor display enumeration",
+        "Hotkey/color parse and RGB-to-HSL helpers"
+      ]
+    },
+    "stryke-k8s": {
+      "overview": "Kubernetes client for stryke running get/apply/delete/scale/rollout/logs/watch/exec against any kubeconfig-reachable cluster with GVK shortcuts.",
+      "features": [
+        "get/get_one with label/field selectors and limit",
+        "Server-side apply, create, replace, patch",
+        "Scale plus set_image/rollout_restart/status/history",
+        "autoscale HPA, taint/untaint, label/annotate",
+        "Nodes cordon/uncordon/evict",
+        "events, top_pods/top_nodes, and wait conditions",
+        "Buffered logs plus deferred follow/watch/exec",
+        "valid_name, parse_selector, parse_quantity helpers"
+      ]
+    },
+    "stryke-kafka": {
+      "overview": "Apache Kafka client for stryke with producer, consumer, consumer-group lag, and topic/cluster/config admin, statically linking librdkafka.",
+      "features": [
+        "Produce with keys, headers, partitions, binary encoding",
+        "produce_many bulk and consume snapshot/callback",
+        "Consumer-group lag, watermarks, offsets_for_times",
+        "Topics list/describe/create/delete, create_partitions",
+        "describe_configs/alter_configs, delete_groups",
+        "Cluster and consumer-group introspection",
+        "SASL/SSL CLI flags",
+        "murmur2 partition_for_key and broker parse helpers"
+      ]
+    },
+    "stryke-mcpd": {
+      "overview": "Policy layer for writing MCP servers in stryke as a single static native binary, providing validated specs, crash-isolated serving, a jailed tool pack, and client envelope helpers.",
+      "features": [
+        "Schema: validated tool specs and type-checked args",
+        "Server: serve with die-to-ERROR crash isolation",
+        "File-only logging keeping stdout clean for JSON-RPC",
+        "Tools: root-jailed fs read/list/grep/find/write pack",
+        "sh_exec allowlist plus env/time/sys_info tools",
+        "Client: text envelope extraction and error parsing",
+        "AOT-compile server to a single static binary",
+        "CLI new/serve-stock/tools scaffolding"
+      ]
+    },
+    "stryke-mongo": {
+      "overview": "MongoDB client for stryke with CRUD, aggregation, and index admin against MongoDB 5.0+ standalone, replica set, or sharded clusters.",
+      "features": [
+        "find/find_one/find_stream/count with full query syntax",
+        "insert/update/replace/delete one and many",
+        "Atomic find_one_and_update/replace/delete",
+        "Aggregation pipelines, distinct, estimated_count",
+        "Index create/create_indexes/drop/list",
+        "Collection and database create/drop/stats/explain",
+        "run_command, server_status, relaxed extended JSON",
+        "ObjectId, namespace, and connection-string helpers"
+      ]
+    },
+    "stryke-mysql": {
+      "overview": "MySQL/MariaDB client for stryke, shipped as an opt-in cdylib dlopened in-process with a pooled connection cache, no fork-per-call.",
+      "features": [
+        "query, query_one, query_scalar, query_col rows",
+        "execute, insert_many, upsert, update, delete writes",
+        "transaction batch on one pooled connection",
+        "schema, tables, databases, indexes, triggers introspection",
+        "CALL stored procedures and multi-result-set queries",
+        "positional ? bind parameters, identifier quoting helpers",
+        "processlist, status, variables, db_size, table_size admin",
+        "CLI: query/execute/dump/schema/tables/ping subcommands"
+      ]
+    },
+    "stryke-office": {
+      "overview": "Native-Rust office document I/O for stryke covering Excel/Calc, Word/Writer, PowerPoint/Impress, ODF, PDF, and images with no LibreOffice subprocess.",
+      "features": [
+        "read/write xlsx, ods, csv, tsv, html, md sheets",
+        "docx/odt read, write, blocks, tables, outline",
+        "pptx/odp slides read, write, merge, split",
+        "PDF generate, read, build multi-page, merge",
+        "spreadsheet pivot, join, groupby, filter, dedupe",
+        "statistics: describe, corr, regress, ttest, anova",
+        "cross-format convert: json/xml/sql/latex/csv to sheet",
+        "image open/resize/crop/filter/draw surface"
+      ]
+    },
+    "stryke-parquet": {
+      "overview": "Parquet file inspector and toolkit for stryke exposing schema, footer stats, row-group breakdown, and recompression as an opt-in cdylib.",
+      "features": [
+        "inspect, schema, count, metadata footer reads",
+        "rowgroups per-row-group size and column breakdown",
+        "stats per-column min/max/null_count aggregation",
+        "head, tail, sample, stream row peeking",
+        "to_csv, from_csv, from_json, write conversion",
+        "compress/recompress across snappy/zstd/gzip/lz4/brotli",
+        "merge same-schema files, write_partitioned Hive dirs",
+        "validate, column_chunk_stats, size_report diagnostics"
+      ]
+    },
+    "stryke-polars": {
+      "overview": "Full pandas DataFrame plus numpy ndarray/linalg/FFT/random surface for stryke in one cdylib — 1,472 wrapper fns across 46 modules.",
+      "features": [
+        "DataFrame, Series, Index, GroupBy operations",
+        "ndarray, ufuncs, masked arrays, sparse arrays",
+        "linalg via nalgebra, FFT via rustfft",
+        "random distributions, datetime64, timedelta64",
+        "pandas IO read/write across formats",
+        "statistics, stat tests, metrics, clustering",
+        "image, signal, graph, geo, text families",
+        "polynomial, interpolation, encoding, hashing"
+      ]
+    },
+    "stryke-postgres": {
+      "overview": "PostgreSQL client for stryke as an opt-in cdylib with a per-URL client cache, honoring DATABASE_URL, no fork-per-call.",
+      "features": [
+        "query, query_one, query_scalar, query_col, dump reads",
+        "execute, insert_many, upsert, update, delete writes",
+        "COPY copy_in/copy_out bulk transfer",
+        "LISTEN/NOTIFY channel messaging",
+        "begin/commit/rollback/transaction with connection affinity",
+        "positional $1 binds with jsonb encoding",
+        "tables, schema, indexes, roles, extensions introspection",
+        "activity, locks, db_size, cancel_backend admin"
+      ]
+    },
+    "stryke-redis": {
+      "overview": "Redis/Valkey client for stryke as an opt-in cdylib caching one connection per auth tuple, covering all core data types and admin.",
+      "features": [
+        "KV get/set/mget/mset with TTL and counters",
+        "lists, sets, hashes, sorted sets operations",
+        "streams xadd/xrange/xread and consumer groups",
+        "geospatial geoadd/geopos/geodist/geosearch",
+        "HyperLogLog pfadd/pfcount/pfmerge cardinality",
+        "bitmaps, scripting eval/evalsha, pub/sub publish",
+        "SCAN, hscan, sscan, zscan non-blocking iteration",
+        "pipeline/transaction and server admin introspection"
+      ]
+    },
+    "stryke-selenium": {
+      "overview": "Selenium WebDriver browser automation for stryke as a cdylib bridging thirtyfour's async API, with persistent sessions and element handles.",
+      "features": [
+        "launch chrome/firefox/safari/edge, headless or visible",
+        "navigate: goto, back, forward, refresh, source",
+        "find/find_all/wait_for by css/xpath/id/name/tag/class",
+        "click, send_keys, clear, attr, prop, css element ops",
+        "execute_script JavaScript with WebElement args",
+        "screenshots full-page, per-element, print_page PDF",
+        "window and frame control, alerts handling",
+        "cookie add/list/delete management"
+      ]
+    },
+    "stryke-spark": {
+      "overview": "Apache Spark client for stryke as an opt-in cdylib shelling out to spark-submit with an embedded PySpark driver, universal across Spark 3.x/4.x.",
+      "features": [
+        "query, query_one, query_scalar, query_col, dump reads",
+        "execute DDL/DML and explain query plans",
+        "read/write external parquet/csv/json/orc sources",
+        "tables, databases, views, catalogs, schema metadata",
+        "temp view create/drop, set/refresh database",
+        "cache/uncache tables and runtime config",
+        "submit pass-through for .py/.jar workloads",
+        "master URL and table-name parsing helpers"
+      ]
+    },
+    "stryke-utils": {
+      "overview": "Pure-stryke boundary helper library of 112 long-tail composites not in core, across six sublibraries with no cdylib or FFI.",
+      "features": [
+        "String: pad_center, squeeze, mask_middle, escape_shell, unwrap",
+        "List: difference, intersection, union, windows, transpose",
+        "Hash: deep_merge_all, deep_get, deep_set, flatten_keys",
+        "Num: ordinal, round_to_multiple, percent_change, gcd",
+        "Time: parse_duration, ago, format_iso8601, next_weekday",
+        "Path: compound_ext, set_ext, normalize, relative, join",
+        "cross-checked against builtins, zero name collisions",
+        "CLI dispatcher bin/utils.stk"
+      ]
+    },
+    "stryke-zmq": {
+      "overview": "ZeroMQ brokerless messaging client for stryke as a cdylib with vendored libzmq, exposing all canonical socket patterns over TCP/IPC/inproc.",
+      "features": [
+        "req/rep, pub/sub, push/pull, dealer/router, pair sockets",
+        "socket create with bind/connect/subscribe options",
+        "send/recv plus multipart variants with utf8/hex/base64",
+        "subscribe/unsubscribe SUB topic filters",
+        "set/get full socket-option table",
+        "poll and poll_many readiness over handles",
+        "monitor lifecycle events, backgrounded proxy device",
+        "CURVE keypair, z85 codec, one-shot request"
+      ]
+    },
+    "stryke-fleet": {
+      "overview": "Parallel expect/PTY automation for stryke as a pure-stryke orchestration layer over core PTY builtins and pmap, with no cdylib.",
+      "features": [
+        "Session: transcripted send/expect/branch/close PTY sessions",
+        "Playbook: declarative step lists with branches and retries",
+        "Recipes: 36 login chains (ssh, sudo, psql, docker_login)",
+        "Fanout: one playbook across N targets via pmap",
+        "partition, summarize, group_by_error, retry_failed results",
+        "branch tables with first-match-wins coderef actions",
+        "recipes are pure data, composable and unit-testable",
+        "CLI fleet.stk for one-shot expect/exchange loops"
+      ]
+    },
+    "api-rest-generator": {
+      "overview": "A zero-config code generation engine that parses MySQL, PostgreSQL, SQLite, or MSSQL DDL dumps and emits a fully wired REST backend, targeting Spring Boot (Java/Kotlin/Groovy) or Loco (Rust/Axum/SeaORM).",
+      "features": [
+        "Parses MySQL, PostgreSQL, SQLite, and MSSQL CREATE/ALTER TABLE",
+        "Auto-detects primary keys, foreign keys, and column types",
+        "Generates JPA entities and SeaORM entities with relations",
+        "Emits full CRUD REST controllers (GET/POST/PUT/DELETE)",
+        "Outputs Java, Kotlin, Groovy, or Rust/Loco projects",
+        "Maps SQL types per-dialect to target language types",
+        "loco-gen CLI scaffolds, wires routes, runs migrations",
+        "Verified against Sakila, Chinook, Pagila, Northwind schemas"
+      ]
+    },
+    "fusevm": {
+      "overview": "A language-agnostic bytecode virtual machine with fused superinstructions and a three-tier Cranelift JIT — the shared execution engine behind strykelang, zshrs, and awkrs.",
+      "features": [
+        "224 opcodes across 21 sections, 11 fused superinstructions",
+        "Three-tier Cranelift JIT: linear, block, and tracing",
+        "Tracing JIT records hot loops, deopts on guard miss",
+        "29 first-class shell ops, 87 first-class AWK ops",
+        "Extension dispatch via Extended(u16,u8) handler tables",
+        "Stack-based execution with slot-indexed local fast paths",
+        "Optional jit-disk-cache persists native code across restarts",
+        "Zero-clone dispatch with in-place array/hash mutation"
+      ]
+    },
+    "LearningCollectionAPI": {
+      "overview": "A Spring Boot REST API in Kotlin for managing a personal collection of learning notes, backed by MySQL via Spring Data JPA.",
+      "features": [
+        "Kotlin 2.3.20 + Spring Boot 4.0.4 on JDK 17",
+        "MySQL datastore via Spring Data JPA",
+        "Add and filter learning fragments via GET endpoints",
+        "Recent-fragment retrieval (last 20 or last N)",
+        "Random fragment access, single or N at a time",
+        "Auto-generated Spring Data REST CRUD on /learning",
+        "QueryDSL type-safe queries, SpringDoc OpenAPI",
+        "Tests: unit, integration, property-based, idempotency"
+      ]
+    },
+    "stryke-demo": {
+      "overview": "Live demo scripts for every package in the stryke-* family — one .stk script per package, with a single install that pulls all packages from GitHub.",
+      "features": [
+        "14 standalone .stk demos, one per stryke-* package",
+        "s install pulls all packages, builds cdylibs, locks graph",
+        "docker-compose ships MySQL, Postgres, Redis, Mongo, Kafka, k3s",
+        "Makefile targets run individual demos by name",
+        "run_all.stk pings services and runs only reachable demos",
+        "Demos cover Arrow, Spark, Parquet, DuckDB backends",
+        "Demos cover AWS, GCP, Kafka, gRPC, k8s, Docker",
+        "Cross-package integration tests under t/"
+      ]
+    },
+    "VimColorSchemes": {
+      "overview": "A 732-deck bundle of Vim colorschemes where every colors/*.vim file is a working :colorscheme target — the largest curated Vim colorscheme bundle in one plugin.",
+      "features": [
+        "732 distinct Vim colorschemes in one bundle",
+        "Zero runtime: pure colors/*.vim files, no autoload",
+        "Works with Pathogen, vim-plug, packer, lazy.nvim",
+        "Neovim compatible alongside terminal and GUI Vim",
+        "Supports 256-color and truecolor terminals",
+        "Covers dark, light, pastel, neon, monochrome families",
+        "Includes ports of gruvbox, dracula, solarized, nord, catppuccin",
+        "Includes validation test scripts"
+      ]
+    },
+    "zpwr": {
+      "overview": "ZPWR is a zinit-based zsh terminal environment layered with custom zsh, bash, vimL, and stryke code — a full command-line cyberdeck with autocomplete, vim keybindings, and tmux integration.",
+      "features": [
+        "505 zpwr subcommands with colorized zsh menucompletion",
+        "2000+ aliases plus 360+ git aliases",
+        "40k zsh tab completions for predictive input",
+        "177 centralized ZPWR-namespace environment variables",
+        "890+ centralized files in ~/.zpwr for clean uninstall",
+        "77 neovim plugins; 48 zinit plugins (33 custom)",
+        "190k+ lines of code",
+        "Evolved from Hashrocket's Dotmatrix into a full cyberdeck"
+      ]
+    },
+    "zsh-more-completions": {
+      "overview": "The largest curated zsh completion corpus in existence, wiring over 30k command completions into compsys — auto-generated from --help, man pages, and web research, then cleaned and verified.",
+      "features": [
+        "The largest curated zsh completion corpus: 39,175 files",
+        "Over 30k command completions wired into compsys",
+        "Harvested from Nix, Homebrew, APT, Fedora, Kali, Alpine, FreeBSD",
+        "Exotic ecosystems: Hackage, OPAM, Hex.pm, CPAN, CRAN",
+        "Covers GDAL/OGR, CERN ROOT, BIND 9, OpenFOAM, ROS",
+        "Architecture-prefixed completions in architecture_src",
+        "Manipulates fpath so override_src takes priority",
+        "ZUnit suite validates structure, syntax, and coverage"
+      ]
+    },
+    "zsh-expand": {
+      "overview": "The most powerful zsh expansion plugin — intercepts the spacebar to expand regular, global, and suffix aliases, typo corrections, globs, history, and parameters in pure zsh.",
+      "features": [
+        "Expands aliases in command position and after 62 prefixes",
+        "Parses prefix chains (sudo, su, env, strace) with flags",
+        "290+ built-in spelling corrections, user-extensible",
+        "Native glob, $param, history, command-substitution expansion",
+        "Tabstop snippets jump cursor to placeholder on expansion",
+        "Self-referential alias escape prevents infinite recursion",
+        "Live ghost-text expansion preview, fish-style",
+        "11,683 zunit tests; sub-millisecond pure-zsh hot path"
+      ]
+    },
+    "zsh-learn": {
+      "overview": "A MySQL-backed learning collection for zsh that turns the terminal into a persistent knowledge base to save, search, and quiz yourself on snippets and notes.",
+      "features": [
+        "Save code snippets, one-liners, and notes via le",
+        "Search with filters, fzf fuzzy matching, or random sampling",
+        "Quiz yourself with randomized recall (qu, qua)",
+        "Edit entries in-place by ID with your $EDITOR",
+        "Delete last N entries or by specific ID",
+        "Configurable database command, schema, table names",
+        "SQL access and redo via re and rsql",
+        "Ctrl+K keybinding in vim insert, normal, emacs"
+      ]
+    },
+    "zsh-git-acp": {
+      "overview": "A zsh plugin that stages, commits, and pushes in one keybinding — ZLE widgets that take the command-line buffer as the commit message, plus a large library of git aliases.",
+      "features": [
+        "Ctrl-S runs git pull, add, commit, and push",
+        "Ctrl-F Ctrl-S shows side-by-side diff and confirmation",
+        "Uses the current command-line buffer as commit message",
+        "Skips pull/push automatically when no remote exists",
+        "Per-directory blacklist via env variable",
+        "setopt noflowcontrol frees Ctrl-S and Ctrl-Q for ZLE",
+        "159 git aliases for branch, merge, pull, push, fetch",
+        "origin and upstream main/dev branch helpers"
+      ]
+    },
+    "zsh-git-repo-cache": {
+      "overview": "A zsh plugin that crawls the filesystem to locate every git repository on the machine and caches results for fast prompts and instant cd.",
+      "features": [
+        "Crawls / to locate every git repo, caching results",
+        "Uses fd when available, falls back to find",
+        "Separate caches for all, dirty, and clean repos",
+        "fzf integration for interactive repo selection",
+        "Regenerate functions rescan and rebuild caches",
+        "Auto-generates dirty/clean caches on first search",
+        "10 zpwr verbs for listing and searching repos",
+        "Filters repos with uncommitted changes"
+      ]
+    },
+    "zsh-zinit-final": {
+      "overview": "An intentionally empty zsh plugin whose only purpose is to be the last thing zinit loads — a deterministic carrier for trailing atinit/atload hooks.",
+      "features": [
+        "Intentionally empty: zero functions, aliases, or state",
+        "Deterministic trailing carrier for the zinit load chain",
+        "Hosts atinit/atload ices firing after all plugins",
+        "Avoids polluting other plugins' load order",
+        "Works with turbo, wait-N, and lucid ice ordering",
+        "Just a .plugin.zsh stub for zinit to load",
+        "Designed specifically for the zinit loader"
+      ]
+    },
+    "zsh-sudo": {
+      "overview": "A zsh ZLE widget that toggles sudo on the current command line with a single keybind — prepending or stripping it without retyping.",
+      "features": [
+        "Single keybind prepends sudo to the command line",
+        "Strips sudo (and builtin/command/env/args) if present",
+        "Empty line recalls last history command with sudo",
+        "Configurable via env vars (e.g. swap in doas)",
+        "Handles quoted commands and builtin/command prefixes",
+        "Parses env with flags and variable assignments",
+        "Handles stacked sudo options like -u root -E",
+        "Bind to any key combo"
+      ]
+    },
+    "zsh-cargo-completion": {
+      "overview": "Zsh tab-completion for Rust's Cargo, including live crates.io index search for cargo add and cargo install.",
+      "features": [
+        "cargo add/install <TAB> queries crates.io live",
+        "Ships all Oh My Zsh cargo completions plus remote completer",
+        "Bundled aliases for run, build, test, clippy, fmt, publish",
+        "Installs via zinit, oh-my-zsh, or manual sourcing",
+        "MIT licensed, with CI"
+      ]
+    },
+    "zsh-cpan-completion": {
+      "overview": "Zsh completion that pulls live Perl module names from CPAN for cpan and cpanm install commands.",
+      "features": [
+        "Live remote CPAN package completion",
+        "Full cpan and cpanm flag and option completion",
+        "Intelligent caching: hit the network once, reuse locally",
+        "Min-prefix guard prevents network overload",
+        "Tarball completion for .tar.gz, .tgz, .tar.bz2, .zip"
+      ]
+    },
+    "zsh-dotnet-completion": {
+      "overview": "Zsh tab-completion and aliases for the .NET (dotnet) CLI.",
+      "features": [
+        "Tab-completion for the dotnet command",
+        "Bundled dotnet aliases",
+        "Installs via zinit with ice lucid nocompile",
+        "Clone into oh-my-zsh custom plugins",
+        "Source the plugin file manually",
+        "MIT licensed, with CI"
+      ]
+    },
+    "zsh-gem-completion": {
+      "overview": "Zsh completion for Ruby's gem command, adding live remote gem completion via gem search.",
+      "features": [
+        "gem install <TAB> completes remote gems",
+        "Includes all Oh My Zsh gem completion",
+        "Installs via zinit, oh-my-zsh, or manual sourcing",
+        "Add to oh-my-zsh plugins array",
+        "MIT licensed, with CI"
+      ]
+    },
+    "zsh-nginx": {
+      "overview": "Zsh tab-completion for nginx commands.",
+      "features": [
+        "Tab-completion for nginx commands",
+        "Installs via zinit with ice lucid nocompile",
+        "Clone into oh-my-zsh custom plugins",
+        "Add to plugins array in .zshrc",
+        "Source plugin file manually",
+        "MIT licensed, with CI"
+      ]
+    },
+    "zsh-openshift-aliases": {
+      "overview": "Provides 53 short aliases over the OpenShift oc CLI plus login macros and oc tab-completion.",
+      "features": [
+        "53 oc-prefixed aliases (og=get, odesc=describe, olog=logs)",
+        "Env-driven login macros: ocdev, ocqa, ologin via rsh",
+        "Auto-sources oc completion when oc is on PATH",
+        "No-ops safely when oc is not installed",
+        "Configurable via OCP_USERNAME and URL env vars",
+        "Installs via zinit, oh-my-zsh, or manual sourcing"
+      ]
+    },
+    "zsh-pip-description-completion": {
+      "overview": "Zsh completion for pip that adds remote package completion with version and description shown in the menu.",
+      "features": [
+        "pip install <TAB> completes remote packages",
+        "Menu shows package version and description",
+        "Includes all Oh My Zsh pip completion",
+        "Installs via zinit, oh-my-zsh, or manual sourcing",
+        "MIT licensed, with CI"
+      ]
+    },
+    "zsh-sed-sub": {
+      "overview": "Adds a ZLE keybinding (Ctrl-F Ctrl-P) for global sed-style search-and-replace on the current command line.",
+      "features": [
+        "Ctrl-F Ctrl-P does global search/replace on the line",
+        "Registered in viins, vicmd, and emacs keymaps",
+        "Rewrites the command-line buffer in place",
+        "Installs via zinit, oh-my-zsh, or manual sourcing",
+        "MIT licensed, with CI"
+      ]
+    },
+    "zsh-very-colorful-manuals": {
+      "overview": "An autoloaded man wrapper that injects LESS_TERMCAP_* variables to render man pages in cyberpunk ANSI colors.",
+      "features": [
+        "Recolors man output: green bold, cyan underline, magenta standout",
+        "Injects LESS_TERMCAP_* only when man is called",
+        "No global env-var pollution; passed via env to man",
+        "Works on every man page on the system",
+        "Includes a Solaris nroff shim",
+        "Installs via zinit, oh-my-zsh, or manual sourcing"
+      ]
+    }
+  };
+
+  PRODUCTS.forEach(function (p) {
+    var d = DETAILS[p.id];
+    if (d) { p.overview = d.overview; if (d.features) p.features = d.features; }
+  });
 
   // ---- Helpers --------------------------------------------------------
   var CART_KEY = 'appstore-cart';
@@ -503,6 +1207,9 @@
           '<div class="buy-actions">' + actionsHtml + '</div>' +
         '</div>' +
       '</div>' +
+      (p.overview
+        ? '<section class="tutorial-section"><h2>Overview</h2><p class="detail-overview">' + p.overview + '</p></section>'
+        : '') +
       '<section class="tutorial-section">' +
         '<h2>What you get</h2>' +
         '<ul class="feature-list">' + featuresHtml + '</ul>' +
