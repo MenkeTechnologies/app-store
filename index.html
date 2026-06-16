@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="MenkeTechnologies App Store — buy zshrs, stryke, zpwr, zsh-more-completions, audio haxor and more. World-first, world-fastest software from the MenkeTechnologies stack.">
+  <title>MenkeTechnologies — App Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hud-static.css">
+  <link rel="stylesheet" href="tutorial.css">
+  <link rel="stylesheet" href="store.css">
+  <style>
+    .tutorial-main { max-width: 80rem; }
+    .hub-scheme-strip {
+      border-bottom: 1px dashed var(--border);
+      background: color-mix(in srgb, var(--bg-secondary) 85%, transparent);
+      padding: 0.55rem 1.5rem 0.65rem;
+      position: relative;
+    }
+    .hub-scheme-strip-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .hub-scheme-strip .hud-scheme-label {
+      flex: 0 0 auto;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: left;
+    }
+    .hub-scheme-strip .scheme-grid {
+      flex: 1 1 auto;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+    }
+    @media (max-width: 720px) {
+      .hub-scheme-strip-inner { flex-direction: column; align-items: stretch; }
+      .hub-scheme-strip .scheme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app tutorial-app" id="storeApp">
+    <div class="crt-scanline" id="crtH" aria-hidden="true"></div>
+    <div class="crt-scanline-v" id="crtV" aria-hidden="true"></div>
+
+    <header class="tutorial-header">
+      <div class="tutorial-header-inner">
+        <div>
+          <h1 class="tutorial-brand">// MENKETECHNOLOGIES — APP STORE 🔥</h1>
+          <nav class="tutorial-crumbs" aria-label="Breadcrumb">
+            <span class="current">Store</span>
+            <span class="sep">/</span>
+            <a href="https://github.com/MenkeTechnologies" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <span class="sep">/</span>
+            <a href="https://crates.io/users/MenkeTechnologies" target="_blank" rel="noopener noreferrer">crates.io</a>
+          </nav>
+          <p class="docs-build-line">World-first, world-fastest software · zshrs · stryke · zpwr · 17k+ completions · Tauri GUI apps</p>
+        </div>
+        <div class="tutorial-toolbar">
+          <button type="button" class="btn btn-secondary" id="btnCart" title="View cart">Cart<span class="cart-count" id="cartCount" data-n="0"></span></button>
+          <button type="button" class="btn btn-secondary" id="btnTheme" title="Toggle light/dark">Theme</button>
+          <button type="button" class="btn btn-secondary active" id="btnCrt" title="CRT scanline overlay">CRT</button>
+          <button type="button" class="btn btn-secondary active" id="btnNeon" title="Neon border pulse">Neon</button>
+          <a class="btn btn-secondary" href="https://github.com/MenkeTechnologies" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="hub-scheme-strip">
+      <div class="hub-scheme-strip-inner">
+        <span class="hud-scheme-label">// Color scheme</span>
+        <div class="scheme-grid" id="hudSchemeGrid"></div>
+      </div>
+    </div>
+
+    <main class="tutorial-main">
+      <section class="store-hero">
+        <h2><span class="hash">&gt;_</span>The MenkeTechnologies Stack</h2>
+        <p>The most powerful CLI environment any one person has assembled — now buyable. Compiled shells, a JIT'd language, the world's largest completion corpus, and native HUD desktop apps. Every product here ships world-first capabilities, not clones.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="num" id="statProducts">0</span><span class="lbl">Products</span></div>
+          <div class="hero-stat"><span class="num" id="statCats">0</span><span class="lbl">Categories</span></div>
+          <div class="hero-stat"><span class="num" id="statFree">0</span><span class="lbl">Free / OSS</span></div>
+        </div>
+      </section>
+
+      <div class="store-controls">
+        <input type="search" class="store-search" id="storeSearch" placeholder="// search products…" aria-label="Search products">
+        <div class="filter-row" id="filterRow"></div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </main>
+
+    <footer class="tutorial-main doc-footer" style="padding-top:0;">
+      MenkeTechnologies · All software © Jacob Menke · Built with the stryke HUD design system
+    </footer>
+  </div>
+
+  <!-- Cart / checkout modal -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 id="modalTitle">Cart</h3>
+        <button type="button" class="modal-close" id="modalClose" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="hud-theme.js"></script>
+  <script src="store.js"></script>
+</body>
+</html>
