@@ -326,42 +326,208 @@
       '</div>';
   }
 
-  function renderCheckout() {
-    var body = document.getElementById('modalBody');
-    var head = document.getElementById('modalTitle');
-    if (!body) return;
-    if (head) head.textContent = 'Checkout';
+  // ---- Checkout page (checkout.html) ---------------------------------
+  // Discount codes: code -> { type: 'pct'|'flat', value }. Edit freely.
+  var DISCOUNTS = {
+    LAUNCH20: { type: 'pct', value: 20, label: '20% off' },
+    HUD10:    { type: 'flat', value: 10, label: '$10 off' },
+  };
+  var appliedCode = null;
+
+  function discountAmount(subtotal) {
+    if (!appliedCode) return 0;
+    var d = DISCOUNTS[appliedCode];
+    if (!d) return 0;
+    var amt = d.type === 'pct' ? Math.round(subtotal * d.value / 100) : d.value;
+    return Math.min(amt, subtotal);
+  }
+
+  function sumItemHtml(item) {
+    var p = byId(item.id) || { name: item.id, glyph: '?' };
+    return '<div class="sum-item">' +
+      '<div class="si-thumb">' + p.glyph + '<span class="si-qty">1</span></div>' +
+      '<div class="si-info"><div class="si-name">' + p.name + '</div><div class="si-lic">' + item.tier + ' license</div></div>' +
+      '<div class="si-price">' + fmtPrice(item.price) + '</div>' +
+      '</div>';
+  }
+
+  function summaryHtml() {
     var cart = readCart();
-    body.innerHTML = '' +
-      '<form id="checkoutForm">' +
-        '<div class="field"><label for="ckEmail">Email (license delivery)</label><input id="ckEmail" type="email" required placeholder="you@example.com"></div>' +
-        '<div class="field"><label for="ckName">Name on card</label><input id="ckName" type="text" required placeholder="Full name"></div>' +
-        '<div class="field"><label for="ckCard">Card number</label><input id="ckCard" type="text" required inputmode="numeric" placeholder="4242 4242 4242 4242"></div>' +
-        '<div class="field-row">' +
-          '<div class="field"><label for="ckExp">Expiry</label><input id="ckExp" type="text" required placeholder="MM/YY"></div>' +
-          '<div class="field"><label for="ckCvc">CVC</label><input id="ckCvc" type="text" required inputmode="numeric" placeholder="123"></div>' +
+    var subtotal = cartTotal(cart);
+    var disc = discountAmount(subtotal);
+    var total = subtotal - disc;
+    var discLine = disc
+      ? '<div class="sum-line"><span>Discount (' + appliedCode + ')</span><span>-' + fmtPrice(disc) + '</span></div>'
+      : '';
+    return '' +
+      cart.map(sumItemHtml).join('') +
+      '<div class="discount-row">' +
+        '<input type="text" id="discountInput" placeholder="Discount code or gift card" value="' + (appliedCode || '') + '">' +
+        '<button type="button" class="btn btn-secondary" id="applyDiscount">Apply</button>' +
+      '</div>' +
+      '<div class="discount-applied' + (appliedCode ? '' : ' hidden') + '" id="discountMsg"></div>' +
+      '<div class="sum-line"><span>Subtotal · ' + cart.length + ' item' + (cart.length === 1 ? '' : 's') + '</span><span>' + fmtPrice(subtotal) + '</span></div>' +
+      discLine +
+      '<div class="sum-line"><span>Taxes</span><span>Calculated at fulfillment</span></div>' +
+      '<div class="sum-line total"><span class="t-lbl">Total</span><span class="t-amt"><span class="cur">USD</span>' + fmtPrice(total) + '</span></div>';
+  }
+
+  function renderCheckoutPage() {
+    var root = document.getElementById('checkoutRoot');
+    if (!root) return;
+    var cart = readCart();
+    if (!cart.length) {
+      root.innerHTML = '<div class="empty-state">your cart is empty — <a href="index.html">back to the store</a></div>';
+      return;
+    }
+
+    root.innerHTML = '' +
+      '<div class="checkout-wrap">' +
+        '<div class="checkout-col">' +
+          // Express checkout wallets
+          '<div class="checkout-block">' +
+            '<p class="express-label">Express checkout</p>' +
+            '<div class="wallet-grid">' +
+              '<button type="button" class="wallet-btn shop" data-wallet="shop">shop</button>' +
+              '<button type="button" class="wallet-btn paypal" data-wallet="paypal">PayPal</button>' +
+              '<button type="button" class="wallet-btn gpay" data-wallet="gpay"><span class="gp-g">G</span>&nbsp;Pay</button>' +
+              '<button type="button" class="wallet-btn venmo" data-wallet="venmo">venmo</button>' +
+            '</div>' +
+            '<div class="or-divider">OR</div>' +
+          '</div>' +
+          // Contact
+          '<div class="checkout-block">' +
+            '<h3>Contact</h3>' +
+            '<div class="field"><input id="ckEmail" type="email" required placeholder="Email (license delivery)"></div>' +
+            '<label class="check-checkbox"><input type="checkbox" id="ckNews" checked> Email me product updates and new releases</label>' +
+          '</div>' +
+          // Payment
+          '<div class="checkout-block">' +
+            '<h3>Payment</h3>' +
+            '<p class="checkout-note">All transactions are secure and encrypted.</p>' +
+            '<form id="checkoutForm"><div class="pay-methods" id="payMethods">' +
+              '<div class="pay-method active" data-method="card">' +
+                '<div class="pay-method-head"><span class="radio"></span><span class="pm-label">Credit card</span>' +
+                  '<span class="pm-art"><span class="card-chip visa">VISA</span><span class="card-chip mc">MC</span><span class="card-chip amex">AMEX</span><span class="card-chip more">+5</span></span>' +
+                '</div>' +
+                '<div class="pay-method-body">' +
+                  '<div class="field"><input id="ckCard" type="text" inputmode="numeric" placeholder="Card number" autocomplete="cc-number"></div>' +
+                  '<div class="field-row">' +
+                    '<div class="field"><input id="ckExp" type="text" placeholder="Expiration date (MM / YY)" autocomplete="cc-exp"></div>' +
+                    '<div class="field"><input id="ckCvc" type="text" inputmode="numeric" placeholder="Security code" autocomplete="cc-csc"></div>' +
+                  '</div>' +
+                  '<div class="field"><input id="ckName" type="text" placeholder="Name on card" autocomplete="cc-name"></div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="pay-method" data-method="shop">' +
+                '<div class="pay-method-head"><span class="radio"></span><span class="pm-label">Shop Pay · pay in full or installments</span><span class="brand-logo shop">shop</span></div>' +
+                '<div class="pay-method-body"><p class="checkout-note">You will be redirected to Shop Pay to complete your purchase securely.</p></div>' +
+              '</div>' +
+              '<div class="pay-method" data-method="paypal">' +
+                '<div class="pay-method-head"><span class="radio"></span><span class="pm-label">PayPal</span><span class="brand-logo paypal">PayPal</span></div>' +
+                '<div class="pay-method-body"><div id="paypalButtonContainer"><p class="checkout-note">You will be redirected to PayPal to complete your purchase securely.</p></div></div>' +
+              '</div>' +
+            '</div>' +
+            // Billing
+            '<div class="checkout-block" style="margin-top:1.3rem;">' +
+              '<h3>Billing address</h3>' +
+              '<div class="field"><label for="ckCountry">Country / Region</label>' +
+                '<select id="ckCountry"><option>United States</option><option>Canada</option><option>United Kingdom</option><option>Australia</option><option>Germany</option><option>Other</option></select></div>' +
+              '<div class="field-row">' +
+                '<div class="field"><input id="ckFirst" type="text" placeholder="First name" autocomplete="given-name"></div>' +
+                '<div class="field"><input id="ckLast" type="text" placeholder="Last name" autocomplete="family-name"></div>' +
+              '</div>' +
+              '<div class="field"><input id="ckAddr" type="text" placeholder="Address" autocomplete="street-address"></div>' +
+              '<div class="field-row">' +
+                '<div class="field"><input id="ckCity" type="text" placeholder="City" autocomplete="address-level2"></div>' +
+                '<div class="field"><input id="ckState" type="text" placeholder="State / Province" autocomplete="address-level1"></div>' +
+                '<div class="field"><input id="ckZip" type="text" placeholder="ZIP / Postal code" autocomplete="postal-code"></div>' +
+              '</div>' +
+            '</div>' +
+            '<button type="submit" class="btn btn-buy pay-now-btn" id="payNow">Pay now</button>' +
+            '</form>' +
+          '</div>' +
         '</div>' +
-        '<div class="cart-total"><span class="lbl">Total</span><span class="amt">' + fmtPrice(cartTotal(cart)) + '</span></div>' +
-        '<div class="cart-actions">' +
-          '<button type="button" class="btn btn-secondary" id="backToCart">Back</button>' +
-          '<button type="submit" class="btn btn-buy">Pay ' + fmtPrice(cartTotal(cart)) + '</button>' +
-        '</div>' +
-      '</form>';
-    document.getElementById('backToCart').addEventListener('click', function () {
-      setModalTitle('Cart');
-      renderCartBody();
+        // Right: order summary
+        '<aside class="checkout-summary" id="checkoutSummary">' + summaryHtml() + '</aside>' +
+      '</div>';
+
+    wireCheckoutPage(root);
+  }
+
+  function refreshSummary(root) {
+    var summary = root.querySelector('#checkoutSummary');
+    if (summary) { summary.innerHTML = summaryHtml(); wireSummary(root); }
+  }
+
+  function wireSummary(root) {
+    var apply = root.querySelector('#applyDiscount');
+    var input = root.querySelector('#discountInput');
+    var msg = root.querySelector('#discountMsg');
+    if (apply && input) apply.addEventListener('click', function () {
+      var code = input.value.trim().toUpperCase();
+      if (DISCOUNTS[code]) {
+        appliedCode = code;
+        refreshSummary(root);
+        var m2 = root.querySelector('#discountMsg');
+        if (m2) { m2.classList.remove('hidden', 'bad'); m2.textContent = '✓ ' + DISCOUNTS[code].label + ' applied'; }
+      } else {
+        appliedCode = null;
+        if (msg) { msg.classList.remove('hidden'); msg.classList.add('bad'); msg.textContent = '✗ invalid code'; }
+      }
     });
-    document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+    if (msg && appliedCode && DISCOUNTS[appliedCode]) {
+      msg.classList.remove('hidden', 'bad');
+      msg.textContent = '✓ ' + DISCOUNTS[appliedCode].label + ' applied';
+    }
+  }
+
+  function wireCheckoutPage(root) {
+    wireSummary(root);
+
+    // Payment-method accordion (single open at a time).
+    var methods = root.querySelector('#payMethods');
+    if (methods) methods.addEventListener('click', function (e) {
+      var head = e.target.closest('.pay-method-head');
+      if (!head) return;
+      var all = methods.querySelectorAll('.pay-method');
+      for (var i = 0; i < all.length; i++) all[i].classList.remove('active');
+      head.parentElement.classList.add('active');
+    });
+
+    // Express wallet buttons + branded radios route to the provider.
+    // INTEGRATION HOOKS: replace the alert() calls below.
+    //   shop / shopPay  -> redirect to your Shopify hosted checkout URL
+    //   paypal          -> render PayPal Smart Buttons into #paypalButtonContainer
+    //   gpay / venmo    -> Google Pay / Braintree-Venmo SDK
+    function startWallet(name) {
+      // e.g. shop: location.href = SHOPIFY_CHECKOUT_URL;
+      completeOrder(root, name);
+    }
+    root.querySelectorAll('[data-wallet]').forEach(function (b) {
+      b.addEventListener('click', function () { startWallet(b.getAttribute('data-wallet')); });
+    });
+
+    var form = root.querySelector('#checkoutForm');
+    if (form) form.addEventListener('submit', function (e) {
       e.preventDefault();
-      writeCart([]);
-      var email = (document.getElementById('ckEmail') || {}).value || 'your inbox';
-      body.innerHTML = '<div class="checkout-ok">' +
-        '<div class="big">// order confirmed</div>' +
-        '<p>License keys are on their way to <strong>' + email + '</strong>.<br>Thanks for buying from MenkeTechnologies.</p>' +
-        '<div class="cart-actions"><button type="button" class="btn btn-buy" id="okClose">Done</button></div></div>';
-      var ok = document.getElementById('okClose');
-      if (ok) ok.addEventListener('click', closeModal);
+      var active = root.querySelector('.pay-method.active');
+      var method = active ? active.getAttribute('data-method') : 'card';
+      completeOrder(root, method);
     });
+  }
+
+  function completeOrder(root, method) {
+    // CLIENT-SIDE PLACEHOLDER — no real charge happens here. Wire `method`
+    // to Stripe / PayPal / Shopify before going live (see README).
+    var emailEl = root.querySelector('#ckEmail');
+    var email = (emailEl && emailEl.value) || 'your inbox';
+    writeCart([]);
+    appliedCode = null;
+    root.innerHTML = '<div class="checkout-ok" style="max-width:34rem;margin:3rem auto;">' +
+      '<div class="big">// order confirmed</div>' +
+      '<p>Paid via <strong>' + method + '</strong>.<br>License keys are on their way to <strong>' + email + '</strong>.<br>Thanks for buying from MenkeTechnologies.</p>' +
+      '<div class="cart-actions" style="justify-content:center;margin-top:1rem;"><a class="btn btn-buy" href="index.html">Back to store</a></div></div>';
   }
 
   function setModalTitle(t) {
@@ -387,6 +553,7 @@
     renderStats();
     renderGrid('All', '');
     renderDetail();
+    renderCheckoutPage();
 
     var activeCat = 'All';
     var search = document.getElementById('storeSearch');
@@ -423,7 +590,7 @@
       var rm = e.target.closest('[data-rm]');
       if (rm) { removeFromCart(rm.getAttribute('data-rm')); renderCartBody(); return; }
       if (e.target.id === 'clearCart') { writeCart([]); renderCartBody(); return; }
-      if (e.target.id === 'goCheckout') { renderCheckout(); return; }
+      if (e.target.id === 'goCheckout') { location.href = 'checkout.html'; return; }
     });
 
     var cartBtn = document.getElementById('btnCart');
