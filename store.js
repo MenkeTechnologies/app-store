@@ -108,6 +108,52 @@
       ],
       repo: 'https://github.com/MenkeTechnologies/zpwr-fx',
     },
+    {
+      id: 'zshrs',
+      name: 'zshrs',
+      glyph: 'Z',
+      category: 'Developer Tools',
+      badge: 'WORLD FIRST',
+      tagline: 'The first compiled Unix shell. Rkyv-backed bytecode + Cranelift JIT, an 18-thread parallel runtime, and a persistent worker pool — drop-in zsh compatibility with none of the startup tricks. Free and open source.',
+      pills: ['Rust', 'JIT', 'macOS/Linux', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      features: [
+        'World’s first compiled Unix shell — every shell since 1970 has been an interpreter',
+        'Rkyv-backed bytecode + completion caches with zero-copy mmap reads',
+        'Cranelift JIT execution via the embedded fusevm VM',
+        'Persistent worker pool — zero per-command fork overhead',
+        'Drop-in compatible with .zshrc, zinit plugins, and zpwr',
+        'No startup banners or instant-prompt fakery — first paint = full functionality',
+      ],
+      download: 'https://github.com/MenkeTechnologies/zshrs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zshrs',
+    },
+    {
+      id: 'strykelang',
+      name: 'stryke',
+      glyph: '~>',
+      category: 'Developer Tools',
+      badge: 'WORLD FIRST',
+      tagline: 'The hottest language ever created. A parallel Perl 5 superset on a bytecode VM with Cranelift JIT and Rayon work-stealing — pipe-forward syntax, 10,000+ builtins, LSP + DAP + JetBrains plugin. Free and open source.',
+      pills: ['Rust', '347-opcode VM', 'Rayon', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      features: [
+        'Parallel Perl 5 interpreter in Rust — NaN-boxed values, work-stealing across every CPU',
+        '347-opcode bytecode VM with Cranelift Block JIT',
+        '10,435 builtins (11,168 keys in %all) with pipe-forward syntax',
+        'Syntactic synthesis: Clojure →→, Racket ~>, Scala _, Perl sigils, Ruby p',
+        'Bundled LSP server, DAP debugger, and JetBrains plugin',
+        'Server-farms-first: distributed load testing with stryke agent + controller',
+      ],
+      download: 'https://github.com/MenkeTechnologies/strykelang/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/strykelang',
+    },
   ];
 
   // ---- Helpers --------------------------------------------------------
@@ -123,6 +169,12 @@
   function fmtPrice(n) {
     if (!n) return 'Free';
     return '$' + n.toLocaleString('en-US');
+  }
+
+  // Free / open-source products download from GitHub instead of going to cart.
+  function isFree(p) {
+    var t = (p.tiers && p.tiers[0]) || { price: p.price };
+    return !t.price;
   }
 
   function readCart() {
@@ -186,7 +238,9 @@
         '<div class="product-foot">' +
           '<span class="price"><span class="amt' + priceCls + '">' + fmtPrice(tier.price) + '</span>' +
             (tier.price ? '<span class="per">one-time</span>' : '') + '</span>' +
-          '<button type="button" class="btn btn-buy" data-add="' + p.id + '">Add</button>' +
+          (isFree(p)
+            ? '<button type="button" class="btn btn-buy" data-download="' + (p.download || p.repo) + '">Download ↗</button>'
+            : '<button type="button" class="btn btn-buy" data-add="' + p.id + '">Add</button>') +
         '</div>' +
       '</a>';
   }
@@ -256,6 +310,18 @@
       return '<li>' + f + '</li>';
     }).join('');
     var pills = (p.pills || []).map(function (t) { return '<span class="p-pill">' + t + '</span>'; }).join('');
+    var free = isFree(p);
+
+    // Free products download from GitHub; paid products pick a license + add to cart.
+    var pricingHtml = free
+      ? '<div class="price detail-price"><span class="amt free">Free</span><span class="per">open source</span></div>'
+      : '<div class="license-pick">' + tiersHtml + '</div>' +
+        '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span></div>';
+    var actionsHtml = free
+      ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' +
+        '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
+      : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' +
+        '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>';
 
     root.innerHTML = '' +
       '<div class="detail-top">' +
@@ -265,18 +331,16 @@
           '<h2>' + p.name + '</h2>' +
           '<p class="p-tag">' + p.tagline + '</p>' +
           '<div class="p-meta">' + pills + '</div>' +
-          '<div class="license-pick">' + tiersHtml + '</div>' +
-          '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span></div>' +
-          '<div class="buy-actions">' +
-            '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' +
-            '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>' +
-          '</div>' +
+          pricingHtml +
+          '<div class="buy-actions">' + actionsHtml + '</div>' +
         '</div>' +
       '</div>' +
       '<section class="tutorial-section">' +
         '<h2>What you get</h2>' +
         '<ul class="feature-list">' + featuresHtml + '</ul>' +
       '</section>';
+
+    if (free) return;
 
     var selected = 0;
     var opts = root.querySelectorAll('.license-opt');
@@ -575,6 +639,13 @@
 
     // "Add" on a grid card: add default tier, don't follow the card link.
     document.addEventListener('click', function (e) {
+      var dl = e.target.closest('[data-download]');
+      if (dl) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(dl.getAttribute('data-download'), '_blank', 'noopener');
+        return;
+      }
       var add = e.target.closest('[data-add]');
       if (add) {
         e.preventDefault();

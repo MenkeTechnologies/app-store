@@ -1,9 +1,16 @@
 # app-store
 
-MenkeTechnologies App Store — a static storefront for selling the
-MenkeTechnologies audio products: **audio haxor** (Tauri/JUCE plugin scanner),
-**traderview** (self-hosted trading journal), **zpwr-synth** (JUCE synthesizer
-plugin), and **zpwr-fx** (JUCE multi-effect plugin).
+MenkeTechnologies App Store — a static storefront for the MenkeTechnologies
+stack. Paid: **audio haxor** (Tauri/JUCE plugin scanner), **traderview**
+(self-hosted trading journal), **zpwr-synth** (JUCE synthesizer plugin), and
+**zpwr-fx** (JUCE multi-effect plugin). Free / open source: **zshrs** (the first
+compiled Unix shell) and **stryke** (parallel Perl 5 superset) — these show a
+**Download** button that links to their GitHub `releases/latest` instead of
+going through the cart.
+
+A product is treated as free whenever its first tier price is `0` (the `isFree`
+helper in `store.js`); free products render Download CTAs from their `download`
+URL, paid products render Add-to-cart.
 
 Uses the same HUD / cyberpunk design system as the strykelang docs
 (`hud-static.css`, `tutorial.css`, `hud-theme.js`) so the store and the docs
