@@ -21,10 +21,10 @@
       badge: 'BESTSELLER',
       tagline: 'A Tauri v2 / JUCE desktop app that jacks into your audio plugin directories, maps every VST2/VST3/AU/CLAP it finds, scans sample libraries and DAW projects, and checks the web for newer plugin versions — all behind a cyberpunk CRT interface.',
       pills: ['Tauri v2', 'JUCE', 'VST/AU/CLAP', 'macOS/Linux/Win'],
-      price: 39,
+      price: 99,
       tiers: [
-        { name: 'Personal', desc: 'Single user, all platforms', price: 39 },
-        { name: 'Pro', desc: 'Commercial use; updates within this major version', price: 89 },
+        { name: 'Personal', desc: 'Single user, all platforms', price: 99 },
+        { name: 'Pro', desc: 'Commercial use; updates within this major version', price: 199 },
       ],
     },
     {
@@ -35,9 +35,9 @@
       badge: 'SAVES $2,604/YR',
       tagline: 'A TraderVue-style trading journal that replaces TraderVue + DayTradeDash + StockInvest.us in one self-hosted binary. Import broker CSV → atomic execution rows → FIFO trade roll-up → equity curve, summary stats, and per-trade / per-day markdown journal.',
       pills: ['Tauri v2', 'Embedded Postgres', '13 brokers', '20+ reports'],
-      price: 79,
+      price: 149,
       tiers: [
-        { name: 'Desktop', desc: 'Single user, embedded Postgres', price: 79 },
+        { name: 'Desktop', desc: 'Single user, embedded Postgres', price: 149 },
         { name: 'Self-Hosted Web', desc: 'Multi-user axum server + JWT auth', price: 199 },
       ],
     },
@@ -47,12 +47,12 @@
       glyph: 'S',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A polyphonic multi-layer synthesizer plugin built on JUCE. Stacked oscillator layers, a state-variable filter, per-voice ADSR envelopes, LFOs, and a routable mod matrix — shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', 'Mod matrix', 'macOS/Linux/Win'],
-      price: 49,
+      tagline: 'A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 31 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 340+-module audio pack. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', 'macOS/Linux/Win'],
+      price: 149,
       tiers: [
-        { name: 'Personal', desc: 'Single user, all formats', price: 49 },
-        { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 99 },
+        { name: 'Personal', desc: 'Single user, all formats', price: 149 },
+        { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 299 },
       ],
     },
     {
@@ -61,11 +61,11 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 340+ DSP modules (including 90+ analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      tagline: 'A fully modular patch-graph effects plugin built on JUCE — wire 340+ DSP modules (including 90+ analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
       pills: ['JUCE', 'VST3/AU/CLAP', '340+ modules', '90+ analog models'],
-      price: 39,
+      price: 79,
       tiers: [
-        { name: 'Personal', desc: 'Single user, all formats', price: 39 },
+        { name: 'Personal', desc: 'Single user, all formats', price: 79 },
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
     },
@@ -75,11 +75,11 @@
       glyph: 'M',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A MIDI-effects plugin built on JUCE — transform the note and controller stream in your DAW before it reaches an instrument. Shipping as VST3, AU, and CLAP with the cyberpunk HUD interface.',
-      pills: ['JUCE', 'VST3/AU/CLAP', 'MIDI FX', 'macOS/Linux/Win'],
-      price: 39,
+      tagline: 'A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 56 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', '56 modules'],
+      price: 79,
       tiers: [
-        { name: 'Personal', desc: 'Single user, all formats', price: 39 },
+        { name: 'Personal', desc: 'Single user, all formats', price: 79 },
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
     },
@@ -414,7 +414,7 @@
       ]
     },
     "zpwr-synth": {
-      "overview": "A polyphonic multi-layer subtractive/wavetable synthesizer (up to 16 layers) with three switchable oscillator slots per voice — Basic PolyBLEP, JP-8000 supersaw virtual-analog, and wavetable — routed through a TPT state-variable filter, ADSR envelopes, LFOs, and a modulation matrix.",
+      "overview": "A fully modular patch-graph synthesizer on the shared zpwr-patch-core engine: each voice is a free patch graph of 31 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H modulators, VCA/mixer), up to 16 stacked layers, with a per-param mod matrix and a master+2-aux FX-bus rack running the shared 340+-module audio pack. Not a fixed voice path.",
       "features": [
         "Three per-voice oscillator slots (Basic, Virtual Analog, Wavetable)",
         "Band-limited PolyBLEP sine/saw/square/triangle oscillators",
