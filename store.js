@@ -61,8 +61,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 250+ DSP modules (including 35 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '250+ modules', '35 analog models'],
+      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 250+ DSP modules (including 63 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', '250+ modules', '63 analog models'],
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
@@ -425,7 +425,7 @@
         "Amp, filter, and assignable Env3 ADSR envelopes",
         "Three LFOs and four macros feeding a 12-slot mod matrix",
         "Up to 16 stackable layers, each its own voice pool",
-        "Master-FX bus: the shared 250+-module patch-core pack (incl. 35 analog models) runs once on the summed output",
+        "Master-FX bus: the shared 250+-module patch-core pack (incl. 63 analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ]
     },
@@ -434,7 +434,7 @@
       "features": [
         "250+ audio/synth module types across every effect family",
         "Free patch graph: any node to any node, feedback with one-sample delay",
-        "35 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
+        "63 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
         "Analog filters: Minimoog, Jupiter-8, MS-20, SEM, EMS VCS3, Wasp, TB-303",
         "Analog comps: 1176, LA-2A, Fairchild, dbx 160, SSL bus, Distressor",
         "Analog EQs/pre: Pultec, API 550, Neve 1073, SSL E/G, Manley + tube/tape",
