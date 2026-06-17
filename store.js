@@ -61,8 +61,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 300+ DSP modules (including 90+ analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '300+ modules', '90+ analog models'],
+      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 340+ DSP modules (including 90+ analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', '340+ modules', '90+ analog models'],
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
@@ -425,14 +425,14 @@
         "Amp, filter, and assignable Env3 ADSR envelopes",
         "Three LFOs and four macros feeding a 12-slot mod matrix",
         "Up to 16 stackable layers, each its own voice pool",
-        "Master-FX bus: the shared 300+-module patch-core pack (incl. 90+ analog models) runs once on the summed output",
+        "Master-FX bus: the shared 340+-module patch-core pack (incl. 90+ analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ]
     },
     "zpwr-fx": {
-      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 300+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
+      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 340+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
       "features": [
-        "300+ audio/synth module types across every effect family",
+        "340+ audio/synth module types across every effect family",
         "Free patch graph: any node to any node, feedback with one-sample delay",
         "90+ analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
         "Analog filters: Minimoog, Jupiter-8, MS-20, SEM, EMS VCS3, Wasp, TB-303",
@@ -828,7 +828,7 @@
       "overview": "ZPWR is a zinit-based zsh terminal environment layered with custom zsh, bash, vimL, and stryke code — a full command-line cyberdeck with autocomplete, vim keybindings, and tmux integration.",
       "features": [
         "505 zpwr subcommands with colorized zsh menucompletion",
-        "2000+ aliases plus 360+ git aliases",
+        "2000+ aliases plus 430+ git aliases",
         "40k zsh tab completions for predictive input",
         "177 centralized ZPWR-namespace environment variables",
         "890+ centralized files in ~/.zpwr for clean uninstall",
