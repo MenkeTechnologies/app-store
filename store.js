@@ -61,8 +61,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A multi-effect rack plugin built on JUCE — compressor, drive, filter, chorus, tremolo, delay, reverb, and gain in one module, shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '8 effects', 'macOS/Linux/Win'],
+      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 239 DSP modules (including 35 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', '239 modules', '35 analog models'],
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
@@ -425,27 +425,29 @@
         "Amp, filter, and assignable Env3 ADSR envelopes",
         "Three LFOs and four macros feeding a 12-slot mod matrix",
         "Up to 16 stackable layers, each its own voice pool",
+        "Master-FX bus: the shared 239-module patch-core pack (incl. 35 analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ]
     },
     "zpwr-fx": {
-      "overview": "A multi-slot ordered effects rack hosting eight pluggable DSP modules, where each slot's type, bypass, and dry/wet mix are host-automatable and selected from a factory of effect types.",
+      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 239 DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
       "features": [
-        "Ordered multi-slot effect chain with per-slot bypass",
-        "Per-slot dry/wet mix and master in/out gain",
-        "Gain module (dB)",
-        "tanh Drive saturation with pre-drive and output trim",
-        "Compressor with threshold, ratio, attack, release",
-        "State-variable Filter with LP/HP/BP modes",
-        "Chorus with rate, depth, delay, feedback",
-        "Tremolo sine amplitude modulation",
-        "Feedback Delay up to 2000 ms",
-        "Reverb with size, damp, width"
+        "239 audio/synth module types across every effect family",
+        "Free patch graph: any node to any node, feedback with one-sample delay",
+        "35 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
+        "Analog filters: Minimoog, Jupiter-8, MS-20, SEM, EMS VCS3, Wasp, TB-303",
+        "Analog comps: 1176, LA-2A, Fairchild, dbx 160, SSL bus, Distressor",
+        "Analog EQs/pre: Pultec, API 550, Neve 1073, SSL E/G, Manley + tube/tape",
+        "Analog pedals: Tube Screamer, RAT, Big Muff, Klon, DS-1, MXR, Fuzz Face",
+        "Dynamics, EQ/filter, delay, reverb, modulation, distortion, pitch, spectral (FFT), stereo, lo-fi, glitch",
+        "Per-param (source, depth) mod matrix; per-cable gain + colour",
+        "Unlimited layers; ⚡ EZ-wire auto-routing; cyberpunk WebView UI"
       ]
     },
     "zpwr-midi-fx": {
-      "overview": "A MIDI effect/generator plugin (audio pass-through) that turns single keys into voiced chords, scale-locks notes for intelligent harmony, and runs them through a polymetric step arpeggiator with Euclidean rhythm generation.",
+      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (54 MIDI module types), not a fixed slot rack.",
       "features": [
+        "54 note-stream module types in a free patch graph (not a fixed rack)",
         "Single-key chord voicing from a runtime chord dictionary",
         "Chord inversion, octave-doubling, spread, transpose, strum",
         "Per-key chord mapping (Chromatic, Circle-of-Fifths, Lowest-Note)",
