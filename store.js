@@ -61,8 +61,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 250+ DSP modules (including 63 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '250+ modules', '63 analog models'],
+      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 300+ DSP modules (including 90+ analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', '300+ modules', '90+ analog models'],
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
@@ -425,16 +425,16 @@
         "Amp, filter, and assignable Env3 ADSR envelopes",
         "Three LFOs and four macros feeding a 12-slot mod matrix",
         "Up to 16 stackable layers, each its own voice pool",
-        "Master-FX bus: the shared 250+-module patch-core pack (incl. 63 analog models) runs once on the summed output",
+        "Master-FX bus: the shared 300+-module patch-core pack (incl. 90+ analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ]
     },
     "zpwr-fx": {
-      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 250+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
+      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 300+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
       "features": [
-        "250+ audio/synth module types across every effect family",
+        "300+ audio/synth module types across every effect family",
         "Free patch graph: any node to any node, feedback with one-sample delay",
-        "63 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
+        "90+ analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
         "Analog filters: Minimoog, Jupiter-8, MS-20, SEM, EMS VCS3, Wasp, TB-303",
         "Analog comps: 1176, LA-2A, Fairchild, dbx 160, SSL bus, Distressor",
         "Analog EQs/pre: Pultec, API 550, Neve 1073, SSL E/G, Manley + tube/tape",
@@ -445,9 +445,9 @@
       ]
     },
     "zpwr-midi-fx": {
-      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (54 MIDI module types), not a fixed slot rack.",
+      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (56 MIDI module types), not a fixed slot rack.",
       "features": [
-        "54 note-stream module types in a free patch graph (not a fixed rack)",
+        "56 note-stream module types in a free patch graph (not a fixed rack)",
         "Single-key chord voicing from a runtime chord dictionary",
         "Chord inversion, octave-doubling, spread, transpose, strum",
         "Per-key chord mapping (Chromatic, Circle-of-Fifths, Lowest-Note)",
