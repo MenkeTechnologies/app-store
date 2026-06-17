@@ -61,8 +61,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 239 DSP modules (including 35 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '239 modules', '35 analog models'],
+      tagline: 'A modular patch-graph effects plugin built on JUCE — wire 250+ DSP modules (including 35 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', '250+ modules', '35 analog models'],
       price: 39,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 39 },
@@ -425,14 +425,14 @@
         "Amp, filter, and assignable Env3 ADSR envelopes",
         "Three LFOs and four macros feeding a 12-slot mod matrix",
         "Up to 16 stackable layers, each its own voice pool",
-        "Master-FX bus: the shared 239-module patch-core pack (incl. 35 analog models) runs once on the summed output",
+        "Master-FX bus: the shared 250+-module patch-core pack (incl. 35 analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ]
     },
     "zpwr-fx": {
-      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 239 DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
+      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 250+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
       "features": [
-        "239 audio/synth module types across every effect family",
+        "250+ audio/synth module types across every effect family",
         "Free patch graph: any node to any node, feedback with one-sample delay",
         "35 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
         "Analog filters: Minimoog, Jupiter-8, MS-20, SEM, EMS VCS3, Wasp, TB-303",
