@@ -71,6 +71,17 @@ function gridIds(html) {
   return [...html.matchAll(/product\.html\?id=([^"]+)"/g)].map((m) => decodeURIComponent(m[1]));
 }
 
+// Recursively list every file under assets/ as repo-relative POSIX paths.
+function listAssets(dir = path.join(ROOT, 'assets')) {
+  const out = [];
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const abs = path.join(dir, e.name);
+    if (e.isDirectory()) out.push(...listAssets(abs));
+    else out.push(path.relative(ROOT, abs).split(path.sep).join('/'));
+  }
+  return out;
+}
+
 test('store.js parses and renders the grid', () => {
   const { html } = run('productGrid', '');
   assert.ok(html.includes('product-card'), 'renders product cards');
@@ -229,6 +240,97 @@ function runWithCart(targetId, cart) {
   eval(CODE);
   return { html, stats };
 }
+
+test('screenshot assets: refs resolve, no orphans, all webp, size-budgeted', () => {
+  // Pull every assets/ reference straight from source (covers all products,
+  // not just the ones we render in this run).
+  const refs = new Set(
+    [...CODE.matchAll(/assets\/[A-Za-z0-9._/-]+\.(?:webp|png|jpe?g|gif)/g)].map((m) => m[0]),
+  );
+  assert.ok(refs.size >= 16, `expected >= 16 asset refs, got ${refs.size}`);
+  for (const ref of refs) {
+    assert.ok(!path.isAbsolute(ref), `asset ref must be relative: ${ref}`);
+    assert.match(ref, /\.webp$/, `asset ref must be webp: ${ref}`);
+    assert.ok(fs.existsSync(path.join(ROOT, ref)), `referenced asset missing: ${ref}`);
+  }
+  // Every file on disk must be referenced (no dead weight) and stay small —
+  // the whole point was shrinking retina PNGs, so guard against a re-bloat.
+  const BUDGET = 300 * 1024;
+  for (const rel of listAssets()) {
+    assert.match(rel, /\.webp$/, `assets/ should hold webp only, found: ${rel}`);
+    assert.ok(refs.has(rel), `orphan asset not referenced anywhere: ${rel}`);
+    const bytes = fs.statSync(path.join(ROOT, rel)).size;
+    assert.ok(bytes <= BUDGET, `${rel} is ${Math.round(bytes / 1024)}KB, over ${BUDGET / 1024}KB`);
+  }
+});
+
+test('audio-haxor gallery: sequential shot indices, one caption + alt each', () => {
+  const { html } = run('detailRoot', '?id=audio-haxor');
+  const gallery = html.slice(html.indexOf('<h2>Screenshots</h2>'));
+  const thumbs = [...gallery.matchAll(/class="shot-thumb" data-shot="(\d+)"/g)].map((m) => Number(m[1]));
+  assert.ok(thumbs.length >= 6, `gallery has thumbnails (got ${thumbs.length})`);
+  assert.deepStrictEqual(thumbs, thumbs.map((_, i) => i), 'data-shot indices are 0..n-1 in order');
+  const caps = [...gallery.matchAll(/class="shot-cap">([^<]+)</g)].map((m) => m[1].trim());
+  assert.strictEqual(caps.length, thumbs.length, 'one caption per thumbnail');
+  assert.ok(caps.every((c) => c.length > 0), 'all captions non-empty');
+  const alts = [...gallery.matchAll(/<img src="assets[^"]+" alt="([^"]*)"/g)].map((m) => m[1]);
+  assert.ok(alts.length >= thumbs.length && alts.every((a) => a.length > 0), 'every gallery image has alt text');
+});
+
+test('screenshot hero appears on exactly the GUI products', () => {
+  const GUI = new Set(['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx']);
+  const { html } = run('productGrid', '');
+  for (const id of gridIds(html)) {
+    const { html: d } = run('detailRoot', '?id=' + encodeURIComponent(id));
+    assert.strictEqual(d.includes('detail-hero has-shot'), GUI.has(id), `${id}: hero has-shot mismatch`);
+  }
+});
+
+test('hero stats match the rendered grid (categories + free count)', () => {
+  const { html, stats } = run('productGrid', '');
+  const cards = html.split('class="product-card"').slice(1);
+  const cats = new Set();
+  let free = 0;
+  for (const c of cards) {
+    const m = c.match(/data-cat="([^"]+)"/);
+    if (m) cats.add(m[1]);
+    if (/amt free/.test(c) || />Free</.test(c)) free++;
+  }
+  assert.strictEqual(stats.statCats, String(cats.size), 'statCats equals distinct rendered categories');
+  assert.strictEqual(stats.statFree, String(free), 'statFree equals rendered free-card count');
+});
+
+test('detail hero shows the full screenshot — no cover-crop (regression guard)', () => {
+  const css = fs.readFileSync(path.join(ROOT, 'store.css'), 'utf8');
+  const hero = css.match(/\.detail-hero\.has-shot\s*\{([^}]*)\}/);
+  assert.ok(hero, '.detail-hero.has-shot rule exists');
+  assert.match(hero[1], /height:\s*auto/, 'hero hugs the image height (height:auto)');
+  const img = css.match(/\.detail-hero\.has-shot img\s*\{([^}]*)\}/);
+  assert.ok(img, '.detail-hero.has-shot img rule exists');
+  assert.ok(!/object-fit:\s*cover/.test(img[1]), 'hero image must not cover-crop');
+  assert.match(img[1], /height:\s*auto/, 'hero image height:auto');
+});
+
+test('lightbox keyboard navigation is wired in source', () => {
+  assert.match(CODE, /function openLightbox/, 'has openLightbox');
+  assert.match(CODE, /function stepLightbox/, 'has stepLightbox');
+  assert.match(CODE, /ArrowLeft/, 'handles ArrowLeft');
+  assert.match(CODE, /ArrowRight/, 'handles ArrowRight');
+  assert.match(CODE, /closeLightbox\(\);\s*closeModal\(\)/, 'Escape closes the lightbox');
+});
+
+test('every grid card exposes name, category, tagline, and a price', () => {
+  const { html } = run('productGrid', '');
+  const cards = html.split('class="product-card"').slice(1);
+  assert.ok(cards.length >= 60);
+  for (const c of cards) {
+    const id = (c.match(/id=([^"&]+)/) || [])[1];
+    assert.match(c, /class="p-name">[^<]+</, `${id}: has a name`);
+    assert.match(c, /class="p-cat">[^<]+</, `${id}: has a category`);
+    assert.match(c, /class="p-tag">[^<]+</, `${id}: has a tagline`);
+    assert.match(c, /class="amt[^"]*">[^<]+</, `${id}: has a price`);
+  }
+});
 
 test('HTML pages reference the shared assets and mount points', () => {
   const pages = {
