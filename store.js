@@ -1153,12 +1153,22 @@
   function renderGrid(filterCat, query) {
     var grid = document.getElementById('productGrid');
     if (!grid) return;
-    var q = (query || '').trim().toLowerCase();
-    var list = PRODUCTS.filter(function (p) {
-      if (filterCat && filterCat !== 'All' && p.category !== filterCat) return false;
-      if (q && (p.name + ' ' + p.tagline + ' ' + p.category).toLowerCase().indexOf(q) === -1) return false;
-      return true;
+    var q = (query || '').trim();
+    // fzf-style fuzzy filtering + ranking (same engine as zpwr-modules, fzf.js).
+    // Fields: name (weighted first), tagline, category, tags. Falls back to a plain
+    // substring match if fzf.js failed to load.
+    var scored = [];
+    PRODUCTS.forEach(function (p) {
+      if (filterCat && filterCat !== 'All' && p.category !== filterCat) return;
+      var fields = [p.name, p.tagline, p.category].concat(p.pills || []);
+      var score = window.FZF
+        ? window.FZF.searchScore(q, fields)
+        : (!q || fields.join(' ').toLowerCase().indexOf(q.toLowerCase()) >= 0 ? 1 : 0);
+      if (q && score <= 0) return;
+      scored.push({ p: p, score: score });
     });
+    if (q) scored.sort(function (a, b) { return b.score - a.score; });
+    var list = scored.map(function (x) { return x.p; });
     if (!list.length) {
       grid.innerHTML = '<div class="empty-state">no products match that search</div>';
       return;
