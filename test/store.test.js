@@ -124,6 +124,43 @@ test('every product detail page has an overview and rich features', () => {
   }
 });
 
+test('GUI apps render screenshots in grid, hero, and gallery; assets exist', () => {
+  const GUI = ['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx'];
+  const { html: grid } = run('productGrid', '');
+  const referenced = new Set();
+
+  for (const id of GUI) {
+    const { html: d } = run('detailRoot', '?id=' + encodeURIComponent(id));
+    assert.match(d, /class="detail-hero has-shot"/, `${id}: hero uses a screenshot`);
+    assert.match(d, /data-shot="0"/, `${id}: hero opens the lightbox`);
+    for (const m of d.matchAll(/src="(assets\/[^"]+\.webp)"/g)) referenced.add(m[1]);
+  }
+
+  // audio-haxor has many shots -> a gallery with multiple thumbnails.
+  const { html: ah } = run('detailRoot', '?id=audio-haxor');
+  assert.match(ah, /<h2>Screenshots<\/h2>/, 'audio-haxor: gallery section');
+  assert.ok((ah.match(/class="shot-thumb"/g) || []).length >= 6, 'audio-haxor: multiple thumbnails');
+
+  // single-shot apps don't render a redundant gallery.
+  const { html: tv } = run('detailRoot', '?id=traderview');
+  assert.ok(!tv.includes('<h2>Screenshots</h2>'), 'traderview: no gallery for a single shot');
+
+  // grid cards for GUI apps show an <img>, not the glyph.
+  assert.match(grid, /class="thumb-shot"/, 'grid cards render screenshot thumbnails');
+
+  // every referenced asset file actually exists on disk.
+  for (const src of referenced) {
+    assert.ok(fs.existsSync(path.join(ROOT, src)), `asset missing: ${src}`);
+  }
+  assert.ok(referenced.size >= GUI.length, 'each GUI app references at least one asset');
+});
+
+test('non-GUI products keep the glyph thumbnail, no screenshots', () => {
+  const { html } = run('detailRoot', '?id=zshrs');
+  assert.ok(!html.includes('detail-hero has-shot'), 'zshrs: no screenshot hero');
+  assert.match(html, /class="detail-hero"><span class="glyph"/, 'zshrs: glyph hero');
+});
+
 test('paid detail page: add-to-cart, per-major-version note, no lifetime', () => {
   const { html } = run('detailRoot', '?id=audio-haxor');
   assert.match(html, /id="detailAdd"/, 'has Add to cart');

@@ -43,6 +43,24 @@ The download target is chosen automatically:
 To add another repo: append one object (or one table row) and, optionally, a
 `DETAILS` entry for the rich copy.
 
+### Screenshots
+
+GUI products (the desktop apps and audio plugins) carry a `screenshots` array
+in their `DETAILS` entry — `[{ src, cap }]`. When present:
+
+- the grid card and the product-detail hero render the **first** screenshot
+  instead of the letter glyph (products with no `screenshots` keep the glyph);
+- the detail page renders a **Screenshots** gallery when there is more than one
+  shot, and any image (hero or thumbnail) opens a keyboard-navigable lightbox
+  (`←` / `→` to step, `Esc` to close).
+
+Images live under `assets/` (one folder per multi-shot product, e.g.
+`assets/audio-haxor/`). Source captures are retina PNGs; they are downsized to
+≤1600 px and converted to WebP (`cwebp -q 82`) so each is ~50–160 KB. To add
+shots for a product: drop the WebP files in `assets/`, then list them in that
+product's `screenshots` array. A test asserts every referenced asset exists on
+disk.
+
 Uses the same HUD / cyberpunk design system as the strykelang docs
 (`hud-static.css`, `tutorial.css`, `hud-theme.js`) so the store and the docs
 share one visual language: Orbitron + Share Tech Mono, CRT scanlines, neon

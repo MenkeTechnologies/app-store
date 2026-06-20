@@ -284,6 +284,20 @@
         "JUCE-powered audio engine sidecar for low-latency playback",
         "SQLite backend with timestamped scan history and diff engine",
         "Full PTY-backed embedded terminal, Vim keybindings, Cmd+K palette"
+      ],
+      "screenshots": [
+        { "src": "assets/audio-haxor/plugins.webp", "cap": "Plugin grid — every VST2/VST3/AU/CLAP detected" },
+        { "src": "assets/audio-haxor/samples.webp", "cap": "Sample vault with BPM, key, and LUFS per file" },
+        { "src": "assets/audio-haxor/daw.webp", "cap": "DAW project index across 14+ formats" },
+        { "src": "assets/audio-haxor/presets.webp", "cap": "Preset archive" },
+        { "src": "assets/audio-haxor/midi.webp", "cap": "MIDI device matrix" },
+        { "src": "assets/audio-haxor/visualizers.webp", "cap": "Real-time audio visualizers" },
+        { "src": "assets/audio-haxor/terminal.webp", "cap": "Embedded PTY terminal" },
+        { "src": "assets/audio-haxor/tags.webp", "cap": "Tag network graph" },
+        { "src": "assets/audio-haxor/pdf.webp", "cap": "PDF manual library" },
+        { "src": "assets/audio-haxor/favorites.webp", "cap": "Favorites" },
+        { "src": "assets/audio-haxor/notes.webp", "cap": "Per-item notes" },
+        { "src": "assets/audio-haxor/files.webp", "cap": "File browser" }
       ]
     },
     "traderview": {
@@ -299,6 +313,9 @@
         "On-device receipt OCR with 20-bucket Schedule C taxonomy",
         "stryke-JIT backtest engine, walk-forward sweeper, strategy alerts",
         "Schema: 83 tables, 115 indexes; money is NUMERIC(20,8)"
+      ],
+      "screenshots": [
+        { "src": "assets/traderview.webp", "cap": "Equity curve, summary stats, and trade journal" }
       ]
     },
     "awkrs": {
@@ -427,6 +444,9 @@
         "Up to 16 stackable layers, each its own voice pool",
         "Master-FX bus: the shared 340+-module patch-core pack (incl. 90+ analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
+      ],
+      "screenshots": [
+        { "src": "assets/zpwr-synth.webp", "cap": "Modular patch-graph synth UI" }
       ]
     },
     "zpwr-fx": {
@@ -442,6 +462,9 @@
         "Dynamics, EQ/filter, delay, reverb, modulation, distortion, pitch, spectral (FFT), stereo, lo-fi, glitch",
         "Per-param (source, depth) mod matrix; per-cable gain + colour",
         "Unlimited layers; ⚡ EZ-wire auto-routing; cyberpunk WebView UI"
+      ],
+      "screenshots": [
+        { "src": "assets/zpwr-fx.webp", "cap": "Free patch-graph effects routing" }
       ]
     },
     "zpwr-midi-fx": {
@@ -458,6 +481,9 @@
         "Latch, swing, octave span, timing/velocity humanize",
         "Disk-backed .zpwrpreset manager (name/category/author)",
         "CyberLookAndFeel neon UI with step-indicator readout"
+      ],
+      "screenshots": [
+        { "src": "assets/zpwr-midi-fx.webp", "cap": "Note-stream patch graph with arp + Euclidean" }
       ]
     },
     "stryke-arrow": {
@@ -1025,7 +1051,11 @@
 
   PRODUCTS.forEach(function (p) {
     var d = DETAILS[p.id];
-    if (d) { p.overview = d.overview; if (d.features) p.features = d.features; }
+    if (d) {
+      p.overview = d.overview;
+      if (d.features) p.features = d.features;
+      if (d.screenshots) p.screenshots = d.screenshots;
+    }
   });
 
   // ---- Helpers --------------------------------------------------------
@@ -1098,9 +1128,12 @@
       return '<span class="p-pill">' + t + '</span>';
     }).join('');
     var priceCls = tier.price ? '' : ' free';
+    var shot = (p.screenshots && p.screenshots[0])
+      ? '<img class="thumb-shot" src="' + p.screenshots[0].src + '" alt="' + p.name + ' screenshot" loading="lazy">'
+      : '<span class="glyph">' + p.glyph + '</span>';
     return '' +
       '<a class="product-card" href="product.html?id=' + encodeURIComponent(p.id) + '" data-cat="' + p.category + '" data-name="' + p.name.toLowerCase() + ' ' + p.tagline.toLowerCase() + '">' +
-        '<div class="product-thumb">' + badge + '<span class="glyph">' + p.glyph + '</span></div>' +
+        '<div class="product-thumb' + (p.screenshots ? ' has-shot' : '') + '">' + badge + shot + '</div>' +
         '<div class="product-body">' +
           '<span class="p-cat">' + p.category + '</span>' +
           '<span class="p-name">' + p.name + '</span>' +
@@ -1198,9 +1231,25 @@
       ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn
       : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' + sourceBtn;
 
+    var shots = p.screenshots || [];
+    var heroHtml = shots.length
+      ? '<button type="button" class="detail-hero has-shot" data-shot="0" aria-label="View screenshot"><img src="' + shots[0].src + '" alt="' + p.name + ' screenshot"></button>'
+      : '<div class="detail-hero"><span class="glyph">' + p.glyph + '</span></div>';
+    // Gallery only when there's more than the hero shot — single-shot apps would just duplicate the hero.
+    var galleryHtml = shots.length > 1
+      ? '<section class="tutorial-section"><h2>Screenshots</h2><div class="shot-grid">' +
+          shots.map(function (s, i) {
+            return '<button type="button" class="shot-thumb" data-shot="' + i + '">' +
+              '<img src="' + s.src + '" alt="' + s.cap + '" loading="lazy">' +
+              '<span class="shot-cap">' + s.cap + '</span>' +
+              '</button>';
+          }).join('') +
+        '</div></section>'
+      : '';
+
     root.innerHTML = '' +
       '<div class="detail-top">' +
-        '<div class="detail-hero"><span class="glyph">' + p.glyph + '</span></div>' +
+        heroHtml +
         '<div class="detail-buy">' +
           '<span class="p-cat">' + p.category + '</span>' +
           '<h2>' + p.name + '</h2>' +
@@ -1216,7 +1265,20 @@
       '<section class="tutorial-section">' +
         '<h2>What you get</h2>' +
         '<ul class="feature-list">' + featuresHtml + '</ul>' +
-      '</section>';
+      '</section>' +
+      galleryHtml;
+
+    // Lightbox: any [data-shot] (hero or thumbnail) opens the full-size viewer.
+    if (shots.length) {
+      var shotBtns = root.querySelectorAll('[data-shot]');
+      for (var s = 0; s < shotBtns.length; s++) {
+        (function (btn) {
+          btn.addEventListener('click', function () {
+            openLightbox(shots, parseInt(btn.getAttribute('data-shot'), 10));
+          });
+        })(shotBtns[s]);
+      }
+    }
 
     if (free) return;
 
@@ -1488,6 +1550,60 @@
     if (overlay) overlay.hidden = true;
   }
 
+  // ---- Screenshot lightbox -------------------------------------------
+  var lbShots = [];
+  var lbIdx = 0;
+
+  function lbEl() {
+    var el = document.getElementById('lightbox');
+    if (el) return el;
+    el = document.createElement('div');
+    el.id = 'lightbox';
+    el.className = 'lightbox';
+    el.hidden = true;
+    el.innerHTML =
+      '<button type="button" class="lb-close" aria-label="Close">×</button>' +
+      '<button type="button" class="lb-nav lb-prev" aria-label="Previous">‹</button>' +
+      '<figure class="lb-stage"><img class="lb-img" alt=""><figcaption class="lb-cap"></figcaption></figure>' +
+      '<button type="button" class="lb-nav lb-next" aria-label="Next">›</button>';
+    document.body.appendChild(el);
+    el.querySelector('.lb-close').addEventListener('click', closeLightbox);
+    el.querySelector('.lb-prev').addEventListener('click', function () { stepLightbox(-1); });
+    el.querySelector('.lb-next').addEventListener('click', function () { stepLightbox(1); });
+    el.addEventListener('click', function (e) { if (e.target === el) closeLightbox(); });
+    return el;
+  }
+
+  function renderLightbox() {
+    var el = lbEl();
+    var s = lbShots[lbIdx];
+    if (!s) return;
+    el.querySelector('.lb-img').src = s.src;
+    el.querySelector('.lb-img').alt = s.cap || '';
+    el.querySelector('.lb-cap').textContent = s.cap || '';
+    var single = lbShots.length < 2;
+    el.querySelector('.lb-prev').hidden = single;
+    el.querySelector('.lb-next').hidden = single;
+  }
+
+  function openLightbox(shots, idx) {
+    lbShots = shots;
+    lbIdx = idx || 0;
+    renderLightbox();
+    lbEl().hidden = false;
+  }
+
+  function closeLightbox() {
+    var el = document.getElementById('lightbox');
+    if (el) el.hidden = true;
+  }
+
+  function stepLightbox(d) {
+    if (!lbShots.length) return;
+    lbIdx = (lbIdx + d + lbShots.length) % lbShots.length;
+    renderLightbox();
+  }
+
   // ---- Wiring ---------------------------------------------------------
   document.addEventListener('DOMContentLoaded', function () {
     updateCartCount();
@@ -1552,7 +1668,11 @@
       if (e.target === overlay) closeModal();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeModal();
+      var lb = document.getElementById('lightbox');
+      var lbOpen = lb && !lb.hidden;
+      if (e.key === 'Escape') { closeLightbox(); closeModal(); return; }
+      if (lbOpen && e.key === 'ArrowLeft') stepLightbox(-1);
+      if (lbOpen && e.key === 'ArrowRight') stepLightbox(1);
     });
   });
 })();
