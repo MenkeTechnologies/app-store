@@ -359,6 +359,9 @@
         "Imports and exports BOME MIDI Translator Pro .bmtp projects, lossless",
         "Stores native projects as JSON",
         "Built-in auto-update; pure-Rust core with no UI dependency for embedding"
+      ],
+      "screenshots": [
+        { "src": "assets/ztranslator.png", "cap": "Translator table mapping incoming MIDI/OSC/DMX triggers to outgoing actions" }
       ]
     },
     "awkrs": {
