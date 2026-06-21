@@ -280,7 +280,7 @@
         "Three-tier regex: regex, fancy-regex, pcre2",
         "Bytecode VM plus Cranelift block and linear JIT",
         "Rayon work-stealing parallelism across all cores",
-        "10,449 stdlib primaries (11,182 keys including aliases)",
+        "10,450 stdlib primaries (11,183 keys including aliases)",
         "44 MB single static binary, sub-10ms cold start",
         "Parallel primitives: pmap/pgrep/psort/preduce, streaming iterators",
         "rkyv KV store, sketch algebra, zsh glob qualifiers",
