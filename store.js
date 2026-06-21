@@ -42,6 +42,19 @@
       ],
     },
     {
+      id: 'ztranslator',
+      name: 'ztranslator',
+      glyph: 'ZT',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A real-time event-translation desktop app in pure Rust — also embeddable as a routing engine inside other apps. Bridges MIDI, OSC, DMX, and file-watcher triggers to outgoing actions: MIDI/OSC/DMX out, keystroke, mouse, AppleScript, timer, or a host command. Each translator runs a rules script on an integer VM, with auto-update and BOME MIDI Translator Pro .bmtp import/export.',
+      pills: ['MIDI · OSC · DMX', 'File watchers', '.bmtp import/export', 'macOS/Linux/Win'],
+      price: 99,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 99 },
+      ],
+    },
+    {
       id: 'zpwr-synth',
       name: 'zpwr-synth',
       glyph: 'S',
@@ -332,6 +345,20 @@
       ],
       "screenshots": [
         { "src": "assets/traderview.webp", "cap": "Equity curve, summary stats, and trade journal" }
+      ]
+    },
+    "ztranslator": {
+      "overview": "A real-time event-translation desktop app written in pure Rust that watches MIDI, OSC, DMX, and the file system for triggers, matches each event against per-translator rules running on a signed-32-bit integer VM, and fires an outgoing action. The same engine is embeddable inside a host GUI/CLI app via its Rust library API.",
+      "features": [
+        "Ships its own GUI; the engine also drops into a host GUI/CLI app",
+        "Trigger sources: MIDI input ports, OSC, DMX, and file-system watchers",
+        "Faithful BOME rules VM: arithmetic + bitwise, IF/THEN, Goto/Skip",
+        "10 local + global registers, wrap-on-overflow signed-32-bit integers",
+        "Outgoing actions: MIDI / OSC / DMX out, keystroke, mouse, AppleScript",
+        "Timer and host-defined custom command actions",
+        "Imports and exports BOME MIDI Translator Pro .bmtp projects, lossless",
+        "Stores native projects as JSON",
+        "Built-in auto-update; pure-Rust core with no UI dependency for embedding"
       ]
     },
     "awkrs": {
