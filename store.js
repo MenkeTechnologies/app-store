@@ -46,8 +46,8 @@
       name: 'zpwr-synth',
       glyph: 'S',
       category: 'Audio Plugins',
-      badge: 'NEW',
-      tagline: 'A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Shipping as VST3, AU, CLAP, and Standalone.',
+      badge: 'WORLD FIRST',
+      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Shipping as VST3, AU, CLAP, and Standalone.',
       pills: ['JUCE', 'VST3/AU/CLAP/Standalone', 'Fully modular', 'macOS/Linux/Win'],
       price: 149,
       tiers: [
@@ -63,8 +63,8 @@
       name: 'zpwr-fx',
       glyph: 'F',
       category: 'Audio Plugins',
-      badge: 'NEW',
-      tagline: 'A fully modular patch-graph effects plugin built on JUCE — wire 1,080+ DSP modules (including 171 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, CLAP, and Standalone.',
+      badge: 'WORLD FIRST',
+      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular patch-graph effects plugin built on JUCE — wire 1,080+ DSP modules (including 171 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, CLAP, and Standalone.',
       pills: ['JUCE', 'VST3/AU/CLAP/Standalone', '1,080+ modules', '171 analog models'],
       price: 79,
       tiers: [
@@ -80,8 +80,8 @@
       name: 'zpwr-midi-fx',
       glyph: 'M',
       category: 'Audio Plugins',
-      badge: 'NEW',
-      tagline: 'A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 78 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, CLAP, and Standalone.',
+      badge: 'WORLD FIRST',
+      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 78 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, CLAP, and Standalone.',
       pills: ['JUCE', 'VST3/AU/CLAP/Standalone', 'Fully modular', '78 modules'],
       price: 79,
       tiers: [
@@ -449,6 +449,7 @@
     "zpwr-synth": {
       "overview": "A fully modular patch-graph synthesizer on the shared zpwr-patch-core engine: each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H modulators, VCA/mixer), up to 16 stacked layers, with a per-param mod matrix and a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Not a fixed voice path.",
       "features": [
+        "World first: one of the first fully-modular plugin trio to pair patch-graph wiring with a no-cable knob panel, EZ auto-wiring, and stereo mirror + offset-preserving stereo link",
         "Three per-voice oscillator slots (Basic, Virtual Analog, Wavetable)",
         "Band-limited PolyBLEP sine/saw/square/triangle oscillators",
         "JP-8000 supersaw with up to 16-voice unison, detune, drift",
@@ -468,6 +469,7 @@
     "zpwr-fx": {
       "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 1,080+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
       "features": [
+        "World first: one of the first fully-modular plugin trio to pair patch-graph wiring with a no-cable knob panel, EZ auto-wiring, and stereo mirror + offset-preserving stereo link",
         "1,080+ audio/synth module types across every effect family",
         "Free patch graph: any node to any node, feedback with one-sample delay",
         "171 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
@@ -486,6 +488,7 @@
     "zpwr-midi-fx": {
       "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (78 MIDI module types), not a fixed slot rack.",
       "features": [
+        "World first: one of the first fully-modular plugin trio to pair patch-graph wiring with a no-cable knob panel, EZ auto-wiring, and stereo mirror + offset-preserving stereo link",
         "78 note-stream module types in a free patch graph (not a fixed rack)",
         "Single-key chord voicing from a runtime chord dictionary",
         "Chord inversion, octave-doubling, spread, transpose, strum",
