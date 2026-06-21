@@ -1092,3 +1092,52 @@
 .lb-prev { left: 1.5rem; }
 .lb-next { right: 1.5rem; }
 .lb-nav[hidden] { display: none; }
+
+/* ---- Documentation cards (block catalog PDF, manuals) ---- */
+.doc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.doc-card:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 14px var(--cyan-dim);
+}
+.doc-ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  color: var(--accent);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+.doc-body { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.doc-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  color: var(--cyan);
+}
+.doc-desc {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}

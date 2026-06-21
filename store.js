@@ -54,6 +54,9 @@
         { name: 'Personal', desc: 'Single user, all formats', price: 149 },
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 299 },
       ],
+      docs: [
+        { label: 'Block Catalog (PDF)', desc: 'Every DSP block in the shared modular patch graph — category, CV, analog-circuit and per-plugin badges, plus an alphabetical index.', url: 'docs/zpwr-patch-core-block-catalog.pdf' },
+      ],
     },
     {
       id: 'zpwr-fx',
@@ -68,6 +71,9 @@
         { name: 'Personal', desc: 'Single user, all formats', price: 79 },
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
+      docs: [
+        { label: 'Block Catalog (PDF)', desc: 'Every DSP block in the shared modular patch graph — category, CV, analog-circuit and per-plugin badges, plus an alphabetical index.', url: 'docs/zpwr-patch-core-block-catalog.pdf' },
+      ],
     },
     {
       id: 'zpwr-midi-fx',
@@ -81,6 +87,9 @@
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 79 },
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
+      ],
+      docs: [
+        { label: 'Block Catalog (PDF)', desc: 'The note-stream and audio blocks of the shared modular patch graph — category, CV and per-plugin badges, plus an alphabetical index.', url: 'docs/zpwr-patch-core-block-catalog.pdf' },
       ],
     },
     {
@@ -1237,14 +1246,31 @@
     var sourceBtn = p.repo
       ? '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
       : '';
+    // "Docs" button when the product ships reference documentation (e.g. the block catalog PDF).
+    var docsBtn = (p.docs && p.docs.length)
+      ? '<a class="btn btn-secondary" href="' + p.docs[0].url + '" target="_blank" rel="noopener noreferrer">Docs ↗</a>'
+      : '';
     var actionsHtml = free
-      ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn
-      : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' + sourceBtn;
+      ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn + docsBtn
+      : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' + sourceBtn + docsBtn;
 
     var shots = p.screenshots || [];
     var heroHtml = shots.length
       ? '<button type="button" class="detail-hero has-shot" data-shot="0" aria-label="View screenshot"><img src="' + shots[0].src + '" alt="' + p.name + ' screenshot"></button>'
       : '<div class="detail-hero"><span class="glyph">' + p.glyph + '</span></div>';
+    // Documentation: reference PDFs / manuals shipped with the product (block catalog, etc.).
+    var docsHtml = (p.docs && p.docs.length)
+      ? '<section class="tutorial-section"><h2>Documentation</h2><div class="doc-list">' +
+          p.docs.map(function (d) {
+            return '<a class="doc-card" href="' + d.url + '" target="_blank" rel="noopener noreferrer">' +
+              '<span class="doc-ico">PDF</span>' +
+              '<span class="doc-body"><span class="doc-name">' + d.label + ' ↗</span>' +
+              (d.desc ? '<span class="doc-desc">' + d.desc + '</span>' : '') + '</span>' +
+              '</a>';
+          }).join('') +
+        '</div></section>'
+      : '';
+
     // Gallery only when there's more than the hero shot — single-shot apps would just duplicate the hero.
     var galleryHtml = shots.length > 1
       ? '<section class="tutorial-section"><h2>Screenshots</h2><div class="shot-grid">' +
@@ -1276,6 +1302,7 @@
         '<h2>What you get</h2>' +
         '<ul class="feature-list">' + featuresHtml + '</ul>' +
       '</section>' +
+      docsHtml +
       galleryHtml;
 
     // Lightbox: any [data-shot] (hero or thumbnail) opens the full-size viewer.
