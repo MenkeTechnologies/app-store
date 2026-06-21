@@ -43,6 +43,18 @@ The download target is chosen automatically:
 To add another repo: append one object (or one table row) and, optionally, a
 `DETAILS` entry for the rich copy.
 
+### Documentation links
+
+Repos that publish their `docs/` to **GitHub Pages** (served at
+`menketechnologies.github.io/<id>/`) are listed in `DOC_REPOS`. Each gets a
+**Docs ↗** button plus doc-cards in the detail page's Documentation section:
+**Documentation** (`index.html`) and **Engineering Report** (`report.html`)
+for all of them, and an **API Reference** (`reference.html`) for the ids in
+`DOC_REFERENCE` (`strykelang`, `zshrs`). Products with no published Pages site
+(proprietary apps, or Pages-disabled plugins that ship a PDF catalog instead)
+are intentionally omitted so no link 404s. A shipped reference PDF still lives
+in a product's `docs` array and renders alongside the HTML doc-cards.
+
 ### Screenshots
 
 GUI products (the desktop apps and audio plugins) carry a `screenshots` array

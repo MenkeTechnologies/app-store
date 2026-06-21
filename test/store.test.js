@@ -195,6 +195,29 @@ test('proprietary (private-repo) products do not link a public Source', () => {
   assert.ok(!html.includes('>Source<'), 'no Source link for private-repo product');
 });
 
+test('published HTML doc sites link to GitHub Pages, with reference only where it exists', () => {
+  // zshrs ships all three docs (index + reference + report).
+  const z = run('detailRoot', '?id=zshrs').html;
+  assert.match(z, /href="https:\/\/menketechnologies\.github\.io\/zshrs\/"[^>]*>[\s\S]*?Documentation ↗/, 'zshrs links its Documentation site');
+  assert.match(z, /menketechnologies\.github\.io\/zshrs\/reference\.html"[^>]*>[\s\S]*?API Reference ↗/, 'zshrs links its API Reference');
+  assert.match(z, /menketechnologies\.github\.io\/zshrs\/report\.html"[^>]*>[\s\S]*?Engineering Report ↗/, 'zshrs links its Engineering Report');
+
+  // awkrs ships index + report but no reference.html — must not link one.
+  const a = run('detailRoot', '?id=awkrs').html;
+  assert.match(a, /menketechnologies\.github\.io\/awkrs\/"[^>]*>[\s\S]*?Documentation ↗/, 'awkrs links its Documentation site');
+  assert.match(a, /menketechnologies\.github\.io\/awkrs\/report\.html/, 'awkrs links its Engineering Report');
+  assert.ok(!a.includes('awkrs/reference.html'), 'awkrs does not link a non-existent API Reference');
+
+  // Proprietary product: no Pages docs, no broken doc-card.
+  const ah = run('detailRoot', '?id=audio-haxor').html;
+  assert.ok(!ah.includes('github.io'), 'audio-haxor links no GitHub Pages docs (proprietary)');
+
+  // Pages-disabled plugin keeps its PDF and links no 404-ing HTML doc.
+  const fx = run('detailRoot', '?id=zpwr-fx').html;
+  assert.ok(!fx.includes('github.io/zpwr-fx'), 'zpwr-fx links no HTML doc site (Pages disabled)');
+  assert.match(fx, /Block Catalog \(PDF\)/, 'zpwr-fx still links its block-catalog PDF');
+});
+
 test('checkout renders line items + per-major-version totals when cart has items', () => {
   const { html } = runWithCart('checkoutRoot', [
     { id: 'audio-haxor', tier: 'Pro', price: 89 },

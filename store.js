@@ -1165,6 +1165,41 @@
     }
   });
 
+  // ---- Published HTML docs (GitHub Pages) -----------------------------
+  // Repos that publish their docs/ to GitHub Pages at github.io/<id>/.
+  // Each ships a Documentation site (index.html) and an Engineering Report
+  // (report.html); listed ids in DOC_REFERENCE also ship an API Reference
+  // (reference.html). Verified live (HTTP 200) — proprietary products
+  // (audio-haxor, traderview) and Pages-disabled repos (zpwr-fx/synth/midi-fx,
+  // which link a PDF catalog instead) are intentionally absent so no link 404s.
+  var DOC_REPOS = [
+    'api-rest-generator', 'awkrs', 'fusevm', 'iftoprs', 'lsofrs', 'nmaprs',
+    'powerliners', 'storageshower', 'temprs', 'strykelang', 'zshrs', 'zpwr',
+    'zpwrchrome', 'stryke-arrow', 'stryke-aws', 'stryke-azure',
+    'stryke-clickhouse', 'stryke-demo', 'stryke-docker', 'stryke-duckdb',
+    'stryke-email', 'stryke-fleet', 'stryke-gcp', 'stryke-grpc', 'stryke-gui',
+    'stryke-k8s', 'stryke-kafka', 'stryke-mcpd', 'stryke-mongo', 'stryke-mssql',
+    'stryke-mysql', 'stryke-neo4j', 'stryke-office', 'stryke-parquet',
+    'stryke-polars', 'stryke-postgres', 'stryke-redis', 'stryke-scrape',
+    'stryke-scylla', 'stryke-search', 'stryke-selenium', 'stryke-spark',
+    'stryke-utils', 'stryke-zmq', 'zsh-cargo-completion', 'zsh-cpan-completion',
+    'zsh-dotnet-completion', 'zsh-expand', 'zsh-gem-completion', 'zsh-git-acp',
+    'zsh-git-repo-cache', 'zsh-learn', 'zsh-more-completions', 'zsh-nginx',
+    'zsh-pip-description-completion', 'zsh-sed-sub', 'zsh-sudo',
+  ];
+  var DOC_REFERENCE = { strykelang: 1, zshrs: 1 };
+  DOC_REPOS.forEach(function (id) {
+    var p = byId(id);
+    if (!p) return;
+    var base = 'https://menketechnologies.github.io/' + id + '/';
+    var sites = [{ label: 'Documentation', desc: 'Project documentation site', url: base }];
+    if (DOC_REFERENCE[id]) {
+      sites.push({ label: 'API Reference', desc: 'Full API / block reference', url: base + 'reference.html' });
+    }
+    sites.push({ label: 'Engineering Report', desc: 'Architecture & engineering report', url: base + 'report.html' });
+    p.docsite = sites;
+  });
+
   // ---- Helpers --------------------------------------------------------
   var CART_KEY = 'appstore-cart';
 
@@ -1344,9 +1379,12 @@
     var sourceBtn = p.repo
       ? '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
       : '';
-    // "Docs" button when the product ships reference documentation (e.g. the block catalog PDF).
-    var docsBtn = (p.docs && p.docs.length)
-      ? '<a class="btn btn-secondary" href="' + p.docs[0].url + '" target="_blank" rel="noopener noreferrer">Docs ↗</a>'
+    // "Docs" button → the published doc site when one exists, else a shipped
+    // reference (e.g. the block-catalog PDF).
+    var primaryDoc = (p.docsite && p.docsite[0] && p.docsite[0].url) ||
+      (p.docs && p.docs[0] && p.docs[0].url);
+    var docsBtn = primaryDoc
+      ? '<a class="btn btn-secondary" href="' + primaryDoc + '" target="_blank" rel="noopener noreferrer">Docs ↗</a>'
       : '';
     var actionsHtml = free
       ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn + docsBtn
@@ -1356,12 +1394,16 @@
     var heroHtml = shots.length
       ? '<button type="button" class="detail-hero has-shot" data-shot="0" aria-label="View screenshot"><img src="' + shots[0].src + '" alt="' + p.name + ' screenshot"></button>'
       : '<div class="detail-hero"><span class="glyph">' + p.glyph + '</span></div>';
-    // Documentation: reference PDFs / manuals shipped with the product (block catalog, etc.).
-    var docsHtml = (p.docs && p.docs.length)
+    // Documentation: published HTML doc sites (GitHub Pages) plus any shipped
+    // reference PDFs / manuals (block catalog, etc.).
+    var allDocs = []
+      .concat((p.docsite || []).map(function (d) { return { label: d.label, desc: d.desc, url: d.url, ico: 'WEB' }; }))
+      .concat((p.docs || []).map(function (d) { return { label: d.label, desc: d.desc, url: d.url, ico: 'PDF' }; }));
+    var docsHtml = allDocs.length
       ? '<section class="tutorial-section"><h2>Documentation</h2><div class="doc-list">' +
-          p.docs.map(function (d) {
+          allDocs.map(function (d) {
             return '<a class="doc-card" href="' + d.url + '" target="_blank" rel="noopener noreferrer">' +
-              '<span class="doc-ico">PDF</span>' +
+              '<span class="doc-ico">' + d.ico + '</span>' +
               '<span class="doc-body"><span class="doc-name">' + d.label + ' ↗</span>' +
               (d.desc ? '<span class="doc-desc">' + d.desc + '</span>' : '') + '</span>' +
               '</a>';
