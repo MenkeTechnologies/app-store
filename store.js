@@ -81,7 +81,7 @@
       glyph: 'M',
       category: 'Audio Plugins',
       badge: 'WORLD FIRST',
-      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 105 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, CLAP, and Standalone.',
+      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 111 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, CLAP, and Standalone.',
       pills: ['JUCE', 'VST3/AU/CLAP/Standalone', 'Fully modular', '78 modules'],
       price: 79,
       tiers: [
@@ -486,10 +486,10 @@
       ]
     },
     "zpwr-midi-fx": {
-      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (105 MIDI module types), not a fixed slot rack.",
+      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (111 MIDI module types), not a fixed slot rack.",
       "features": [
         "World first: one of the first fully-modular plugin trio to pair patch-graph wiring with a no-cable knob panel, EZ auto-wiring, and stereo mirror + offset-preserving stereo link",
-        "105 note-stream module types in a free patch graph (not a fixed rack)",
+        "111 note-stream module types in a free patch graph (not a fixed rack)",
         "Single-key chord voicing from a runtime chord dictionary",
         "Chord inversion, octave-doubling, spread, transpose, strum",
         "Per-key chord mapping (Chromatic, Circle-of-Fifths, Lowest-Note)",
