@@ -47,7 +47,7 @@
       glyph: 'S',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 31 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 340+-module audio pack. Shipping as VST3, AU, and CLAP.',
+      tagline: 'A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Shipping as VST3, AU, and CLAP.',
       pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', 'macOS/Linux/Win'],
       price: 149,
       tiers: [
@@ -64,8 +64,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A fully modular patch-graph effects plugin built on JUCE — wire 340+ DSP modules (including 90+ analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '340+ modules', '90+ analog models'],
+      tagline: 'A fully modular patch-graph effects plugin built on JUCE — wire 1,080+ DSP modules (including 171 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', '1,080+ modules', '171 analog models'],
       price: 79,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 79 },
@@ -81,8 +81,8 @@
       glyph: 'M',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 56 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', '56 modules'],
+      tagline: 'A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 78 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, and CLAP.',
+      pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', '78 modules'],
       price: 79,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 79 },
@@ -207,8 +207,10 @@
     ['stryke-arrow', 'AR', 'Apache Arrow, Parquet, Feather, and Arrow CSV/JSON for stryke.'],
     ['stryke-aws', 'AWS', 'AWS client for stryke — S3, DynamoDB, SQS, Lambda, STS, SNS, SSM, Secrets, SES, and CloudWatch.'],
     ['stryke-azure', 'AZ', 'Azure cloud client for stryke — Blob Storage with Entra credential auth.'],
+    ['stryke-clickhouse', 'CH', 'ClickHouse client for stryke — SELECTs, JSONEachRow bulk insert, table/database admin, and schema introspection over the HTTP interface.'],
     ['stryke-docker', 'DK', 'Docker client for stryke — containers, images, networks, volumes, logs, exec, and prune.'],
     ['stryke-duckdb', 'DB', 'Embedded DuckDB SQL engine for stryke — direct-query Parquet, CSV, and JSON.'],
+    ['stryke-email', 'EM', 'Transactional and campaign email for stryke — single send, mass mailing, {{merge}} templates, and List-Unsubscribe compliance over your own SMTP.'],
     ['stryke-fleet', 'FL', 'Expect, but N sessions at once — parallel interactive session automation for stryke.'],
     ['stryke-gcp', 'GCP', 'Google Cloud client for stryke — Cloud Storage, Pub/Sub, Secret Manager, BigQuery, and Firestore.'],
     ['stryke-grpc', 'GR', 'Reflection-based gRPC client for stryke — grpcurl, as a stryke package.'],
@@ -217,12 +219,17 @@
     ['stryke-kafka', 'KK', 'Apache Kafka client for stryke — producer, consumer, and topic/cluster admin.'],
     ['stryke-mcpd', 'MCP', 'MCP servers without a runtime — a Model Context Protocol daemon for stryke.'],
     ['stryke-mongo', 'MGO', 'MongoDB client for stryke — CRUD, aggregation, and index admin.'],
+    ['stryke-mssql', 'MS', 'Microsoft SQL Server / Azure SQL client for stryke — parametrized T-SQL, transaction batches, scalar/exists helpers, and schema introspection over tiberius.'],
     ['stryke-mysql', 'MY', 'MySQL / MariaDB client for stryke.'],
+    ['stryke-neo4j', 'N4', 'Neo4j graph database client for stryke — parametrized Cypher query and run, scalar/row helpers, and schema introspection over the Bolt protocol.'],
     ['stryke-office', 'OF', 'Office document I/O for stryke — Excel, Word, PowerPoint, ODF, and PDF.'],
     ['stryke-parquet', 'PQ', 'Parquet toolkit for stryke — schema, stats, row-groups, head/tail, CSV/JSON I/O, merge, and recompress.'],
     ['stryke-polars', 'PL', 'Polars, ndarray, linalg, FFT, and random for stryke.'],
     ['stryke-postgres', 'PG', 'PostgreSQL client for stryke.'],
     ['stryke-redis', 'RD', 'Redis / Valkey client for stryke — KV, lists, sets, hashes, zsets, streams, geo, scripting, pub/sub, and pipelines.'],
+    ['stryke-scrape', 'SR', 'Web scraping and crawling client for stryke — fetch, robots-aware crawl, sitemap discovery, CSS extraction, tables, links, and structured data.'],
+    ['stryke-scylla', 'SY', 'ScyllaDB / Apache Cassandra client for stryke — CQL queries, keyspace/table DDL, and schema introspection over the native CQL binary protocol.'],
+    ['stryke-search', 'ES', 'Elasticsearch / OpenSearch client for stryke — index admin, document CRUD, bulk indexing, the query DSL, scroll, and aliases.'],
     ['stryke-selenium', 'SE', 'Browser automation for stryke — WebDriver, DOM, JS, and cookies.'],
     ['stryke-spark', 'SK', 'Apache Spark client for stryke.'],
     ['stryke-utils', 'UT', 'Boundary helpers for stryke — everything else is a builtin.'],
@@ -243,7 +250,7 @@
     };
   }
 
-  [["fusevm","VM","Developer Tools","Language-agnostic bytecode VM with fused superinstructions and a three-tier Cranelift JIT — the engine behind stryke, zshrs, and awkrs.",["Rust","VM","JIT","Free / OSS"],false],["api-rest-generator","API","Developer Tools","Parses SQL DDL dumps and generates a fully-wired REST backend — Spring Boot (Java/Kotlin/Groovy) or Loco (Rust/Axum/SeaORM).",["codegen","JVM/Rust","Free / OSS"],false],["LearningCollectionAPI","LC","Developer Tools","A Spring Boot + Kotlin REST API for managing a personal collection of learning notes, backed by MySQL.",["Kotlin","Spring Boot","Free / OSS"],false],["stryke-demo","SD","Developer Tools","Live demo scripts for every stryke-* package — one .stk per package, one install pulls them all.",["stryke","demos","Free / OSS"],false],["VimColorSchemes","VC","Developer Tools","The largest curated Vim colorscheme bundle — 732 working :colorscheme targets in one plugin.",["Vim","732 themes","Free / OSS"],false],["zpwr","zp","Zsh Plugins","The world’s most advanced UNIX terminal environment — 500+ subcommands, 2000+ aliases, 40k completions, vim + tmux integration.",["zsh","terminal env","Free / OSS"],true],["zsh-more-completions","mc","Zsh Plugins","The largest curated zsh completion corpus in existence — 30k+ command completions wired into compsys.",["zsh","completions","Free / OSS"],false],["zsh-expand","ze","Zsh Plugins","The most powerful zsh expansion plugin — spacebar-expands aliases, globs, history, params, and typo fixes in pure zsh.",["zsh","expansion","Free / OSS"],true],["zsh-learn","zl","Zsh Plugins","Turn your terminal into a MySQL-backed knowledge base — save, search, and quiz yourself on snippets and notes.",["zsh","MySQL","Free / OSS"],false],["zsh-git-acp","ga","Zsh Plugins","Stage, commit, and push in one keybinding — ZLE widgets that use the command line as your commit message, plus 159 git aliases.",["zsh","git","Free / OSS"],false],["zsh-git-repo-cache","rc","Zsh Plugins","Finds and caches every git repo on your machine for instant prompts and fzf-powered cd.",["zsh","git","fzf","Free / OSS"],false],["zsh-zinit-final","zf","Zsh Plugins","An intentionally-empty plugin that loads last under zinit — a deterministic carrier for trailing atinit/atload hooks.",["zsh","zinit","Free / OSS"],false],["zsh-sudo","su","Zsh Plugins","Toggle sudo on the current command line with a single keybind — prepend or strip without retyping.",["zsh","ZLE","Free / OSS"],false],["zsh-cargo-completion","cg","Zsh Plugins","Zsh tab-completion for Rust’s Cargo, with live crates.io search for add and install.",["zsh","completion","Free / OSS"],false],["zsh-cpan-completion","cpn","Zsh Plugins","Zsh completion that pulls live Perl module names from CPAN for cpan and cpanm.",["zsh","completion","Free / OSS"],false],["zsh-dotnet-completion","dn","Zsh Plugins","Zsh tab-completion and aliases for the .NET (dotnet) CLI.",["zsh","completion","Free / OSS"],false],["zsh-gem-completion","gm","Zsh Plugins","Zsh completion for Ruby’s gem, with live remote gem search on install.",["zsh","completion","Free / OSS"],false],["zsh-nginx","ng","Zsh Plugins","Zsh tab-completion for nginx commands.",["zsh","completion","Free / OSS"],false],["zsh-openshift-aliases","oc","Zsh Plugins","53 short aliases over the OpenShift oc CLI, plus login macros and oc completion.",["zsh","oc","Free / OSS"],false],["zsh-pip-description-completion","pp","Zsh Plugins","Zsh completion for pip with package version and description shown in the menu.",["zsh","completion","Free / OSS"],false],["zsh-sed-sub","sb","Zsh Plugins","A ZLE keybinding for global sed-style search-and-replace on the current command line.",["zsh","ZLE","Free / OSS"],false],["zsh-very-colorful-manuals","mn","Zsh Plugins","Renders man pages in cyberpunk ANSI colors via scoped LESS_TERMCAP_* injection.",["zsh","man","Free / OSS"],false]]
+  [["zpwr-patch-core","PC","Audio Plugins","The signal-agnostic modular patch-graph engine behind the MenkeTechnologies plugin stack — the shared cable-routing core powering zpwr-fx, zpwr-synth, and zpwr-midi-fx; 1,207 blocks (1,080 audio, 49 synth, 78 MIDI; 171 circuit-modeled).",["C++","JUCE","DSP engine","Free / OSS"],false],["fusevm","VM","Developer Tools","Language-agnostic bytecode VM with fused superinstructions and a three-tier Cranelift JIT — the engine behind stryke, zshrs, and awkrs.",["Rust","VM","JIT","Free / OSS"],false],["api-rest-generator","API","Developer Tools","Parses SQL DDL dumps and generates a fully-wired REST backend — Spring Boot (Java/Kotlin/Groovy) or Loco (Rust/Axum/SeaORM).",["codegen","JVM/Rust","Free / OSS"],false],["LearningCollectionAPI","LC","Developer Tools","A Spring Boot + Kotlin REST API for managing a personal collection of learning notes, backed by MySQL.",["Kotlin","Spring Boot","Free / OSS"],false],["stryke-demo","SD","Developer Tools","Live demo scripts for every stryke-* package — one .stk per package, one install pulls them all.",["stryke","demos","Free / OSS"],false],["VimColorSchemes","VC","Developer Tools","The largest curated Vim colorscheme bundle — 732 working :colorscheme targets in one plugin.",["Vim","732 themes","Free / OSS"],false],["zpwr","zp","Zsh Plugins","The world’s most advanced UNIX terminal environment — 500+ subcommands, 2000+ aliases, 40k completions, vim + tmux integration.",["zsh","terminal env","Free / OSS"],true],["zsh-more-completions","mc","Zsh Plugins","The largest curated zsh completion corpus in existence — 30k+ command completions wired into compsys.",["zsh","completions","Free / OSS"],false],["zsh-expand","ze","Zsh Plugins","The most powerful zsh expansion plugin — spacebar-expands aliases, globs, history, params, and typo fixes in pure zsh.",["zsh","expansion","Free / OSS"],true],["zsh-learn","zl","Zsh Plugins","Turn your terminal into a MySQL-backed knowledge base — save, search, and quiz yourself on snippets and notes.",["zsh","MySQL","Free / OSS"],false],["zsh-git-acp","ga","Zsh Plugins","Stage, commit, and push in one keybinding — ZLE widgets that use the command line as your commit message, plus 159 git aliases.",["zsh","git","Free / OSS"],false],["zsh-git-repo-cache","rc","Zsh Plugins","Finds and caches every git repo on your machine for instant prompts and fzf-powered cd.",["zsh","git","fzf","Free / OSS"],false],["zsh-zinit-final","zf","Zsh Plugins","An intentionally-empty plugin that loads last under zinit — a deterministic carrier for trailing atinit/atload hooks.",["zsh","zinit","Free / OSS"],false],["zsh-sudo","su","Zsh Plugins","Toggle sudo on the current command line with a single keybind — prepend or strip without retyping.",["zsh","ZLE","Free / OSS"],false],["zsh-cargo-completion","cg","Zsh Plugins","Zsh tab-completion for Rust’s Cargo, with live crates.io search for add and install.",["zsh","completion","Free / OSS"],false],["zsh-cpan-completion","cpn","Zsh Plugins","Zsh completion that pulls live Perl module names from CPAN for cpan and cpanm.",["zsh","completion","Free / OSS"],false],["zsh-dotnet-completion","dn","Zsh Plugins","Zsh tab-completion and aliases for the .NET (dotnet) CLI.",["zsh","completion","Free / OSS"],false],["zsh-gem-completion","gm","Zsh Plugins","Zsh completion for Ruby’s gem, with live remote gem search on install.",["zsh","completion","Free / OSS"],false],["zsh-nginx","ng","Zsh Plugins","Zsh tab-completion for nginx commands.",["zsh","completion","Free / OSS"],false],["zsh-openshift-aliases","oc","Zsh Plugins","53 short aliases over the OpenShift oc CLI, plus login macros and oc completion.",["zsh","oc","Free / OSS"],false],["zsh-pip-description-completion","pp","Zsh Plugins","Zsh completion for pip with package version and description shown in the menu.",["zsh","completion","Free / OSS"],false],["zsh-sed-sub","sb","Zsh Plugins","A ZLE keybinding for global sed-style search-and-replace on the current command line.",["zsh","ZLE","Free / OSS"],false],["zsh-very-colorful-manuals","mn","Zsh Plugins","Renders man pages in cyberpunk ANSI colors via scoped LESS_TERMCAP_* injection.",["zsh","man","Free / OSS"],false]]
     .forEach(function (e) { PRODUCTS.push(metaProduct(e[0], e[1], e[2], e[3], e[4], e[5])); });
 
   // Long-form detail copy (overview + rich features), ported from each repo's
@@ -440,7 +447,7 @@
       ]
     },
     "zpwr-synth": {
-      "overview": "A fully modular patch-graph synthesizer on the shared zpwr-patch-core engine: each voice is a free patch graph of 31 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H modulators, VCA/mixer), up to 16 stacked layers, with a per-param mod matrix and a master+2-aux FX-bus rack running the shared 340+-module audio pack. Not a fixed voice path.",
+      "overview": "A fully modular patch-graph synthesizer on the shared zpwr-patch-core engine: each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H modulators, VCA/mixer), up to 16 stacked layers, with a per-param mod matrix and a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Not a fixed voice path.",
       "features": [
         "Three per-voice oscillator slots (Basic, Virtual Analog, Wavetable)",
         "Band-limited PolyBLEP sine/saw/square/triangle oscillators",
@@ -451,7 +458,7 @@
         "Amp, filter, and assignable Env3 ADSR envelopes",
         "Three LFOs and four macros feeding a 12-slot mod matrix",
         "Up to 16 stackable layers, each its own voice pool",
-        "Master-FX bus: the shared 340+-module patch-core pack (incl. 90+ analog models) runs once on the summed output",
+        "Master-FX bus: the shared 1,080-module patch-core pack (incl. 171 analog models) runs once on the summed output",
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ],
       "screenshots": [
@@ -459,11 +466,11 @@
       ]
     },
     "zpwr-fx": {
-      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 340+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
+      "overview": "A modular patch-graph effects plugin — not a fixed slot rack. Wire 1,080+ DSP module types freely (fan-out and feedback allowed) into your own algorithms, with a per-param mod matrix, unlimited layers, and an EZ-wire mode that auto-routes the signal path. Built on the shared zpwr-patch-core engine.",
       "features": [
-        "340+ audio/synth module types across every effect family",
+        "1,080+ audio/synth module types across every effect family",
         "Free patch graph: any node to any node, feedback with one-sample delay",
-        "90+ analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
+        "171 analog-circuit models (registerAnalog), faithful topologies — no IR/sample clones",
         "Analog filters: Minimoog, Jupiter-8, MS-20, SEM, EMS VCS3, Wasp, TB-303",
         "Analog comps: 1176, LA-2A, Fairchild, dbx 160, SSL bus, Distressor",
         "Analog EQs/pre: Pultec, API 550, Neve 1073, SSL E/G, Manley + tube/tape",
@@ -477,9 +484,9 @@
       ]
     },
     "zpwr-midi-fx": {
-      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (56 MIDI module types), not a fixed slot rack.",
+      "overview": "A MIDI-effects plugin that transforms the note stream before it reaches an instrument — turning single keys into voiced chords, scale-locking for intelligent harmony, and running notes through a polymetric step arpeggiator with Euclidean rhythm generation. The same free-routed patch graph as zpwr-fx, instantiated on the note stream (78 MIDI module types), not a fixed slot rack.",
       "features": [
-        "56 note-stream module types in a free patch graph (not a fixed rack)",
+        "78 note-stream module types in a free patch graph (not a fixed rack)",
         "Single-key chord voicing from a runtime chord dictionary",
         "Chord inversion, octave-doubling, spread, transpose, strum",
         "Per-key chord mapping (Chromatic, Circle-of-Fifths, Lowest-Note)",
@@ -792,6 +799,111 @@
         "branch tables with first-match-wins coderef actions",
         "recipes are pure data, composable and unit-testable",
         "CLI fleet.stk for one-shot expect/exchange loops"
+      ]
+    },
+    "stryke-clickhouse": {
+      "overview": "ClickHouse client for stryke as an opt-in cdylib, running SELECTs, bulk-inserting via JSONEachRow, managing databases/tables, and introspecting the schema against any ClickHouse server over its HTTP interface (port 8123).",
+      "features": [
+        "query / query_rows / query_row / query_value result peeling",
+        "bulk insert via JSONEachRow from an array of row hashes",
+        "create_table with column spec and ORDER BY engine options",
+        "count and scalar aggregate helpers",
+        "database and table create / drop / list admin",
+        "schema introspection of columns and types",
+        "HTTP Basic auth, TLS, and per-request ClickHouse settings",
+        "identifier and value escaping"
+      ]
+    },
+    "stryke-email": {
+      "overview": "Transactional and campaign email for stryke as a cdylib over lettre + rustls (no tokio), sending through your own authenticated SMTP with a pooled SmtpTransport cached per (host, port, tls, user).",
+      "features": [
+        "send a single message with text and HTML bodies",
+        "send_bulk personalized mass mailing",
+        "{{merge}} template fields substituted per recipient",
+        "List-Unsubscribe headers for one-click opt-out",
+        "suppression lists via suppress_filter",
+        "per-send rate limiting",
+        "your own authenticated SMTP — no third-party relay",
+        "pooled transport cached per (host, port, tls, user)"
+      ]
+    },
+    "stryke-mssql": {
+      "overview": "Microsoft SQL Server / Azure SQL client for stryke as a cdylib over tiberius (the pure-Rust TDS driver), with parametrized query/execute, transaction batches, and schema introspection against SQL Server 2012+ or Azure SQL.",
+      "features": [
+        "query with @P1/@P2 positional params",
+        "execute for DML/DDL statements",
+        "batch transaction execution",
+        "scalar and exists single-value helpers",
+        "schema introspection of tables and columns",
+        "ADO connection string or host/port/database params",
+        "encrypt modes (required/off/not_supported)",
+        "dev self-signed cert trust"
+      ]
+    },
+    "stryke-neo4j": {
+      "overview": "Neo4j graph database client for stryke as a cdylib over neo4rs (the pure-Rust Bolt driver), with parametrized Cypher query and run, scalar/row helpers, and schema introspection against Neo4j 4.x/5.x.",
+      "features": [
+        "parametrized Cypher query returning rows",
+        "run for write statements",
+        "scalar single-value helper",
+        "labels, relationship types, property keys introspection",
+        "index and constraint listing",
+        "Bolt URIs: neo4j://, neo4j+s://, bolt://",
+        "multi-database selection",
+        "credential redaction in errors"
+      ]
+    },
+    "stryke-scrape": {
+      "overview": "Web scraping and crawling client for stryke as a cdylib: fetch a page, crawl a site (robots-respecting, depth/limit/subdomain bounded), discover via sitemap, then extract with CSS selectors, tables, links, and structured data.",
+      "features": [
+        "fetch a single page",
+        "crawl with robots, depth, limit, and subdomain bounds",
+        "sitemap discovery",
+        "select / extract / extract_text CSS extraction",
+        "extract_table to records; extract_links / extract_images",
+        "structured data: JSON-LD, OpenGraph, Twitter cards",
+        "extract_feeds and extract_meta tags",
+        "url_parse / url_encode / url_decode / absolutize helpers"
+      ]
+    },
+    "stryke-scylla": {
+      "overview": "ScyllaDB / Apache Cassandra client for stryke as a cdylib over the native CQL binary protocol, running CQL queries, managing keyspaces and tables, and introspecting the schema against any ScyllaDB or Cassandra cluster.",
+      "features": [
+        "query and execute CQL statements",
+        "create_keyspace and create_table DDL",
+        "count helper",
+        "schema introspection of keyspaces and tables",
+        "multiple contact points / nodes",
+        "PasswordAuthenticator auth",
+        "session keyspace selection on connect",
+        "identifier and value escaping"
+      ]
+    },
+    "stryke-search": {
+      "overview": "Elasticsearch / OpenSearch client for stryke as a cdylib over the shared REST API, covering index administration, document CRUD, bulk indexing, the query DSL, scroll, aliases, and cluster health against Elasticsearch 7+/8+ or OpenSearch 1+/2+.",
+      "features": [
+        "search with match / range / bool query builders",
+        "count documents by query",
+        "doc_index and document CRUD",
+        "bulk indexing via NDJSON",
+        "index_create / index_refresh administration",
+        "aggregations: agg_terms and search_aggs",
+        "sort and query_body DSL helpers",
+        "API key or HTTP Basic auth, TLS"
+      ]
+    },
+    "zpwr-patch-core": {
+      "overview": "The signal-agnostic modular patch-graph engine shared by zpwr-fx, zpwr-synth, and zpwr-midi-fx — a cable-routing core templated on the signal type (SignalTraits<S>) that knows nothing about audio or MIDI; each host supplies a ModuleRegistry and the external source values. 1,207 blocks total: 1,080 audio, 49 synth, 78 MIDI, of which 171 are circuit-modeled.",
+      "features": [
+        "Signal-agnostic graph templated on SignalTraits<S> (audio float / MIDI note-stream)",
+        "1,080-block audio pack: filters, delays, reverbs, distortion, dynamics, modulation, oscillators, sequencers",
+        "171 circuit-modeled blocks (ZDF ladders/SVFs, Shockley/Ebers-Moll clippers, Koren triode/EL34, Jiles-Atherton tape)",
+        "Per-param mod matrix and per-cable gain + colour",
+        "ScriptEngine RT-safe expression VM exposed as the Expr module",
+        "EZ-wire auto-routing (autoWireChain) for linear hosts",
+        "Shared WebEditor WebView backend: catalog/patch JSON, preset I/O, ~30 native functions",
+        "SynthMaster-style tag/category preset browser with facet columns",
+        "Auto-generated BLOCKS.md catalog from the registration sites — counts never hand-typed"
       ]
     },
     "api-rest-generator": {

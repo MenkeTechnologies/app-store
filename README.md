@@ -12,7 +12,7 @@ Plugins, stryke Packages):
 - **Paid** — `audio haxor`, `traderview`, `zpwr-synth`, `zpwr-fx`,
   `zpwr-midi-fx`.
 - **Free / open source** — everything else: `zshrs`, `stryke`, the Rust CLI
-  tools, the **stryke package ecosystem** (23 packages), `zpwr`,
+  tools, the **stryke package ecosystem** (30 packages), `zpwr`,
   `zsh-more-completions`, `fusevm`, and the rest of the zsh-plugin family.
 
 **Third-party forks are intentionally excluded** (`fzf-tab`, `zsh-z`, `zunit`,
@@ -33,7 +33,7 @@ The download target is chosen automatically:
 
 - Distinct products (apps, plugins, CLI tools) are explicit objects in the
   `PRODUCTS` array.
-- The 23 stryke packages are generated from a compact table via `strykePkg()`.
+- The 30 stryke packages are generated from a compact table via `strykePkg()`.
 - The other repos (zsh plugins, dev tools) are generated via `metaProduct()`.
 - Long-form detail copy (`overview` + rich `features`) lives in the `DETAILS`
   map — ported from each repo's README/source — and is merged into `PRODUCTS`
