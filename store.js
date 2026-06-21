@@ -47,8 +47,8 @@
       glyph: 'S',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', 'macOS/Linux/Win'],
+      tagline: 'A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 1,080-module audio pack. Shipping as VST3, AU, CLAP, and Standalone.',
+      pills: ['JUCE', 'VST3/AU/CLAP/Standalone', 'Fully modular', 'macOS/Linux/Win'],
       price: 149,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 149 },
@@ -64,8 +64,8 @@
       glyph: 'F',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A fully modular patch-graph effects plugin built on JUCE — wire 1,080+ DSP modules (including 171 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', '1,080+ modules', '171 analog models'],
+      tagline: 'A fully modular patch-graph effects plugin built on JUCE — wire 1,080+ DSP modules (including 171 analog-circuit models) into your own algorithms, with a per-param mod matrix and EZ-wire auto-routing. Shipping as VST3, AU, CLAP, and Standalone.',
+      pills: ['JUCE', 'VST3/AU/CLAP/Standalone', '1,080+ modules', '171 analog models'],
       price: 79,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 79 },
@@ -81,8 +81,8 @@
       glyph: 'M',
       category: 'Audio Plugins',
       badge: 'NEW',
-      tagline: 'A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 78 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, and CLAP.',
-      pills: ['JUCE', 'VST3/AU/CLAP', 'Fully modular', '78 modules'],
+      tagline: 'A fully modular MIDI-effects plugin built on JUCE — the same free patch-graph engine as zpwr-fx, instantiated on the note stream: 78 modules (arp, chord, scale, Euclidean/generative seq, humanize, remap) wired into your own MIDI algorithm. Shipping as VST3, AU, CLAP, and Standalone.',
+      pills: ['JUCE', 'VST3/AU/CLAP/Standalone', 'Fully modular', '78 modules'],
       price: 79,
       tiers: [
         { name: 'Personal', desc: 'Single user, all formats', price: 79 },
