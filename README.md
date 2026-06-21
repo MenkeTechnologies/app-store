@@ -115,7 +115,7 @@ HTML sanity check on every push and pull request.
 | `docs/zpwr-patch-core-block-catalog.pdf` | Block catalog reference linked from the zpwr-fx / zpwr-synth / zpwr-midi-fx product pages (`docs[]` in `store.js`) |
 | `store.js`      | Product catalog (single source of truth) + grid/cart/checkout |
 | `store.css`     | Commerce surfaces (cards, prices, cart, modal, checkout)      |
-| `hud-static.css`| Vendored design system — CSS variables, header, buttons, CRT  |
+| `hud-static.css` | Vendored design system — CSS variables, header, buttons, CRT  |
 | `tutorial.css`  | Vendored section / card / animation styles                    |
 | `hud-theme.js`  | Theme / CRT / neon toggles + color-scheme switcher            |
 
