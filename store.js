@@ -361,7 +361,7 @@
         "Built-in auto-update; pure-Rust core with no UI dependency for embedding"
       ],
       "screenshots": [
-        { "src": "assets/ztranslator.png", "cap": "Translator table mapping incoming MIDI/OSC/DMX triggers to outgoing actions" }
+        { "src": "assets/ztranslator.webp", "cap": "Translator table mapping incoming MIDI/OSC/DMX triggers to outgoing actions" }
       ]
     },
     "awkrs": {
