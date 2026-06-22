@@ -247,6 +247,14 @@
   line-height: 1.5;
   flex: 1;
 }
+/* fzf fuzzy-match highlight (mark.fzf-hl), same treatment as audio haxor. */
+.fzf-hl {
+  background: color-mix(in srgb, var(--cyan) 15%, transparent);
+  color: var(--cyan);
+  border-bottom: 1px solid var(--cyan);
+  padding: 0;
+  border-radius: 0;
+}
 .p-meta {
   display: flex;
   flex-wrap: wrap;

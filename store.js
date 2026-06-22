@@ -1299,7 +1299,14 @@
     return out;
   }
 
-  function cardHtml(p) {
+  // fzf match highlight: wrap matched chars in <mark class="fzf-hl"> (same as
+  // haxor). Only when there's a query and fzf.js loaded; otherwise raw text.
+  function hl(text, q) {
+    if (!q || !window.FZF) return text;
+    return window.FZF.highlightWithIndices(text, window.FZF.getMatchIndices(q, text));
+  }
+
+  function cardHtml(p, q) {
     var tier = (p.tiers && p.tiers[0]) || { price: p.price };
     var badge = p.badge
       ? '<span class="badge' + (p.badge === 'WORLD FIRST' ? ' first' : '') + '">' + p.badge + '</span>'
@@ -1316,8 +1323,8 @@
         '<div class="product-thumb' + (p.screenshots ? ' has-shot' : '') + '">' + badge + shot + '</div>' +
         '<div class="product-body">' +
           '<span class="p-cat">' + p.category + '</span>' +
-          '<span class="p-name">' + p.name + '</span>' +
-          '<span class="p-tag">' + p.tagline + '</span>' +
+          '<span class="p-name">' + hl(p.name, q) + '</span>' +
+          '<span class="p-tag">' + hl(p.tagline, q) + '</span>' +
           '<div class="p-meta">' + pills + '</div>' +
         '</div>' +
         '<div class="product-foot">' +
@@ -1353,7 +1360,7 @@
       grid.innerHTML = '<div class="empty-state">no products match that search</div>';
       return;
     }
-    grid.innerHTML = list.map(cardHtml).join('');
+    grid.innerHTML = list.map(function (p) { return cardHtml(p, q); }).join('');
     // Stagger the entrance animation.
     var cards = grid.querySelectorAll('.product-card');
     for (var i = 0; i < cards.length; i++) {
