@@ -493,7 +493,9 @@
         "Factory presets: Hypersaw Lead, Fat Detune Bass, Wavetable Pad, PWM Strings, Acid Line"
       ],
       "screenshots": [
-        { "src": "assets/zpwr-synth.webp", "cap": "Modular patch-graph synth UI" }
+        { "src": "assets/zsynth-synth.webp", "cap": "Synth view: per-voice oscillator, filter, and envelope panel" },
+        { "src": "assets/zsynth-patch.webp", "cap": "Patch view: modular patch-graph wiring of the 49-module voice" },
+        { "src": "assets/zsynth-peform.webp", "cap": "Perform view: macros, mod matrix, and layer controls" }
       ]
     },
     "zpwr-fx": {
