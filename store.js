@@ -60,7 +60,7 @@
       glyph: 'S',
       category: 'Audio Plugins',
       badge: 'WORLD FIRST',
-      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), up to 16 layers, plus a master+2-aux FX-bus rack running the shared 1,297-module audio pack. Shipping as VST3, AU, CLAP, and Standalone.',
+      tagline: 'Part of the first fully-modular plugin trio to pair free patch-graph wiring with a no-cable knob panel, one-click EZ auto-wiring, and stereo-mirror + offset-preserving stereo link. A fully modular patch-graph synthesizer built on JUCE — each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H, VCA), unlimited layers, plus a master + unlimited-aux FX-bus rack running the shared 1,297-module audio pack. Shipping as VST3, AU, CLAP, and Standalone.',
       pills: ['JUCE', 'VST3/AU/CLAP/Standalone', 'Fully modular', 'macOS/Linux/Win'],
       price: 149,
       tiers: [
@@ -481,7 +481,7 @@
       ]
     },
     "zpwr-synth": {
-      "overview": "A fully modular patch-graph synthesizer on the shared zpwr-patch-core engine: each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H modulators, VCA/mixer), up to 16 stacked layers, with a per-param mod matrix and a master+2-aux FX-bus rack running the shared 1,297-module audio pack. Not a fixed voice path.",
+      "overview": "A fully modular patch-graph synthesizer on the shared zpwr-patch-core engine: each voice is a free patch graph of 49 modules (VA/wavetable/FM/additive/supersaw/Karplus oscillators, filters, ADSR/LFO/S&H modulators, VCA/mixer), unlimited stacked layers, with a per-param mod matrix and a master + unlimited-aux FX-bus rack running the shared 1,297-module audio pack. Not a fixed voice path.",
       "features": [
         "World first: one of the first fully-modular plugin trio to pair patch-graph wiring with a no-cable knob panel, EZ auto-wiring, and stereo mirror + offset-preserving stereo link",
         "Oscillator modules — virtual-analog, wavetable, FM, additive, supersaw, Karplus-Strong — wired freely into each voice's patch graph",
@@ -492,7 +492,7 @@
         "TPT state-variable filter: lowpass, highpass, bandpass",
         "ADSR / LFO / sample-and-hold modulator modules, freely routable to any parameter",
         "Modulation by patching — route any modulator to any parameter, no fixed mod-matrix slot limit",
-        "Up to 16 stackable layers, each its own voice pool",
+        "Unlimited stackable layers, each its own voice pool",
         "Master-FX bus: the shared 1,297-module patch-core pack (incl. 171 analog models) runs once on the summed output",
         "256 general factory presets (two 128-voice banks) plus Trance, Hard Techno, and Schranz genre banks"
       ],
