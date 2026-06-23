@@ -87,6 +87,7 @@
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
       docs: [
+        { label: 'Manual (PDF)', desc: 'The zpwr-fx manual — shared-engine architecture overview + per-module node & parameter reference, generated from the live registry.', url: 'docs/zpwr-fx-reference.pdf' },
         { label: 'Block Catalog (PDF)', desc: 'Every DSP block zpwr-fx ships — the full audio patch-graph pack incl. 171 analog-circuit models.', url: 'docs/zpwr-fx-block-catalog.pdf' },
         { label: 'Full Catalog (PDF)', desc: 'The complete shared patch-graph reference — every block across all three plugins (1457 modules), with an alphabetical index.', url: 'docs/zpwr-patch-core-block-catalog.pdf' },
       ],
@@ -105,6 +106,7 @@
         { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 89 },
       ],
       docs: [
+        { label: 'Manual (PDF)', desc: 'The zpwr-midi-fx manual — shared-engine architecture overview + per-module node & parameter reference, generated from the live registry.', url: 'docs/zpwr-midi-fx-reference.pdf' },
         { label: 'Block Catalog (PDF)', desc: 'Every block zpwr-midi-fx ships — its note-stream module pack (arp, chord, scale, Euclidean/generative seq, humanize, remap).', url: 'docs/zpwr-midi-fx-block-catalog.pdf' },
         { label: 'Full Catalog (PDF)', desc: 'The complete shared patch-graph reference — every block across all three plugins (1457 modules), with an alphabetical index.', url: 'docs/zpwr-patch-core-block-catalog.pdf' },
       ],
