@@ -55,6 +55,20 @@
       ],
     },
     {
+      id: 'zpwr-daw',
+      name: 'zpwr-daw',
+      glyph: 'D',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A two-view DAW built on one generalized grid engine — an Arrangement timeline (tracks, clips, sections, tempo/meter maps, markers, breakpoint automation) and a Session clip launcher (scenes, follow actions) — driven by a pure C++ ClipEngine on a swung audio-thread step clock that keeps playing even when the host window is minimised. Note, automation and trigger clips on one canvas, with byte-identical C++/JS MIDI export and JSON project save. Host-agnostic core (JUCE + Tauri) with a C ABI + Rust bindings.',
+      pills: ['Arrangement + Session', 'Note · automation · trigger clips', 'MIDI/JSON export', 'JUCE + Tauri'],
+      price: 199,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms', price: 199 },
+        { name: 'Studio', desc: 'Commercial use; updates within this major version', price: 399 },
+      ],
+    },
+    {
       id: 'zpwr-synth',
       name: 'zpwr-synth',
       glyph: 'S',
@@ -480,6 +494,21 @@
         "Wappalyzer-compatible detection, 3,993-fingerprint corpus",
         "Full-page screenshot capture with OffscreenCanvas stitching",
         "54 commands; 2993 node:test + 117 cargo test cases"
+      ]
+    },
+    "zpwr-daw": {
+      "overview": "A two-view DAW built on one generalized grid engine — one canvas renderer, one interaction model, one value model, bound to a domain (notes / arrangement / automation / triggers). An Arrangement timeline and a Session clip launcher share the same engine: a pure C++ ClipEngine with a swung audio-thread step clock, reachable directly from C++ and from Rust over a C ABI. Formerly zpwr-clip-engine; the clip / arranger engine behind the MenkeTechnologies audio stack.",
+      "features": [
+        "Two-view DAW: an Arrangement timeline and a Session clip launcher on one engine",
+        "Arrangement: tracks, clips, sections, tempo / meter maps, markers, breakpoint automation",
+        "Session: scene launching with follow actions",
+        "One generalized grid engine over notes / arrangement / automation / trigger domains",
+        "Pure C++ ClipEngine — JUCE-free pattern model, swung step clock, event queue",
+        "Native audio-thread step clock keeps playing when the host window is minimised",
+        "Byte-identical C++/JS Type-0 MIDI export plus JSON project save / load",
+        "Host-agnostic frontend: JUCE WebBrowserComponent and Tauri invoke bridges",
+        "C ABI (FFI) with Rust bindings so Rust hosts drive the same engine the plugins do",
+        "Shared across the stack — the CLIP tab in zpwr-synth / fx / midi-fx and the timelines in ztranslator / Audio-Haxor"
       ]
     },
     "zpwr-synth": {
@@ -1240,6 +1269,19 @@
     sites.push({ label: 'Engineering Report', desc: 'Architecture & engineering report', url: base + 'report.html' });
     p.docsite = sites;
   });
+
+  // zpwr-daw is a private/proprietary product, so it has no github.io/zpwr-daw
+  // Pages site of its own — its docs are vendored into the meta umbrella and
+  // served from menketechnologies.github.io/MenkeTechnologiesMeta/zpwr-daw/.
+  (function () {
+    var p = byId('zpwr-daw');
+    if (!p) return;
+    var base = 'https://menketechnologies.github.io/MenkeTechnologiesMeta/zpwr-daw/';
+    p.docsite = [
+      { label: 'Documentation', desc: 'Project documentation site', url: base },
+      { label: 'Engineering Report', desc: 'Architecture & engineering report', url: base + 'report.html' },
+    ];
+  })();
 
   // ---- Helpers --------------------------------------------------------
   var CART_KEY = 'appstore-cart';
