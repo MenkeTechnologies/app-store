@@ -1,4 +1,19 @@
-# app-store
+```
+    _    ____  ____    ____ _____ ___  ____  _____
+   / \  |  _ \|  _ \  / ___|_   _/ _ \|  _ \| ____|
+  / _ \ | |_) | |_) | \___ \ | || | | | |_) |  _|
+ / ___ \|  __/|  __/   ___) || || |_| |  _ <| |___
+/_/   \_\_|   |_|     |____/ |_| \___/|_| \_\_____|
+```
+
+![Static](https://img.shields.io/badge/static-HTML%20%2F%20CSS%20%2F%20JS-05d9e8?style=flat-square)
+![No build](https://img.shields.io/badge/build-none-39ff14?style=flat-square)
+![GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-ff2a6d?style=flat-square)
+![MenkeTechnologies](https://img.shields.io/badge/MenkeTechnologies-storefront-d300c5?style=flat-square)
+
+### `[MENKETECHNOLOGIES APP STORE // DEPENDENCY-FREE STATIC STOREFRONT FOR THE ENTIRE CATALOG]`
+
+> *"One catalog, every product, no backend."*
 
 [![CI](https://github.com/MenkeTechnologies/app-store/actions/workflows/ci.yml/badge.svg)](https://github.com/MenkeTechnologies/app-store/actions/workflows/ci.yml)
 
@@ -9,7 +24,7 @@ Every MenkeTechnologies-authored repo in the meta collection is listed, across
 six categories (Desktop Apps, Audio Plugins, Developer Tools, CLI Tools, Zsh
 Plugins, stryke Packages):
 
-- **Paid** — `audio haxor`, `traderview`, `zpwr-synth`, `zpwr-fx`,
+- **Paid** — `audio haxor`, `traderview`, `zpwr-daw`, `zpwr-synth`, `zpwr-fx`,
   `zpwr-midi-fx`.
 - **Free / open source** — everything else: `zshrs`, `stryke`, the Rust CLI
   tools, the **stryke package ecosystem** (30 packages), `zpwr`,
