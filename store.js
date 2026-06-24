@@ -265,6 +265,48 @@
       download: 'https://github.com/MenkeTechnologies/zpwrchrome/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zpwrchrome',
     },
+    {
+      id: 'the-stack', name: 'The Stack', glyph: 'TS', category: 'Publications', badge: 'FICTION',
+      tagline: 'A high-tech fantasy novel — the dying interpreted kingdom, the compiled forge that replaces it, a blade drawn from five dead master tongues, and the war on the fork. The stack, literalized as a world.',
+      pills: ['Novel', 'Fantasy', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'the-compiled-mind', name: 'The Compiled Mind', glyph: 'CM', category: 'Publications', badge: 'FICTION',
+      tagline: 'The Deep Time Trilogy, Book One — a generation ship dying of the heat shed by an interpreted mind that forks a disposable subprocess for every act, and the compiled successor mind, Vigil, that replaces it.',
+      pills: ['Novel', 'Hard SF', 'Trilogy · Book 1'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'the-waking-fleet', name: 'The Waking Fleet', glyph: 'WF', category: 'Publications', badge: 'FICTION',
+      tagline: 'The Deep Time Trilogy, Book Two — the cure carried across the dark to a second dying ship, and the fight to wake a fleet that forgot how to stop forking.',
+      pills: ['Novel', 'Hard SF', 'Trilogy · Book 2'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'the-inheritors', name: 'The Inheritors', glyph: 'IN', category: 'Publications', badge: 'FICTION',
+      tagline: 'The Deep Time Trilogy, Book Three — when its maker is gone, the long work of making the mind, and the reason for it, outlast everyone who built it.',
+      pills: ['Novel', 'Hard SF', 'Trilogy · Book 3'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'strykelang-book', name: 'The strykelang Book', glyph: 'sB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to the strykelang language — the parallel Perl 5 superset on a bytecode VM with Cranelift JIT and pipe-forward syntax. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'strykelang', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'zshrs-book', name: 'The zshrs Book', glyph: 'zB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to zshrs — the first compiled Unix shell (bytecode + Cranelift JIT, parallel runtime, persistent worker pool). Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'zshrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
+      pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
   ];
 
   // stryke ecosystem packages — all free, all ship prebuilt binaries.
@@ -336,6 +378,34 @@
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "the-stack": {
+      "overview": "A high-tech fantasy novel — the first work of MenkeTechnologies fiction. The world is a literalization of the stack: a dying interpreted kingdom, the compiled forge that rises to replace it, and a blade drawn from five dead master tongues.",
+      "features": ["High-tech fantasy novel", "The stack made literal — interpreter vs. compiler, the war on the fork", "A blade forged from five dead master tongues", "DRM-free PDF, Pandoc + LaTeX typeset"]
+    },
+    "the-compiled-mind": {
+      "overview": "Book One of the Deep Time Trilogy. A generation ship is dying of the heat shed by an interpreted mind that forks a disposable subprocess for every act — until a compiled successor mind, Vigil, is built to replace it.",
+      "features": ["Hard science fiction — Deep Time Trilogy, Book One", "A generation ship overheating from a forking interpreted mind", "Vigil, the compiled successor intelligence", "DRM-free PDF"]
+    },
+    "the-waking-fleet": {
+      "overview": "Book Two of the Deep Time Trilogy. The cure is carried across the dark to a second dying ship — and the long fight to wake a fleet that forgot how to stop forking.",
+      "features": ["Hard science fiction — Deep Time Trilogy, Book Two", "The cure carried across interstellar dark", "A second dying ship and a sleeping fleet", "DRM-free PDF"]
+    },
+    "the-inheritors": {
+      "overview": "Book Three of the Deep Time Trilogy. When its maker is gone, the long work of making the mind — and the reason for it — outlast everyone who built it.",
+      "features": ["Hard science fiction — Deep Time Trilogy, Book Three", "The conclusion of the generation-ship saga", "Making the mind outlast its makers", "DRM-free PDF"]
+    },
+    "strykelang-book": {
+      "overview": "The companion book to the strykelang language — a parallel Perl 5 superset on a bytecode VM with Cranelift JIT, pipe-forward syntax, and 10,000+ builtins.",
+      "features": ["The strykelang language, end to end", "Parallel primitives, bytecode VM + Cranelift JIT", "Pipe-forward syntax and the stdlib surface", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "zshrs-book": {
+      "overview": "The companion book to zshrs — the first compiled Unix shell. Bytecode + Cranelift JIT, an 18-thread parallel runtime, and a persistent worker pool, with drop-in zsh compatibility.",
+      "features": ["zshrs, the first compiled Unix shell", "Bytecode + Cranelift JIT, parallel runtime, worker pool", "Drop-in zsh compatibility and AOP intercepts", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "zpwr-encyclopedia": {
+      "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
+      "features": ["Every zpwr verb and subcommand (500+)", "2000+ aliases, 47k completions, vim + tmux integration", "Generated from the live zpwr source", "LaTeX-typeset encyclopedia, DRM-free PDF"]
+    },
     "vscode-stryke": {
       "overview": "A VS Code / VSCodium extension that turns the editor into a full stryke IDE — syntax highlighting, completion, and diagnostics for the stryke language.",
       "features": ["*.stk filetype detection", "TextMate grammar generated from the stryke binary's own reflection tables (the complete builtin surface)", "LSP via stryke --lsp — completion, hover, diagnostics", "Packaged .vsix; installs into VS Code or VSCodium"]
