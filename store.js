@@ -42,6 +42,20 @@
       ],
     },
     {
+      id: 'zoffice',
+      name: 'zoffice',
+      glyph: 'O',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch office suite in Rust — documents, spreadsheets, and presentations — behind a cyberpunk HUD, replacing Microsoft Office. Its pure-Rust zoffice-core engine is extracted so the same office engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'Docs · sheets · slides', 'Embeddable core'],
+      price: 99,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms', price: 99 },
+        { name: 'Pro', desc: 'Commercial use; updates within this major version', price: 199 },
+      ],
+    },
+    {
       id: 'audio-haxor',
       name: 'audio haxor',
       glyph: 'A',
