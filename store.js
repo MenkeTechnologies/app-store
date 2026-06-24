@@ -336,6 +336,42 @@
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "zpdf": {
+      "overview": "A from-scratch PDF editor in Rust (Tauri v2 desktop app) that replaces Adobe Acrobat and macOS Preview — full document editing, annotation, forms, and signatures behind a cyberpunk HUD. Its pure-Rust zpdf-core engine is extracted so the same PDF engine embeds inside the other apps.",
+      "features": [
+        "Full PDF editing — text, images, and objects on parsed content streams",
+        "Annotation & markup — highlight, notes, shapes, freehand ink, stamps, measure",
+        "AcroForms — create, fill, and flatten form fields",
+        "Digital & certificate signatures — sign and validate",
+        "OCR — recognize text into a searchable layer",
+        "Redaction that truly removes content, plus sanitize hidden data",
+        "Page management — insert / delete / extract / merge / split / rotate / crop",
+        "Convert & export — Office formats, images, text, PDF/A",
+        "Embeddable zpdf-core engine (rlib + staticlib + cdylib) — embeds into traderview and the other GUI apps"
+      ]
+    },
+    "zemail": {
+      "overview": "A from-scratch desktop email client in Rust (Tauri v2) behind a cyberpunk HUD — a fast, owned mail app. Its pure-Rust zemail-core engine is extracted so the same mail engine embeds across the GUI stack.",
+      "features": [
+        "Desktop email client in Rust + Tauri v2",
+        "RFC 5322 / MIME message parsing",
+        "IMAP read + SMTP send mail transport",
+        "Cyberpunk HUD interface",
+        "Embeddable zemail-core engine (rlib + staticlib + cdylib)",
+        "Owned, no-subscription desktop mail"
+      ]
+    },
+    "zoffice": {
+      "overview": "A from-scratch office suite in Rust (Tauri v2 desktop app) that replaces Microsoft Office — documents, spreadsheets, and presentations behind a cyberpunk HUD. Its pure-Rust zoffice-core engine is extracted so the same office engine embeds inside the other apps.",
+      "features": [
+        "Documents, spreadsheets, and presentations in one suite",
+        "Reads ODF and OOXML (Word / Excel / PowerPoint) formats",
+        "Rust office engine — Writer / Calc / Impress / Draw / Math / Base",
+        "Cyberpunk HUD interface",
+        "Embeddable zoffice-core engine (rlib + staticlib + cdylib)",
+        "Owned, no-subscription office suite"
+      ]
+    },
     "zshrs": {
       "overview": "A drop-in zsh replacement written in Rust that compiles shell commands to bytecode and runs them on a virtual machine instead of forking, with a persistent worker thread pool replacing fork+exec. Framed as the first compiled Unix shell.",
       "features": [
