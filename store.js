@@ -14,6 +14,34 @@
   // ---- Catalog --------------------------------------------------------
   var PRODUCTS = [
     {
+      id: 'zpdf',
+      name: 'zpdf',
+      glyph: 'P',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch PDF editor that replaces Adobe Acrobat and macOS Preview — full document editing, annotation & markup, AcroForms fill/flatten, digital & certificate signatures, OCR, redaction, page management (merge/split/extract/rotate/crop), and convert/export — in Rust behind a cyberpunk HUD. Its pure-Rust zpdf-core engine is extracted so it embeds inside the other apps.',
+      pills: ['Tauri v2', 'Rust', 'Edit · annotate · sign', 'Embeddable core'],
+      price: 99,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms', price: 99 },
+        { name: 'Pro', desc: 'Commercial use; updates within this major version', price: 199 },
+      ],
+    },
+    {
+      id: 'zemail',
+      name: 'zemail',
+      glyph: 'E',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch email client in Rust behind a cyberpunk HUD — a fast, owned desktop mail app. Its pure-Rust zemail-core engine is extracted so the same mail engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'Desktop mail', 'Embeddable core'],
+      price: 99,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms', price: 99 },
+        { name: 'Pro', desc: 'Commercial use; updates within this major version', price: 199 },
+      ],
+    },
+    {
       id: 'audio-haxor',
       name: 'audio haxor',
       glyph: 'A',
