@@ -15,6 +15,8 @@
 
 > *"One catalog, every product, no backend."*
 
+### [`Read the Docs`](https://menketechnologies.github.io/MenkeTechnologiesMeta/app-store) &middot; [`Engineering Report`](https://menketechnologies.github.io/MenkeTechnologiesMeta/app-store/report)
+
 [![CI](https://github.com/MenkeTechnologies/app-store/actions/workflows/ci.yml/badge.svg)](https://github.com/MenkeTechnologies/app-store/actions/workflows/ci.yml)
 
 MenkeTechnologies App Store — a static storefront for the MenkeTechnologies
