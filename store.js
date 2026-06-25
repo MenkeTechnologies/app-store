@@ -173,6 +173,19 @@
       ],
     },
     {
+      id: 'zterm',
+      name: 'zterm',
+      glyph: 'TE',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A GPU-accelerated terminal emulator in Rust — forked from the Alacritty OpenGL rendering core and built out. Cross-platform across BSD, Linux, macOS, and Windows, with sensible defaults, extensive TOML configuration, and high-throughput VTE performance. An owned, paid terminal for the MenkeTechnologies stack.',
+      pills: ['Rust', 'OpenGL GPU', 'BSD/Linux/macOS/Win', 'Alacritty-based'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zpwr-daw',
       name: 'zpwr-daw',
       glyph: 'D',
@@ -742,6 +755,17 @@
         "Compiled-native (not Electron / not a TUI)",
         "Cross-platform — macOS, Linux, and Windows",
         "Embeddable zcontainer-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ]
+    },
+    "zterm": {
+      "overview": "A GPU-accelerated terminal emulator in Rust, forked from the Alacritty OpenGL rendering core and built out for the MenkeTechnologies stack. Sensible defaults with extensive configuration, high VTE throughput, and cross-platform support.",
+      "features": [
+        "OpenGL GPU-accelerated rendering",
+        "Cross-platform — BSD, Linux, macOS, and Windows",
+        "Extensive TOML configuration",
+        "High-throughput VTE performance",
+        "Built on the Alacritty rendering core, extended",
+        "Owned, paid terminal for the stack"
       ]
     },
     "awkrs": {
