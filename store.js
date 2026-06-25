@@ -300,7 +300,7 @@
       pills: ['Rust', 'VimL', 'fusevm JIT', 'Free / OSS'],
       price: 0,
       tiers: [
-        { name: 'Open Source', desc: 'Vim licensed', price: 0 },
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
       ],
       download: 'https://github.com/MenkeTechnologies/vimlrs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/vimlrs',
@@ -697,7 +697,7 @@
         "Vim-native value types ported: list, dict (insertion-ordered), blob, typval",
         "rkyv-backed bytecode script cache, mmap hot path — versioned from day one",
         "Standalone binary; DAP debugger and LSP server planned",
-        "Free / OSS — Vim-licensed (a faithful port inherits the Vim license)"
+        "Free / OSS — MIT licensed"
       ]
     },
     "audio-haxor": {
