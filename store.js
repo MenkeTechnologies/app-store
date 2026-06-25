@@ -97,6 +97,58 @@
       ],
     },
     {
+      id: 'zcite',
+      name: 'zcite',
+      glyph: 'C',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch reference manager in Rust behind a cyberpunk HUD, replacing Zotero — library, collections, tags, and saved searches; citations & bibliographies in APA / MLA / Chicago / IEEE; BibTeX / RIS / CSL-JSON import-export; DOI / ISBN / PMID lookup; and duplicate detection. Its pure-Rust zcite-core engine is extracted so the same reference engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'Cite · BibTeX · DOI', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
+      id: 'zreq',
+      name: 'zreq',
+      glyph: 'R',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch API client in Rust behind a cyberpunk HUD, replacing Postman — workspaces, collections, and requests; environments, variables, and auth; HTTP execution with history; code generation; and import/export. Its pure-Rust zreq-core engine is extracted so the same request engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'HTTP · auth · codegen', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
+      id: 'ztunnel',
+      name: 'ztunnel',
+      glyph: 'TN',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch VPN tunnel manager in Rust behind a cyberpunk HUD, replacing Tunnelblick — manage OpenVPN and WireGuard connections, configs, process control, logs, stats, and credentials from one owned, cross-platform desktop app. Its pure-Rust ztunnel-core engine is extracted so the same VPN engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'OpenVPN · WireGuard', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
+      id: 'zgo',
+      name: 'zgo',
+      glyph: 'G',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch launcher in Rust behind a cyberpunk HUD, replacing Alfred — workflows (objects + connections), Script Filter feedback, fuzzy matching, variable/token expansion, web searches, clipboard history, and snippets with auto-expansion. Its pure-Rust zgo-core engine is extracted so the same launcher engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'Launcher · workflows', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zpwr-daw',
       name: 'zpwr-daw',
       glyph: 'D',
@@ -594,6 +646,53 @@
       ],
       "screenshots": [
         { "src": "assets/ztranslator.webp", "cap": "Translator table mapping incoming MIDI/OSC/DMX triggers to outgoing actions" }
+      ]
+    },
+    "zcite": {
+      "overview": "A from-scratch reference manager in Rust (Tauri v2 desktop app) that replaces Zotero — library, citations, and bibliographies behind a cyberpunk HUD. Its pure-Rust zcite-core engine is extracted so the same reference engine embeds inside the other apps.",
+      "features": [
+        "Library with collections, tags, and saved searches",
+        "Citations & bibliographies — APA, MLA, Chicago, and IEEE styles",
+        "Import / export — BibTeX, RIS, and CSL-JSON",
+        "Identifier lookup — DOI (CrossRef), ISBN (Open Library), and PMID",
+        "Duplicate detection across the library",
+        "Embeddable zcite-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ]
+    },
+    "zreq": {
+      "overview": "A from-scratch API client in Rust (Tauri v2 desktop app) that replaces Postman — build, send, and organize HTTP requests behind a cyberpunk HUD. Its pure-Rust zreq-core engine is extracted so the same request engine embeds inside the other apps.",
+      "features": [
+        "Workspaces, collections, and saved requests",
+        "Environments, variables, and token expansion",
+        "Auth schemes for request authorization",
+        "HTTP execution with full request/response history",
+        "Code generation from a request",
+        "Import / export of collections and environments",
+        "Embeddable zreq-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ]
+    },
+    "ztunnel": {
+      "overview": "A from-scratch VPN tunnel manager in Rust (Tauri v2 desktop app) that replaces Tunnelblick — manage OpenVPN and WireGuard tunnels from one owned, cross-platform desktop app behind a cyberpunk HUD. Its pure-Rust ztunnel-core engine is extracted so the same VPN engine embeds across the GUI stack.",
+      "features": [
+        "OpenVPN + WireGuard connections and configurations",
+        "Connection manager with OpenVPN-process control",
+        "WireGuard tunnel management",
+        "Logs, stats, and stored credentials",
+        "Connect / disconnect with live status",
+        "Cross-platform — macOS, Linux, and Windows",
+        "Embeddable ztunnel-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ]
+    },
+    "zgo": {
+      "overview": "A from-scratch launcher in Rust (Tauri v2 desktop app) that replaces Alfred — fuzzy launching, workflows, and snippets behind a cyberpunk HUD. Its pure-Rust zgo-core engine is extracted so the same launcher engine embeds inside the other apps.",
+      "features": [
+        "Workflows — objects + connections with Script Filter feedback (JSON + legacy XML)",
+        "Fuzzy matching across launchable items",
+        "Variable / token expansion in actions",
+        "Web searches from the launch bar",
+        "Clipboard history",
+        "Snippets with auto-expansion",
+        "Embeddable zgo-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
       ]
     },
     "awkrs": {
