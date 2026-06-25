@@ -147,6 +147,32 @@
       ],
     },
     {
+      id: 'zftp',
+      name: 'zftp',
+      glyph: 'FT',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch file-transfer client in Rust behind a cyberpunk HUD, replacing Cyberduck — bookmarks and connections over FTP / FTPS / SFTP / WebDAV plus S3, Google Cloud Storage, Azure, Backblaze B2, Swift, Google Drive, Dropbox, OneDrive and Box; .duck bookmark import; a session manager; a download / upload / sync transfer queue; per-session logs and throughput; and stored credentials. Its pure-Rust zftp-core engine is extracted so the same transfer engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'FTP · SFTP · S3 · cloud', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
+      id: 'zcontainer',
+      name: 'zcontainer',
+      glyph: 'CT',
+      category: 'Desktop Apps',
+      badge: 'WORLD FIRST',
+      tagline: 'The first compiled-native desktop GUI for both Docker and Kubernetes — every other tool is Electron (Lens/FreeLens/Headlamp) or a TUI (k9s). A from-scratch container & Kubernetes manager in Rust behind a cyberpunk HUD, replacing Docker Desktop and Lens — containers, images, volumes, networks, and Compose stacks; multi-cluster Kubernetes contexts with pods, workloads, services, CRDs, and Helm releases; live log streaming, in-pod exec, and port-forwarding; plus YAML editing and resource inspection from one owned, cross-platform desktop app. Its pure-Rust zcontainer-core engine is extracted so the same container/k8s engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Docker · Kubernetes', 'Logs · exec · port-forward', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zpwr-daw',
       name: 'zpwr-daw',
       glyph: 'D',
@@ -691,6 +717,31 @@
         "Clipboard history",
         "Snippets with auto-expansion",
         "Embeddable zgo-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ]
+    },
+    "zftp": {
+      "overview": "A from-scratch file-transfer client in Rust (Tauri v2 desktop app) that replaces Cyberduck — bookmarks, sessions, and a transfer queue behind a cyberpunk HUD. Its pure-Rust zftp-core engine is extracted so the same transfer engine embeds across the GUI stack.",
+      "features": [
+        "Protocols — FTP, FTPS, SFTP, WebDAV/WebDAVS",
+        "Cloud stores — S3 (+ S3-compatible), Google Cloud Storage, Azure, Backblaze B2, Swift, Google Drive, Dropbox, OneDrive, Box",
+        "Bookmark model with .duck bookmark import",
+        "Session-lifecycle manager",
+        "Download / upload / sync transfer queue",
+        "Per-session logs and throughput stats",
+        "Stored credentials",
+        "Embeddable zftp-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ]
+    },
+    "zcontainer": {
+      "overview": "A from-scratch container & Kubernetes desktop in Rust (Tauri v2 desktop app) that replaces Docker Desktop and Lens — the first compiled-native desktop GUI for both Docker and Kubernetes (every other tool is Electron or a TUI), behind a cyberpunk HUD. Its pure-Rust zcontainer-core engine is extracted so the same engine embeds across the GUI stack.",
+      "features": [
+        "Containers, images, volumes, networks, and Compose stacks",
+        "Multi-cluster Kubernetes contexts — pods, workloads, services, CRDs, Helm releases",
+        "Live log streaming, in-pod exec, and port-forwarding",
+        "YAML editing and resource inspection",
+        "Compiled-native (not Electron / not a TUI)",
+        "Cross-platform — macOS, Linux, and Windows",
+        "Embeddable zcontainer-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
       ]
     },
     "awkrs": {
