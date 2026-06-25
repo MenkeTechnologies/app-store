@@ -291,6 +291,21 @@
       repo: 'https://github.com/MenkeTechnologies/strykelang',
     },
     {
+      id: 'zemacs',
+      name: 'zemacs',
+      glyph: 'EM',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'A Rust port of Emacs — bootstrapped from a Helix/Vim-style modal editing core and built out toward full Spacemacs functionality. Free and open source.',
+      pills: ['Rust', 'Modal editing', 'Emacs / Spacemacs', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/zemacs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zemacs',
+    },
+    {
       id: 'awkrs', name: 'awkrs', glyph: 'ak', category: 'CLI Tools', badge: 'FREE',
       tagline: 'The world’s fastest awk — a parallel bytecode-engine awk written in Rust, with parallel record processing.',
       pills: ['Rust', 'awk', 'Free / OSS'], price: 0,
@@ -604,6 +619,16 @@
         "180+ builtins; full zsh and bash compatibility",
         "Built-in LSP server, DAP debug adapter, JetBrains plugin",
         "224 opcodes, AOP intercepts, parallel primitives (pmap/pgrep/peach)"
+      ]
+    },
+    "zemacs": {
+      "overview": "A Rust port of Emacs. The plan: start from a Helix/Vim-style modal editing core in Rust, then build out toward full Spacemacs functionality. Free and open source.",
+      "features": [
+        "Rust core — modal editing in the Helix/Vim tradition",
+        "Targets full Spacemacs functionality (keybindings, layers, leader-key UX)",
+        "Emacs-style extensibility on a modern Rust foundation",
+        "Cross-platform",
+        "Free / OSS — MIT licensed"
       ]
     },
     "strykelang": {
