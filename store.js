@@ -296,11 +296,11 @@
       glyph: 'EM',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'A Rust port of Emacs — bootstrapped from a Helix/Vim-style modal editing core and built out toward full Spacemacs functionality. Free and open source.',
+      tagline: 'A Rust port of Emacs — a Helix fork bootstrapped from its Vim-style modal editing core and built out toward full Spacemacs functionality. Free and open source.',
       pills: ['Rust', 'Modal editing', 'Emacs / Spacemacs', 'Free / OSS'],
       price: 0,
       tiers: [
-        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+        { name: 'Open Source', desc: 'MPL-2.0 licensed', price: 0 },
       ],
       download: 'https://github.com/MenkeTechnologies/zemacs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zemacs',
@@ -622,13 +622,13 @@
       ]
     },
     "zemacs": {
-      "overview": "A Rust port of Emacs. The plan: start from a Helix/Vim-style modal editing core in Rust, then build out toward full Spacemacs functionality. Free and open source.",
+      "overview": "A Rust port of Emacs. The plan: start from a Helix fork — its Vim-style modal editing core in Rust — then build out toward full Spacemacs functionality. Free and open source.",
       "features": [
-        "Rust core — modal editing in the Helix/Vim tradition",
+        "Rust core — a Helix fork, modal editing in the Vim tradition",
         "Targets full Spacemacs functionality (keybindings, layers, leader-key UX)",
         "Emacs-style extensibility on a modern Rust foundation",
         "Cross-platform",
-        "Free / OSS — MIT licensed"
+        "Free / OSS — MPL-2.0 licensed (Helix fork)"
       ]
     },
     "strykelang": {
