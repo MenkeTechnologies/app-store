@@ -296,7 +296,7 @@
       glyph: 'EM',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'A Rust port of Emacs — a Helix fork bootstrapped from its Vim-style modal editing core and built out toward full Spacemacs functionality. Free and open source.',
+      tagline: 'A Rust port of Emacs — a terminal modal editor forked from Helix, bootstrapped from its Vim-style modal editing core and built out toward full Spacemacs functionality; a windowed GUI build ships as zemacs-gui. Free and open source.',
       pills: ['Rust', 'Modal editing', 'Emacs / Spacemacs', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -304,6 +304,21 @@
       ],
       download: 'https://github.com/MenkeTechnologies/zemacs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zemacs',
+    },
+    {
+      id: 'zemacs-gui',
+      name: 'zemacs-gui',
+      glyph: 'EG',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'A native desktop GUI for the zemacs editor — wraps the zemacs modal-editing core in a windowed front-end with GUI tabs, menus, font rendering, mouse support, and native open/save dialogs, the way MacVim wraps Vim. Free and open source.',
+      pills: ['Rust', 'GUI editor', 'Emacs / Spacemacs', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MPL-2.0 licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/zemacs-gui/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zemacs-gui',
     },
     {
       id: 'awkrs', name: 'awkrs', glyph: 'ak', category: 'CLI Tools', badge: 'FREE',
@@ -622,13 +637,25 @@
       ]
     },
     "zemacs": {
-      "overview": "A Rust port of Emacs. The plan: start from a Helix fork — its Vim-style modal editing core in Rust — then build out toward full Spacemacs functionality. Free and open source.",
+      "overview": "A Rust port of Emacs. The plan: start from a Helix fork — its Vim-style modal editing core in Rust — then build out toward full Spacemacs functionality. This is the terminal editor; a windowed GUI front-end ships separately as zemacs-gui. Free and open source.",
       "features": [
         "Rust core — a Helix fork, modal editing in the Vim tradition",
         "Targets full Spacemacs functionality (keybindings, layers, leader-key UX)",
         "Emacs-style extensibility on a modern Rust foundation",
+        "Terminal editor; the GUI build is zemacs-gui",
         "Cross-platform",
         "Free / OSS — MPL-2.0 licensed (Helix fork)"
+      ]
+    },
+    "zemacs-gui": {
+      "overview": "A native desktop GUI for the zemacs editor. It wraps the zemacs modal-editing core — the Rust Helix-fork engine — in a windowed front-end, the way MacVim wraps the Vim CLI editor: GUI tabs, menus, font rendering, mouse, and native file dialogs over the same editor underneath. Free and open source.",
+      "features": [
+        "GUI front-end over the zemacs terminal editor — same modal core, native window",
+        "Native tabs, menu bar, and toolbar; GUI font rendering and mouse support",
+        "Native open/save dialogs and drag-and-drop",
+        "Modal editing, tree-sitter syntax, and LSP inherited from the zemacs core",
+        "Cross-platform",
+        "Free / OSS — MPL-2.0 licensed (zemacs / Helix lineage)"
       ]
     },
     "strykelang": {
