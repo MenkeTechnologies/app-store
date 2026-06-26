@@ -1,0 +1,8 @@
+/* zgui-core/time-and-sales.css — executed-trades tape. Pairs with time-and-sales.js. */
+.zg-tas { width: 240px; font-family: 'Share Tech Mono', monospace; font-size: 11px; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; overflow: hidden; }
+.zg-tas-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; padding: 2px 8px; border-bottom: 1px solid rgba(26, 26, 62, 0.4); }
+.zg-tas-time { color: var(--text-dim, #5a6b85); }
+.zg-tas-size { text-align: right; color: var(--text-muted, #7a8ba8); }
+.zg-tas-buy .zg-tas-price { color: #39ff14; }
+.zg-tas-sell .zg-tas-price { color: var(--red, #ff2a6d); }
+.zg-tas-price { text-align: center; }

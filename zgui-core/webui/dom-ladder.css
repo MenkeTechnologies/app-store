@@ -1,0 +1,11 @@
+/* zgui-core/dom-ladder.css — depth-of-market price ladder. Pairs with dom-ladder.js. */
+.zg-dom { width: 220px; font-family: 'Share Tech Mono', monospace; font-size: 11px; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; overflow: hidden; }
+.zg-dom-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; border-bottom: 1px solid rgba(26, 26, 62, 0.4); }
+.zg-dom-last { background: rgba(249, 240, 2, 0.10); }
+.zg-dom-cell { position: relative; height: 18px; display: flex; align-items: center; }
+.zg-dom-bid { justify-content: flex-end; }
+.zg-dom-bar { position: absolute; top: 0; bottom: 0; opacity: 0.2; }
+.zg-dom-bid .zg-dom-bar { right: 0; background: #39ff14; }
+.zg-dom-ask .zg-dom-bar { left: 0; background: var(--red, #ff2a6d); }
+.zg-dom-v { position: relative; padding: 0 6px; color: var(--text-muted, #7a8ba8); }
+.zg-dom-price { padding: 0 8px; color: var(--cyan, #05d9e8); }

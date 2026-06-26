@@ -1,0 +1,3 @@
+/* zgui-core/gain-reduction.css — compressor gain-reduction meter. Pairs with gain-reduction.js. */
+.zg-gr { display: inline-block; line-height: 0; }
+.zg-gr-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

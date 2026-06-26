@@ -12,7 +12,9 @@
 
   function launcher(host, opts) {
     opts = opts || {};
-    const root = el("div", "zg-launch");
+    // `fill` makes the launcher fill its host (a full app window) instead of a floating card —
+    // drops the rounded border + shadow and stretches width/height.
+    const root = el("div", "zg-launch" + (opts.fill ? " zg-launch--fill" : ""));
     const search = el("div", "zg-launch-search");
     if (opts.sigil) search.appendChild(el("div", "zg-launch-sigil", opts.sigil));
     const input = document.createElement("input");
