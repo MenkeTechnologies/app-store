@@ -103,7 +103,7 @@
             s.appendChild(nav);
             // panels toggle via the .active class (switchTo toggles it; demo.css supplies the show/hide)
             ["Tab one body", "Tab two body"].forEach((txt, i) => { const p = document.createElement("div"); p.className = "tab-content" + (i === 0 ? " active" : ""); p.id = "demo-tab-" + i; p.dataset.tab = "demo-tab-" + i; p.textContent = txt; s.appendChild(p); });
-            Z.tabs.init({ nav: ".tab-nav", reorderable: false, restore: false });
+            Z.tabs.init({ nav: nav, reorderable: false, restore: false });
         }],
         ["Selection & Nav", "accordion", "ZGui.accordion(host,sections)", (s) => Z.accordion(s, [{ title: "Section A", body: "Body A", open: true }, { title: "Section B", body: "Body B" }], { multi: true })],
         ["Selection & Nav", "collapsible", "ZGui.collapsible(host,{title,body})", (s) => Z.collapsible(s, { title: "Details", body: "Hidden content revealed on click.", open: false })],
