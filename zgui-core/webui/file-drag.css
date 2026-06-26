@@ -1,0 +1,27 @@
+/* zgui-core/file-drag.css — the full-window OS drop overlay (file-drag.js initDrop). WebKit-
+   release-safe: a position:fixed top-level element using only border + background-color + flex
+   centering (no shadows/transitions/gradients/pseudo-elements, which corrupt compositing in
+   release WebKit). Distilled from Audio-Haxor's #dropOverlay. */
+
+.zg-drop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.72);
+  border: 3px dashed var(--cyan, #00e5ff);
+  pointer-events: none;
+}
+.zg-drop-overlay.active { display: flex; }
+.zg-drop-overlay-text {
+  color: var(--cyan, #00e5ff);
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: monospace;
+}

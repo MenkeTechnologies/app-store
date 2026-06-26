@@ -1,0 +1,21 @@
+/* zgui-core/copy-button.css — click-to-copy with a green "copied" flash. */
+.zg-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    background: var(--bg-card);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+}
+.zg-copy-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+.zg-copy-btn.zg-copied {
+    color: var(--green);
+    border-color: var(--green);
+    box-shadow: 0 0 8px rgba(0, 255, 140, 0.35);
+}
+.zg-copy-icon { display: inline-flex; }

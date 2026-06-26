@@ -1,0 +1,36 @@
+/* zgui-core/mod-source.css — the draggable modulation-source pill palette + drop-target highlight.
+   Ported from zpwr-patch-core's .sp-modpal / .sp-modchip. */
+.zg-modpal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+.zg-modpal-lbl {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 4px;
+}
+.zg-modchip {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 3px 9px;
+    color: var(--cyan);
+    background: var(--bg-card);
+    border: 1px solid var(--cyan);
+    border-radius: 10px;
+    cursor: grab;
+    user-select: none;
+}
+.zg-modchip:active { cursor: grabbing; }
+.zg-modchip:hover { filter: brightness(1.25); box-shadow: 0 0 8px currentColor; }
+/* a knob/element mid-drop (the drop target) */
+.zg-mod-drop { outline: 1px solid var(--magenta); box-shadow: 0 0 10px rgba(211, 0, 197, 0.7); }

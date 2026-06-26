@@ -1,0 +1,20 @@
+/* zgui-core/fab.css — floating action button. */
+.zg-fab {
+  position: fixed; z-index: 9997;
+  display: inline-flex; align-items: center; gap: 8px;
+  width: 52px; height: 52px; padding: 0; justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--magenta));
+  color: #fff; border: 1px solid var(--accent); cursor: pointer;
+  box-shadow: 0 0 16px var(--accent-glow), 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.zg-fab:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 0 28px var(--accent-glow), 0 6px 20px rgba(0, 0, 0, 0.55); }
+.zg-fab:active { transform: translateY(1px) scale(0.97); }
+.zg-fab-extended { width: auto; border-radius: 26px; padding: 0 18px; }
+.zg-fab-icon { font-size: 22px; line-height: 1; }
+.zg-fab-label { font-family: "Share Tech Mono", ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.zg-fab-br { bottom: 24px; right: 24px; }
+.zg-fab-bl { bottom: 24px; left: 24px; }
+.zg-fab-tr { top: 24px; right: 24px; }
+.zg-fab-tl { top: 24px; left: 24px; }

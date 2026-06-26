@@ -1,0 +1,29 @@
+/* zgui-core/expose.css — window-exposé / switcher tile grid (expose.js). Cyberpunk tokens; the focused
+   tile and tile hover glow cyan, the FOCUSED badge is a filled green ZGui.badge. */
+.zg-expose { display: flex; flex-direction: column; height: 100%; min-height: 0; background: var(--bg-primary, #05050a); color: var(--text, #e0f0ff); }
+.zg-expose-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px 10px; flex: 0 0 auto; }
+.zg-expose-title { font-family: 'Orbitron', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan, #05d9e8); text-shadow: 0 0 8px var(--cyan-glow, rgba(5, 217, 232, 0.4)); }
+.zg-expose-hint { font-size: 12px; color: var(--text-dim, #7a8ba8); }
+.zg-expose-close { cursor: pointer; border: 1px solid var(--border, #1a1a3e); background: transparent; color: var(--text, #e0f0ff); border-radius: 4px; padding: 4px 12px; font-size: 13px; }
+.zg-expose-close:hover { border-color: var(--cyan, #05d9e8); box-shadow: 0 0 8px var(--cyan-glow, rgba(5, 217, 232, 0.4)); }
+.zg-expose-grid {
+    flex: 1 1 auto; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px; padding: 4px 18px 18px; align-content: start;
+}
+.zg-expose-tile {
+    border: 1px solid var(--border, #1a1a3e); border-radius: 8px; background: var(--bg-secondary, #0a0a14);
+    overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.zg-expose-tile:hover { border-color: var(--cyan, #05d9e8); }
+.zg-expose-tile:focus { outline: none; border-color: var(--cyan, #05d9e8); box-shadow: 0 0 12px var(--cyan-glow, rgba(5, 217, 232, 0.4)); }
+.zg-expose-tile.focused { border-color: var(--cyan, #05d9e8); box-shadow: inset 0 0 0 1px var(--cyan, #05d9e8), 0 0 10px var(--cyan-glow, rgba(5, 217, 232, 0.4)); }
+.zg-expose-tiletitle { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text, #e0f0ff); padding: 10px 12px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zg-expose-tilemeta { font-size: 11px; color: var(--text-muted, #3d4f6a); padding: 0 12px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zg-expose-preview {
+    margin: 0; padding: 8px 10px; background: var(--bg-primary, #05050a); color: var(--text-dim, #7a8ba8);
+    font-family: 'Share Tech Mono', ui-monospace, monospace; font-size: 7px; line-height: 1.18; height: 150px;
+    overflow: hidden; white-space: pre; border-top: 1px solid var(--border, #1a1a3e);
+}
+.zg-expose-empty { opacity: 0.6; padding: 40px; font-size: 14px; color: var(--text-dim, #7a8ba8); }
+/* fallback FOCUSED badge if ZGui.badge isn't loaded */
+.zg-expose-badge { font-size: 10px; font-weight: 700; color: var(--bg-primary, #05050a); background: var(--green, #39ff14); border-radius: 3px; padding: 1px 6px; letter-spacing: 1px; }

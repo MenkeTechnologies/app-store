@@ -1,0 +1,6 @@
+/* zgui-core/spoiler.css — collapsible overflow content + show-more toggle (spoiler.js). */
+.zg-spoiler { display: block; }
+.zg-spoiler-body { overflow: hidden; transition: max-height 0.2s ease; position: relative; }
+.zg-spoiler:not(.is-expanded) .zg-spoiler-body::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 28px; background: linear-gradient(to bottom, transparent, var(--bg-primary, #05050a)); pointer-events: none; }
+.zg-spoiler-control { margin-top: 6px; background: none; border: none; color: var(--cyan, #05d9e8); font-family: inherit; font-size: 12px; cursor: pointer; padding: 2px 0; }
+.zg-spoiler-control:hover { text-decoration: underline; }

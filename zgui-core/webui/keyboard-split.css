@@ -1,0 +1,29 @@
+/* zgui-core/keyboard-split.css — the layer key-range split editor. Ported from zpc's .mx-kb2*. */
+.zg-ksplit { position: relative; margin: 4px 0 2px; }
+.zg-ksplit-zones { position: relative; width: 100%; }
+.zg-ksplit-band {
+    position: absolute;
+    height: 14px;
+    border: 1px solid var(--cyan);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: grab;
+    touch-action: none;
+}
+.zg-ksplit-band:active { cursor: grabbing; }
+.zg-ksplit-lbl { font-size: 9px; color: #fff; padding: 0 4px; white-space: nowrap; overflow: hidden; pointer-events: none; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6); }
+.zg-ksplit-h { position: absolute; top: -2px; bottom: -2px; width: 8px; cursor: ew-resize; touch-action: none; border-radius: 2px; }
+.zg-ksplit-h.lo { left: -4px; }
+.zg-ksplit-h.hi { right: -4px; }
+.zg-ksplit-keys {
+    position: relative;
+    height: 54px;
+    margin-top: 2px;
+    background: url("img/keyboard.png") center / 100% 100% no-repeat, #0a0a0f;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}

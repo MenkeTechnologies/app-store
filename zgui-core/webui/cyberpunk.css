@@ -1,0 +1,2244 @@
+/* zpwr-fx cyberpunk theme — palette/fonts/glow/grid/scanlines lifted verbatim
+   from strykelang cyberpunk.css, extended with plugin rack + knob styling.
+   Fonts are served locally (no Google Fonts dependency). */
+
+@font-face {
+    font-family: 'Orbitron';
+    src: url('./fonts/Orbitron-VF.ttf') format('truetype');
+    font-weight: 400 900;
+    font-display: block;
+}
+@font-face {
+    font-family: 'Share Tech Mono';
+    src: url('./fonts/ShareTechMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: block;
+}
+
+:root {
+    --bg-primary: #05050a;
+    --bg-secondary: #0a0a14;
+    --bg-card: #0d0d1a;
+    --bg-hover: #12122a;
+    --accent: #ff2a6d;
+    --accent-light: #ff6b9d;
+    --accent-glow: rgba(255, 42, 109, 0.4);
+    --cyan: #05d9e8;
+    --cyan-glow: rgba(5, 217, 232, 0.4);
+    --cyan-dim: rgba(5, 217, 232, 0.15);
+    --magenta: #d300c5;
+    --magenta-glow: rgba(211, 0, 197, 0.3);
+    --green: #39ff14;
+    --red: #ff073a;
+    --text: #e0f0ff;
+    --text-dim: #7a8ba8;
+    --text-muted: #3d4f6a;
+    --border: #1a1a3e;
+    --grid-line: rgba(5, 217, 232, 0.045);
+    --grid-cross: rgba(5, 217, 232, 0.034);
+}
+
+/* Light mode (audio-haxor-style data-theme="light"): flips the dark base (bg/text/border)
+   to light. The active colour scheme's accents stay inline so light mode + any accent compose. */
+[data-theme="light"] {
+    --bg-primary: #f0f2f5;
+    --bg-secondary: #e4e7ec;
+    --bg-card: #ffffff;
+    --bg-hover: #f7f8fa;
+    --text: #1e293b;
+    --text-dim: #475569;
+    --text-muted: #94a3b8;
+    --border: #cbd5e1;
+    --border-glow: #a5b4c8;
+    --accent: #d6196e; --accent-light: #e84d8a; --accent-glow: rgba(214, 25, 110, 0.15);
+    --cyan: #0891b2; --cyan-glow: rgba(8, 145, 178, 0.2); --cyan-dim: rgba(8, 145, 178, 0.08);
+    --magenta: #a300a3; --magenta-glow: rgba(163, 0, 163, 0.15); --green: #15803d;
+    --grid-line: rgba(8, 145, 178, 0.08); --grid-cross: rgba(8, 145, 178, 0.055);
+}
+
+/* Light mode: the SYNTH panel hardcodes dark/neon surfaces in its injected CSS, so flip the
+   key ones here. These selectors (attribute + class) outrank the injected single-class rules. */
+[data-theme="light"] .synth-panel { background: #eef1f5; }
+[data-theme="light"] .sp-module { background: linear-gradient(180deg, #ffffff, #f3f5f8); border-color: #cbd5e1; }
+[data-theme="light"] .sp-mhead { border-bottom-color: #cbd5e1; }
+[data-theme="light"] .sp-mname { color: #0e7490; text-shadow: none; }
+[data-theme="light"] .sp-disp { background: #f7fafc; border-color: #cbd5e1; }
+[data-theme="light"] .sp-env { background: rgba(0, 0, 0, 0.04); border-color: #cbd5e1; }
+[data-theme="light"] .sp-vtrack { background: linear-gradient(180deg, #e4e7ec, #cbd5e1); }
+.sp-vsl-drop .sp-vtrack { border: 1px solid #d300c5; box-shadow: 0 0 10px rgba(211,0,197,.7); }   /* mod-source drop target */
+.fader.auto-bound { accent-color: #39ff14; box-shadow: 0 0 6px rgba(57,255,20,.55); border-radius: 3px; }   /* mod-depth slider bound to host automation */
+[data-theme="light"] .sp-vname { color: #334155; }
+[data-theme="light"] .sp-vval { color: #64748b; }
+[data-theme="light"] .sp-empty { color: #475569; }
+[data-theme="light"] .sp-modpal { background: rgba(0, 0, 0, 0.04); }
+[data-theme="light"] .sp-modpal-lbl { color: #475569; }
+[data-theme="light"] .synth-kbd { background: linear-gradient(180deg, #e4e7ec, #d4d9e0); }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+::selection { background: rgba(5, 217, 232, 0.3); color: #fff; }
+
+html, body { width: 100%; height: 100%; }
+
+body {
+    display: flex; flex-direction: column;   /* app shell: header + layer-bar fixed, main fills, panes pin their keyboard to the bottom */
+    overflow: hidden;
+    font-family: 'Share Tech Mono', ui-monospace, monospace;
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(ellipse at 20% 40%, rgba(5, 217, 232, 0.05) 0%, transparent 52%),
+        radial-gradient(ellipse at 80% 15%, rgba(211, 0, 197, 0.045) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(255, 42, 109, 0.04) 0%, transparent 48%),
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-cross) 1px, transparent 1px);
+    background-size: auto, auto, auto, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+    color: var(--text);
+    overflow: hidden;
+}
+
+/* CRT scanlines + bezel vignette. */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(5, 217, 232, 0.018) 2px, rgba(5, 217, 232, 0.018) 4px);
+    pointer-events: none;
+    z-index: 9999;
+}
+/* animated CRT scan beams — copied VERBATIM from Audio-Haxor's .crt-scanline / .crt-scanline-v: a
+   cyan line sweeping top→bottom (hscan, 12s) + a magenta line sweeping left→right (vscan, 18s). The
+   beam is a length-wise gradient (transparent ends, soft centre peak) — NOT a solid bar. Created in
+   <body> by ZGui.fx (body's own ::before/::after are taken by the vignette + static texture). */
+.zg-scan-h, .zg-scan-v { position: fixed; pointer-events: none; z-index: 9997; }
+.zg-scan-h {
+    left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(5, 217, 232, 0.03) 20%,
+        rgba(5, 217, 232, 0.08) 50%,
+        rgba(5, 217, 232, 0.03) 80%,
+        transparent 100%);
+    box-shadow: 0 0 15px 5px rgba(5, 217, 232, 0.04);
+    animation: zg-hscan 12s linear infinite;
+}
+.zg-scan-v {
+    top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(255, 42, 109, 0.03) 20%,
+        rgba(255, 42, 109, 0.06) 50%,
+        rgba(255, 42, 109, 0.03) 80%,
+        transparent 100%);
+    box-shadow: 0 0 15px 5px rgba(255, 42, 109, 0.03);
+    animation: zg-vscan 18s linear infinite;
+}
+@keyframes zg-hscan { 0% { top: -2px; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+@keyframes zg-vscan { 0% { left: -2px; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+body.no-scanlines .zg-scan-h, body.no-scanlines .zg-scan-v { display: none; }
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.55) 100%);
+    pointer-events: none;
+    z-index: 9998;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(5, 5, 10, 0.5); }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--cyan) 0%, var(--magenta) 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--cyan-glow);
+}
+
+/* ---- Header --------------------------------------------------------------- */
+header {
+    padding: 7px 18px 6px;
+    row-gap: 6px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #070714 0%, #0d0d22 60%, var(--bg-secondary) 100%);
+    box-shadow: 0 4px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(5,217,232,0.06);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--accent), var(--cyan), transparent);
+    opacity: 0.7;
+}
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 22px;
+    background: linear-gradient(90deg, var(--cyan), #fff, var(--accent), var(--cyan));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px var(--cyan-glow));
+    animation: logo-shimmer 6s linear infinite;
+}
+@keyframes logo-shimmer {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 300% 0%; }
+}
+.subtitle {
+    color: var(--text-dim);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* ---- Preset bar ----------------------------------------------------------- */
+.preset-bar { display: flex; align-items: center; gap: 8px; }
+.preset-name {
+    width: 190px;
+    flex: 0 0 190px;            /* fixed width: never grows/shrinks with the preset name */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 7px 12px;
+    background: rgba(5, 5, 14, 0.7);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Bank chooser display: fixed width, ellipsis, magenta accent to set it apart from the preset name. */
+.bank-name {
+    width: 190px;
+    flex: 0 0 190px;           /* match the preset field width */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 7px 8px;
+    background: rgba(5, 5, 14, 0.7);
+    border: 1px solid rgba(211, 0, 197, 0.4);
+    border-radius: 3px;
+    color: var(--magenta);
+    text-shadow: 0 0 8px rgba(211, 0, 197, 0.5);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pbar-sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; flex: 0 0 1px; }
+.pbtn {
+    padding: 7px 10px;
+    min-width: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--cyan);
+    background: rgba(5, 217, 232, 0.07);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 150ms ease;
+}
+.pbtn:hover {
+    background: rgba(5, 217, 232, 0.18);
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan-glow);
+}
+.pbtn.wide { padding-left: 14px; padding-right: 14px; }
+.pbtn.recording { color: #fff; background: linear-gradient(#e0143c, #e0143c), url("img/button.png") center / 100% 100% no-repeat; background-blend-mode: color, normal; border-color: #ff3b5c; box-shadow: 0 0 12px rgba(224,20,60,0.75); }
+
+/* ---- Preset browser modal ------------------------------------------------- */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(2, 2, 6, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.overlay.hidden { display: none; }
+.hidden { display: none; }
+
+.browser-panel {
+    width: min(540px, 92vw);
+    max-height: 80vh;
+    overflow-y: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--cyan-dim);
+    border-radius: 6px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(5,217,232,0.08);
+    padding: 18px 20px;
+}
+.browser-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.browser-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+}
+.save-row { display: flex; gap: 8px; margin-bottom: 18px; }
+.save-row input {
+    flex: 1;
+    padding: 9px 12px;
+    background: rgba(5, 5, 14, 0.7);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+}
+.save-row input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 12px var(--cyan-glow); }
+
+.browser-section {
+    color: var(--accent-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    margin: 10px 0 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+}
+.preset-list { list-style: none; margin-bottom: 8px; }
+.preset-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    margin-bottom: 4px;
+    background: rgba(5, 217, 232, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 130ms ease;
+}
+.preset-item:hover { background: rgba(5, 217, 232, 0.12); border-color: var(--cyan); }
+.pname { flex: 1; font-size: 13px; letter-spacing: 1px; color: var(--text); }
+.preset-item:hover .pname { color: var(--cyan); }
+.del {
+    width: 22px; height: 20px;
+    background: rgba(255, 42, 109, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--accent);
+    font-size: 10px;
+    cursor: pointer;
+}
+.del:hover { background: rgba(255, 42, 109, 0.2); border-color: var(--accent); }
+.del.clone, .del.rename { background: rgba(5, 217, 232, 0.08); color: var(--cyan); }
+.del.clone:hover, .del.rename:hover { background: rgba(5, 217, 232, 0.2); border-color: var(--cyan); }
+.pname-edit {
+    flex: 1; min-width: 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 1px;
+    color: var(--cyan);
+    background: #06060e;
+    border: 1px solid var(--accent);
+    padding: 2px 6px;
+    outline: none;
+}
+
+/* ---- Tabs + panes --------------------------------------------------------- */
+.tabs { display: flex; gap: 6px; }
+.tab {
+    padding: 8px 18px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--text-dim);
+    background: rgba(5, 217, 232, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 160ms ease;
+}
+.tab:hover { color: var(--cyan); border-color: var(--cyan-dim); }
+.tab.active {
+    color: #06080f;
+    /* the plate tinted to the accent cyan: the dome's specular highlight survives via the blend,
+       so the selected tab reads as a lit glossy button rather than a flat fill. */
+    background: linear-gradient(var(--cyan), var(--cyan)), url("img/button.png") center / 100% 100% no-repeat;
+    background-blend-mode: color, normal;
+    border-color: var(--cyan);
+    box-shadow: 0 0 14px var(--cyan-glow);
+}
+/* Hovering the SELECTED tab: the glass :hover rule swaps the bright gradient for a dark
+   fill, so the active tab's near-black text would become black-on-dark. Force readable
+   white text (higher specificity than both .tab:hover and .tab.active) and keep the cyan
+   border + glow so it still reads as the selected tab. */
+.tab.active:hover {
+    color: #ffffff;
+    background: linear-gradient(var(--cyan), var(--cyan)), url("img/button.png") center / 100% 100% no-repeat;
+    background-blend-mode: color, normal;
+    border-color: var(--cyan);
+    box-shadow: 0 0 18px var(--cyan-glow);
+}
+
+/* App-shell layout: header + layer-bar are fixed height, <main> fills the rest, and the active
+   pane fills <main> — so a pane can pin its keyboard to the very bottom of the window. */
+header { flex: 0 0 auto; }
+.layer-bar { flex: 0 0 auto; }
+main { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.pane { display: none; }
+.pane.active { display: block; flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+#pane-presets { padding: 16px 16px 32px; max-width: 720px; margin: 0 auto; }
+/* SETTINGS: bootstrap-style responsive grid — auto-fit drops the column count as the window narrows;
+   min-width:0 cells + overflow-x:hidden mean a group can never push a horizontal scrollbar. */
+#pane-settings.pane.active {
+    padding: 18px 18px 32px; display: grid; gap: 16px; align-content: start; align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); overflow-x: hidden;
+}
+#pane-settings .settings-group { min-width: 0; margin-bottom: 0; }
+#pane-settings .settings-group * { min-width: 0; max-width: 100%; }   /* keep wide rows (faders, host) inside the cell */
+/* ...but the blanket min-width:0 above also collapses the flex row-label below its text,
+   so the word overflows onto the adjacent slider/select (e.g. "Strength" over the Mutate
+   slider). Pin row labels to their content width — the wide control shrinks into the cell. */
+#pane-settings .set-row > span:first-child { min-width: max-content; }
+
+/* ---- Settings ------------------------------------------------------------- */
+.settings-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.45);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+}
+.settings-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 2px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Audio Engine settings rows (numeric inputs + select). */
+.set-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 2px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+.set-row > span:first-child { flex: 1; }
+.set-num, .set-sel {
+    width: 88px;
+    padding: 5px 8px;
+    background: rgba(5, 5, 14, 0.7);
+    color: var(--cyan);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    text-align: right;
+}
+.set-sel { text-align: left; width: 120px; }
+.set-num:focus, .set-sel:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow); }
+.set-unit { width: 30px; color: var(--text-muted); font-size: 10px; }
+/* Premium settings sliders: a recessed metal groove (inset shadow) carrying the photoreal glossy bead
+   thumb — matches the hardware look, no flat CSS bar. Applies to every settings range input. */
+.set-slider, .set-range { -webkit-appearance: none; appearance: none; width: 150px; height: 22px; background: transparent; cursor: pointer; }
+.set-slider::-webkit-slider-runnable-track, .set-range::-webkit-slider-runnable-track {
+    height: 7px; border-radius: 5px;
+    background: linear-gradient(180deg, #04070e, #0c1422);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.85), inset 0 0 6px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.05);
+}
+.set-slider::-webkit-slider-thumb, .set-range::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 22px; height: 22px; margin-top: -8px; border: none; border-radius: 50%;
+    background: url("img/slider_thumb.png?v=3") center / contain no-repeat;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); cursor: pointer;
+}
+.set-slider:hover::-webkit-slider-thumb, .set-range:hover::-webkit-slider-thumb { filter: drop-shadow(0 0 7px var(--accent-glow)) drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
+.set-slider:focus, .set-range:focus { outline: none; }
+.set-val { width: 48px; text-align: right; color: var(--cyan); font-family: 'Share Tech Mono', monospace; font-size: 12px; }
+.toggle-row .led {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #0a0a14;
+    transition: background 150ms, box-shadow 150ms;
+}
+.toggle-row.on { color: var(--cyan); }
+.toggle-row.on .led {
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan-glow);
+    border-color: var(--cyan);
+}
+
+.fader-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.fader-label {
+    width: 70px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cyan);
+}
+.fader-val { width: 64px; text-align: right; font-size: 12px; color: var(--text-dim); }
+input[type=range].fader { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta)); outline: none; }
+input[type=range].fader::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    /* plain glossy GRAY bead (no accent tint) — the turquoise tint read as fake/flat. The baked
+       PNG keeps the specular dome so it still reads as a 3D handle. */
+    background: url("img/slider_thumb.png?v=3") center / cover no-repeat;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    border: none;
+    cursor: pointer;
+}
+
+.about { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.about dt { color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; font-size: 11px; }
+.about dd { color: var(--text); font-size: 13px; }
+.about-link { color: var(--cyan); text-decoration: underline; cursor: pointer; }
+.about-link:hover { color: var(--accent-light, #7fe9ff); text-shadow: 0 0 8px rgba(5,217,232,.7); }
+
+/* interface prefs — the cyberpunk effect toggles (flipped by ZGui.fx). Effect ON = class ABSENT;
+   the body.no-* class turns the effect OFF. */
+body.no-scanlines::after { display: none; }   /* CRT scanline overlay off */
+body.no-vignette::before { display: none; }    /* bezel vignette off */
+body.no-anim h1 { animation: none; }
+body.no-anim, body.no-anim *, body.no-anim *::before, body.no-anim *::after {
+    animation: none !important;
+    transition: none !important;
+}
+body.no-neon-glow, body.no-neon-glow *, body.no-neon-glow *::before, body.no-neon-glow *::after {
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* ---- Patcher -------------------------------------------------------------- */
+#pane-patch.pane.active { display: flex; flex-direction: column; overflow: hidden; }
+
+/* ◇ MIDI FX bus tab: the ⏻ enable toggle lights up when the MIDI-FX insert is on. */
+.layer-tog.mfx-en.on { color: #04110d; background: #00e5a8; border-color: #00e5a8; }
+
+/* SYNTH: the rack body scrolls; the keyboard (#synth-kbd) is pinned to the very bottom of the window.
+   z-index lifts the whole hardware panel above the CRT scanline overlay (body::after, z-index 9999) so
+   the 2px cyan scanlines stop banding the skeuomorphic art — modal backdrops (.overlay, z-index 10000,
+   later in the DOM) still cover it. */
+#pane-synth.pane.active { display: flex; flex-direction: column; overflow: hidden; position: relative; z-index: 10000; }
+.rack-body { flex: 1 1 auto; min-height: 0; display: flex; }
+/* both keyboard chassis (synth #synth-kbd + perform #perf-kbd) escape the scanline overlay too */
+/* the keyboard sits in a RECESSED bed below the panel: a dark inner shadow falling from the panel edge
+   + a thin highlight lip = a clean hardware seam (not an abrupt cut) between the panel and the keys. */
+.synth-kbd {
+    position: relative; z-index: 10000;
+    border-top: 1px solid rgba(0, 0, 0, 0.55);
+    box-shadow: inset 0 7px 11px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ── performance view ── */
+/* content scrolls above the keyboard (#perf-kbd), pinned to the very bottom of the window. */
+#pane-perform.pane.active { display: flex; flex-direction: column; overflow: hidden; }
+.perf { flex: 1 1 auto; min-height: 0; padding: 22px; display: flex; flex-direction: column; gap: 26px; overflow-y: auto; }
+/* ── PERFORM keyboard + wheels ── */
+.perf-play { display: flex; align-items: flex-end; gap: 16px; }
+/* S88 left control cluster: a horizontal touch strip stacked ABOVE the two pitch/mod wheels. The cluster
+   has an EXPLICIT pixel width (= the two wheels + gap) so the strip can't blow up — WebKit's shrink-to-fit
+   doesn't reliably wrap a flex column here, and a width:100% strip then resolves against the whole panel
+   row. Fixed width -> percentages inside resolve against a known value. */
+.kbd-ctl { display: flex; flex-direction: column; gap: 8px; align-items: stretch; width: 92px; flex: 0 0 auto; }
+.perf-wheels { display: flex; gap: 14px; justify-content: center; width: 100%; flex: 0 0 auto; }
+.wheel-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+/* S88 HORIZONTAL touch strip: a recessed bar spanning the wheel cluster, with an even row of dim LED
+   dots and a bright indicator that follows the touch left↔right. Theme-coloured. */
+.tstrip-cell { display: flex; flex-direction: column; align-items: stretch; gap: 4px; width: 100%; }
+/* the recessed bevelled bar is a baked render (touchstrip.png); CSS only adds the touch glow + indicator */
+.tstrip { position: relative; width: 100%; height: 22px; border-radius: 4px; overflow: hidden; cursor: ew-resize;
+    background: url("img/touchstrip.png?v=4") center / 100% 100% no-repeat; border: none;
+    transition: box-shadow 60ms ease; }
+.tstrip.touched { box-shadow: 0 0 14px var(--accent-glow); }
+.tstrip-leds { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 5px; pointer-events: none; }
+.tstrip-led { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.10); transition: background 35ms ease, box-shadow 35ms ease; }
+.tstrip-led.on { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow), 0 0 2px #fff; }
+.tstrip-dot { position: absolute; top: 2px; bottom: 2px; width: 8px; transform: translateX(-50%); border-radius: 4px;
+    background: var(--accent); box-shadow: 0 0 11px var(--accent-glow), 0 0 3px #fff; pointer-events: none; transition: left 30ms ease; }
+.tstrip-lbl { font-size: 9px; font-weight: 700; letter-spacing: 0.5px; color: var(--text-muted); text-align: center; }
+/* Realistic hardware pitch/mod wheel: a ribbed cylinder grip riding in a dark slot. */
+/* dark rendered wheel (Novation-style), recessed; a thin accent marker shows position */
+.wheel-track {
+    /* the ribbed cylinder render is taller than the slot (200%) and SCROLLS (JS sets background-position-y)
+       so the wheel physically turns as you drag; the slot's recess + inset shadow are the housing. */
+    position: relative; width: 28px; height: 124px; border-radius: 8px; overflow: hidden;
+    background: url("img/wheel.png?v=7") center 50% / 100% 200% no-repeat, #07070c;
+    border: 1px solid var(--border);
+    box-shadow: inset 0 6px 9px -3px rgba(0,0,0,0.9), inset 0 -6px 9px -3px rgba(0,0,0,0.9);   /* recessed: top+bottom inner shadow */
+    cursor: ns-resize; touch-action: none;
+}
+/* faint LED core glowing through the ribs (theme accent), behind the position grip */
+.wheel-track::before {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(ellipse 70% 42% at 50% 50%, var(--accent-glow), transparent 70%);
+    opacity: 0.32;
+}
+.wheel-grip {
+    position: absolute; left: 2px; right: 2px; height: 3px; margin-top: -1px; z-index: 2;
+    border-radius: 2px; background: var(--accent);
+    box-shadow: 0 0 6px var(--accent-glow); opacity: 0.9;
+}
+.wheel-lbl { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 2px; color: var(--accent-light); }
+
+/* DATA-DRIVEN keyboard: the photoreal perspective render is the visual; every interactive element is an
+   absolutely-positioned overlay placed from keyboard_geom.json (projected pixel coords, 0..1 of the image). */
+.kbd-scroll { flex: 1; min-width: 0; overflow: hidden; padding-top: 6px; }
+.kbd {
+    position: relative; width: 100%; aspect-ratio: 8.05 / 1; height: auto; max-height: 232px;
+    margin-top: 27px;   /* gap for the light-guide strip above the keys */
+    user-select: none; touch-action: none; border-radius: 6px;
+    background: url("img/keyboard.png?v=12") center / 100% 100% no-repeat, #0a0a0f;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+}
+/* light-guide channel: a dark recess above the keys, holding the LED strip (S88-style) */
+.kbd::before {
+    content: ""; position: absolute; left: 0; right: 0; top: -23px; height: 9px; border-radius: 2px;
+    background: #0a0e15; box-shadow: inset 0 1px 2px rgba(0,0,0,0.9); z-index: 1;
+}
+/* per-key hit-zone: clip-path (set inline from the projected polygon) clips BOTH paint and pointer events,
+   so clicks are polygon-accurate. Black keys sit above white in the overlap regions. */
+.kbd-key { position: absolute; inset: 0; cursor: pointer; }
+.kbd-key.wk { z-index: 1; }
+.kbd-key.bk { z-index: 2; }
+.kbd-key.held { background: rgba(0,0,0,0.30); }   /* press shading, clipped to the key's polygon */
+/* note label at the white-key front centre (left/top set inline) */
+.wkey-lbl {
+    position: absolute; transform: translate(-50%, -150%); text-align: center; pointer-events: none; z-index: 3;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.5px; color: #1a1a22;
+}
+.wkey-lbl.c { color: var(--accent, #b5352a); font-size: 10px; }   /* C keys stand out — theme accent */
+body.hide-keylabels .wkey-lbl { display: none; }   /* Settings > Show Key Labels off */
+/* light-guide LED at the back of each key (left/top set inline). Always lit + bloom; brighter when played.
+   Colour: --c (dim) + --clit (lit) set inline by colorizeGuide() for rainbow/octave/layer; unset = accent. */
+.kbd-dash {
+    position: absolute; top: -20px; transform: translateX(-50%); z-index: 4;   /* strip above the keys */
+    width: var(--led-w, 13px); height: 5px; border-radius: 2.5px;   /* --led-w ≈ ½ key pitch so LEDs nearly touch */
+    background: var(--c, var(--accent)); opacity: 0.95;
+    box-shadow: 0 0 10px var(--c, var(--accent)), 0 0 5px var(--c, var(--accent)), 0 0 2px var(--c, var(--accent));
+    transition: opacity 35ms ease, box-shadow 35ms ease, filter 35ms ease;
+}
+.kbd-dash.on {
+    opacity: 1; filter: brightness(1.5) saturate(1.25);
+    box-shadow: 0 0 16px var(--clit, var(--c, var(--accent))), 0 0 9px var(--c, var(--accent)), 0 0 3px #fff;
+}
+.perf-pads { display: grid; grid-template-columns: repeat(auto-fill, 168px); gap: 14px; }
+.xy-cell { display: flex; flex-direction: column; gap: 8px; }
+.xy-head { display: flex; align-items: center; gap: 8px; }
+.xy-head .xy-lbl { flex: 1; }
+.xy-mini { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 2px 6px; background: #0d0d1c; color: var(--text-muted); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; }
+.xy-mini.on { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 6px var(--cyan-glow); }
+.xy-pad {
+    position: relative;
+    width: 100%; aspect-ratio: 1 / 1;
+    background:
+        linear-gradient(#0d0d1c00, #0d0d1c00),
+        repeating-linear-gradient(0deg, transparent 0 21px, var(--border) 21px 22px),
+        repeating-linear-gradient(90deg, transparent 0 21px, var(--border) 21px 22px),
+        radial-gradient(circle at 50% 50%, #0d0d1c, #06060e);
+    border: 1px solid var(--accent);
+    cursor: crosshair;
+    touch-action: none;
+}
+.xy-dot { position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); pointer-events: none; }
+.xy-lbl { font-family: 'Orbitron', sans-serif; font-size: 11px; letter-spacing: 2px; color: var(--accent-light); }
+.perf-knobs { display: grid; grid-template-columns: repeat(auto-fill, minmax(68px, 1fr)); gap: 12px; }
+.perf-knob { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.perf-knob .dial.perf { width: 56px; height: 56px; }
+.film-knob { position: relative; cursor: ns-resize; touch-action: none; isolation: isolate; }
+.fk-ring, .fk-body, .fk-tint, .fk-ptr { position: absolute; inset: 0; pointer-events: none; }
+/* value arc, halo'd just outside the knob, in the live theme accent */
+.fk-ring {
+    -webkit-mask: radial-gradient(circle closest-side, transparent 0 70%, #000 73% 84%, transparent 87%);
+    mask: radial-gradient(circle closest-side, transparent 0 70%, #000 73% 84%, transparent 87%);
+    filter: drop-shadow(0 0 4px var(--accent));
+}
+/* dark-ish metal bake; the tint provides the theme colour (no brightness filter — would dim it) */
+.fk-body { background-image: url("img/knob_body.png"); background-repeat: no-repeat; }
+/* shared dial-body tint (makeDial knobs): accent on the photoreal body, masked to the disc so it
+   never touches the value arc / mod rings / spikes that draw on top, and never bleeds into the shadow */
+.dial { isolation: isolate; }
+.dial-tint {
+    position: absolute; inset: 0; pointer-events: none;
+    background: var(--cyan); mix-blend-mode: color; opacity: 0.7;
+    -webkit-mask: radial-gradient(circle closest-side, #000 0 63%, transparent 67%);
+            mask: radial-gradient(circle closest-side, #000 0 63%, transparent 67%);
+}
+/* tint: accent hue on the body's shading -> a clearly-coloured (theme) metal knob, 3D intact.
+   Masked to the knob DISC only (a circle) — NOT the body PNG alpha, whose baked contact shadow
+   would otherwise let the tint bleed into the bottom-right corner. */
+.fk-tint {
+    background: var(--cyan); mix-blend-mode: color; opacity: 0.7;
+    -webkit-mask: radial-gradient(circle closest-side, #000 0 63%, transparent 67%);
+            mask: radial-gradient(circle closest-side, #000 0 63%, transparent 67%);
+}
+/* pointer in the theme accent, with a glow */
+.fk-ptr {
+    background: var(--accent);
+    -webkit-mask-image: url("img/knob_ptr.png"); mask-image: url("img/knob_ptr.png");
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    filter: drop-shadow(0 0 3px var(--accent));
+}
+.perf-empty { color: var(--text-dim); padding: 20px; }
+
+/* PERFORM top row: morph + orb pads + control panel fill the width (no dead band). */
+.perf-top { display: flex; gap: 22px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 22px; }
+.perf-orb { display: flex; flex-direction: column; gap: 8px; }
+.perf-orb-head { display: flex; align-items: center; gap: 10px; }
+.orb-dice { font-size: 13px; padding: 1px 6px; background: #0d0d1c; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; }
+.orb-dice:hover { border-color: var(--cyan); box-shadow: 0 0 6px var(--cyan-glow); }
+.orb-dice.on { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }
+.orb-pad { position: relative; width: 168px; height: 168px; border-radius: 50%; border: 1px solid var(--accent); cursor: crosshair; touch-action: none;
+    background: radial-gradient(circle at 50% 50%, rgba(5,217,232,0.10), #0a0a16 72%, #06060e); }
+.orb-ring { position: absolute; inset: 28%; border-radius: 50%; border: 1px solid var(--border); pointer-events: none; }
+.orb-puck { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #fff; box-shadow: 0 0 14px var(--cyan); pointer-events: none; }
+.perf-ctl { flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 10px; padding: 12px; border: 1px solid var(--border); border-radius: 6px; background: rgba(8,8,20,0.5); }
+.pc-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pc-row-lbl { font-family: 'Orbitron', sans-serif; font-size: 10px; letter-spacing: 2px; color: var(--text-muted); width: 64px; }
+.pc-tog { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; padding: 4px 10px; background: #0d0d1c; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; cursor: pointer; }
+.pc-tog.on { color: #06080f; background: linear-gradient(var(--cyan), var(--cyan)), url("img/button.png") center / 100% 100% no-repeat; background-blend-mode: color, normal; border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }
+.pc-sel { background: #0d0d1c; color: var(--accent-light); border: 1px solid var(--border); border-radius: 4px; font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 3px 6px; }
+.pc-sel.wide { min-width: 90px; }
+/* fill the control-panel width so it isn't a mostly-empty band */
+.perf-ctl .pc-row { width: 100%; }
+.perf-ctl .pc-sel { flex: 1; }
+.perf-ctl .pc-tog { flex: 1; text-align: center; }
+.perf-ctl .pc-row-lbl { flex: 0 0 64px; }
+.perf-ctl .perf-scenes { width: 100%; margin: 6px 0 0; }
+.perf-ctl .perf-scenes-row { display: flex; }
+.perf-ctl .scene-slot { flex: 1 1 0; height: 44px; }
+/* PERFORM snapshots */
+.perf-scenes { margin: 8px 0 18px; }
+.perf-scenes-lbl { font-family: 'Orbitron', sans-serif; font-size: 10px; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; }
+.perf-scenes-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.scene-slot { position: relative; width: 46px; height: 38px; display: flex; align-items: center; justify-content: center; background: #0d0d1c; border: 1px dashed var(--border); border-radius: 5px; cursor: pointer; }
+.scene-slot.set { border-style: solid; border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); background: rgba(5,217,232,0.10); }
+.scene-slot:hover { border-color: var(--accent-light); }
+.scene-num { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--text-muted); }
+.scene-slot.set .scene-num { color: var(--cyan); }
+/* Variations: unlimited labeled full-param snapshots */
+.perf-vars { margin: 8px 0 18px; }
+.perf-vars-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.perf-vars-head .pbtn { padding: 3px 10px; font-size: 10px; }
+.perf-vars-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.var-slot { position: relative; min-width: 64px; height: 30px; padding: 0 10px; display: flex; align-items: center; justify-content: center;
+    background: rgba(5,217,232,0.08); border: 1px solid var(--cyan-dim); border-radius: 5px; cursor: pointer; }
+.var-slot:hover { border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }
+.var-name { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.5px; color: var(--cyan); white-space: nowrap; }
+.var-rename { width: 80px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--cyan); background: #06060e; border: 1px solid var(--accent); outline: none; }
+.perf-vars-empty { font-size: 11px; color: var(--text-muted); font-style: italic; }
+/* Plugin host (SETTINGS > Master Insert) */
+.ph-current { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
+.ph-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.ph-row .set-sel { flex: 1 1 160px; min-width: 0; }
+.ph-row .pbtn { padding: 4px 10px; font-size: 10px; }
+.preset-name { cursor: pointer; }
+.preset-name:hover { color: var(--cyan); }
+
+.patch-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #08081400, #0a0a14);
+}
+.pbtn.ez {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-light);
+    background: #0a0a14;
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    cursor: pointer;
+}
+.pbtn.ez:hover { border-color: var(--accent); }
+.pbtn.ez.on {
+    color: #080814;
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+.softkeys {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #08081400, #0a0a14);
+}
+
+/* ── Collapsible drawers: a chevron in a section header folds the section body away (the bottom block
+   detail, soft-keys row, and the SOURCES/OUTPUTS columns) so it stops blocking the patch view. ── */
+.drawer-toggle {
+    cursor: pointer; background: none; border: none; color: var(--cyan);
+    font-size: 12px; line-height: 1; padding: 0 6px 0 0; margin: 0; flex: 0 0 auto;
+}
+.drawer-toggle:hover { color: #fff; text-shadow: 0 0 8px var(--cyan-glow); }
+#detail.drawer-collapsed > *:not(.detail-title) { display: none; }
+#detail.drawer-collapsed { min-height: 0; padding-bottom: 6px; }
+#softkeys.drawer-collapsed > *:not(.sk-title) { display: none; }
+.col.drawer-collapsed > *:not(.col-title) { display: none; }
+/* SOURCES/OUTPUTS fold HORIZONTALLY into a thin strip (not vertically) so the blocks reclaim the width;
+   the title rotates to a vertical label. Narrow-strip width is set with higher specificity below so it
+   beats the .col.sources/.col.outputs fixed width. */
+.col.drawer-collapsed .col-title { writing-mode: vertical-rl; white-space: nowrap; align-self: stretch; justify-content: flex-start; }
+.sk-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 10px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+.sk-count { display: inline-flex; align-items: center; gap: 6px; }
+.sk-count .sk-num { min-width: 16px; text-align: center; color: var(--cyan); }
+.sk-btn {
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+    color: var(--accent-light);
+    background: #0a0a14;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+.sk-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--cyan); }
+.sk-btn:disabled { opacity: 0.35; cursor: default; }
+.knob.sk { width: 58px; }
+.knob.sk .dial { width: 42px; height: 42px; }
+
+.patch-wrap { position: relative; padding: 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.sk-cables { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; letter-spacing: 1px; color: var(--text-muted); }
+.sk-cables input[type=range] {
+    -webkit-appearance: none; appearance: none; width: 96px; height: 3px; border-radius: 2px;
+    background: var(--border); cursor: pointer; outline: none;
+}
+.sk-cables input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 13px; height: 13px; border-radius: 50%;
+    background: url("img/slider_thumb.png?v=3") center / cover no-repeat;   /* plain GRAY bead (no turquoise tint) */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.7); border: none; cursor: pointer;
+}
+/* Hide-soft-knob-cables toggle, sits right after the CABLES opacity slider. */
+.sk-cables-toggle {
+    margin-left: 6px; height: 18px; padding: 0 7px; font-size: 9px; letter-spacing: 1px; line-height: 16px;
+    border-radius: 3px; background: transparent; color: var(--text-muted); border: 1px solid var(--border); cursor: pointer;
+}
+.sk-cables-toggle:hover { color: var(--cyan, #00e5ff); border-color: var(--cyan, #00e5ff); }
+.sk-cables-toggle.on { color: #06080f; background: var(--cyan, #00e5ff); border-color: var(--cyan, #00e5ff); }
+/* The cable overlay sits above the blocks but must never intercept clicks — the
+   SVG paths default to visiblePainted in WebKit and would otherwise swallow clicks
+   meant for buttons underneath (e.g. a block's ✕). Force the whole layer inert. */
+/* Spans the FULL scrollable patch content (width/height set in drawCables to scrollWidth/Height), not
+   just the visible box, and is anchored at the content origin so it scrolls together with the blocks —
+   otherwise cables detach from their jacks when .patch-wrap is scrolled. */
+.cables { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 5; }
+.cables, .cables * { pointer-events: none !important; }
+.cables path { filter: drop-shadow(0 0 3px var(--cyan-glow)); }
+
+/* Keyboard-shortcut editor (Settings ▸ Keyboard Shortcuts) */
+.sc-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.sc-row > span { flex: 1; color: var(--text); font-size: 12px; }
+.sc-key { min-width: 92px; text-align: center; font-family: 'Share Tech Mono', monospace; }
+.sc-key.sc-capture { color: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.sc-clr { width: 28px; padding: 0; }
+
+.patch-grid { display: flex; gap: 20px; position: relative; z-index: 1; }
+.col-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 10px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    text-shadow: 0 0 8px var(--cyan-glow);
+}
+.col.sources, .col.outputs { width: 120px; display: flex; flex-direction: column; gap: 10px; }
+.col.blocks { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; align-content: start; }
+
+.src-node, .out-node {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+.out-node { flex-wrap: wrap; }
+.col.outputs.gmt-strip { width: 184px; overflow-y: auto; }   /* GLOBAL MOD destination strip: wider + scrollable */
+/* collapsed side columns: thin vertical strip (placed after the width rules so it wins specificity ties) */
+.col.sources.drawer-collapsed, .col.outputs.drawer-collapsed { width: 26px; min-width: 26px; flex: 0 0 26px; overflow: hidden; }
+.gmt-node { padding: 5px 8px; gap: 6px; flex-wrap: nowrap; }
+.gmt-node .src-name { font-size: 9px; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.src-name { font-size: 11px; letter-spacing: 1px; color: var(--text); text-transform: uppercase; }
+/* Left strip: let a (possibly renamed) source name truncate so the SK badge + jack stay visible. */
+.col.sources .src-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* "SK" badge marking soft-knob sources in the strip, in the soft-knob accent colour. */
+.sk-badge {
+    flex: 0 0 auto;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 7px; font-weight: 700; letter-spacing: 0.5px;
+    color: var(--accent-light);
+    background: var(--accent-glow);
+    border: 1px solid var(--accent);
+    border-radius: 3px; padding: 1px 3px; line-height: 1;
+}
+
+.jack {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--cyan);
+    background: #08081a;
+    box-shadow: inset 0 0 4px var(--cyan-glow);
+    flex-shrink: 0;
+    cursor: crosshair;
+    transition: transform 100ms, box-shadow 100ms;
+}
+.jack:hover { transform: scale(1.35); box-shadow: 0 0 8px var(--cyan-glow), inset 0 0 4px var(--cyan-glow); }
+.jack.snap { transform: scale(1.6); border-color: var(--green); box-shadow: 0 0 12px var(--green), inset 0 0 4px var(--green); }
+.jack.out { margin-left: auto; }
+.jack.in { background: #1a0a14; border-color: var(--accent); box-shadow: inset 0 0 4px var(--accent-glow); }
+
+/* Global busy overlay + spinner (design ported from Audio Haxor): shown while a heavy op
+   (mutate / stereo / blank) computes, so the WebView shows progress instead of a beachball. */
+#busy-overlay { position: fixed; inset: 0; z-index: 30000; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px; background: rgba(2, 6, 12, 0.55); }
+#busy-overlay.on { display: flex; }
+#busy-overlay .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--cyan); border-right-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; box-shadow: 0 0 15px var(--cyan-dim); }
+#busy-overlay .busy-label { font-family: 'Orbitron', sans-serif; letter-spacing: 2px; font-size: 12px; color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Stereo Lock: the mirrored right-channel clone blocks are dimmed + carry a lock badge (they track the left). */
+.block.clone-locked { opacity: 0.5; position: relative; }
+.block.clone-locked::after { content: '\1F512'; position: absolute; top: 4px; right: 6px; font-size: 11px; opacity: 0.8; pointer-events: none; }
+.block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.4);
+    transition: border-color 140ms, box-shadow 140ms;
+    cursor: pointer;
+    overflow: hidden;
+}
+.block.empty { opacity: 0.55; }
+.block.sel { border-color: var(--cyan); box-shadow: 0 0 14px var(--cyan-glow); }
+.block-head {
+    display: flex; align-items: center; gap: 4px;
+    padding: 6px 7px;
+    background: linear-gradient(180deg, #0a0a18, #07071a);
+    border-bottom: 1px solid var(--border);
+}
+.block-head .type { flex: 1 1 auto; min-width: 0; }   /* type name takes the remaining width instead of truncating to "S…" */
+.block-id { font-family: 'Orbitron', sans-serif; font-weight: 900; color: var(--cyan); font-size: 11px; letter-spacing: 1px; text-shadow: 0 0 6px var(--cyan-glow); }
+.block-icon { display: inline-flex; flex: 0 0 auto; color: var(--cyan); filter: drop-shadow(0 0 3px var(--cyan-glow)); }
+.block-icon svg { width: 16px; height: 16px; display: block; }
+.type-sel { flex: 1; min-width: 0; padding: 4px 6px; font-size: 11px; min-width: 0; }
+.block-body { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+
+/* Compact base-parameter knobs shown inline at the top of an unexpanded block. */
+.block-params { display: flex; flex-wrap: wrap; gap: 6px 8px; padding: 2px 0 7px; }
+.block-params .knob { width: 46px; gap: 3px; }
+.block-params .dial { width: 34px; height: 34px; }
+.block-params .dial .pointer { height: 13px; }
+.block-params .knob .name { font-size: 8px; letter-spacing: 0.5px; }
+.block-params .knob .val { font-size: 9px; min-height: 10px; }
+.block-params .knob.enum { width: 86px; align-items: stretch; }
+.block-params .knob.enum .enum-sel { font-size: 9px; padding: 3px 4px; }
+.in-row { display: flex; align-items: center; gap: 6px; }
+.in-lbl { font-size: 9px; letter-spacing: 1px; color: var(--text-dim); text-transform: uppercase; width: 26px; }
+.src-sel { flex: 1; min-width: 0; padding: 3px 5px; font-size: 10px; letter-spacing: 0; text-transform: none; }
+
+/* ── fuzzy searchable dropdown (searchSelect) ── */
+.ss { position: relative; min-width: 0; }
+.ss.ss-type { flex: 1; }
+.ss.ss-src { flex: 1; min-width: 0; }
+.ss.add { flex: 0 0 auto; width: 34px; }   /* the "+" add-cable picker is a fixed compact button, not a flex:1 grower (else it competes with .in-chips and the cable chip overflows onto it) */
+.ss.ss-enum { width: 100%; }
+.ss-btn {
+    width: 100%;
+    text-align: left;
+    padding: 4px 6px;
+    font-family: inherit;
+    font-size: 10px;
+    color: var(--cyan);
+    background: #0a0a14;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ss-type .ss-btn { font-size: 11px; }
+/* Per-block preset line (below the knobs): centered ‹ name ›. Save/rename/delete are in the
+   right-click menu; the only buttons here are the prev/next nav arrows. */
+.bpreset-slot { display: flex; flex: 0 1 auto; align-items: center; gap: 3px; min-width: 0; justify-content: center; }
+.bpreset-nav {
+    flex: 0 0 auto; width: 18px; height: 18px; padding: 0; font-size: 13px; line-height: 1; border-radius: 3px;
+    background: transparent; color: var(--text-muted); border: 1px solid var(--border); cursor: pointer; }
+.bpreset-nav:hover { color: #06080f; background: var(--cyan, #00e5ff); border-color: var(--cyan, #00e5ff); }
+.bpreset-nav:disabled, .bpreset-nav.dis { opacity: 0.35; cursor: default; pointer-events: none; }
+/* Block-body preset row: just the centered ‹ name › line. */
+.block-preset-row { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 6px 7px 2px; }
+.bpreset-slot .ss.ss-bpreset { flex: 0 1 auto; margin-left: 0; min-width: 0; }
+.bpreset-slot .ss-bpreset .ss-btn { min-width: 70px; max-width: 150px; text-align: center; color: var(--yellow, #f5d020); }
+/* Modal text prompt (name a saved block preset, rename, …) */
+.txt-prompt { position: fixed; inset: 0; z-index: 12000; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; }
+.txt-prompt-box { background: #0c0c18; border: 1px solid var(--cyan-dim); border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 24px var(--cyan-glow); padding: 18px 20px; min-width: 280px; }
+.txt-prompt-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; }
+.txt-prompt-inp { width: 100%; box-sizing: border-box; padding: 8px 10px; background: rgba(5,5,14,0.8); color: var(--text); border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 13px; }
+.txt-prompt-inp:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow); }
+.txt-prompt-row { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; }
+.ss.add .ss-btn, .ss.add-mod .ss-btn { color: var(--text-dim); }
+.ss-btn:hover { border-color: var(--accent); color: var(--cyan); }
+.ss-dd {
+    position: fixed;
+    z-index: 10010;   /* above the block-modal overlay (10000) + cable-pop (10001) so dropdowns (e.g. Osc Wave) are not trapped behind the expanded view */
+    display: flex;
+    flex-direction: column;
+    max-height: 280px;
+    background: #0a0a14;
+    border: 1px solid var(--accent);
+    box-shadow: 0 8px 24px #000c;
+}
+.ss-search {
+    padding: 6px 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    background: #06060e;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    outline: none;
+}
+.ss-search::placeholder { color: var(--text-dim); }
+.ss-list { overflow-y: auto; min-height: 0; overscroll-behavior: contain; }
+.ss-item {
+    padding: 4px 8px;
+    font-size: 11px;
+    color: var(--text-dim);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ss-item:hover, .ss-item.ss-kbd { background: #14142a; color: var(--cyan); }
+.ss-item.ss-kbd { background: var(--cyan-dim); }
+.ss-item.sel { color: var(--accent-light); }
+.ss-empty { padding: 6px 8px; font-size: 10px; color: var(--text-dim); }
+.fzf-hl { background: rgba(5, 217, 232, 0.15); color: var(--cyan); border-bottom: 1px solid var(--cyan); }
+.preset-filter {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    padding: 7px 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    background: #06060e;
+    border: 1px solid var(--border);
+    outline: none;
+}
+.preset-filter:focus { border-color: var(--accent); }
+.preset-filter::placeholder { color: var(--text-dim); }
+
+/* ---- tag/category browser (BROWSE tab) ---- */
+#pane-browse { flex-direction: column; min-height: 0; padding: 12px; }   /* display gated by .active */
+#pane-browse.active { display: flex; }
+.brz-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(220px, 1.3fr) minmax(220px, 1.6fr) minmax(220px, 1.4fr);
+    gap: 10px;
+    min-height: 0;
+}
+.brz-facets { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0; }
+.brz-facet { background: var(--bg-card); border: 1px solid var(--border); }
+.brz-col-head {
+    padding: 6px 10px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    background: #0a0a16;
+    border-bottom: 1px solid var(--border);
+}
+.brz-count { color: var(--text-dim); letter-spacing: 1px; }
+/* Browser-tab BLOCK PRESET manager (full CRUD over user per-block param-sets) */
+.brz-blockpresets-wrap { margin-top: 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); overflow: hidden; }
+.brz-bp-hint { text-transform: none; letter-spacing: 0; font-size: 10px; color: var(--text-dim); margin-left: 10px; }
+.brz-blockpresets { padding: 10px 12px; max-height: 280px; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; align-items: start; }
+.brz-bp-empty { color: var(--text-dim); font-size: 12px; padding: 14px; }
+.brz-bp-grp { border: 1px solid var(--border); border-radius: 5px; padding: 8px; background: var(--bg-secondary); }
+.brz-bp-type { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--cyan); margin-bottom: 6px; }
+.brz-bp-row { display: flex; align-items: center; gap: 6px; padding: 3px 0; }
+.brz-bp-name { flex: 1; min-width: 0; font-size: 12px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.brz-bp-btn { font-size: 9px; padding: 3px 6px; flex: 0 0 auto; }
+.brz-bp-btn.danger:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.brz-bp-btn:disabled { opacity: 0.4; cursor: default; }
+.brz-facet-list { max-height: 200px; overflow-y: auto; }
+.brz-fitem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-left: 2px solid transparent;
+}
+.brz-fitem:hover { background: var(--bg-hover); color: var(--cyan); }
+.brz-fitem.on { color: var(--cyan); border-left-color: var(--cyan); background: rgba(5, 217, 232, 0.08); }
+.brz-fcount { font-size: 10px; color: var(--text-muted); }
+.brz-fitem.on .brz-fcount { color: var(--cyan); }
+
+.brz-listcol { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); min-height: 0; }
+.brz-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; position: relative; }
+.brz-item {
+    position: absolute; left: 0; right: 0;   /* virtualized: positioned by row index */
+    height: 28px; box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+    border-left: 2px solid transparent;
+}
+.brz-item:hover { background: var(--bg-hover); }
+.brz-item.sel { background: rgba(5, 217, 232, 0.1); border-left-color: var(--cyan); color: var(--cyan); }
+.brz-ikind { font-size: 9px; }
+.brz-ikind.factory { color: var(--accent-light); }
+.brz-ikind.user { color: var(--green); }
+.brz-iname { flex: 1; letter-spacing: 1px; }
+.brz-inum { font-size: 10px; color: var(--text-muted); font-family: 'Share Tech Mono', monospace; min-width: 26px; }
+.brz-star { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 13px; padding: 0; line-height: 1; }
+.brz-star:hover { color: var(--yellow, #f5d020); }
+.brz-star.on { color: var(--yellow, #f5d020); }
+/* (All) reset row sits at the top of each facet column */
+.brz-fall { color: var(--text); border-top: 1px solid transparent; border-bottom: 1px solid var(--border); }
+.brz-fall.on { color: var(--cyan); }
+
+/* browse search row + favourites toggle */
+#pane-browse .save-row { margin-bottom: 8px; }
+.brz-search-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.brz-search-row .preset-filter { margin-bottom: 0; flex: 1; }
+.brz-favtoggle { flex: 0 0 auto; }
+.brz-favtoggle.on { color: var(--yellow, #f5d020); border-color: var(--yellow, #f5d020); }
+
+.brz-details { background: var(--bg-card); border: 1px solid var(--border); padding: 14px; overflow-y: auto; }
+.brz-empty { color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-align: center; margin-top: 30px; }
+.brz-dhead { font-size: 10px; letter-spacing: 2px; color: var(--accent-light); text-transform: uppercase; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px; }
+.brz-dname { font-size: 18px; letter-spacing: 1px; color: var(--cyan); margin-bottom: 12px; }
+.brz-dkind { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+/* structured detail fields */
+.brz-field { margin-bottom: 10px; }
+.brz-flabel { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 3px; }
+.brz-fval { font-size: 12px; color: var(--text); letter-spacing: 0.5px; }
+.brz-desc { white-space: pre-wrap; line-height: 1.4; }
+.brz-fedit, .brz-fdesc {
+    width: 100%; box-sizing: border-box; padding: 6px 8px;
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    color: var(--cyan); background: #06060e; border: 1px solid var(--border); outline: none;
+}
+.brz-fdesc { resize: vertical; min-height: 54px; }
+.brz-fedit:focus, .brz-fdesc:focus { border-color: var(--accent); }
+.brz-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.brz-feditrow .brz-chips { margin-bottom: 0; align-items: center; }
+.brz-feditrow .ss.ss-src { margin-left: 2px; }   /* taxonomy "+ add" picker sits inline with the chips */
+.brz-notag { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
+.brz-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    font-size: 11px;
+    color: var(--text);
+    background: #0a0a16;
+    border: 1px solid var(--border);
+}
+.brz-chipx { background: none; border: none; color: var(--red); cursor: pointer; font-size: 10px; padding: 0; line-height: 1; }
+.brz-chipx:hover { color: var(--accent-light); }
+.brz-addtag { display: flex; gap: 6px; margin-bottom: 14px; }
+.brz-tagf, .brz-tagv {
+    box-sizing: border-box;
+    padding: 6px 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    background: #06060e;
+    border: 1px solid var(--border);
+    outline: none;
+}
+.brz-tagf { width: 90px; }
+.brz-tagv { flex: 1; min-width: 0; }
+.brz-tagf:focus, .brz-tagv:focus { border-color: var(--accent); }
+.brz-load { width: 100%; }
+
+/* ---- graphical LFO / envelope editors (block modal) ---- */
+.graph-wrap { margin-bottom: 14px; background: var(--bg-card); border: 1px solid var(--border); padding: 8px; max-width: 480px; }
+.graph-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.graph-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); }
+.graph-shapes { display: flex; gap: 4px; }
+.graph-shape {
+    width: 26px; height: 22px;
+    font-size: 13px; line-height: 1;
+    color: var(--text-dim);
+    background: #0a0a16;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+.graph-shape:hover { color: var(--cyan); border-color: var(--cyan); }
+.graph-shape.on { color: var(--bg-primary); background: var(--cyan); border-color: var(--cyan); }
+.geo-tog { display: flex; gap: 4px; }
+.geo-btn { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 8px;
+    color: var(--text-dim); background: #0a0a16; border: 1px solid var(--border); cursor: pointer; border-radius: 3px; }
+.geo-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+.geo-btn.on { color: var(--bg-primary); background: var(--cyan); border-color: var(--cyan); }
+/* Keep the rendered box at the 320:120 viewBox aspect so the SVG (preserveAspectRatio:none)
+   fills it without stretching — fixes distorted envelope/LFO curves + oval drag handles. */
+.graph-svg { width: 100%; aspect-ratio: 320 / 120; height: auto; display: block; touch-action: none; }
+.graph-bg { fill: #06060e; }
+.graph-grid { stroke: rgba(5, 217, 232, 0.12); stroke-width: 0.5; }
+.graph-tgrid { stroke: rgba(5, 217, 232, 0.10); stroke-width: 0.5; }                 /* vertical time gridlines */
+.graph-tlabel { fill: rgba(155, 225, 240, 0.55); font-size: 7px; letter-spacing: 0.5px; }
+.graph-line { fill: none; stroke: var(--cyan); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 0 3px rgba(5, 217, 232, 0.55)); }
+.graph-fill { fill: rgba(5, 217, 232, 0.16); stroke: none; }
+.graph-spec { fill: rgba(211, 0, 197, 0.16); stroke: rgba(211, 0, 197, 0.45); stroke-width: 0.6; }   /* FFT spectrum backdrop (magenta, behind the cyan curve) */
+/* Analyzer-block canvases (a canvas keeps its bitmap aspect under width:100%, so no stretch). */
+.graph-canvas { width: 100%; height: auto; display: block; margin-bottom: 6px; background: #06060e; border: 1px solid var(--border); border-radius: 4px; }
+.graph-liss { width: 134px; height: 134px; display: block; margin: 0 auto 6px; background: #06060e; border: 1px solid var(--border); border-radius: 4px; }
+.graph-sub { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); opacity: 0.7; margin: 2px 0; }
+.wt-frame { fill: none; stroke: var(--cyan); stroke-width: 1; stroke-linejoin: round; }
+.wt-frame-cur { fill: none; stroke: #ffd23f; stroke-width: 2; stroke-linejoin: round; }
+.graph-handle { fill: var(--accent); stroke: #06060e; stroke-width: 1.5; cursor: grab; filter: drop-shadow(0 0 3px rgba(211, 0, 197, 0.6)); }
+.graph-handle:active { cursor: grabbing; }
+.graph-playhead { stroke: var(--accent-light); stroke-width: 1; opacity: 0.7; }
+.graph-dot { fill: var(--accent-light); }
+
+/* ---- CLIP piano-roll ---- */
+#pane-clip { flex-direction: column; min-height: 0; padding: 10px; }   /* display gated by .active */
+#pane-clip.active { display: flex; }
+
+/* ---- layer bar ---- */
+.layer-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 6px 8px; border-bottom: 1px solid var(--border); background: #07070f; }
+.layer-tab {
+    display: flex; align-items: center; gap: 5px;
+    padding: 3px 6px; background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 2px solid transparent; cursor: pointer;
+}
+.layer-tab.active { border-left-color: var(--cyan); background: rgba(5, 217, 232, 0.08); }
+.layer-name { font-size: 11px; letter-spacing: 0.5px; color: var(--text); padding: 0 2px; }
+.layer-tab.active .layer-name { color: var(--cyan); }
+.layer-name-edit { width: 80px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--cyan); background: #06060e; border: 1px solid var(--accent); outline: none; }
+.layer-tog { width: 18px; height: 18px; font-size: 9px; color: var(--text-muted); background: #0a0a16; border: 1px solid var(--border); cursor: pointer; }
+.layer-tog.mute { color: var(--bg-primary); background: var(--red); border-color: var(--red); }
+.layer-tog.solo { color: var(--bg-primary); background: var(--yellow, #f5d020); border-color: var(--yellow, #f5d020); }
+.layer-tog.series { color: var(--bg-primary); background: var(--magenta, #d300c5); border-color: var(--magenta, #d300c5); }
+.layer-tog:disabled { opacity: 0.45; cursor: default; }
+.layer-mix { display: inline-flex; align-items: center; gap: 7px; }
+.layer-mix .knob { width: 32px; gap: 1px; align-items: center; }
+.layer-mix .dial { width: 26px; height: 26px; }
+.layer-mix .dial .pointer { height: 10px; }
+.layer-mix .knob .name { font-size: 7px; letter-spacing: 0.5px; }
+.layer-mix .knob .val { font-size: 8px; min-height: 9px; }
+.layer-del { background: none; border: none; color: var(--red); cursor: pointer; font-size: 10px; padding: 0 2px; }
+.layer-del:hover { color: var(--accent-light); }
+.layer-add { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; color: var(--accent-light); background: #0a0a16; border: 1px solid var(--border); padding: 4px 8px; cursor: pointer; }
+.layer-add:hover { border-color: var(--cyan); color: var(--cyan); }
+.layer-tog.zoned { color: var(--cyan); border-color: var(--cyan); }
+.zone-pop { position: fixed; z-index: 60; background: var(--bg-card); border: 1px solid var(--cyan); padding: 8px; min-width: 150px; box-shadow: 0 4px 16px rgba(0,0,0,0.6); }
+.zone-title { font-size: 9px; letter-spacing: 2px; color: var(--accent-light); margin-bottom: 6px; }
+.zone-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.zone-lbl { font-size: 11px; color: var(--text-dim); }
+.zone-in { width: 56px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--cyan); background: #06060e; border: 1px solid var(--border); outline: none; padding: 2px 4px; }
+.zone-in:focus { border-color: var(--accent); }
+
+/* ---- wavetable / waveform editor ---- */
+.wt-tools { display: flex; gap: 6px; align-items: center; }
+.wt-table {
+    font-family: 'Share Tech Mono', monospace; font-size: 11px;
+    color: var(--cyan); background: #06060e; border: 1px solid var(--border); padding: 3px 6px; outline: none;
+}
+.wt-table:focus { border-color: var(--accent); }
+.wt-nav { display: flex; gap: 6px; align-items: center; margin-top: 6px; }
+.wt-flabel { font-size: 11px; letter-spacing: 1px; color: var(--text-dim); min-width: 96px; text-align: center; }
+
+/* ---- global colour-scheme editor (SETTINGS) ---- */
+.settings-subtitle { margin: 14px 0 8px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+.cs-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 5px 8px; background: var(--bg-card); border: 1px solid var(--border); }
+.cs-label { font-size: 11px; color: var(--text-dim); letter-spacing: 0.5px; }
+.cs-input { width: 30px; height: 22px; padding: 0; background: none; border: 1px solid var(--border); cursor: pointer; }
+.cs-input::-webkit-color-swatch-wrapper { padding: 2px; }
+.cs-input::-webkit-color-swatch { border: none; }
+.cs-actions { display: flex; gap: 8px; margin-top: 10px; }
+.cs-name {
+    flex: 1; box-sizing: border-box; padding: 7px 10px;
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    color: var(--cyan); background: #06060e; border: 1px solid var(--border); outline: none;
+}
+.cs-name:focus { border-color: var(--accent); }
+.cs-saved { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.cs-chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 9px; font-size: 12px; letter-spacing: 0.5px;
+    color: var(--text); background: var(--bg-card); border: 1px solid var(--border); cursor: pointer;
+}
+.cs-chip:hover { border-color: var(--cyan); }
+.cs-dots { display: inline-flex; gap: 3px; }
+.cs-dot { width: 9px; height: 9px; border-radius: 50%; }
+.cs-chip-name { color: var(--text); }
+.cs-del { background: none; border: none; color: var(--red); cursor: pointer; font-size: 10px; padding: 0; }
+.cs-del:hover { color: var(--accent-light); }
+.log-path { margin-top: 8px; font-size: 11px; color: var(--text-muted); font-family: 'Share Tech Mono', monospace; word-break: break-all; }
+.out-wrap { display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 2px; }
+.out-lbl { font-size: 9px; letter-spacing: 1px; color: var(--accent-light); text-transform: uppercase; }
+
+.detail {
+    border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, #0a0a14, var(--bg-secondary));
+    padding: 12px 16px 18px;
+    min-height: 80px;
+    max-height: 80vh;       /* user drags the grip to set the height (persisted); this is just the ceiling */
+    overflow-y: auto;
+    flex-shrink: 0;         /* hold the user-set height; patch-wrap above takes the remaining space */
+}
+#detail.drawer-collapsed { height: auto !important; }   /* fold to the title bar, ignoring the resized height */
+/* Settings > Interface toggles: hide optional UI bits to declutter / reclaim space */
+body.hide-detail #detail, body.hide-detail #detail-resize { display: none; }   /* patch detail drawer + grip */
+body.hide-softkeys #softkeys { display: none; }                                /* soft-keys macro row */
+body.hide-badges .block-badge { display: none; }                              /* block category/feature badges */
+body.hide-icons .block-icon { display: none; }                                /* block type icon */
+body.hide-arrows .cables [data-arrow] { display: none; }                       /* cable signal-flow arrows */
+body.hide-meters #cpu-meter, body.hide-meters #ram-meter, body.hide-meters #midi-led { display: none; }   /* header chips */
+/* Compact mode: denser spacing across the busy panels to fit more on screen */
+body.compact .col.blocks { gap: 7px; }
+body.compact .block { padding: 6px 8px; }
+body.compact .softkeys { padding: 6px 12px; }
+body.compact .set-row { padding: 4px 2px; }
+body.compact .settings-group { padding: 11px 13px; }
+body.compact #pane-settings.pane.active { gap: 12px; }
+/* drag grip between the patch grid and the bottom drawer — resize the drawer height (saved to prefs) */
+.detail-resize {
+    flex: 0 0 auto; height: 7px; cursor: ns-resize;
+    background: linear-gradient(180deg, transparent, rgba(5, 217, 232, 0.08));
+    border-top: 1px solid var(--border);
+}
+.detail-resize:hover { background: rgba(5, 217, 232, 0.16); }
+.detail-resize:active { background: rgba(5, 217, 232, 0.26); }
+.detail-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    margin-bottom: 12px;
+}
+.detail-hint { color: var(--text-muted); font-size: 12px; letter-spacing: 1px; }
+.detail-knobs { display: flex; flex-wrap: wrap; gap: 16px; }
+/* Bottom drawer (inline #detail only, not the block modal): lay the sections out LEFT-TO-RIGHT so they
+   fill the dead space on the right and you scroll far less. The title spans the full width; every other
+   section flows into the row and wraps as needed. */
+#detail { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-start; align-content: flex-start; }
+#detail > .detail-title { flex: 0 0 100%; }
+/* The MODULATION section (label + matrix) flows up BESIDE the graph/knobs and grows to fill the rest of
+   the row — so there's no dead space to the right. Its matrix is an auto-fill multi-column grid, so the
+   per-param cards spread horizontally (and it wraps to its own full-width row only if it doesn't fit). */
+/* full-width own row (flex-basis 100%) so the modulation grid below spans the ENTIRE drawer width — the
+   per-param cards then spread all the way to the right instead of being squeezed beside the graph/knobs. */
+/* flex-shrink:0 forces the modsec onto its OWN full-width row (shrink:1 let it squeeze in beside the
+   knobs at ~570px, leaving the dead space on the right). width:100% belts-and-braces. */
+#detail > .detail-modsec { flex: 1 0 100%; width: 100%; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+/* auto-FIT (not auto-fill): collapse empty tracks so the param cards stretch to fill the width with no
+   dead space on the right; min-width:0 on the cells + row + fader stops a full row (label · fader ·
+   value · UNI · ✕) from overflowing into the next column. */
+#detail .mod-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(264px, 1fr)); gap: 8px 20px; align-content: start; max-width: none; }   /* override the base .mod-matrix 560px cap — the grid must span the FULL drawer width (no dead space) */
+#detail .mod-matrix .detail-mod-param { min-width: 0; }
+#detail .mod-matrix .mod-row { min-width: 0; }
+#detail .mod-matrix .mod-row .fader { min-width: 0; }
+.code-area { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; max-width: 560px; }
+textarea.code {
+    width: 100%;
+    min-height: 90px;
+    background: rgba(5, 5, 14, 0.8);
+    color: var(--green);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    padding: 10px;
+    resize: vertical;
+}
+textarea.code:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 12px var(--cyan-glow); }
+.code-err { font-size: 12px; color: var(--accent-light); min-height: 14px; letter-spacing: 0.5px; }
+
+/* ---- Block edit modal (double-click a block) ------------------------------ */
+.bm-panel {
+    width: min(680px, 94vw);
+    max-height: 84vh;
+    overflow-y: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--cyan);
+    border-radius: 6px;
+    box-shadow: 0 14px 52px rgba(0,0,0,0.75), 0 0 18px var(--cyan-glow);
+    padding: 16px 20px 20px;
+}
+.bm-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.bm-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+}
+.bm-body .detail-title { font-size: 14px; }
+.bm-body .detail-knobs { gap: 18px; }
+
+/* ---- User modules (selection + modal) ------------------------------------- */
+/* Module multi-selection reads distinct from the single-select cyan (.block.sel):
+   a magenta outline so you can tell "selected for module" from "editing". */
+.block.msel { border-color: var(--magenta); box-shadow: 0 0 12px var(--magenta-glow); }
+.mm-panel { width: min(620px, 94vw); display: flex; flex-direction: column; }
+.mm-tabs { display: flex; gap: 4px; margin: 4px 0 10px; }
+.mm-tab {
+    padding: 6px 16px;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 11px;
+    color: var(--text-dim); background: rgba(5, 217, 232, 0.04);
+    border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+}
+.mm-tab:hover { color: var(--cyan); border-color: var(--cyan-dim); }
+.mm-tab.active { color: #06080f; background: var(--cyan); border-color: var(--cyan); }
+.mm-body { display: flex; flex-direction: column; min-height: 320px; }
+.mm-pane { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.mm-pane.hidden { display: none; }
+.mm-hint { font-size: 11px; color: var(--text-dim); padding: 2px 0; }
+.mm-list { max-height: 46vh; min-height: 120px; }
+.mm-meta { font-size: 10px; color: var(--text-dim); margin-left: 8px; }
+.mm-item .pname { cursor: pointer; }
+
+/* ---- Mod matrix (detail panel) -------------------------------------------- */
+.detail-sub {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 11px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    margin: 16px 0 8px;
+}
+.mod-matrix { display: flex; flex-direction: column; gap: 6px; max-width: 560px; }
+.mod-row { display: flex; align-items: center; gap: 10px; }
+.mod-pname { width: 80px; font-size: 11px; letter-spacing: 1px; color: var(--cyan); text-transform: uppercase; }
+.mod-row .src-sel { width: 110px; flex: 0 0 auto; }
+.mod-row .fader { flex: 1; }
+.mod-dv { width: 56px; text-align: right; font-size: 11px; color: var(--text-dim); }
+
+/* ---- Cable right-click editor --------------------------------------------- */
+.cable-pop {
+    position: fixed;
+    z-index: 10001;
+    width: 210px;
+    background: var(--bg-card);
+    border: 1px solid var(--cyan);
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 14px var(--cyan-glow);
+    padding: 12px 14px;
+}
+.cable-pop.hidden { display: none; }
+.cp-title, .cp-sub {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 10px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.cp-sub { margin-top: 12px; color: var(--accent-light); }
+.cp-row { display: flex; align-items: center; gap: 8px; }
+.cp-row .fader { flex: 1; }
+.cp-val { width: 38px; text-align: right; font-size: 12px; color: var(--text-dim); }
+.cp-colors { display: flex; flex-wrap: wrap; gap: 6px; }
+.cp-sw {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: transform 100ms, box-shadow 100ms;
+}
+.cp-sw:hover { transform: scale(1.2); box-shadow: 0 0 8px currentColor; }
+.cp-disc {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px;
+    background: rgba(255, 42, 109, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--accent-light);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.cp-disc:hover { background: rgba(255, 42, 109, 0.22); border-color: var(--accent); }
+
+/* ---- Rack: module cards + add tile ---------------------------------------- */
+#rack { padding: 16px 14px 32px; display: flex; flex-direction: column; gap: 12px; }
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.02);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 160ms, box-shadow 160ms;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--cyan), var(--magenta));
+    box-shadow: 0 0 10px var(--cyan-glow);
+}
+.card:hover { border-color: var(--cyan-dim); }
+
+.card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px 7px 14px;
+    background: linear-gradient(180deg, #0a0a18 0%, #07071a 100%);
+    border-bottom: 1px solid var(--border);
+}
+.pos {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+.tools { margin-left: auto; display: flex; gap: 6px; }
+.tool {
+    width: 24px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(5, 217, 232, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--cyan);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 140ms ease;
+}
+.tool:hover:not(:disabled) {
+    background: rgba(5, 217, 232, 0.16);
+    border-color: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan-glow);
+}
+.tool:disabled { opacity: 0.25; cursor: default; }
+.tool.danger { color: var(--accent); }
+.tool.danger:hover {
+    background: rgba(255, 42, 109, 0.16);
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.module { padding: 12px 14px; transition: opacity 160ms; }
+.module.bypassed { opacity: 0.45; }
+.module-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+
+/* add-fx tile */
+.add-tile {
+    border: 1px dashed var(--cyan-dim);
+    border-radius: 5px;
+    padding: 12px 14px;
+    background: rgba(5, 217, 232, 0.025);
+    display: flex;
+    justify-content: center;
+}
+.add-sel {
+    text-align: center;
+    color: var(--cyan) !important;
+    border-color: var(--cyan-dim) !important;
+    text-shadow: 0 0 8px var(--cyan-glow);
+}
+
+select {
+    padding: 7px 10px;
+    background: rgba(5, 5, 14, 0.7);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    min-width: 150px;
+    transition: border-color 150ms, box-shadow 150ms;
+}
+select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 12px var(--cyan-glow); }
+select option { background: #07071a; color: var(--text); }
+
+.byp {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    cursor: pointer;
+    user-select: none;
+}
+.byp .led {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #0a0a14;
+    transition: background 150ms, box-shadow 150ms;
+}
+.byp.on .led {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+    border-color: var(--accent);
+}
+.byp.on { color: var(--accent-light); }
+
+/* ---- Knobs ---------------------------------------------------------------- */
+.knobs { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+
+.knob {
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+}
+.knob.hidden { display: none; }
+.knob.enum { width: 96px; justify-content: flex-start; }
+/* Tempo-sync toggle on ms/Hz knobs: small corner button, magenta when active. */
+.dial-sync {
+    position: absolute;
+    top: -1px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    line-height: 13px;
+    font-size: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: rgba(5, 5, 14, 0.85);
+    color: var(--text-dim);
+    cursor: pointer;
+    z-index: 4;
+}
+.dial-sync:hover { border-color: var(--cyan); color: var(--cyan); }
+.dial-sync.on {
+    border-color: var(--magenta);
+    color: var(--magenta);
+    background: rgba(211, 0, 197, 0.18);
+    box-shadow: 0 0 8px var(--magenta-glow);
+}
+.knob.enum .enum-sel {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: 10px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--cyan);
+    background: #0a0a14;
+    border: 1px solid var(--border);
+}
+.knob.enum .enum-sel:hover { border-color: var(--accent); }
+
+.dial {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    position: relative;
+    cursor: ns-resize;
+    background:
+        radial-gradient(circle at 50% 42%, #14142a 0%, #080814 70%),
+        conic-gradient(from -135deg,
+            var(--cyan) 0deg, var(--cyan) 0deg,
+            var(--border) 0deg, var(--border) 270deg,
+            transparent 270deg);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 6px rgba(0,0,0,0.5);
+    touch-action: none;
+}
+.dial .pointer {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 2px; height: 19px;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent-glow);
+    transform-origin: 50% 100%;
+    /* rotation applied via JS element.style.transform */
+    transform: translate(-50%, -100%) rotate(-135deg);
+    border-radius: 2px;
+}
+.dial.mix .pointer { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
+
+.knob .name {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cyan);
+}
+.knob .val {
+    font-size: 10px;
+    color: var(--text-dim);
+    min-height: 12px;
+}
+.knob.mix .name { color: var(--accent-light); }
+
+.empty-msg {
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 0;
+}
+
+/* ---- MOD MATRIX tab ---- */
+#pane-mod.pane.active { display: flex; flex-direction: column; gap: 12px; padding: 16px; }
+.mod-head { display: flex; align-items: center; justify-content: space-between; }
+.mod-tab-title { font-family: var(--font-display, inherit); font-size: 15px; letter-spacing: 3px; color: var(--cyan); text-transform: uppercase; }
+.mod-table-head {
+    display: grid; grid-template-columns: 1.3fr 1.3fr 1fr 2fr 56px 28px; gap: 10px;
+    padding: 0 4px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted);
+}
+.mod-rows { display: flex; flex-direction: column; gap: 6px; }
+.mod-row-full {
+    display: grid; grid-template-columns: 1.3fr 1.3fr 1fr 2fr 56px 28px; gap: 10px; align-items: center;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 7px 8px;
+}
+.mod-row-full .src-sel { width: auto; flex: 1 1 auto; min-width: 0; }
+.mod-amt { display: flex; align-items: center; gap: 8px; min-width: 0; border-radius: 4px; padding: 2px 4px; }
+.mod-amt .fader { flex: 1; min-width: 0; }
+.mod-amt-val { width: 48px; text-align: right; font-size: 11px; color: var(--text-dim); }
+/* Bound to host automation: green glow on the cell (a div renders box-shadow reliably; a range input does not). */
+.mod-amt.auto-bound { box-shadow: 0 0 8px rgba(57,255,20,.6), inset 0 0 0 1px rgba(57,255,20,.7); }
+.mod-amt.auto-bound .fader { accent-color: #39ff14; }
+.mod-pol {
+    font-size: 10px; letter-spacing: 1px; padding: 4px 0; border-radius: 4px; cursor: pointer;
+    background: var(--bg-secondary); color: var(--text-dim); border: 1px solid var(--border);
+}
+.mod-pol.bi { color: #b58aff; border-color: #6b46c1; box-shadow: 0 0 6px rgba(181, 138, 255, 0.35); }
+.mod-del {
+    width: 24px; height: 24px; border-radius: 4px; cursor: pointer; font-size: 12px;
+    background: var(--bg-secondary); color: var(--accent); border: 1px solid var(--border);
+}
+.mod-del:hover { background: var(--accent); color: #fff; }
+.mod-empty, .mod-hint { color: var(--text-muted); font-size: 11px; line-height: 1.5; }
+.mod-hint { margin-top: 4px; max-width: 720px; }
+
+/* ---- summing input cables (chips + add picker) ---- */
+.in-chips { display: flex; flex-wrap: wrap; gap: 3px; flex: 1; min-width: 0; }
+.in-chip {
+    font-size: 9px; padding: 1px 5px; border-radius: 8px; cursor: pointer;
+    background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--border); white-space: nowrap;
+}
+.in-chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.src-sel.add { flex: 0 0 auto; width: 34px; color: var(--text-dim); }
+/* mod matrix: read-only cells for auto-listed signal cables */
+.mod-src, .mod-dst { font-size: 11px; color: var(--text); align-self: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mod-kind { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); align-self: center; }
+.mod-pol-na { color: var(--text-muted); text-align: center; align-self: center; }
+
+/* ---- input cable popup (Voltage-style connector list) ---- */
+.ip-cable { display: flex; align-items: center; gap: 8px; padding: 4px 2px; }
+.ip-dot {
+    width: 14px; height: 14px; border-radius: 50%; flex: 0 0 auto; cursor: grab;
+    box-shadow: 0 0 5px currentColor; border: 1px solid rgba(255,255,255,0.25);
+}
+.ip-dot.grab { cursor: grabbing; transform: scale(1.25); }
+.ip-name { flex: 1; font-size: 11px; color: var(--text); white-space: nowrap; }
+.ip-pull {
+    width: 22px; height: 20px; border-radius: 4px; cursor: pointer; font-size: 12px;
+    background: var(--bg-secondary); color: var(--accent); border: 1px solid var(--border);
+}
+.ip-pull:hover { background: var(--accent); color: #fff; }
+
+/* ---- per-param modulation inputs on the block card ---- */
+.mod-in-title { font-size: 8px; letter-spacing: 2px; color: var(--text-muted); margin: 4px 0 1px 2px; }
+.in-row.mrow { opacity: 0.96; }
+.jack.pin { background: #1a1330; border-color: #6b46c1; box-shadow: 0 0 4px rgba(181,138,255,0.4); }
+.jack.pin.snap { box-shadow: 0 0 9px #b58aff; }
+.in-chip.bi { border-style: dashed; }
+
+/* ---- block delete button ---- */
+.block-del {
+    margin-left: auto; width: 18px; height: 18px; flex: 0 0 auto; border-radius: 3px; cursor: pointer;
+    font-size: 10px; line-height: 1; background: transparent; color: var(--text-muted); border: 1px solid var(--border);
+}
+.block-del:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* Per-block bypass toggle: passes input straight to output, skipping the block's processing. */
+.block-byp {
+    margin-left: auto; width: 18px; height: 18px; flex: 0 0 auto; border-radius: 3px; cursor: pointer;
+    font-size: 11px; line-height: 1; background: transparent; color: var(--text-muted); border: 1px solid var(--border);
+}
+.block-del { margin-left: 4px; }   /* delete sits right of the bypass toggle */
+.block-busind { margin-left: 4px; flex: 0 0 auto; font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
+    color: #06080f; background: var(--accent); border-radius: 3px; padding: 1px 4px; }
+/* block header right-click menu (bus send) */
+.blk-ctx { position: fixed; z-index: 1000; min-width: 120px; background: #0c0c18; border: 1px solid var(--cyan-dim);
+    border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); padding: 4px; }
+.blk-ctx-title { font-size: 9px; letter-spacing: 1.5px; color: var(--text-muted); padding: 4px 8px 6px; }
+.blk-ctx-item { font-size: 11px; color: var(--text); padding: 5px 8px; border-radius: 4px; cursor: pointer; }
+.blk-ctx-item:hover { background: var(--cyan-dim); color: var(--cyan); }
+.blk-ctx-item.on { color: var(--accent); }
+/* knob right-click menu (host automation / MIDI / reset / rename) + the soft-key MIDI-CC badge */
+.knob-ctx { position: fixed; z-index: 10020; min-width: 160px; background: #0c0c18; border: 1px solid var(--cyan-dim);
+    border-radius: 6px; box-shadow: 0 8px 26px rgba(0,0,0,0.72), 0 0 16px var(--cyan-glow); padding: 4px; }
+.knob-ctx-item { font-size: 12px; color: var(--text); padding: 7px 10px; border-radius: 4px; cursor: pointer; white-space: nowrap; }
+.knob-ctx-item:hover { background: var(--cyan-dim); color: var(--cyan); }
+.knob-ctx-item.dis { color: var(--text-muted); cursor: default; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.knob-ctx-item.dis:hover { background: none; color: var(--text-muted); }
+.sk-cc { font-size: 8px; color: #ffae3a; letter-spacing: 0.5px; text-align: center; margin-top: 1px; font-weight: 700; }
+.block-byp:hover { color: var(--cyan); border-color: var(--cyan); }
+.block-byp.on { background: var(--yellow, #f5d020); color: #06080f; border-color: var(--yellow, #f5d020); }
+.sp-byp { position: relative; z-index: 3; }
+.bypassed { opacity: 0.55; }
+.bypassed .block-byp.on, .bypassed .sp-byp.on { opacity: 1; }   /* keep the toggle bright */
+
+/* ---- colour scheme picker ---- */
+.scheme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+.scheme-sw {
+    height: 44px; border-radius: 6px; cursor: pointer; position: relative;
+    border: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px;
+}
+.scheme-sw .scheme-name { font-size: 10px; letter-spacing: 1px; color: #fff; text-shadow: 0 1px 3px #000; text-transform: uppercase; }
+.scheme-sw.on { border-color: #fff; box-shadow: 0 0 8px rgba(255,255,255,0.5); }
+
+/* ---- dynamic add-block card ---- */
+.block.add-block {
+    display: flex; align-items: center; justify-content: center; min-height: 60px; cursor: pointer;
+    border-style: dashed; border-color: var(--border-glow); background: transparent; opacity: 0.7;
+}
+.block.add-block:hover { opacity: 1; border-color: var(--cyan); }
+.add-block-plus { font-size: 11px; letter-spacing: 1px; color: var(--cyan); }
+
+/* ---- block reorder (Trello-style) ---- */
+.block-grip { cursor: grab; color: var(--text-muted); font-size: 12px; margin-right: 4px; user-select: none; }
+.block-grip:hover { color: var(--cyan); }
+.block-grip:active { cursor: grabbing; }
+.trello-placeholder { border: 2px dashed var(--cyan); border-radius: 6px; background: rgba(5,217,232,0.06); box-sizing: border-box; margin: 0 0 8px 0; }
+.trello-ghost { box-sizing: border-box; }
+
+/* ---- detail panel: multi-mod per param ---- */
+.detail-mod-param { margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.detail-mod-param .mod-pname { font-size: 11px; color: var(--cyan); letter-spacing: 1px; margin-bottom: 3px; }
+.detail-mod-param .mod-row { gap: 8px; margin: 2px 0; }
+.detail-mod-param .mod-src { width: 84px; flex: 0 0 auto; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.detail-mod-param .fader { flex: 1; }
+.detail-mod-param .mod-dv { width: 44px; text-align: right; font-size: 11px; color: var(--text-dim); }
+.detail-mod-param .mod-pol { flex: 0 0 auto; width: 40px; }
+.detail-mod-param .add-mod { width: 100%; margin-top: 3px; }
+
+/* Block-preset dropdown in the detail panel */
+.detail-preset-row { display: flex; align-items: center; gap: 8px; margin: 6px 0 10px; }
+.detail-preset-label { font-size: 10px; letter-spacing: 1px; color: var(--text-dim); }
+.layer-preset { width: 20px; height: 18px; font-size: 9px; background: #0a0a16; color: var(--text-muted); border: 1px solid var(--border); cursor: pointer; }
+
+/* ============================================================
+   UI CHROME — per-skin widget treatments (knob arc colour, dial
+   glow, segmented rings, panel corners). Keyed on :root[data-skin].
+   ============================================================ */
+:root { --knob-arc: var(--cyan); }
+.dial { transition: box-shadow .15s ease; }
+
+/* Serum 2 — clean blue ring, soft glow */
+:root[data-skin="serum2"]       { --knob-arc: #29b6f6; }
+:root[data-skin="serum2"] .dial { box-shadow: 0 0 6px rgba(41,182,246,0.35); }
+
+/* SynthMaster 3 — teal ring, warm orange glow */
+:root[data-skin="synthmaster3"]       { --knob-arc: #26c6da; }
+:root[data-skin="synthmaster3"] .dial { box-shadow: 0 0 8px rgba(255,152,0,0.30); }
+
+/* Pigments — vivid violet ring, rounded panels, strong glow */
+:root[data-skin="pigments"]       { --knob-arc: #b388ff; }
+:root[data-skin="pigments"] .dial { box-shadow: 0 0 10px rgba(179,136,255,0.45); }
+:root[data-skin="pigments"] .card,
+:root[data-skin="pigments"] .pbtn { border-radius: 8px; }
+
+/* Massive X — amber ring, segmented tick ring, sharp corners */
+:root[data-skin="massivex"]       { --knob-arc: #ff6f00; }
+:root[data-skin="massivex"] .dial::after {
+    content: ""; position: absolute; inset: -3px; border-radius: 50%; pointer-events: none;
+    background: repeating-conic-gradient(from -135deg, var(--border) 0deg 4deg, transparent 4deg 11.25deg);
+    -webkit-mask: radial-gradient(circle, transparent 60%, #000 63%);
+            mask: radial-gradient(circle, transparent 60%, #000 63%);
+}
+:root[data-skin="massivex"] .card,
+:root[data-skin="massivex"] .pbtn { border-radius: 0; }
+
+/* Vital — flat minimal, bright cyan ring, no glow */
+:root[data-skin="vital"]       { --knob-arc: #00e5ff; }
+:root[data-skin="vital"] .dial { box-shadow: none; }
+
+/* Phase Plant — teal-green ring, soft glow */
+:root[data-skin="phaseplant"]       { --knob-arc: #1de9b6; }
+:root[data-skin="phaseplant"] .dial { box-shadow: 0 0 8px rgba(29,233,182,0.30); }
+
+/* Rendered (filmstrip) knobs honour the same per-skin ring treatments as .dial.
+   Ring colour already follows --knob-arc; these add the per-skin ring STYLE + glow. */
+:root[data-skin="serum2"] .fk-body       { filter: brightness(0.72) contrast(1.05) drop-shadow(0 0 5px rgba(41,182,246,0.35)); }
+:root[data-skin="synthmaster3"] .fk-body { filter: drop-shadow(0 0 6px rgba(38,198,218,0.30)); }
+:root[data-skin="pigments"] .fk-body     { filter: brightness(0.72) contrast(1.05) drop-shadow(0 0 7px rgba(179,136,255,0.45)); }
+:root[data-skin="phaseplant"] .fk-body   { filter: brightness(0.72) contrast(1.05) drop-shadow(0 0 6px rgba(29,233,182,0.30)); }
+:root[data-skin="vital"] .fk-body        { filter: none; }
+/* Massive X — segmented/spiked tick ring around the rendered knob (matches .dial::after) */
+:root[data-skin="massivex"] .fk-ring::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-conic-gradient(from -135deg, var(--knob-arc, var(--accent)) 0deg 4deg, transparent 4deg 11.25deg);
+    -webkit-mask: radial-gradient(circle closest-side, transparent 0 86%, #000 88% 96%, transparent 98%);
+            mask: radial-gradient(circle closest-side, transparent 0 86%, #000 88% 96%, transparent 98%);
+}
+.sk-rename { cursor: context-menu; }
+.sk-name-edit { width: 44px; font-size: 9px; text-align: center; background: var(--bg-card); color: var(--text); border: 1px solid var(--accent); }
+
+/* ===========================================================================
+   LIQUID GLASS — frosted, translucent surfaces with a wet specular sheen.
+   Layered at the end so it overrides base surface fills while the state styles
+   (.active / .sel / :hover, all higher specificity) keep winning on top. Keeps
+   the cyberpunk palette; just trades flat dark fills for backdrop-blurred glass.
+   =========================================================================== */
+:root {
+    --glass-fill: linear-gradient(145deg, rgba(90, 140, 180, 0.16) 0%, rgba(20, 26, 48, 0.34) 55%, rgba(10, 12, 26, 0.40) 100%);
+    --glass-fill-hi: linear-gradient(145deg, rgba(120, 170, 210, 0.22) 0%, rgba(26, 34, 60, 0.40) 60%, rgba(12, 14, 30, 0.46) 100%);
+    --glass-edge: rgba(150, 205, 235, 0.18);
+    --glass-blur: blur(16px) saturate(165%);
+    --glass-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    --glass-drop: 0 8px 30px rgba(0, 0, 0, 0.42);
+}
+
+/* Frosted panels / cards / dropdowns */
+.block,
+.card,
+.detail {
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-drop), var(--glass-sheen);
+}
+/* The block-type dropdown stays OPAQUE — a translucent list let the block behind show
+   through, which read as a magnified, too-tall popup. Solid bg + tighter height. */
+.ss-dd { background: #0a0a16; max-height: 260px; box-shadow: var(--glass-drop); }
+
+/* Browse panels get the glass FILL but NO backdrop-blur: they wrap long scrolling
+   lists and a per-paint backdrop-filter there is GPU-expensive (slow BROWSE load). */
+.brz-facet,
+.brz-listcol,
+.brz-details {
+    background: var(--glass-fill);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-drop), var(--glass-sheen);
+}
+.block { border-radius: 8px; }
+.card  { border-radius: 8px; }
+.ss-dd { border-radius: 8px; }
+
+/* The header / layer bar read as a single brushed-glass strip */
+header,
+.layer-bar {
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+}
+
+/* Glossy pill buttons + tabs: translucent body with a top light-sheen and a
+   soft inner highlight, so they look wet rather than flat. */
+.pbtn,
+.tab,
+.layer-tab,
+.ss-btn,
+.pc-tog {
+    /* baked glossy plastic plate (neutral/dark, stretched to any width). The thin top lip + bottom
+       rim highlight read as a raised hardware button; active/on states tint it to the theme. */
+    background: url("img/button.png") center / 100% 100% no-repeat;
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-sheen), 0 3px 12px rgba(0, 0, 0, 0.32);
+}
+.pbtn { border-radius: 7px; }
+.tab  { border-radius: 8px; }
+.layer-tab { border-radius: 7px; }
+.pbtn:hover,
+.tab:hover,
+.layer-tab:hover {
+    background: linear-gradient(var(--cyan-dim), var(--cyan-dim)), url("img/button.png") center / 100% 100% no-repeat;
+    background-blend-mode: screen, normal;
+    box-shadow: var(--glass-sheen), 0 0 14px var(--cyan-glow);
+}
+
+/* Wet specular highlight on every knob: a bright crescent at the top-left plus a
+   faint rim light. Pointer is lifted above the sheen so it stays readable. */
+.dial { box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -6px 12px rgba(0,0,0,0.45), 0 3px 8px rgba(0,0,0,0.5); }
+.dial::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 70% 45% at 38% 24%, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.06) 38%, transparent 60%);
+    z-index: 2;
+}
+.dial .pointer { z-index: 3; }
+
+/* ============================================================================
+   HIGH-GLOSS CLEARCOAT — a wet, new-car sheen across the main surfaces: a bright
+   top edge highlight, a deep inner shade toward the bottom (curved gloss), and a
+   soft drop shadow for lift. Kept to box-shadow so it never disturbs the existing
+   backgrounds/themes. A diagonal specular streak is layered via ::before.
+   ============================================================================ */
+.card, .block, .detail, .sp-module, .pbtn, .brz-facet, .brz-listcol, .brz-details,
+header, .layer-bar, .xy-pad, .orb-pad, .scene-slot, .pc-tog, .tab {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -16px 32px rgba(0,0,0,0.28), 0 7px 20px rgba(0,0,0,0.5);
+}
+/* glossy diagonal specular streak across cards/buttons (the clearcoat catch-light) */
+.card, .detail, .sp-module, .pbtn, .tab {
+    position: relative;
+}
+.card::before, .detail::before, .sp-module::before, .pbtn::before, .tab::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; z-index: 0;
+    background: linear-gradient(150deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 14%, transparent 34%, transparent 100%);
+}
+.card > *, .detail > *, .sp-module > *, .pbtn > * { position: relative; z-index: 1; }
+
+/* Frosted glass scrollbars to match */
+::-webkit-scrollbar-track { background: rgba(10, 14, 28, 0.35); }
+
+/* ── MIXER tab: Serum-style console (vertical channel strips) ── */
+#pane-mixer.active { display: flex; flex-direction: column; min-height: 0; }
+.mixer { display: flex; flex-direction: column; min-height: 0; overflow: auto; flex: 1; padding: 12px; }   /* keyboard-split editor stacks ABOVE the console (not beside it) */
+.mx-console { display: flex; gap: 6px; align-items: stretch; }
+.mx-strip2 {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    width: 90px; padding: 8px 6px;
+    background: var(--glass-fill); border: 1px solid var(--glass-edge); border-radius: 6px; box-shadow: var(--glass-sheen);
+}
+.mx-bus2 { border-color: var(--magenta); }
+.mx-master2 { border-color: var(--accent); width: 98px; }
+.mx-auxdel { position: absolute; top: 4px; right: 4px; font-family: 'Share Tech Mono', monospace; font-size: 12px; line-height: 1; color: var(--magenta); background: transparent; border: none; cursor: pointer; padding: 0 2px; opacity: 0.55; }
+.mx-auxdel:hover { opacity: 1; color: #ff5a8a; }
+.mx-bus2 { position: relative; }
+.mx-globalmod { border-color: #b06cff; }
+.mx-globalmod .mx-strip-name { color: #c79bff; }
+.mx-globalmod .mx-fxslot { color: #c79bff; border-color: #b06cff; }
+.mx-globalmod .mx-fxslot:hover { background: rgba(176, 108, 255, 0.18); }
+.mx-gm-hint { font-size: 8px; letter-spacing: 0.5px; color: var(--text-muted); text-align: center; }
+.mx-addaux { width: 52px; justify-content: center; border-style: dashed; border-color: var(--border); background: transparent; box-shadow: none; }
+.mx-addauxbtn { font-family: 'Orbitron', sans-serif; font-size: 10px; letter-spacing: 1px; color: var(--cyan); background: #0a0a16; border: 1px solid var(--cyan); border-radius: 4px; padding: 8px 4px; cursor: pointer; writing-mode: vertical-rl; }
+.mx-addauxbtn:hover { background: rgba(5, 217, 232, 0.15); }
+.mx-strip-name { font-family: 'Orbitron', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; color: var(--cyan); text-align: center; width: 100%; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.mx-bus2 .mx-strip-name { color: var(--magenta); }
+.mx-master2 .mx-strip-name { color: var(--accent-light); }
+.mx-chan { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 3px 0 4px; max-width: 100%; overflow: hidden; }
+.mx-chan-lbl { font-size: 8px; letter-spacing: 1px; color: var(--text-muted); }
+.mx-chan-sel { -webkit-appearance: none; appearance: none; text-align: center; max-width: 56px; font-size: 9px; background: #0a0a14; color: var(--cyan); border: 1px solid var(--border); border-radius: 3px; padding: 1px 4px; cursor: pointer; }
+.mx-knobrow { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.mx-knob-cell { display: flex; }
+.mixer .knob { width: 38px; gap: 1px; }
+.mixer .dial { width: 30px; height: 30px; }
+.mixer .knob .name { font-size: 7px; letter-spacing: 0.3px; }
+.mixer .knob .val { font-size: 7px; min-height: 8px; }
+.mx-fxslot { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; color: var(--magenta); background: #0a0a16; border: 1px solid var(--magenta); border-radius: 4px; padding: 4px 8px; cursor: pointer; width: 100%; }
+.mx-master2 .mx-fxslot { color: var(--accent-light); border-color: var(--accent); }
+.mx-fxslot:hover { background: rgba(211, 0, 197, 0.15); }
+.mx-bus-preset { width: 100%; font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--magenta); background: #0a0a16; border: 1px solid var(--border); border-radius: 3px; padding: 2px; cursor: pointer; }
+.mx-master2 .mx-bus-preset { color: var(--accent-light); }
+.mx-fader { display: flex; gap: 4px; flex: 1; min-height: 130px; align-items: stretch; }
+.mx-fader-track { position: relative; width: 10px; background: #06060e; border: 1px solid var(--border); border-radius: 5px; cursor: ns-resize; }
+.mx-fader-fill { position: absolute; left: 0; right: 0; bottom: 0; top: 50%; background: linear-gradient(180deg, var(--cyan), var(--magenta)); border-radius: 0 0 4px 4px; pointer-events: none; }
+.mx-fader-thumb { position: absolute; left: -4px; right: -4px; height: 10px; top: 50%; margin-top: -5px; background: var(--text); border: 1px solid var(--cyan); border-radius: 3px; box-shadow: 0 0 6px var(--cyan-glow); pointer-events: none; }
+/* Host-automation bound: green glow on the fader track, matching the knob's .dial-auto ring. */
+.mx-fader.auto .mx-fader-track { border-color: #39ff14; box-shadow: 0 0 9px rgba(57,255,20,.55); }
+.mx-fader-scale { display: flex; flex-direction: column; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 7px; color: var(--text-muted); }
+.mx-ms { display: flex; gap: 4px; }
+.mx-msbtn { width: 22px; height: 18px; font-size: 9px; font-weight: 700; color: var(--text-muted); background: #0a0a16; border: 1px solid var(--border); border-radius: 3px; cursor: pointer; }
+.mx-msbtn.mute { color: var(--bg-primary); background: var(--red); border-color: var(--red); }
+.mx-msbtn.solo { color: var(--bg-primary); background: var(--yellow, #f5d020); border-color: var(--yellow, #f5d020); }
+.mx-msbtn.mono { color: var(--bg-primary); background: var(--cyan); border-color: var(--cyan); }
+
+/* FX bus tabs in the layer bar */
+.layer-bus-sep { width: 1px; align-self: stretch; background: var(--border); margin: 0 4px; display: inline-block; }
+.layer-bus .layer-name { color: var(--magenta); }
+.layer-bus.active { border-left-color: var(--magenta); background: rgba(211, 0, 197, 0.10); }
+.layer-bus.active .layer-name { color: var(--magenta); }
+
+/* ── Block reference (searchable), now inside the ABOUT tab ── */
+#pane-about.active { display: block; overflow-y: auto; padding: 16px 16px 32px; max-width: 860px; margin: 0 auto; }
+.about-docs { margin-top: 12px; }
+.docs-search-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.docs-search-row .preset-filter { flex: 1; margin-bottom: 0; }
+.docs-list { display: flex; flex-direction: column; gap: 8px; }
+.docs-card { padding: 10px 12px; background: var(--glass-fill); border: 1px solid var(--glass-edge); border-radius: 8px; box-shadow: var(--glass-sheen); cursor: pointer; }
+.docs-card:hover { border-color: var(--cyan); }
+.docs-head { display: flex; align-items: baseline; gap: 10px; }
+.docs-name { font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--cyan); font-size: 13px; letter-spacing: 0.5px; }
+.docs-cat { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--magenta); border: 1px solid var(--magenta); border-radius: 3px; padding: 1px 6px; }
+.docs-desc { color: var(--text-dim); font-size: 12px; line-height: 1.45; margin-top: 6px; }
+.docs-params { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.docs-param { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text); background: rgba(5, 217, 232, 0.08); border: 1px solid var(--border); border-radius: 3px; padding: 2px 6px; }
+
+/* Keyboard split + velocity-range zone editors (mixer) */
+.mx-zones { border: 1px solid var(--border); border-left: 2px solid #05d9e8; background: var(--bg-card); padding: 8px 10px; margin: 0 0 10px; border-radius: 2px; }
+.mx-zones-title { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; color: #05d9e8; text-transform: uppercase; margin-bottom: 6px; }
+.mx-kbd-row { display: flex; align-items: center; gap: 8px; margin: 3px 0; }
+.mx-kbd-name { width: 46px; font-size: 10px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mx-kbd-track { position: relative; flex: 1; height: 18px; background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 2px; }
+.mx-kbd-tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--border); }
+.mx-kbd-band { position: absolute; top: 1px; bottom: 1px; background: rgba(5, 217, 232, 0.22); border: 1px solid #05d9e8; border-radius: 1px; pointer-events: none; }
+.mx-kbd-h { position: absolute; top: -2px; bottom: -2px; width: 8px; margin-left: -4px; background: #05d9e8; border-radius: 2px; cursor: ew-resize; touch-action: none; }
+.mx-vel { display: flex; flex-direction: column; align-items: center; gap: 3px; margin: 4px 0; }
+.mx-vel-lbl { font-size: 8px; letter-spacing: 1px; color: var(--text-muted); }
+.mx-vel-track { position: relative; width: 14px; height: 90px; background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 2px; }
+.mx-vel-band { position: absolute; left: 1px; right: 1px; background: rgba(255, 42, 109, 0.3); border: 1px solid var(--accent); pointer-events: none; }
+.mx-vel-thumb { position: absolute; left: -3px; right: -3px; height: 8px; margin-top: -4px; background: var(--accent); border-radius: 2px; cursor: ns-resize; touch-action: none; }
+
+/* MIDI input activity LED (header) */
+.midi-led { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; color: var(--text-muted); border: 1px solid var(--border); border-radius: 2px; padding: 2px 6px; user-select: none; }
+.midi-led.on { color: #0a0a14; background: #39ff14; border-color: #39ff14; box-shadow: 0 0 8px rgba(57, 255, 20, 0.7); }
+
+/* Realtime DSP load readout (header) — colour ramps from cyan (idle) to amber (busy) to red (near dropout) */
+.cpu-meter { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; color: #05d9e8; border: 1px solid var(--border); border-radius: 2px; padding: 2px 6px; min-width: 56px; text-align: center; user-select: none; }
+.cpu-meter.warn { color: #0a0a14; background: #ffb300; border-color: #ffb300; }
+.cpu-meter.hot { color: #0a0a14; background: #ff2d55; border-color: #ff2d55; box-shadow: 0 0 8px rgba(255, 45, 85, 0.7); }
+
+/* Resident-memory readout (header) — informational, magenta tint, no danger thresholds */
+.ram-meter { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; color: #ff6ac1; border: 1px solid var(--border); border-radius: 2px; padding: 2px 6px; min-width: 64px; text-align: center; user-select: none; }
+
+/* Keyboard split editor — real piano keys with stacked draggable zone bands */
+.mx-kb2 { position: relative; margin: 4px 0 2px; }
+.mx-kb2-zones { position: relative; width: 100%; }
+.mx-kb2-band { position: absolute; height: 14px; border: 1px solid #05d9e8; border-radius: 2px; display: flex; align-items: center; box-sizing: border-box; cursor: grab; touch-action: none; }
+.mx-kb2-band:active { cursor: grabbing; }
+.mx-kb2-lbl { font-size: 9px; color: #fff; padding: 0 4px; white-space: nowrap; overflow: hidden; pointer-events: none; text-shadow: 0 1px 1px rgba(0,0,0,0.6); }
+.mx-kb2-h { position: absolute; top: -2px; bottom: -2px; width: 8px; cursor: ew-resize; touch-action: none; border-radius: 2px; }
+.mx-kb2-h.lo { left: -4px; } .mx-kb2-h.hi { right: -4px; }
+.mx-kb2-keys { position: relative; height: 54px; margin-top: 2px; background: url("img/keyboard.png?v=7") center / 100% 100% no-repeat, #0a0a0f; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; box-shadow: 0 3px 8px rgba(0,0,0,0.5); }
+.mx-kb2-wk { flex: 1 1 0; min-width: 0; border-right: 1px solid #2a2a2a; background: linear-gradient(180deg, #fafafa, #d6d6d6); }
+.mx-kb2-bk { position: absolute; top: 0; height: 62%; margin-left: -1px; background: linear-gradient(180deg, #2a2a2a, #000); border: 1px solid #000; border-radius: 0 0 2px 2px; z-index: 2; }
+
+/* Per-block category badge — synth vs fx vs analog at a glance */
+.block-badge { font-family: 'Orbitron', sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 0.5px; padding: 1px 4px; border-radius: 2px; border: 1px solid currentColor; line-height: 1.3; user-select: none; flex: 0 0 auto; }
+.block-badge.b-synth  { color: #05d9e8; background: rgba(5,217,232,0.12); }
+.block-badge.b-fx     { color: #ff2a6d; background: rgba(255,42,109,0.12); }
+.block-badge.b-analog { color: #ffb300; background: rgba(255,179,0,0.12); }
+.block-badge.b-analog2 { color: #ffb300; background: rgba(255,179,0,0.16); border-color: #ffb300; }
+.block-badge.t-gran  { color: #7CFF6B; background: rgba(124,255,107,0.14); border-color: #7CFF6B; }
+.block-badge.t-spec  { color: #b388ff; background: rgba(179,136,255,0.14); border-color: #b388ff; }
+.block-badge.t-phys  { color: #ff8c42; background: rgba(255,140,66,0.14); border-color: #ff8c42; }
+.block-badge.t-conv  { color: #42d4ff; background: rgba(66,212,255,0.14); border-color: #42d4ff; }
+.block-badge.t-wt    { color: #ff5dcd; background: rgba(255,93,205,0.14); border-color: #ff5dcd; }
+.block-badge.t-other { color: #9aa0a6; background: rgba(154,160,166,0.14); border-color: #9aa0a6; }
+.block-badge.t-fm    { color: #ffd166; background: rgba(255,209,102,0.14); border-color: #ffd166; }
+.block-badge.t-add   { color: #ff6b6b; background: rgba(255,107,107,0.14); border-color: #ff6b6b; }
+.block-badge.t-form  { color: #5ee0c0; background: rgba(94,224,192,0.14); border-color: #5ee0c0; }
+.block-badge.t-smpl  { color: #c0a0ff; background: rgba(192,160,255,0.14); border-color: #c0a0ff; }
+.block-badge.t-vec   { color: #ff9fe5; background: rgba(255,159,229,0.14); border-color: #ff9fe5; }
+.block-badge.b-mod    { color: #b388ff; background: rgba(179,136,255,0.12); }
+.block-badge.b-util   { color: #9aa0a6; background: rgba(154,160,166,0.12); }
+.block-badge.b-os     { color: #7CFF6B; background: rgba(124,255,107,0.16); border-color: #7CFF6B; }   /* oversampled / anti-aliased */
+.block-badge.b-multi  { color: #58a6ff; background: rgba(88,166,255,0.16); border-color: #58a6ff; }    /* multi-input / sidechain */
+.block-badge.b-cv     { color: #c792ea; background: rgba(199,146,234,0.16); border-color: #c792ea; }    /* CV / modulation source */
+.block-badge.b-stereo { color: #2dd4bf; background: rgba(45,212,191,0.16); border-color: #2dd4bf; }     /* stereo tool */
+
+/* Header oscilloscope + spectrum analyser */
+.viz-cluster { display: flex; align-items: center; gap: 6px; flex: 0 1 auto; }
+.hdr-osc { width: 132px; height: 38px; background: linear-gradient(180deg, #03030a, #0a0a16); border: 1px solid var(--border); border-radius: 2px; vertical-align: middle; }
+.hdr-scope { width: 156px; height: 38px; background: linear-gradient(180deg, #03030a, #0a0a16); border: 1px solid var(--border); border-radius: 2px; vertical-align: middle; }
+
+/* MIDI Learn list (SETTINGS) */
+.set-hint { font-size: 10px; color: var(--text-dim); margin: 2px 0 8px; line-height: 1.4; }
+.ml-row { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
+.ml-name { flex: 1; font-size: 11px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ml-cc { min-width: 90px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #05d9e8; background: rgba(5,217,232,0.08); border: 1px solid var(--border); border-radius: 2px; padding: 2px 4px; }
+.ml-cc.learning { color: #ffb300; background: rgba(255,179,0,0.12); border-color: #ffb300; }
+.ml-btn { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 0.5px; padding: 3px 7px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; color: var(--text-dim); cursor: pointer; }
+.ml-btn.on { color: #ffb300; border-color: #ffb300; }
+.ml-btn:hover { color: #05d9e8; border-color: #05d9e8; }
+
+/* Wt freehand draw button */
+.wt-draw-btn { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 0.5px; margin-left: 6px; padding: 2px 7px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; color: var(--text-dim); cursor: pointer; }
+.wt-draw-btn.on, .wt-draw-btn:hover { color: #05d9e8; border-color: #05d9e8; }
+
+/* replaces inline style="display:none" / style="flex:1" (theming-friendly, no inline styles) */
+.wt-hidden { display: none; }
+.set-range { flex: 1; }
+
+/* Performer step-bar editor */
+.perf-bar { fill: #05d9e8; opacity: 0.75; }
+.perf-bar:hover { opacity: 1; }
+
+/* ---- Visualizer tab: responsive grid of analyzer canvases ---- */
+#pane-viz.pane.active { display: flex; flex-direction: column; min-height: 0; overflow-y: auto; padding: 10px; }
+.viz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); grid-auto-rows: 200px; gap: 10px; }
+.viz-card { display: flex; flex-direction: column; min-height: 0; border: 1px solid var(--border); border-left: 2px solid var(--cyan); border-radius: 2px; background: color-mix(in srgb, var(--bg-card) 90%, transparent); }
+.viz-title { font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--cyan); padding: 6px 9px; border-bottom: 1px solid var(--border); flex: 0 0 auto; }
+.viz-cvwrap { flex: 1 1 auto; min-height: 0; }
+.viz-cv { display: block; width: 100%; height: 100%; background: #02060a; }

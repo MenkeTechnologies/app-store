@@ -1,0 +1,10 @@
+/* zgui-core/channel-strip.css — mixer channel strip (channel-strip.js). */
+.zg-chstrip { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; width: 76px; padding: 8px 6px; background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-top: 3px solid var(--zg-ch-col, var(--cyan)); border-radius: 4px; }
+.zg-chstrip-name { width: 100%; text-align: center; font-size: 11px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zg-chstrip-pan { display: flex; justify-content: center; }
+.zg-chstrip-fm { display: flex; gap: 6px; align-items: stretch; height: 160px; }
+.zg-chstrip-sm { display: flex; gap: 4px; }
+.zg-chstrip-s, .zg-chstrip-m { width: 24px; height: 20px; font-size: 10px; font-weight: 700; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); cursor: pointer; }
+.zg-chstrip-s.on { background: rgba(249, 240, 2, 0.15); color: var(--yellow, #f9f002); border-color: var(--yellow, #f9f002); }
+.zg-chstrip-m.on { background: rgba(255, 7, 58, 0.15); color: var(--red, #ff073a); border-color: var(--red, #ff073a); }
+.zg-chstrip-sends { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }

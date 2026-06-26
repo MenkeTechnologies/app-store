@@ -1,0 +1,16 @@
+/* zgui-core/statistic.css — single numeric metric with trend (Ant Statistic). */
+.zg-stat { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 16px; min-width: 120px; background: var(--bg-panel, #0a0a16); border: 1px solid var(--border); border-radius: 6px; }
+.zg-stat-title { font-size: 12px; color: var(--text-dim); letter-spacing: 0.04em; }
+.zg-stat-value { display: flex; align-items: baseline; gap: 3px; font-family: 'Orbitron', sans-serif; }
+.zg-stat-num { font-size: 26px; font-weight: 600; color: var(--text); line-height: 1.15; }
+.zg-stat-prefix, .zg-stat-suffix { font-size: 14px; color: var(--text-muted); }
+.zg-stat-trend { font-size: 12px; font-weight: 600; margin-top: 2px; }
+.zg-stat-trend.is-up { color: var(--green, #00ff9f); }
+.zg-stat-trend.is-down { color: var(--red, #ff2a6d); }
+/* value tint by data-kind, release-WebKit-safe (attr selector, no inline var) */
+.zg-stat[data-kind="cyan"] .zg-stat-num { color: var(--cyan); }
+.zg-stat[data-kind="magenta"] .zg-stat-num { color: var(--magenta, #ff2a6d); }
+.zg-stat[data-kind="green"] .zg-stat-num { color: var(--green, #00ff9f); }
+.zg-stat[data-kind="yellow"] .zg-stat-num { color: var(--yellow, #f9f002); }
+.zg-stat[data-kind="orange"] .zg-stat-num { color: var(--orange, #ff6b35); }
+.zg-stat[data-kind="red"] .zg-stat-num { color: var(--red, #ff2a6d); }

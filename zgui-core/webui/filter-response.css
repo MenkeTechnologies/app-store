@@ -1,0 +1,2 @@
+/* zgui-core/filter-response.css — filter frequency-response curve (filter-response.js). Canvas-painted. */
+.zg-filterresp { display: block; width: 100%; background: #070710; border: 1px solid var(--border, #1a1a3e); border-radius: 4px; cursor: crosshair; touch-action: none; }

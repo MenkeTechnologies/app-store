@@ -1,0 +1,11 @@
+/* zgui-core/drawbar.css — Hammond-organ drawbars (drawbar.js). */
+.zg-drawbar { display: inline-flex; gap: 6px; padding: 8px; background: #1a1206; border: 1px solid #3a2a10; border-radius: 6px; }
+.zg-drawbar-col { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: ns-resize; }
+.zg-drawbar-track { position: relative; width: 22px; height: var(--zg-db-h, 140px); background: #0a0a0a; border: 1px solid #000; border-radius: 3px; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.8); }
+.zg-drawbar-bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: flex-start; justify-content: center; border-radius: 0 0 2px 2px; }
+.zg-drawbar-white { background: linear-gradient(180deg, #fff, #cfcfcf); }
+.zg-drawbar-black { background: linear-gradient(180deg, #333, #111); }
+.zg-drawbar-brown { background: linear-gradient(180deg, #b5651d, #6e3d10); }
+.zg-drawbar-grip { display: block; width: 18px; height: 6px; margin-top: 2px; background: rgba(0,0,0,0.45); border-radius: 2px; }
+.zg-drawbar-black .zg-drawbar-grip { background: rgba(255,255,255,0.25); }
+.zg-drawbar-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #c9a25a; }

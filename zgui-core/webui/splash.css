@@ -1,0 +1,87 @@
+/* zgui-core/splash.css — the boot splash screen. Ported verbatim from Audio-Haxor's splash styles
+   (index.html .splash-screen/.splash-title/.splash-sub/.splash-bar/.splash-version + the splashGradient
+   / splashProgress keyframes): a fixed full-screen cover, an animated cyan→magenta→cyan gradient title,
+   a letter-spaced subtitle, a sweeping gradient progress bar, and a mono version/loading line. Pairs
+   with splash.js. */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background: #05050a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease-out;
+}
+
+.splash-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--cyan));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: splashGradient 2s linear infinite;
+    text-shadow: none;
+}
+
+.splash-sub {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 12px;
+}
+
+.splash-bar-wrap {
+    width: 200px;
+    height: 3px;
+    background: rgba(26, 26, 62, 0.5);
+    border-radius: 2px;
+    margin-top: 24px;
+    overflow: hidden;
+}
+
+.splash-bar {
+    height: 100%;
+    width: 30%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    animation: splashProgress 1.2s ease-in-out infinite;
+}
+
+.splash-version {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    letter-spacing: 0.06em;
+    max-width: min(520px, 92vw);
+    line-height: 1.45;
+    word-break: break-word;
+    text-align: center;
+    padding: 0 12px;
+}
+
+@keyframes splashGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes splashProgress {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+}

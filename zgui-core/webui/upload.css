@@ -1,0 +1,24 @@
+/* zgui-core/upload.css — file picker / dropzone + managed file list with per-item progress (upload.js). */
+.zg-upload { display: block; }
+.zg-upload-drop {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    padding: 20px; text-align: center; font-size: 12px; color: var(--text-muted); cursor: pointer;
+    background: var(--bg-secondary); border: 1px dashed var(--border); border-radius: 6px; transition: all 0.15s;
+}
+.zg-upload-drop:hover, .zg-upload-drop.dragover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+.zg-upload-plus { font-size: 22px; color: var(--cyan); }
+.zg-upload-list { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.zg-upload-item { position: relative; display: flex; align-items: center; gap: 8px; padding: 6px 8px; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; font-size: 12px; }
+.zg-upload-icon { color: var(--text-dim); }
+.zg-upload-thumb { width: 28px; height: 28px; object-fit: cover; border-radius: 3px; }
+.zg-upload-name { flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zg-upload-actions { display: flex; gap: 4px; }
+.zg-upload-actions button { background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 12px; padding: 0 2px; }
+.zg-upload-actions button:hover { color: var(--cyan); }
+.zg-upload-item .zg-upload-remove:hover { color: var(--red, #ff073a); }
+.zg-upload-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: transparent; }
+.zg-upload-bar-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--magenta, #ff2a6d)); transition: width 0.2s; }
+.zg-upload-item.status-done .zg-upload-bar-fill { background: var(--green, #39ff14); }
+.zg-upload-item.status-error .zg-upload-bar-fill { background: var(--red, #ff073a); }
+.zg-upload-item.status-done .zg-upload-name { color: var(--text); }
+.zg-upload-item.status-error .zg-upload-name { color: var(--red, #ff073a); }

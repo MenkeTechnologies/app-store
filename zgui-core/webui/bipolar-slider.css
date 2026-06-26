@@ -1,0 +1,14 @@
+/* zgui-core/bipolar-slider.css — Serum mod-matrix AMOUNT slider (bipolar-slider.js). The track baseline,
+   the center-to-amount fill and the live modulation needle/dot are canvas-drawn; this frames the track,
+   draws the recessed baseline + center detent, and styles the capsule handle. */
+.zg-bislider { display: flex; align-items: center; gap: 8px; }
+.zg-bislider-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-dim); min-width: 44px; }
+.zg-bislider-track { position: relative; flex: 1; min-width: 90px; height: 26px; cursor: pointer; touch-action: none; }
+/* recessed baseline line */
+.zg-bislider-track::before { content: ""; position: absolute; left: 0; right: 0; bottom: 7px; height: 3px; transform: translateY(50%); background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-radius: 2px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8); }
+/* center detent tick */
+.zg-bislider-track::after { content: ""; position: absolute; left: 50%; bottom: 3px; width: 1px; height: 11px; background: var(--text-dim); opacity: 0.6; transform: translateX(-0.5px); }
+.zg-bislider-cv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.zg-bislider-ball { position: absolute; bottom: 8px; width: 16px; height: 12px; margin-left: -8px; transform: translateY(50%); border-radius: 6px; background: linear-gradient(180deg, #e9f4fb, #b6cdda 55%, #8aa6b6); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.6); pointer-events: none; z-index: 2; }
+.zg-bislider-track:hover .zg-bislider-ball { box-shadow: 0 0 8px var(--cyan-glow, rgba(5, 217, 232, 0.5)), 0 1px 3px rgba(0, 0, 0, 0.7); }
+.zg-bislider-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--cyan, #05d9e8); min-width: 40px; text-align: right; }

@@ -1,0 +1,12 @@
+/* zgui-core/provenance-trail.css — data-lineage breadcrumb (provenance-trail.js). */
+.zg-provtrail { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; font-family: 'Share Tech Mono', monospace; }
+.zg-provtrail-arrow { color: var(--text-dim); }
+.zg-provtrail-hop { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 12px; cursor: pointer; }
+.zg-provtrail-hop:hover { border-color: var(--cyan); }
+.zg-provtrail-glyph { font-size: 12px; }
+.zg-provtrail-hop[data-kind="source"] .zg-provtrail-glyph { color: var(--green, #39ff14); }
+.zg-provtrail-hop[data-kind="filter"] .zg-provtrail-glyph { color: var(--yellow, #f9f002); }
+.zg-provtrail-hop[data-kind="join"] .zg-provtrail-glyph, .zg-provtrail-hop[data-kind="merge"] .zg-provtrail-glyph { color: var(--orange, #ff6b35); }
+.zg-provtrail-hop[data-kind="model"] .zg-provtrail-glyph { color: #c084fc; }
+.zg-provtrail-hop[data-kind="output"] .zg-provtrail-glyph { color: var(--cyan, #05d9e8); }
+.zg-provtrail-pop { position: absolute; z-index: 1100; max-width: 280px; padding: 8px 10px; background: var(--bg-panel, #0a0a16); border: 1px solid var(--cyan); border-radius: 4px; font-size: 11px; color: var(--text); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }

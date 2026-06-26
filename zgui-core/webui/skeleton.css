@@ -1,0 +1,7 @@
+/* zgui-core/skeleton.css — shimmer loading placeholders. */
+.zg-skeleton { position: relative; overflow: hidden; background: var(--bg-hover); border-radius: 3px; }
+.zg-skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(5, 217, 232, 0.12), transparent); animation: zg-shimmer 1.3s ease-in-out infinite; }
+.zg-skeleton-line { height: 12px; width: 100%; }
+.zg-skeleton-block { height: 80px; width: 100%; border-radius: 5px; }
+.zg-skeleton-circle { width: 40px; height: 40px; border-radius: 50%; }
+@keyframes zg-shimmer { 100% { transform: translateX(100%); } }

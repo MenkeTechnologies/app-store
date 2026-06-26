@@ -1,0 +1,21 @@
+/* zgui-core/volume.css — volume control (volume.js). Ported from Audio-Haxor .volume-slider + the
+   now-playing mute button: an 80px track with a glowing cyan thumb. */
+.zg-volume { display: inline-flex; align-items: center; gap: 6px; }
+.zg-volume-mute {
+    padding: 3px 5px; font-size: 12px; line-height: 1; color: var(--text-muted);
+    background: transparent; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; transition: all 0.15s;
+}
+.zg-volume-mute:hover { color: var(--cyan); border-color: var(--cyan); }
+.zg-volume.is-muted .zg-volume-mute { color: var(--red, #ff073a); border-color: var(--red, #ff073a); }
+.zg-volume-slider {
+    -webkit-appearance: none; appearance: none;
+    width: 80px; height: 4px; background: var(--border); outline: none; border-radius: 2px; cursor: pointer;
+}
+.zg-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 6px var(--cyan-glow); cursor: pointer;
+}
+.zg-volume-slider::-moz-range-thumb {
+    width: 12px; height: 12px; border: none; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 6px var(--cyan-glow); cursor: pointer;
+}
+.zg-volume.is-muted .zg-volume-slider { opacity: 0.4; }

@@ -1,0 +1,27 @@
+/* zgui-core/org-chart.css — top-down org chart with CSS-border connectors (org-chart.js). The classic
+   nested <ul>/<li> + ::before/::after connector technique; node boxes use cyberpunk tokens. */
+.zg-orgchart { overflow-x: auto; padding: 8px; text-align: center; }
+.zg-orgchart ul { position: relative; padding-top: 20px; display: inline-flex; justify-content: center; margin: 0; }
+.zg-orgchart li { list-style: none; position: relative; padding: 20px 10px 0; text-align: center; }
+/* connectors from each child up to the parent */
+.zg-orgchart li::before, .zg-orgchart li::after {
+    content: ""; position: absolute; top: 0; right: 50%; width: 50%; height: 20px;
+    border-top: 1px solid var(--border, #1a1a3e);
+}
+.zg-orgchart li::after { right: auto; left: 50%; border-left: 1px solid var(--border, #1a1a3e); }
+.zg-orgchart li:only-child::before, .zg-orgchart li:only-child::after { display: none; }
+.zg-orgchart li:only-child { padding-top: 0; }
+.zg-orgchart li:first-child::before, .zg-orgchart li:last-child::after { border: 0 none; }
+.zg-orgchart li:last-child::before { border-right: 1px solid var(--border, #1a1a3e); border-radius: 0 6px 0 0; }
+.zg-orgchart li:first-child::after { border-radius: 6px 0 0 0; }
+/* vertical drop from a parent into its children row */
+.zg-orgchart ul ul::before { content: ""; position: absolute; top: 0; left: 50%; width: 0; height: 20px; border-left: 1px solid var(--border, #1a1a3e); }
+.zg-orgchart-node {
+    position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+    background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border, #1a1a3e); border-radius: 6px;
+    color: var(--text, #e0f0ff); font-size: 13px; white-space: nowrap; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.zg-orgchart-node:hover { border-color: var(--cyan, #05d9e8); }
+.zg-orgchart-node.selected { border-color: var(--cyan, #05d9e8); box-shadow: 0 0 10px var(--cyan-glow, rgba(5, 217, 232, 0.4)); }
+.zg-orgchart-toggle { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; margin-left: 4px; border: 1px solid var(--border, #1a1a3e); border-radius: 3px; color: var(--cyan, #05d9e8); font-size: 11px; cursor: pointer; background: var(--bg-primary, #05050a); }
+.zg-orgchart-toggle:hover { box-shadow: 0 0 6px var(--cyan-glow, rgba(5, 217, 232, 0.4)); }

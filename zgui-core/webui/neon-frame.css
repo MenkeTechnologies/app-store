@@ -1,0 +1,5 @@
+/* zgui-core/neon-frame.css — animated neon clip-path frame. --zg-neon overrides the glow color. */
+.zg-neon-frame { --zg-neon: var(--cyan); position: relative; padding: 1px; clip-path: polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px)); background: linear-gradient(135deg, var(--zg-neon), var(--magenta, #d300c5)); }
+.zg-neon-frame-body { clip-path: polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px)); background: var(--bg-card); padding: 14px; }
+.zg-neon-pulse { animation: zg-neon-pulse 2s ease-in-out infinite; }
+@keyframes zg-neon-pulse { 0%, 100% { filter: drop-shadow(0 0 6px var(--zg-neon)); } 50% { filter: drop-shadow(0 0 16px var(--zg-neon)); } }

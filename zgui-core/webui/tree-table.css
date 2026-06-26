@@ -1,0 +1,10 @@
+/* zgui-core/tree-table.css — hierarchical table with expander column (tree-table.js). */
+.zg-treetable { width: 100%; border-collapse: collapse; font-size: 13px; }
+.zg-treetable thead th { text-align: left; padding: 8px 10px; font-family: 'Share Tech Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan, #05d9e8); border-bottom: 1px solid var(--border, #1a1a3e); }
+.zg-treetable tbody td { padding: 6px 10px; color: var(--text, #e0f0ff); border-bottom: 1px solid var(--border, #1a1a3e); white-space: nowrap; }
+.zg-treetable-row:hover td { background: var(--bg-hover, #12122a); }
+.zg-treetable-row.selected td { background: var(--cyan-dim, rgba(5, 217, 232, 0.15)); }
+.zg-treetable-exp { display: inline-flex; align-items: center; gap: 6px; }
+.zg-treetable-tog { display: inline-flex; width: 14px; justify-content: center; color: var(--text-dim, #7a8ba8); cursor: pointer; font-size: 10px; user-select: none; }
+.zg-treetable-tog.empty { cursor: default; }
+.zg-treetable-tog:not(.empty):hover { color: var(--cyan, #05d9e8); }

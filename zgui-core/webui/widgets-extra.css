@@ -1,0 +1,57 @@
+/* zgui-core/widgets-extra.css — accordion, popover, color picker, pager, progress, alert, status
+   bar. Generic widgets distilled from recurring patterns across the suite. Cyberpunk tokens. */
+
+/* ---- accordion ---- */
+.zg-acc-item { border: 1px solid var(--border); border-radius: 4px; margin-bottom: 6px; overflow: hidden; }
+.zg-acc-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 12px; background: var(--bg-secondary); border: none; color: var(--text); cursor: pointer; font-family: inherit; font-size: 13px; text-align: left; }
+.zg-acc-head:hover { color: var(--cyan); }
+.zg-acc-caret { color: var(--text-dim); font-size: 10px; transition: transform 0.15s; }
+.zg-acc-item:not(.open) .zg-acc-caret { transform: rotate(-90deg); }
+.zg-acc-title { flex: 1; }
+.zg-acc-body { display: none; padding: 12px; background: var(--bg-card); }
+.zg-acc-item.open .zg-acc-body { display: block; }
+
+/* ---- popover ---- */
+.zg-popover { position: fixed; z-index: 40000; min-width: 160px; max-width: min(92vw, 420px); background: var(--bg-card); border: 1px solid var(--cyan); border-radius: 6px; box-shadow: 0 0 30px var(--cyan-glow), 0 12px 40px rgba(0, 0, 0, 0.5); padding: 10px 12px; color: var(--text); font-size: 13px; }
+
+/* ---- color picker ---- */
+.zg-colorpicker { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12px; color: var(--text); }
+.zg-colorpicker-swatch { position: relative; width: 26px; height: 18px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.zg-colorpicker-swatch input[type="color"] { position: absolute; inset: -4px; width: 200%; height: 200%; border: none; padding: 0; opacity: 0; cursor: pointer; }
+.zg-colorpicker-hex { font-family: "Share Tech Mono", monospace; font-size: 11px; color: var(--text-dim); }
+
+/* ---- pager ---- */
+.zg-pager { display: inline-flex; align-items: center; gap: 3px; }
+.zg-pager-btn { min-width: 26px; height: 26px; padding: 0 6px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); cursor: pointer; font-family: "Share Tech Mono", monospace; font-size: 12px; }
+.zg-pager-btn:hover:not(:disabled) { border-color: var(--cyan); color: var(--cyan); }
+.zg-pager-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.zg-pager-btn.is-current { background: var(--cyan); color: var(--bg-primary); border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }
+.zg-pager-gap { color: var(--text-muted); padding: 0 2px; }
+
+/* ---- progress ---- */
+.zg-progress { width: 100%; }
+.zg-progress-track { height: 6px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.zg-progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--magenta)); transition: width 0.2s; }
+.zg-progress.indeterminate .zg-progress-fill { width: 40% !important; animation: zg-progress-indet 1.4s ease-in-out infinite; }
+@keyframes zg-progress-indet { 0% { margin-left: -40%; } 100% { margin-left: 100%; } }
+.zg-progress-label { margin-top: 4px; font-size: 11px; color: var(--text-dim); }
+
+/* ---- alert ---- */
+.zg-alert { display: flex; align-items: flex-start; gap: 8px; padding: 9px 12px; border: 1px solid var(--border); border-left-width: 3px; border-radius: 4px; background: var(--bg-card); color: var(--text); font-size: 13px; }
+.zg-alert-icon { flex-shrink: 0; }
+.zg-alert-msg { flex: 1; line-height: 1.4; }
+.zg-alert-x { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 12px; padding: 0; }
+.zg-alert-x:hover { color: var(--text); }
+.zg-alert-info { border-left-color: var(--cyan); } .zg-alert-info .zg-alert-icon { color: var(--cyan); }
+.zg-alert-success { border-left-color: var(--green, #39ff14); } .zg-alert-success .zg-alert-icon { color: var(--green, #39ff14); }
+.zg-alert-warning { border-left-color: var(--yellow, #f9f002); } .zg-alert-warning .zg-alert-icon { color: var(--yellow, #f9f002); }
+.zg-alert-error { border-left-color: var(--red, #ff073a); } .zg-alert-error .zg-alert-icon { color: var(--red, #ff073a); }
+
+/* ---- status bar ---- */
+.zg-statusbar { display: flex; align-items: center; gap: 16px; padding: 4px 14px; background: var(--bg-secondary); border-top: 1px solid var(--border); font-size: 11px; color: var(--text-dim); }
+.zg-statusbar-left { display: flex; gap: 14px; align-items: center; }
+.zg-statusbar-center { flex: 1; display: flex; justify-content: center; gap: 14px; align-items: center; }
+.zg-statusbar-right { display: flex; gap: 14px; align-items: center; }
+.zg-statusbar-item { display: inline-flex; align-items: center; gap: 4px; }
+.zg-statusbar-lbl { text-transform: uppercase; letter-spacing: 1px; }
+.zg-statusbar-val { color: var(--text); font-weight: 600; }

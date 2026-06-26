@@ -1,0 +1,2 @@
+/* zgui-core/harmonic-editor.css — additive harmonic bars (harmonic-editor.js). Canvas-painted. */
+.zg-harmonic { display: block; width: 100%; background: #070710; border: 1px solid var(--border, #1a1a3e); border-radius: 4px; cursor: ns-resize; touch-action: none; }

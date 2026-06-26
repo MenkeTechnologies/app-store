@@ -1,0 +1,14 @@
+/* zgui-core/editable.css — inline click-to-edit text (Chakra Editable). */
+.zg-editable { display: inline-block; min-width: 80px; }
+.zg-editable-preview {
+    display: inline-block; padding: 3px 6px; font-size: 13px; color: var(--text);
+    border: 1px solid transparent; border-radius: 4px; cursor: text; outline: none;
+}
+.zg-editable-preview:hover { border-color: var(--border); background: var(--bg-hover); }
+.zg-editable-preview:focus-visible { border-color: var(--cyan); }
+.zg-editable-preview.is-empty { color: var(--text-dim); font-style: italic; }
+.zg-editable-input {
+    font-family: inherit; font-size: 13px; color: var(--text); padding: 3px 6px;
+    background: var(--bg-input, var(--bg-hover)); border: 1px solid var(--cyan); border-radius: 4px;
+    box-shadow: 0 0 8px var(--cyan-glow); outline: none; resize: vertical; min-width: 80px;
+}

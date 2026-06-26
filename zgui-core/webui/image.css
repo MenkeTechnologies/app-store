@@ -1,0 +1,17 @@
+/* zgui-core/image.css — image with hover mask + full-screen preview lightbox (image.js). */
+.zg-image { position: relative; display: inline-block; overflow: hidden; cursor: pointer; line-height: 0; border: 1px solid var(--border); border-radius: 4px; }
+.zg-image-img { display: block; max-width: 100%; height: auto; }
+.zg-image.is-broken { min-width: 80px; min-height: 60px; background: var(--bg-hover); }
+.zg-image.is-broken::after { content: "⚠ image"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text-dim); line-height: normal; }
+.zg-image-mask { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.5); color: #fff; font-size: 12px; opacity: 0; transition: opacity 0.2s; line-height: normal; }
+.zg-image:hover .zg-image-mask { opacity: 1; }
+
+/* lightbox */
+.zg-imgview { position: fixed; inset: 0; z-index: 9500; display: flex; align-items: center; justify-content: center; background: rgba(3, 3, 8, 0.92); }
+.zg-imgview-img { max-width: 88vw; max-height: 82vh; transition: transform 0.15s; box-shadow: 0 0 40px rgba(0, 0, 0, 0.7); }
+.zg-imgview-bar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; padding: 8px 12px; background: rgba(10, 10, 22, 0.9); border: 1px solid var(--border); border-radius: 8px; }
+.zg-imgview-bar button { width: 32px; height: 32px; background: transparent; border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-size: 14px; cursor: pointer; }
+.zg-imgview-bar button:hover { color: var(--cyan); border-color: var(--cyan); }
+.zg-imgview-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(10, 10, 22, 0.8); border: 1px solid var(--border); border-radius: 50%; color: #fff; font-size: 24px; cursor: pointer; }
+.zg-imgview-nav.prev { left: 24px; } .zg-imgview-nav.next { right: 24px; }
+.zg-imgview-nav:hover { border-color: var(--cyan); color: var(--cyan); }

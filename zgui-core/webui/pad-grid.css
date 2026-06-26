@@ -1,0 +1,15 @@
+/* zgui-core/pad-grid.css — drum/sampler trigger pad grid (pad-grid.js). */
+.zg-padgrid { display: grid; gap: 6px; }
+.zg-pad { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 6px; min-height: 56px; background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-left: 3px solid var(--zg-pad-col, var(--cyan)); border-radius: 5px; cursor: pointer; transition: box-shadow 0.1s, border-color 0.1s; }
+.zg-pad:hover { border-color: var(--cyan); }
+.zg-pad.playing { box-shadow: 0 0 12px var(--zg-pad-col, var(--cyan-glow)); border-color: var(--zg-pad-col, var(--cyan)); }
+.zg-pad.empty { align-items: center; justify-content: center; border-style: dashed; border-left-style: dashed; border-left-color: var(--border); }
+.zg-pad-add { background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; }
+.zg-pad-add:hover { color: var(--cyan); }
+.zg-pad-play { position: absolute; top: 4px; right: 4px; width: 18px; height: 18px; padding: 0; background: transparent; border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); font-size: 8px; cursor: pointer; }
+.zg-pad-play:hover { color: var(--cyan); border-color: var(--cyan); }
+.zg-pad-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 20px; }
+.zg-pad-sm { display: flex; gap: 3px; margin-top: auto; }
+.zg-pad-s, .zg-pad-m { flex: 1; padding: 1px 0; font-size: 9px; font-weight: 700; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 2px; color: var(--text-dim); cursor: pointer; }
+.zg-pad-s.on { background: rgba(249, 240, 2, 0.15); color: var(--yellow, #f9f002); border-color: var(--yellow, #f9f002); }
+.zg-pad-m.on { background: rgba(255, 7, 58, 0.15); color: var(--red, #ff073a); border-color: var(--red, #ff073a); }

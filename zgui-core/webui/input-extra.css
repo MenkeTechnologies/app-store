@@ -1,0 +1,28 @@
+/* zgui-core/input-extra.css — combobox, tag input, number stepper, menubar. Cyberpunk tokens. */
+
+/* ---- combobox ---- */
+.zg-combo { position: relative; display: inline-block; }
+.zg-combo-input { width: 100%; }
+.zg-combo-list { position: absolute; left: 0; right: 0; top: 100%; z-index: 1000; max-height: 220px; overflow-y: auto; background: var(--bg-primary); border: 1px solid var(--cyan); box-shadow: 0 0 15px var(--cyan-glow), 0 4px 16px rgba(0,0,0,0.5); }
+.zg-combo-row { padding: 6px 10px; cursor: pointer; font-size: 12px; color: var(--text); white-space: nowrap; }
+.zg-combo-row:hover { background: rgba(5,217,232,0.08); }
+
+/* ---- tag input ---- */
+.zg-taginput { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; padding: 4px 6px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; cursor: text; }
+.zg-taginput:focus-within { border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }
+.zg-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--cyan); border-radius: 12px; font-size: 11px; }
+.zg-tag-x { cursor: pointer; opacity: 0.7; }
+.zg-tag-x:hover { opacity: 1; }
+.zg-taginput-field { flex: 1; min-width: 60px; background: transparent; border: none; outline: none; color: var(--text); font-family: inherit; font-size: 13px; }
+
+/* ---- number stepper ---- */
+.zg-stepper-num { display: inline-flex; align-items: stretch; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.zg-stepnum-btn { width: 26px; background: var(--bg-secondary); border: none; color: var(--cyan); cursor: pointer; font-size: 14px; }
+.zg-stepnum-btn:hover { background: var(--cyan-dim); }
+.zg-stepnum-input { width: 52px; text-align: center; background: var(--bg-primary); border: none; border-left: 1px solid var(--border); border-right: 1px solid var(--border); color: var(--text); font-family: "Share Tech Mono", monospace; font-size: 13px; }
+.zg-stepnum-input:focus { outline: none; }
+
+/* ---- menubar ---- */
+.zg-menubar { display: flex; align-items: stretch; background: var(--bg-secondary); border-bottom: 1px solid var(--border); }
+.zg-menubar-item { background: transparent; border: none; color: var(--text-dim); cursor: pointer; padding: 6px 12px; font-family: inherit; font-size: 12px; }
+.zg-menubar-item:hover { background: var(--cyan-dim); color: var(--cyan); }

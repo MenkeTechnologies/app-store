@@ -1,0 +1,6 @@
+/* zgui-core/wavetable.css — wavetable display + position scrub (wavetable.js). */
+.zg-wavetable { display: block; }
+.zg-wavetable-canvas { display: block; width: 100%; background: #070710; border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }
+.zg-wavetable-pos { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; margin-top: 6px; background: var(--border); border-radius: 2px; cursor: pointer; outline: none; }
+.zg-wavetable-pos::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan, #05d9e8); box-shadow: 0 0 6px var(--cyan-glow, rgba(5,217,232,0.4)); cursor: pointer; }
+.zg-wavetable-pos::-moz-range-thumb { width: 12px; height: 12px; border: none; border-radius: 50%; background: var(--cyan, #05d9e8); cursor: pointer; }

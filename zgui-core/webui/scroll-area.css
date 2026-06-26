@@ -1,0 +1,8 @@
+/* zgui-core/scroll-area.css — cyberpunk neon scrollbar container. */
+.zg-scroll { overflow: auto; scrollbar-width: thin; scrollbar-color: var(--cyan-dim) transparent; }
+.zg-scroll-x { overflow-x: auto; overflow-y: hidden; }
+.zg-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.zg-scroll::-webkit-scrollbar-track { background: transparent; }
+.zg-scroll::-webkit-scrollbar-thumb { background: var(--cyan-dim); border-radius: 4px; border: 1px solid var(--border); }
+.zg-scroll::-webkit-scrollbar-thumb:hover { background: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }
+.zg-scroll::-webkit-scrollbar-corner { background: transparent; }

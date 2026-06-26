@@ -1,0 +1,44 @@
+/* zgui-core/knob.css — the rotary knob (knob.js), ported from zpwr-patch-core. The dial shows the
+   Blender-rendered knob_body.png sprite (set inline by JS, frame = value) over a conic value ring;
+   the pointer is knob_ptr.png masked in the theme accent with a glow. Assets resolve from ../img/
+   (CSS-relative). Depends on the cyberpunk tokens. */
+
+.zg-knob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  width: var(--zg-knob-size, 56px);
+}
+.zg-dial {
+  position: relative;
+  isolation: isolate;
+  width: var(--zg-knob-size, 56px);
+  height: var(--zg-knob-size, 56px);
+  border-radius: 50%;
+  cursor: ns-resize;
+  touch-action: none;
+  /* background (knob_body.png sprite frame + conic value ring) is set inline by knob.js */
+}
+.zg-dial-pointer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 46%;
+  transform-origin: bottom center;
+  pointer-events: none;
+  z-index: 2;
+  background: var(--accent);
+  -webkit-mask: url("img/knob_ptr.png") no-repeat center / contain;
+          mask: url("img/knob_ptr.png") no-repeat center / contain;
+  filter: drop-shadow(0 0 3px var(--accent));
+}
+.zg-knob-label { font-size: 10px; letter-spacing: 0.5px; color: var(--text-dim); }
+.zg-knob-val {
+  font-size: 10px;
+  min-height: 12px;
+  color: var(--cyan);
+  font-family: "Share Tech Mono", monospace;
+}

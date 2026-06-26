@@ -1,0 +1,24 @@
+/* zgui-core/manager-list.css — grouped manager list (manager-list.js). Ported from Audio-Haxor's
+   .tag-manager-card/.tag-manager-item, namespaced zg-mlist-*. Cyberpunk tokens. */
+.zg-mlist-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--yellow);
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  transition: border-color 0.2s;
+}
+.zg-mlist-card:hover { border-color: var(--cyan); }
+.zg-mlist-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.zg-mlist-title { font-size: 16px; font-weight: 700; color: var(--text); }
+.zg-mlist-count { font-family: "Orbitron", sans-serif; font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+.zg-mlist-items { display: flex; flex-direction: column; }
+.zg-mlist-item { display: flex; align-items: center; gap: 8px; padding: 4px 8px; font-size: 12px; color: var(--text-dim); border-radius: 2px; transition: background 0.15s; }
+.zg-mlist-item:hover { background: rgba(5, 217, 232, 0.04); }
+.zg-mlist-icon { flex-shrink: 0; font-size: 13px; width: 18px; text-align: center; }
+.zg-mlist-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.zg-mlist-badge { font-size: 9px; padding: 1px 5px; border: 1px solid var(--border); border-radius: 2px; color: var(--text-muted); }
+.zg-mlist-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; margin-left: auto; opacity: 0; transition: opacity 0.15s; }
+.zg-mlist-item:hover .zg-mlist-actions { opacity: 1; }
+.zg-mlist-act { background: transparent; border: 1px solid var(--border); color: var(--text-muted); width: 20px; height: 20px; border-radius: 2px; cursor: pointer; font-size: 11px; line-height: 1; }
+.zg-mlist-act:hover { color: var(--cyan); border-color: var(--cyan); }

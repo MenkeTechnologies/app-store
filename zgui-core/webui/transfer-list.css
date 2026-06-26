@@ -1,0 +1,13 @@
+/* zgui-core/transfer-list.css — transfer/job queue (transfer-list.js). Ported from zftp's
+   .zf-transfers/.zf-tx, namespaced zg-tx-*. Cyberpunk tokens. */
+.zg-transfers { border: 1px solid var(--border); background: var(--bg-card); margin: 18px 0; padding: 6px 10px 10px; }
+.zg-tx-title { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); padding: 4px 0 6px; }
+.zg-tx { display: flex; align-items: center; gap: 10px; padding: 5px 4px; font-size: 12px; border-bottom: 1px solid transparent; }
+.zg-tx-kind { width: 70px; color: var(--cyan); text-transform: uppercase; font-size: 10px; }
+.zg-tx-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+.zg-tx-stat { width: 110px; text-align: right; color: var(--text-muted); }
+.zg-tx-stat.complete { color: var(--green, #39ff14); }
+.zg-tx-stat.running { color: var(--yellow, #ffb300); }
+.zg-tx-stat.error { color: var(--red, #ff2a6d); }
+.zg-tx-stat.cancelled { color: var(--text-muted); }
+.zg-tx-stat.queued { color: var(--text-dim); }

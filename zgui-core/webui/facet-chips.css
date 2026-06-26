@@ -1,0 +1,59 @@
+/* zgui-core/facet-chips.css — faceted filter chips + count-list popover (facet-chips.js).
+   Ported from Audio-Haxor's unified-browser `.ub-chip`/`.ub-pop`/`.ub-facet`. Cyberpunk tokens. */
+
+.ub-chips { display: flex; flex-wrap: wrap; gap: 4px; padding: 5px 8px; border-bottom: 1px solid var(--border); }
+.ub-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  background: var(--bg-hover);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 3px 9px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.ub-chip:hover { color: var(--text); }
+.ub-chip.active { background: var(--cyan-dim); color: var(--cyan); border-color: var(--cyan); }
+.ub-chip.open { border-color: var(--cyan); }
+.ub-chip-glyph { font-size: 12px; }
+.ub-chip-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 110px; }
+.ub-chip-x { color: var(--accent); margin-left: 2px; }
+
+/* Popover list for the open chip — overlays the results, doesn't push layout. */
+.ub-pop {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  z-index: 42;
+  max-height: 50%;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--cyan);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.ub-pop[hidden] { display: none; }
+.ub-pop-head { padding: 5px 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+.ub-pop-empty { padding: 12px; text-align: center; color: var(--text-muted); font-size: 11px; }
+.ub-facet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: transparent;
+  color: var(--text-dim);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+.ub-facet:hover { background: var(--bg-hover); color: var(--text); }
+.ub-facet.active { background: var(--cyan-dim); color: var(--cyan); }
+.ub-facet-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ub-facet-count { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }

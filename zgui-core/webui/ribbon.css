@@ -1,0 +1,33 @@
+/* zgui-core/ribbon.css — diagonal corner ribbon. Host must be position:relative; overflow:hidden. */
+.zg-ribbon {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 3;
+}
+.zg-ribbon-text {
+    position: absolute;
+    display: block;
+    width: 160px;
+    padding: 3px 0;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: var(--cyan);
+    color: #04121a;
+}
+.zg-ribbon-tr { top: 0; right: 0; }
+.zg-ribbon-tr .zg-ribbon-text { top: 22px; right: -38px; transform: rotate(45deg); }
+.zg-ribbon-tl { top: 0; left: 0; }
+.zg-ribbon-tl .zg-ribbon-text { top: 22px; left: -38px; transform: rotate(-45deg); }
+.zg-ribbon-br { bottom: 0; right: 0; }
+.zg-ribbon-br .zg-ribbon-text { bottom: 22px; right: -38px; transform: rotate(-45deg); }
+.zg-ribbon-bl { bottom: 0; left: 0; }
+.zg-ribbon-bl .zg-ribbon-text { bottom: 22px; left: -38px; transform: rotate(45deg); }
+.zg-ribbon-magenta .zg-ribbon-text { background: var(--magenta); color: #1a0410; }
+.zg-ribbon-accent .zg-ribbon-text { background: var(--accent); color: #04121a; }
+.zg-ribbon-danger .zg-ribbon-text { background: var(--red); color: #ffffff; }

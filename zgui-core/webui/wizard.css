@@ -1,0 +1,14 @@
+/* zgui-core/wizard.css — multi-step wizard. */
+.zg-wizard { display: flex; flex-direction: column; gap: 16px; }
+.zg-wizard-rail { display: flex; align-items: center; gap: 4px; }
+.zg-wizard-step { display: flex; align-items: center; gap: 7px; opacity: 0.5; transition: opacity 0.2s; }
+.zg-wizard-step.active, .zg-wizard-step.done { opacity: 1; }
+.zg-wizard-num { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-family: "Orbitron", sans-serif; font-size: 11px; font-weight: 700; color: var(--text-dim); background: var(--bg-secondary); border: 1px solid var(--border); }
+.zg-wizard-step.active .zg-wizard-num { color: var(--bg-primary); background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 12px var(--cyan-glow); }
+.zg-wizard-step.done .zg-wizard-num { color: var(--green, #39ff14); border-color: var(--green, #39ff14); }
+.zg-wizard-step-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); }
+.zg-wizard-step.active .zg-wizard-step-title { color: var(--cyan); }
+.zg-wizard-conn { flex: 1; height: 1px; min-width: 16px; background: var(--border); }
+.zg-wizard-body { min-height: 80px; }
+.zg-wizard-foot { display: flex; justify-content: space-between; gap: 8px; }
+.zg-wizard-back[disabled] { opacity: 0.3; cursor: not-allowed; }

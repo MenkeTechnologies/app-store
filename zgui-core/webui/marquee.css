@@ -1,0 +1,7 @@
+/* zgui-core/marquee.css — seamless scrolling ticker. */
+.zg-marquee { --zg-marquee-dur: 18s; overflow: hidden; white-space: nowrap; }
+.zg-marquee-track { display: inline-flex; will-change: transform; animation: zg-marquee var(--zg-marquee-dur) linear infinite; }
+.zg-marquee-rev .zg-marquee-track { animation-direction: reverse; }
+.zg-marquee:hover .zg-marquee-track { animation-play-state: paused; }
+.zg-marquee-run { padding-right: 3em; }
+@keyframes zg-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }

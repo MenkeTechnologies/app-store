@@ -1,0 +1,46 @@
+/* zgui-core/util.css — styles for the util helpers (util.js: btnLoading/skeletonRows) and the
+   keyboard-nav highlight (keyboard-nav.js: .nav-selected). Distilled from Audio-Haxor. Keyframes
+   `zg-`-namespaced. Depends on the cyberpunk tokens. */
+
+/* ---- button loading spinner (util.btnLoading) ---- */
+.btn-loading { position: relative; pointer-events: none; opacity: 0.7; }
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: zg-spin 0.6s linear infinite;
+}
+@keyframes zg-spin { to { transform: rotate(360deg); } }
+
+/* ---- skeleton placeholder rows (util.skeletonRows) ---- */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-hover) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  animation: zg-skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+@keyframes zg-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton-row { display: flex; gap: 12px; padding: 12px 18px; border: 1px solid var(--border); margin-bottom: 4px; }
+.skeleton-bar { height: 14px; border-radius: 2px; }
+.fade-in { animation: zg-fade-in 0.3s ease-out; }
+@keyframes zg-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- keyboard-nav highlight (keyboard-nav.js) ---- */
+.nav-selected {
+  outline: 2px solid var(--cyan) !important;
+  outline-offset: -2px;
+  background: rgba(5, 217, 232, 0.06) !important;
+}

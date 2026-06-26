@@ -1,0 +1,27 @@
+/* zgui-core/facet-sidebar.css — vertical faceted-filter sidebar. Ported from zpc's .brz-facet*. */
+.zg-facets { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0; }
+.zg-facet { background: var(--bg-card); border: 1px solid var(--border); }
+.zg-facet-head {
+    padding: 6px 10px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    background: #0a0a16;
+    border-bottom: 1px solid var(--border);
+}
+.zg-facet-list { max-height: 200px; overflow-y: auto; }
+.zg-facet-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-left: 2px solid transparent;
+}
+.zg-facet-item:hover { background: var(--bg-hover); color: var(--cyan); }
+.zg-facet-item.on { color: var(--cyan); border-left-color: var(--cyan); background: rgba(5, 217, 232, 0.08); }
+.zg-facet-count { font-size: 10px; color: var(--text-muted); }
+.zg-facet-item.on .zg-facet-count { color: var(--cyan); }

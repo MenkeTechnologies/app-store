@@ -1,0 +1,20 @@
+/* zgui-core/toml-view.css — grouped, type-colored TOML display. */
+.zg-toml { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; line-height: 1.6; color: var(--text); }
+.zg-toml-table {
+    margin: 8px 0 2px;
+    color: var(--cyan);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px var(--cyan-glow);
+}
+.zg-toml-table:first-child { margin-top: 0; }
+.zg-toml-row { padding-left: 12px; white-space: pre-wrap; word-break: break-word; }
+.zg-toml-key { color: var(--accent); }
+.zg-toml-eq { color: var(--text-muted); }
+.zg-toml-str { color: var(--green); }
+.zg-toml-num { color: var(--orange, #ff9f1c); }
+.zg-toml-bool { color: var(--magenta); }
+.zg-toml-date { color: var(--yellow, #f9f002); }
+.zg-toml-arr { color: var(--text-dim); }
+.zg-toml-comment { color: var(--text-muted); font-style: italic; }
+.zg-toml-raw { color: var(--text-dim); padding-left: 12px; }

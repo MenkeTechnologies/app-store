@@ -1,0 +1,31 @@
+/* zgui-core/tour.css — guided spotlight tour (Ant Tour). The hole's huge box-shadow dims everything
+   around the clear target rect; the popover floats with the step controls. */
+.zg-tour { position: fixed; inset: 0; z-index: 9000; pointer-events: none; }
+.zg-tour-hole {
+    position: fixed; border-radius: 6px; pointer-events: none;
+    box-shadow: 0 0 0 9999px rgba(3, 3, 8, 0.62);
+    outline: 1px solid var(--cyan); outline-offset: 0;
+    transition: left 0.18s, top 0.18s, width 0.18s, height 0.18s;
+}
+.zg-tour-hole.no-mask { box-shadow: none; }
+.zg-tour-pop {
+    position: fixed; width: 280px; max-width: calc(100vw - 16px); pointer-events: auto;
+    background: var(--bg-panel, #0a0a16); border: 1px solid var(--cyan); border-radius: 6px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), 0 0 14px var(--cyan-glow); padding: 12px 14px; z-index: 9001;
+}
+.zg-tour-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.zg-tour-title { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 600; color: var(--cyan); }
+.zg-tour-x { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 13px; padding: 0 2px; }
+.zg-tour-x:hover { color: var(--text); }
+.zg-tour-desc { margin: 8px 0 12px; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+.zg-tour-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.zg-tour-dots { display: flex; gap: 5px; }
+.zg-tour-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+.zg-tour-dot.on { background: var(--cyan); box-shadow: 0 0 5px var(--cyan-glow); }
+.zg-tour-btns { display: flex; gap: 6px; }
+.zg-tour-btn {
+    padding: 4px 12px; font-family: inherit; font-size: 12px; color: var(--text);
+    background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; cursor: pointer;
+}
+.zg-tour-btn:hover { border-color: var(--cyan); }
+.zg-tour-btn.primary { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }

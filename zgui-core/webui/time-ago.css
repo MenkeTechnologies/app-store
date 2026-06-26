@@ -1,0 +1,8 @@
+/* zgui-core/time-ago.css — relative timestamp text. */
+.zg-timeago {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    cursor: default;
+    white-space: nowrap;
+}

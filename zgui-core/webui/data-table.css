@@ -1,0 +1,11 @@
+/* zgui-core/data-table.css — render-from-data table + virtual list. Cyberpunk tokens. */
+.zg-datatable { width: 100%; border-collapse: collapse; font-size: 12px; }
+.zg-datatable thead th { position: relative; text-align: left; padding: 7px 10px; background: var(--bg-secondary); border-bottom: 1px solid var(--border); color: var(--text-dim); font-family: "Orbitron", sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+.zg-datatable th.zg-dt-sortable { cursor: pointer; }
+.zg-datatable th.zg-dt-sortable:hover .zg-dt-th { color: var(--cyan); }
+.zg-dt-th.asc::after { content: " ▲"; font-size: 8px; color: var(--cyan); }
+.zg-dt-th.desc::after { content: " ▼"; font-size: 8px; color: var(--cyan); }
+.zg-datatable tbody td { padding: 6px 10px; border-bottom: 1px solid var(--border); color: var(--text); }
+.zg-datatable tbody tr:hover { background: var(--bg-hover); }
+.zg-vlist { height: 100%; }
+.zg-vlist-spacer { width: 1px; }

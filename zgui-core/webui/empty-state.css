@@ -1,0 +1,6 @@
+/* zgui-core/empty-state.css — centered "nothing here" placeholder. */
+.zg-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 40px 20px; text-align: center; color: var(--text-dim); }
+.zg-empty-icon { font-size: 40px; opacity: 0.5; color: var(--cyan); text-shadow: 0 0 16px var(--cyan-glow); }
+.zg-empty-title { font-family: "Orbitron", sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
+.zg-empty-msg { font-size: 12px; color: var(--text-muted); max-width: 320px; }
+.zg-empty-action { margin-top: 6px; }

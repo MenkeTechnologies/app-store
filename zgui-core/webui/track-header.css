@@ -1,0 +1,12 @@
+/* zgui-core/track-header.css — DAW track-header strip (track-header.js). */
+.zg-trackhdr { display: flex; align-items: center; gap: 6px; padding: 6px 8px 6px 0; background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-radius: 4px; min-width: 180px; }
+.zg-trackhdr-edge { width: 4px; align-self: stretch; background: var(--zg-trk-col, var(--cyan)); border-radius: 4px 0 0 4px; box-shadow: 0 0 6px var(--zg-trk-col, var(--cyan)); }
+.zg-trackhdr-arm { width: 18px; height: 18px; padding: 0; background: transparent; border: 1px solid var(--border); border-radius: 50%; color: var(--text-dim); font-size: 10px; cursor: pointer; flex: 0 0 auto; }
+.zg-trackhdr-arm.on { color: var(--red, #ff073a); border-color: var(--red, #ff073a); box-shadow: 0 0 6px rgba(255, 7, 58, 0.5); }
+.zg-trackhdr-mid { flex: 1; min-width: 0; }
+.zg-trackhdr-name { font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; outline: none; }
+.zg-trackhdr-db { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); }
+.zg-trackhdr-sm { display: flex; gap: 3px; flex: 0 0 auto; }
+.zg-trackhdr-s, .zg-trackhdr-m { width: 20px; height: 20px; font-size: 10px; font-weight: 700; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); cursor: pointer; }
+.zg-trackhdr-s.on { background: rgba(249, 240, 2, 0.15); color: var(--yellow, #f9f002); border-color: var(--yellow, #f9f002); }
+.zg-trackhdr-m.on { background: rgba(255, 7, 58, 0.15); color: var(--red, #ff073a); border-color: var(--red, #ff073a); }

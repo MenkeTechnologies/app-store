@@ -1,0 +1,31 @@
+/* zgui-core/waveform-player.css — interactive waveform: peaks + playhead + progress + loop braces.
+   Ported from Audio-Haxor's .waveform-progress-fill / -cursor / -loop-region / -loop-brace. */
+.zg-wave { position: relative; width: 100%; height: 64px; background: #06060e; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; user-select: none; touch-action: none; }
+.zg-wave-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.zg-wave-fill {
+    position: absolute; top: 0; left: 0; bottom: 0; width: 0;
+    background: linear-gradient(90deg, rgba(5, 217, 232, 0.15), rgba(255, 42, 109, 0.1));
+    pointer-events: none; z-index: 1;
+}
+.zg-wave-region { position: absolute; top: 0; bottom: 0; background: rgba(255, 230, 0, 0.10); pointer-events: none; z-index: 2; }
+.zg-wave-cursor {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 2px;
+    background: var(--cyan); box-shadow: 0 0 6px rgba(5, 217, 232, 0.6);
+    pointer-events: none; z-index: 3;
+}
+.zg-wave-brace {
+    box-sizing: border-box; position: absolute; top: 0; bottom: 0; width: 8px;
+    background: rgba(255, 230, 0, 0.5); border: 1px solid rgba(255, 230, 0, 0.9);
+    cursor: ew-resize; z-index: 4;
+}
+.zg-wave-brace-end { margin-left: -8px; }
+.zg-wave-time { position: absolute; bottom: 2px; right: 6px; font-size: 9px; font-family: 'Orbitron', sans-serif; color: var(--text-muted); pointer-events: none; z-index: 5; }
+/* the "L" loop-region toggle (top-left) — ported from Haxor's .waveform-loop-toggle */
+.zg-wave-loop-toggle {
+    position: absolute; top: 2px; left: 4px; z-index: 6;
+    font-family: 'Orbitron', sans-serif; font-size: 9px; font-weight: bold; letter-spacing: 1px; line-height: 1.2;
+    color: var(--text-muted); background: rgba(0, 0, 0, 0.55); border: 1px solid var(--border);
+    padding: 1px 6px; cursor: pointer;
+}
+.zg-wave-loop-toggle:hover { color: var(--cyan); border-color: var(--cyan); }
+.zg-wave-loop-toggle.active { color: #ffe600; border-color: #ffe600; background: rgba(255, 230, 0, 0.12); }

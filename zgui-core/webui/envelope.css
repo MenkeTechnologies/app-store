@@ -1,0 +1,12 @@
+/* zgui-core/envelope.css — ADSR envelope editor. Ported verbatim from zpwr-patch-core's .graph-* . */
+.zg-env { margin-bottom: 14px; background: var(--bg-card); border: 1px solid var(--border); padding: 8px; max-width: 480px; }
+.zg-env-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); margin-bottom: 4px; }
+.zg-env-svg { width: 100%; aspect-ratio: 320 / 120; height: auto; display: block; touch-action: none; }
+.zg-env-bg { fill: #06060e; }
+.zg-env-grid { stroke: rgba(5, 217, 232, 0.12); stroke-width: 0.5; }
+.zg-env-tgrid { stroke: rgba(5, 217, 232, 0.10); stroke-width: 0.5; }
+.zg-env-tlabel { fill: rgba(155, 225, 240, 0.55); font-size: 7px; letter-spacing: 0.5px; }
+.zg-env-line { fill: none; stroke: var(--cyan); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 0 3px rgba(5, 217, 232, 0.55)); }
+.zg-env-fill { fill: rgba(5, 217, 232, 0.16); stroke: none; }
+.zg-env-handle { fill: var(--accent); stroke: #06060e; stroke-width: 1.5; cursor: grab; filter: drop-shadow(0 0 3px rgba(211, 0, 197, 0.6)); }
+.zg-env-handle:active { cursor: grabbing; }

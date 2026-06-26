@@ -1,0 +1,156 @@
+/* zgui-core/components.css — styles for the bigger shared components:
+   the tile launcher (tiles.js), the export/import dialog (export-dialog.js), the app header
+   (header.js), and the drag-reorder ghost/placeholder (drag.js). Class names distilled from
+   Audio-Haxor's app-scoped styles into generic `zs-*`. Depends on the cyberpunk tokens. */
+
+/* ===================== drag-reorder ghost + placeholder (drag.js) ===================== */
+.trello-placeholder {
+  background: var(--cyan-dim, rgba(5, 217, 232, 0.12));
+  border: 1px dashed var(--cyan, #05d9e8);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.trello-ghost { box-sizing: border-box; }
+
+/* ===================== tile launcher (tiles.js) ===================== */
+.zs-tiles { padding: 16px; }
+.zs-tiles-head { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.zs-tiles-title { margin: 0; font-size: 18px; color: var(--cyan); letter-spacing: 1px; }
+.zs-tiles-search {
+  flex: 1; min-width: 200px; max-width: 420px;
+  padding: 7px 10px;
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  color: var(--text); font-size: 13px;
+}
+.zs-tiles-search:focus { outline: none; border-color: var(--cyan); }
+.zs-tiles-grid { display: flex; flex-direction: column; gap: 18px; }
+.zs-tiles-cat-head {
+  margin: 0 0 8px 0; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-dim); border-bottom: 1px solid var(--border); padding-bottom: 4px;
+}
+.zs-tiles-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.zs-tile {
+  display: flex; align-items: flex-start; gap: 10px; text-align: left;
+  padding: 12px; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text); cursor: pointer; user-select: none; font-family: inherit;
+}
+.zs-tile:hover { background: var(--bg-hover); border-color: var(--cyan); }
+.zs-tile:focus { outline: none; border-color: var(--cyan); }
+.zs-tile-glyph { font-size: 22px; line-height: 1.1; flex-shrink: 0; }
+.zs-tile-body { display: flex; flex-direction: column; min-width: 0; }
+.zs-tile-label { font-size: 13px; font-weight: 600; color: var(--text); }
+.zs-tile:hover .zs-tile-label { color: var(--cyan); }
+.zs-tile-desc {
+  font-size: 11px; color: var(--text-dim); line-height: 1.3; margin-top: 3px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.zs-tiles-empty { color: var(--text-dim); padding: 30px; text-align: center; }
+
+/* ===================== export / import dialog (export-dialog.js) ===================== */
+@keyframes progress-indeterminate {
+  0% { width: 0%; margin-left: 0%; }
+  50% { width: 40%; margin-left: 30%; }
+  100% { width: 0%; margin-left: 100%; }
+}
+.zs-export-overlay {
+  position: fixed; inset: 0; z-index: 30000;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex; justify-content: center; align-items: flex-start;
+  padding-top: 14vh;
+}
+.zs-export-box {
+  width: min(92vw, 460px);
+  background: var(--bg-card, #0d0d1a);
+  border: 1px solid var(--cyan, #05d9e8);
+  box-shadow: 0 0 40px rgba(5, 217, 232, 0.15), 0 20px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 6px; overflow: hidden;
+}
+.zs-export-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+}
+.zs-export-head h2 { margin: 0; font-size: 14px; color: var(--cyan); font-family: "Orbitron", sans-serif; letter-spacing: 1px; }
+.zs-export-close { background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 14px; }
+.zs-export-close:hover { color: var(--accent); }
+.zs-export-body { padding: 16px; }
+.zs-export-info {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border);
+  border-left: 3px solid var(--cyan);
+}
+.zs-export-count { font-family: "Orbitron", sans-serif; font-size: 16px; font-weight: 700; color: var(--cyan); }
+.zs-export-type { color: var(--text-dim); font-size: 13px; }
+.zs-export-formats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+.zs-export-opt {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  cursor: pointer; transition: border-color 0.15s, background 0.15s; border-radius: 2px;
+}
+.zs-export-opt:hover { border-color: var(--cyan); background: rgba(5, 217, 232, 0.03); }
+.zs-export-opt.selected { border-color: var(--cyan); border-left: 3px solid var(--cyan); background: rgba(5, 217, 232, 0.06); }
+.zs-export-opt input[type="radio"] { accent-color: var(--cyan); }
+.zs-export-fmt-icon { font-family: "Courier New", monospace; font-size: 14px; font-weight: 700; color: var(--cyan); width: 32px; text-align: center; flex-shrink: 0; }
+.zs-export-fmt-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.zs-export-fmt-label { font-weight: 600; font-size: 13px; color: var(--text); }
+.zs-export-fmt-desc { font-size: 11px; color: var(--text-muted); }
+.zs-export-fmt-ext { font-family: "Courier New", monospace; font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
+.zs-export-progress { margin-bottom: 16px; }
+.zs-export-progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+.zs-export-progress-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--magenta)); background-size: 200% 100%; transition: width 0.3s; }
+.zs-export-progress-text { font-size: 12px; color: var(--text-dim); }
+.zs-export-actions { display: flex; gap: 8px; }
+
+/* ===================== app header (header.js) ===================== */
+.zs-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #070714 0%, #0d0d22 42%, var(--bg-secondary) 100%);
+  position: relative;
+  -webkit-app-region: drag;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(5, 217, 232, 0.1), inset 0 1px 0 rgba(5, 217, 232, 0.06);
+}
+.zs-header::after {
+  content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--accent), var(--cyan), transparent);
+  opacity: 0.6;
+}
+.zs-header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 8px; text-shadow: 0 0 6px rgba(5, 217, 232, 0.15);
+}
+.zs-logo { display: flex; align-items: center; gap: 12px; }
+.zs-logo-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--magenta));
+  border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+  box-shadow: inset 0 0 15px rgba(255, 42, 109, 0.2);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+  border: 1px solid var(--accent);
+  animation: zs-icon-pulse 3s ease-in-out infinite;
+}
+@keyframes zs-icon-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px var(--accent-glow)); }
+  50% { filter: drop-shadow(0 0 14px var(--accent-glow)); }
+}
+.zs-logo-text { display: flex; flex-direction: column; }
+.zs-logo-title {
+  margin: 0;
+  font-family: "Orbitron", sans-serif; font-size: 18px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase;
+  background: linear-gradient(90deg, var(--cyan), #fff, var(--accent), var(--cyan));
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px var(--cyan-glow));
+  animation: zs-logo-shimmer 6s linear infinite;
+}
+@keyframes zs-logo-shimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+.zs-logo-sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); opacity: 0.7; margin-top: -2px; }
+.zs-logo-version { font-size: 10px; letter-spacing: 1px; color: var(--cyan-glow); opacity: 0.8; font-weight: 500; }
+.zs-logo-version::before { content: "Version: "; color: var(--text-dim); }
+.zs-logo-git { display: block; font-size: 9px; letter-spacing: 0.04em; color: var(--text-dim); opacity: 0.9; margin-top: 2px; font-weight: 500; word-break: break-all; }
+.zs-header-actions { display: flex; gap: 12px; align-items: center; }
+.zs-header-info { display: flex; gap: 16px; align-items: center; font-size: 11px; color: var(--text-dim); }
+.zs-header-info-item { display: flex; align-items: center; gap: 4px; }
+.zs-header-info-value { color: var(--text); font-weight: 600; }

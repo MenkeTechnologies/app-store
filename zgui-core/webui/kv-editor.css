@@ -1,0 +1,44 @@
+/* zgui-core/kv-editor.css — the key/value editor (kv-editor.js). Grid rows of toggle/key/value/
+   description/delete; the JS sets grid-template-columns per config. Distilled from zreq's `.zr-kv-*`.
+   Uses the shared widget kit (.zs-btn, .zs-input). Depends on the cyberpunk tokens. */
+
+.zg-kv-tools { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.zg-kv-head,
+.zg-kv-row {
+  display: grid;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.zg-kv-head {
+  font-family: "Orbitron", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.zg-kv-chk { accent-color: var(--cyan); width: 14px; height: 14px; margin: 0 auto; }
+.zg-kv-del {
+  color: var(--red, #ff073a);
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  transition: text-shadow 0.15s;
+}
+.zg-kv-del:hover { text-shadow: 0 0 8px currentColor; }
+.zg-kv-addrow { margin-top: 6px; }
+.zg-kv-bulk {
+  width: 100%;
+  min-height: 140px;
+  box-sizing: border-box;
+  resize: vertical;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  padding: 8px 10px;
+  outline: none;
+}
+.zg-kv-bulk:focus { border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-glow); }

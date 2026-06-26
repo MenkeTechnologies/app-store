@@ -1,0 +1,10 @@
+/* zgui-core/token-meter.css — LLM token/cost burn meter (token-meter.js). */
+.zg-tokmeter { display: block; min-width: 160px; padding: 8px 10px; background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-radius: 6px; }
+.zg-tokmeter-top { display: flex; justify-content: space-between; font-size: 11px; }
+.zg-tokmeter-label { color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.zg-tokmeter-count { font-family: 'Share Tech Mono', monospace; color: var(--text); }
+.zg-tokmeter-bar { height: 6px; margin: 5px 0; background: var(--bg-primary, #05050a); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.zg-tokmeter-fill { display: block; height: 100%; background: var(--cyan, #05d9e8); transition: width 0.2s; }
+.zg-tokmeter[data-state="warn"] .zg-tokmeter-fill { background: var(--yellow, #f9f002); }
+.zg-tokmeter[data-state="over"] .zg-tokmeter-fill { background: var(--red, #ff073a); }
+.zg-tokmeter-sub { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); }

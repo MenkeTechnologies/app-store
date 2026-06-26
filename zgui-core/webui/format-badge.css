@@ -1,0 +1,18 @@
+/* zgui-core/format-badge.css — file-format badge (format-badge.js). Per-format colors ported verbatim
+   from Audio-Haxor's .format-* rules. Aliases (aif→aiff, rx2→rex, sfz→sf2, aac→m4a, opus→ogg) share a
+   color by repeating the rule. */
+.zg-fmt-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 0;
+    font-family: 'Share Tech Mono', monospace; font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    background: transparent; transition: transform 0.15s, box-shadow 0.15s;
+}
+.zg-fmt-badge:hover { transform: scale(1.1); box-shadow: 0 0 8px currentColor; }
+
+.zg-fmt-wav { color: var(--cyan); border: 1px solid var(--cyan); box-shadow: 0 0 6px var(--cyan-dim); }
+.zg-fmt-mp3, .zg-fmt-rex, .zg-fmt-rx2 { color: var(--accent, #ff2a6d); border: 1px solid var(--accent, #ff2a6d); box-shadow: 0 0 6px rgba(255, 42, 109, 0.15); }
+.zg-fmt-aiff, .zg-fmt-aif, .zg-fmt-sf2, .zg-fmt-sfz { color: var(--green, #39ff14); border: 1px solid var(--green, #39ff14); box-shadow: 0 0 6px rgba(57, 255, 20, 0.15); }
+.zg-fmt-flac { color: var(--magenta, #ff2a6d); border: 1px solid var(--magenta, #ff2a6d); box-shadow: 0 0 6px var(--magenta-glow, rgba(255, 42, 109, 0.4)); }
+.zg-fmt-ogg, .zg-fmt-opus { color: var(--orange, #ff6b35); border: 1px solid var(--orange, #ff6b35); box-shadow: 0 0 6px rgba(255, 107, 53, 0.15); }
+.zg-fmt-m4a, .zg-fmt-aac { color: var(--yellow, #f9f002); border: 1px solid rgba(249, 240, 2, 0.5); box-shadow: 0 0 6px var(--yellow-glow, rgba(249, 240, 2, 0.4)); }
+.zg-fmt-wma, .zg-fmt-default { color: var(--text-dim); border: 1px solid var(--border); }

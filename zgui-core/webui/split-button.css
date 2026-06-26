@@ -1,0 +1,59 @@
+/* zgui-core/split-button.css — primary action + caret dropdown. */
+.zg-splitbtn { position: relative; display: inline-flex; }
+.zg-splitbtn-main,
+.zg-splitbtn-caret {
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 5px 11px;
+}
+.zg-splitbtn-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}
+.zg-splitbtn-caret {
+    border-radius: 0 4px 4px 0;
+    padding: 5px 7px;
+}
+.zg-splitbtn-main:hover,
+.zg-splitbtn-caret:hover { color: var(--cyan); border-color: var(--cyan); }
+.zg-splitbtn-cyan .zg-splitbtn-main,
+.zg-splitbtn-primary .zg-splitbtn-main { background: var(--cyan); color: #04121a; border-color: var(--cyan); }
+.zg-splitbtn-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 150px;
+    display: none;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    z-index: 60;
+    padding: 4px;
+}
+.zg-splitbtn.zg-open .zg-splitbtn-menu { display: flex; }
+.zg-splitbtn-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text);
+    border: none;
+    border-radius: 3px;
+    padding: 6px 9px;
+}
+.zg-splitbtn-item:hover { background: var(--bg-hover); color: var(--cyan); }
+.zg-splitbtn-item.zg-danger:hover { color: var(--red); }
+.zg-splitbtn-sep { height: 1px; margin: 4px 0; background: var(--border); }

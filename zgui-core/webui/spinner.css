@@ -1,0 +1,33 @@
+/* zgui-core/spinner.css — the loading spinner, ported faithfully from Audio-Haxor. The ring is
+   two-colour (cyan top + accent right) with a cyan glow; `.loading-state` is the centered
+   spinner+label block used for tab/panel loads. Class names kept (`.spinner`/`.loading-state`/
+   `.loading-state-label`) so it's a drop-in for the apps. Depends on the cyberpunk tokens. */
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--cyan);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  box-shadow: 0 0 15px var(--cyan-dim);
+}
+
+/* Shared loading-state container — used by tab loading spinners (crate, midi, etc.).
+   Static CSS so inline styles aren't stripped by release WebKit on innerHTML inserts. */
+.loading-state {
+  text-align: center;
+  padding: 40px;
+}
+.loading-state .spinner {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 12px;
+}
+.loading-state-label {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

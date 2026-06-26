@@ -1,0 +1,39 @@
+/* zgui-core/db-fader.css — console channel fader with a dB tick scale. Ported from zpc's .mx-fader. */
+.zg-dbfader { display: flex; gap: 4px; min-height: 130px; align-items: stretch; }
+.zg-dbfader-track {
+    position: relative;
+    width: 10px;
+    background: #06060e;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    cursor: ns-resize;
+    touch-action: none;
+}
+.zg-dbfader-fill {
+    position: absolute;
+    left: 0; right: 0; bottom: 0; top: 50%;
+    background: linear-gradient(180deg, var(--cyan), var(--magenta));
+    border-radius: 0 0 4px 4px;
+    pointer-events: none;
+}
+.zg-dbfader-thumb {
+    position: absolute;
+    left: -4px; right: -4px;
+    height: 10px;
+    top: 50%;
+    margin-top: -5px;
+    background: var(--text);
+    border: 1px solid var(--cyan);
+    border-radius: 3px;
+    box-shadow: 0 0 6px var(--cyan-glow);
+    pointer-events: none;
+}
+.zg-dbfader-scale {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 7px;
+    color: var(--text-muted);
+}
+.zg-dbfader-tick { line-height: 1; }

@@ -1,0 +1,2 @@
+/* zgui-core/morph-path.css — recordable XY trajectory (morph-path.js). Canvas-painted. */
+.zg-morphpath { display: block; background: #070710; border: 1px solid var(--border, #1a1a3e); border-radius: 4px; cursor: crosshair; touch-action: none; }
