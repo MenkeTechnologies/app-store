@@ -67,6 +67,10 @@
         let seeking = false, painting = false, anchorFrac = 0;
         root.addEventListener("pointerdown", (e) => {
             if (e.target === bStart || e.target === bEnd) return;   // braces consume their own drag
+            // Controls (the "L" loop toggle) handle their own click — don't let seek/paint run and
+            // steal the pointer via setPointerCapture, which would kill the button's click. Faithful
+            // to Haxor initMetaLoopPaintDrag: `if (t.closest('button, input, select, textarea')) return;`
+            if (e.target.closest && e.target.closest("button, input, select, textarea")) return;
             const f = fracOf(e);
             if (e.shiftKey) {
                 painting = true; anchorFrac = f; loopOn = true;
