@@ -523,13 +523,15 @@
         card.className = "demo-card" + (opts && opts.pop ? " demo-pop" : "");
         card.innerHTML = `<div class="demo-card-head"><span class="demo-card-name">${name}</span><span class="demo-card-api">${api}</span></div>`;
         const stage = document.createElement("div"); stage.className = "demo-stage"; card.appendChild(stage);
+        // Insert into the DOM BEFORE running the setup, so components that read layout (clientHeight)
+        // or query the document at init (tabs' .tab-nav, virtualList's viewport) see a live element.
+        grid.appendChild(card);
         if (run) {
             try { run(stage); if (!stage.childNodes.length) stage.innerHTML = '<span class="demo-muted">(rendered — no visible output)</span>'; }
             catch (err) { stage.innerHTML = `<span class="demo-error">⚠ ${String(err && err.message || err)}</span>`; }
         } else {
             stage.innerHTML = '<span class="demo-muted">programmatic / low-level — see README</span>';
         }
-        grid.appendChild(card);
         cards.push({ card, nameEl: card.querySelector(".demo-card-name"), display: name });
     }
 
