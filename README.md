@@ -129,7 +129,7 @@ HTML sanity check on every push and pull request.
 | `checkout.html` | Shopify-style checkout: express wallets, card form, summary    |
 | `docs/index.html`  | Developer documentation (HUD-themed)                       |
 | `docs/report.html` | Engineering report (live catalog stats + metrics)         |
-| `docs/zpwr-patch-core-block-catalog.pdf` | Full shared block catalog (all 1454 modules) — linked as the "Full Catalog" doc from all three audio-plugin product pages (`docs[]` in `store.js`) |
+| `docs/zpwr-patch-core-block-catalog.pdf` | Full shared block catalog (every shared module across the four plugins, with an alphabetical index) — linked as the "Full Catalog" doc from all three audio-plugin product pages (`docs[]` in `store.js`) |
 | `docs/zpwr-{synth,fx,midi-fx}-block-catalog.pdf` | Per-plugin block catalogs (only the blocks that plugin ships) — each linked as the "Block Catalog" doc from that plugin's product page |
 | `store.js`      | Product catalog (single source of truth) + grid/cart/checkout |
 | `store.css`     | Commerce surfaces (cards, prices, cart, modal, checkout)      |
