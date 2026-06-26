@@ -1,0 +1,22 @@
+/* zgui-core/signature-pad.css — canvas signature pad. Pairs with signature-pad.js. */
+.zg-sig { display: inline-block; }
+.zg-sig-canvas {
+    display: block;
+    background: var(--bg-card, #0d0d1a);
+    border: 1px solid var(--border, #1a1a3e);
+    border-radius: 4px;
+    cursor: crosshair;
+    touch-action: none;
+}
+.zg-sig-bar { display: flex; justify-content: flex-end; margin-top: 6px; }
+.zg-sig-clear {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted, #7a8ba8);
+    background: transparent;
+    border: 1px solid var(--border, #1a1a3e);
+    border-radius: 3px;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+.zg-sig-clear:hover { color: var(--magenta, #ff2a6d); border-color: var(--magenta, #ff2a6d); }

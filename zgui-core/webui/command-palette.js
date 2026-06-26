@@ -105,7 +105,10 @@
     function run(it) { close(); if (it && it.run) it.run(); }
 
     input.addEventListener("input", render);
+
     input.addEventListener("keydown", function (e) {
+      // Readline editing (^W/^U/^K/^A/^E/…) is handled globally by ZGui.util.installReadline (auto-
+      // wired in util.js), which edits the input + dispatches `input`, so the filter above re-runs.
       if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(sel + 1, filtered.length - 1); hi(); }
       else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(sel - 1, 0); hi(); }
       else if (e.key === "Enter") { e.preventDefault(); if (filtered[sel]) run(filtered[sel]); }

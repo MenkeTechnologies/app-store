@@ -1,0 +1,25 @@
+/* zgui-core/gradient-picker.css — CSS gradient builder. Pairs with gradient-picker.js. */
+.zg-grad { width: 280px; }
+.zg-grad-bar {
+    position: relative; height: 22px; border-radius: 4px;
+    border: 1px solid var(--border, #1a1a3e); cursor: copy;
+}
+.zg-grad-stop {
+    position: absolute; top: -4px; width: 12px; height: 30px;
+    transform: translateX(-6px); border: 2px solid #fff; border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6); cursor: grab;
+}
+.zg-grad-sel { border-color: var(--cyan, #05d9e8); box-shadow: 0 0 8px var(--cyan, #05d9e8); }
+.zg-grad-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.zg-grad-color { width: 36px; height: 24px; padding: 0; border: 1px solid var(--border, #1a1a3e); background: none; cursor: pointer; }
+.zg-grad-del {
+    font-family: 'Share Tech Mono', monospace; font-size: 11px;
+    color: var(--text-muted, #7a8ba8); background: transparent;
+    border: 1px solid var(--border, #1a1a3e); border-radius: 3px; padding: 3px 10px; cursor: pointer;
+}
+.zg-grad-del:hover { color: var(--magenta, #ff2a6d); border-color: var(--magenta, #ff2a6d); }
+.zg-grad-preview { height: 40px; border-radius: 4px; margin-top: 10px; border: 1px solid var(--border, #1a1a3e); }
+.zg-grad-expr {
+    display: block; font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    color: var(--text-muted, #7a8ba8); margin-top: 6px; word-break: break-all;
+}

@@ -1,0 +1,17 @@
+/* zgui-core/image-cropper.css — crop box over an image. Pairs with image-cropper.js. */
+.zg-crop {
+    position: relative; display: inline-block; line-height: 0;
+    user-select: none; touch-action: none; overflow: hidden;
+    border: 1px solid var(--border, #1a1a3e); border-radius: 4px;
+}
+.zg-crop-img { display: block; pointer-events: none; }
+.zg-crop-box {
+    position: absolute;
+    border: 1px solid var(--cyan, #05d9e8);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);   /* dim everything outside the crop */
+    cursor: move;
+}
+.zg-crop-handle {
+    position: absolute; right: -6px; bottom: -6px; width: 12px; height: 12px;
+    background: var(--cyan, #05d9e8); border-radius: 2px; cursor: nwse-resize;
+}

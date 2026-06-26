@@ -391,6 +391,48 @@
         ["Overlays (triggered)", "helpOverlay", "ZGui.helpOverlay.open(sections)", (s) => add(s, btn("Shortcuts (?)", trig(() => Z.helpOverlay.open([{ title: "General", rows: [{ keys: "⌘K", label: "Command palette" }, { keys: "?", label: "This help" }] }]))))],
         ["Overlays (triggered)", "splash", "ZGui.splash.show({title,subtitle,version})", (s) => add(s, btn("Show splash", trig(() => { Z.splash.show({ title: "ZGUI CORE", subtitle: "Component Library", version: "Loading…" }); setTimeout(() => Z.splash.hide(), 1600); })))],
         ["Overlays (triggered)", "exportDialog", "ZGui.exportDialog.pickImport({})", (s) => add(s, btn("Import…", trig(() => Z.exportDialog.pickImport({ formats: ["json", "csv"] }).then((r) => toast(r ? r.path : "cancelled")))))],
+
+        // Imported widgets — universe sweep (MUI / Ant / PrimeReact / Mantine gaps)
+        ["Inputs & Forms", "signaturePad", "ZGui.signaturePad(host,{width,height,onChange})", (s) => Z.signaturePad(s, { width: 300, height: 120 })],
+        ["Inputs & Forms", "dialPad", "ZGui.dialPad(host,{onKey,onDial})", (s) => Z.dialPad(s, { onDial: (v) => toast("dial " + (v || "—")) })],
+        ["Inputs & Forms", "cronEditor", "ZGui.cronEditor(host,{value,onChange})", (s) => Z.cronEditor(s, { value: "0 9 * * 1" })],
+        ["Inputs & Forms", "gradientPicker", "ZGui.gradientPicker(host,{stops,type,onChange})", (s) => Z.gradientPicker(s, {})],
+        ["Inputs & Forms", "imageCropper", "ZGui.imageCropper(host,{src,aspect,onChange})", (s) => Z.imageCropper(s, { src: "../webui/img/chassis.png", width: 260 })],
+        ["Data Display", "imageCompare", "ZGui.imageCompare(host,{before,after,onChange})", (s) => Z.imageCompare(s, { before: "../webui/img/keyboard.png", after: "../webui/img/chassis.png", width: 300 })],
+        ["Novel / Experimental", "joystick", "ZGui.joystick(host,{size,sticky,onChange})", (s) => Z.joystick(s, { size: 120 })],
+        ["Feedback & Status", "result", "ZGui.result(host,{status,title,subtitle,actions})", (s) => Z.result(s, { status: "success", title: "Deployed", subtitle: "Build #1042 shipped.", actions: [{ label: "View", primary: true, onClick: () => toast("view") }, { label: "Undo", onClick: () => toast("undo") }] })],
+
+        ["Selection & Nav", "launcher", "ZGui.launcher(host,{sigil,items,onOpen,onAction})", (s) => {
+            s.style.cssText = "display:block;padding:0";
+            Z.launcher(s, {
+                sigil: "zgo", placeholder: "Apps · a sum · the web · 'find …'",
+                items: [
+                    { icon: "🔎", title: "Google", subtitle: "google", kind: "search" },
+                    { icon: "🔎", title: "DuckDuckGo", subtitle: "ddg", kind: "search" },
+                    { icon: "🔎", title: "Amazon", subtitle: "amazon", kind: "search" },
+                    { icon: "🔎", title: "Wikipedia", subtitle: "wiki", kind: "search" },
+                    { icon: "🔎", title: "YouTube", subtitle: "youtube", kind: "search" },
+                    { icon: "🔎", title: "GitHub", subtitle: "github", kind: "search" },
+                ],
+                onOpen: (it) => toast("open " + it.title), onAction: (it) => toast("actions: " + it.title),
+            });
+        }],
+
+        // App-shell: two-pane preferences window (icon+title+subtitle sidebar nav + detail pane)
+        ["Selection & Nav", "prefsShell", "ZGui.prefsShell(host,{logo,title,items:[{id,icon,name,sub,render}]})", (s) => {
+            s.style.cssText = "display:block;height:300px;padding:0;overflow:hidden";
+            const scope = (p, paths) => { p.appendChild(Z.prefsShell.section("Search scope")); paths.forEach((x) => { const r = document.createElement("div"); r.textContent = "📁  " + x; r.style.cssText = "padding:8px 12px;border:1px solid var(--border);border-radius:4px;margin-bottom:6px;font:12px 'Share Tech Mono',monospace;color:var(--text)"; p.appendChild(r); }); };
+            const mk = (icon, title, desc, paths) => (p) => { p.appendChild(Z.prefsShell.paneHead(icon, title, desc)); if (paths) scope(p, paths); };
+            Z.prefsShell(s, {
+                logo: "zgui", title: "Preferences",
+                items: [
+                    { id: "results", icon: "🎩", name: "Default Results", sub: "Scope & index", render: mk("🎩", "Default Results", "Apps & files from a direct filesystem scan.", ["/Applications", "/System/Applications", "~/Applications"]) },
+                    { id: "web", icon: "🔎", name: "Web Search", sub: "Built-in & custom", render: mk("🔎", "Web Search", "Keyword searches.") },
+                    { id: "clip", icon: "📋", name: "Clipboard", sub: "History & merge", render: mk("📋", "Clipboard History", "Recent copies.") },
+                    { id: "theme", icon: "🎨", name: "Appearance", sub: "Themes", render: mk("🎨", "Appearance", "Pick a colorscheme.") },
+                ],
+            });
+        }],
     ];
 
     // ── render ────────────────────────────────────────────────────────────────
