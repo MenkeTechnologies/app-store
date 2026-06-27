@@ -552,7 +552,7 @@
 .tutorial-section {
   /* fadeSlideIn's from{opacity:0} + fill-mode both handles the fade and the
      hidden state during animation-delay; no base opacity:0 so the section stays
-     visible when animations are disabled (body.no-neon-glow / reduced-motion). */
+     visible if animations are ever disabled (reduced-motion, print, etc.). */
   animation: fadeSlideIn 0.55s ease both;
 }
 .tutorial-section:nth-of-type(1) { animation-delay: 0.18s; }
@@ -591,13 +591,13 @@
   pointer-events: none;
 }
 
-.tutorial-nav a:hover {
+body:not(.no-neon-glow) .tutorial-nav a:hover {
   animation: neonBreathe 2s ease-in-out infinite;
 }
 
 .tutorial-card {
-  /* see .tutorial-section: no base opacity:0 so cards stay visible when
-     animations are disabled (body.no-neon-glow / reduced-motion). */
+  /* see .tutorial-section: no base opacity:0 so cards stay visible if
+     animations are ever disabled (reduced-motion, print, etc.). */
   animation: fadeSlideIn 0.5s ease both;
 }
 .tutorial-card:nth-child(1)  { animation-delay: 0.10s; }

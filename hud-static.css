@@ -188,10 +188,10 @@ body {
   100% { left: 100%; opacity: 0; }
 }
 
-body.no-neon-glow * {
-  animation-name: none !important;
-  animation-duration: 0s !important;
-}
+/* The neon toggle disables only the glow/pulse animations (neon-border-glow on
+   .doc-card below, neonBreathe on .tutorial-nav a:hover) via body:not(.no-neon-glow)
+   guards plus the static box-shadow swap below. It must NOT disable entrance fades,
+   meter growth, glitch, sweep, or CRT scanlines — those are unrelated to the glow. */
 
 body.no-neon-glow .doc-card {
   box-shadow: 0 0 20px var(--cyan-glow), 0 4px 24px rgba(0, 0, 0, 0.35);
