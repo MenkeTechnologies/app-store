@@ -550,8 +550,10 @@
 }
 
 .tutorial-section {
+  /* fadeSlideIn's from{opacity:0} + fill-mode both handles the fade and the
+     hidden state during animation-delay; no base opacity:0 so the section stays
+     visible when animations are disabled (body.no-neon-glow / reduced-motion). */
   animation: fadeSlideIn 0.55s ease both;
-  opacity: 0;
 }
 .tutorial-section:nth-of-type(1) { animation-delay: 0.18s; }
 .tutorial-section:nth-of-type(2) { animation-delay: 0.26s; }
@@ -594,8 +596,9 @@
 }
 
 .tutorial-card {
+  /* see .tutorial-section: no base opacity:0 so cards stay visible when
+     animations are disabled (body.no-neon-glow / reduced-motion). */
   animation: fadeSlideIn 0.5s ease both;
-  opacity: 0;
 }
 .tutorial-card:nth-child(1)  { animation-delay: 0.10s; }
 .tutorial-card:nth-child(2)  { animation-delay: 0.14s; }
