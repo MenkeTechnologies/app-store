@@ -1,7 +1,0 @@
-/* zgui-core/lufs-meter.css — EBU R128 loudness meter. Pairs with lufs-meter.js. */
-.zg-lufs { display: inline-flex; gap: 10px; align-items: stretch; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; padding: 8px; height: 130px; }
-.zg-lufs-bar { position: relative; width: 22px; background: var(--bg-secondary, rgba(255,255,255,0.03)); border: 1px solid var(--border, #1a1a3e); border-radius: 3px; overflow: hidden; }
-.zg-lufs-fill { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: #39ff14; transition: height 0.1s linear; }
-.zg-lufs-target { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed var(--cyan, #05d9e8); }
-.zg-lufs-nums { display: flex; flex-direction: column; justify-content: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted, #7a8ba8); }
-.zg-lufs-nums b { display: block; font-size: 15px; color: var(--cyan, #05d9e8); }

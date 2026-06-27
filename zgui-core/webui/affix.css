@@ -1,4 +1,0 @@
-/* zgui-core/affix.css — pin-on-scroll wrapper (affix.js). Positioning is applied inline; this just
-   flags the affixed state for an optional subtle shadow. */
-.zg-affix { position: relative; }
-.zg-affix > .is-affixed { z-index: 50; }

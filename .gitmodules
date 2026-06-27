@@ -1,0 +1,3 @@
+[submodule "zgui-core"]
+	path = zgui-core
+	url = https://github.com/MenkeTechnologies/zgui-core.git

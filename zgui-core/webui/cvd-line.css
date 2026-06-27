@@ -1,3 +1,0 @@
-/* zgui-core/cvd-line.css — cumulative volume delta line. Pairs with cvd-line.js. */
-.zg-cvd { display: inline-block; line-height: 0; }
-.zg-cvd-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

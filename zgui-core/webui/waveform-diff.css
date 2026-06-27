@@ -1,5 +1,0 @@
-/* zgui-core/waveform-diff.css — A/B waveform delta (waveform-diff.js). */
-.zg-wfdiff { display: block; }
-.zg-wfdiff-cv { display: block; width: 100%; background: #06060e; border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }
-.zg-wfdiff-legend { display: flex; gap: 12px; font-size: 10px; margin-top: 4px; font-family: 'Share Tech Mono', monospace; }
-.zg-wfdiff-a { color: var(--cyan, #05d9e8); } .zg-wfdiff-b { color: var(--magenta, #ff2a6d); } .zg-wfdiff-d { color: var(--yellow, #f9f002); }

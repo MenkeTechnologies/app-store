@@ -1,6 +1,0 @@
-/* zgui-core/clip.css — arranger clip block (clip.js). */
-.zg-clip { display: inline-flex; flex-direction: column; overflow: hidden; border: 1px solid var(--zg-clip-col, var(--cyan)); border-radius: 4px; background: color-mix(in srgb, var(--zg-clip-col, #05d9e8) 14%, #0a0a14); cursor: pointer; box-sizing: border-box; }
-.zg-clip.selected { box-shadow: 0 0 0 1px #fff, 0 0 10px var(--zg-clip-col, var(--cyan)); }
-.zg-clip.muted { opacity: 0.5; }
-.zg-clip-head { font-family: 'Share Tech Mono', monospace; font-size: 9px; line-height: 14px; height: 14px; padding: 0 5px; color: #0a0a16; background: var(--zg-clip-col, var(--cyan)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.zg-clip-canvas { display: block; width: 100%; flex: 1; }

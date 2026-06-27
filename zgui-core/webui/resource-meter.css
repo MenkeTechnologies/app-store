@@ -1,7 +1,0 @@
-/* zgui-core/resource-meter.css — CPU/RAM readout chips (resource-meter.js). Ported from zpwr-patch-core
-   .cpu-meter / .ram-meter. */
-.zg-resmeter { font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; border: 1px solid var(--border); border-radius: 2px; padding: 2px 6px; text-align: center; user-select: none; white-space: nowrap; }
-.zg-resmeter-cpu { color: var(--cyan, #05d9e8); min-width: 56px; }
-.zg-resmeter-cpu.warn { color: #0a0a14; background: #ffb300; border-color: #ffb300; }
-.zg-resmeter-cpu.hot { color: #0a0a14; background: #ff2d55; border-color: #ff2d55; box-shadow: 0 0 8px rgba(255, 45, 85, 0.7); }
-.zg-resmeter-ram { color: #ff6ac1; min-width: 64px; }

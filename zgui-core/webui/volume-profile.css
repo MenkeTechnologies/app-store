@@ -1,3 +1,0 @@
-/* zgui-core/volume-profile.css — volume-by-price histogram. Pairs with volume-profile.js. */
-.zg-vprof { display: inline-block; line-height: 0; }
-.zg-vprof-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

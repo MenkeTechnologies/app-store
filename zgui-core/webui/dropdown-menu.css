@@ -1,9 +1,0 @@
-/* zgui-core/dropdown-menu.css — button-triggered dropdown menu. */
-.zg-dropdown-menu { position: fixed; z-index: 9996; min-width: 160px; padding: 4px; background: var(--bg-card); border: 1px solid var(--cyan); border-radius: 5px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 14px var(--cyan-dim); }
-.zg-dropdown-menu[hidden] { display: none; }
-.zg-dropdown-item { display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 10px; font-size: 12px; color: var(--text-dim); background: transparent; border: none; border-radius: 3px; cursor: pointer; text-align: left; }
-.zg-dropdown-item:hover { background: var(--bg-hover); color: var(--cyan); }
-.zg-dropdown-item.danger:hover { color: var(--red, #ff073a); }
-.zg-dropdown-item.disabled { opacity: 0.4; cursor: not-allowed; }
-.zg-dropdown-ic { width: 16px; text-align: center; }
-.zg-dropdown-sep { height: 1px; margin: 4px 6px; background: var(--border); }

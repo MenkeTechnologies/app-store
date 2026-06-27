@@ -1,3 +1,0 @@
-/* zgui-core/correlation-meter.css — stereo phase-correlation meter. Pairs with correlation-meter.js. */
-.zg-corr { display: inline-block; line-height: 0; }
-.zg-corr-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

@@ -1,7 +1,0 @@
-/* zgui-core/metadata.css — read-only label/value metadata grid (metadata.js). Ported from
-   Audio-Haxor's .meta-item/.meta-label/.meta-value, namespaced zg-meta-*. Cyberpunk tokens. */
-.zg-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
-.zg-meta-item { display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow: hidden; }
-.zg-meta-wide { grid-column: 1 / -1; }
-.zg-meta-label { font-size: 9px; font-family: "Orbitron", sans-serif; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
-.zg-meta-value { font-size: 12px; color: var(--cyan); word-break: break-all; }

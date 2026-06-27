@@ -1,8 +1,0 @@
-/* zgui-core/schedule-grid.css — paintable cron/schedule grid (schedule-grid.js). */
-.zg-schedgrid { display: grid; grid-template-columns: 40px repeat(var(--zg-cols, 24), 1fr); gap: 2px; touch-action: none; }
-.zg-schedgrid-corner { }
-.zg-schedgrid-col { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--text-dim); text-align: center; }
-.zg-schedgrid-row { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-muted); display: flex; align-items: center; }
-.zg-schedgrid-cell { height: 16px; background: var(--bg-secondary, #0a0a14); border: 1px solid var(--border); border-radius: 2px; cursor: pointer; }
-.zg-schedgrid-cell:hover { border-color: var(--cyan); }
-.zg-schedgrid-cell.on { background: var(--cyan, #05d9e8); box-shadow: 0 0 5px var(--cyan-glow, rgba(5,217,232,0.4)); }

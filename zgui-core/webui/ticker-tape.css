@@ -1,8 +1,0 @@
-/* zgui-core/ticker-tape.css — scrolling price strip. Pairs with ticker-tape.js. */
-.zg-ticker { overflow: hidden; white-space: nowrap; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; padding: 6px 0; font-family: 'Share Tech Mono', monospace; font-size: 12px; }
-.zg-ticker-track { display: inline-block; white-space: nowrap; animation: zg-ticker-scroll 30s linear infinite; }
-.zg-ticker-item { padding: 0 18px; color: var(--text, #cde); }
-.zg-ticker-item b { color: var(--cyan, #05d9e8); font-weight: 700; }
-.zg-ticker-item.up .zg-ticker-chg { color: #39ff14; }
-.zg-ticker-item.down .zg-ticker-chg { color: var(--red, #ff2a6d); }
-@keyframes zg-ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }

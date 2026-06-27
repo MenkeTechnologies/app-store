@@ -1,3 +1,0 @@
-/* zgui-core/liquidity-heatmap.css — Bookmap-style liquidity heatmap. Pairs with liquidity-heatmap.js. */
-.zg-liq { display: inline-block; line-height: 0; }
-.zg-liq-canvas { display: block; background: #05080d; border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

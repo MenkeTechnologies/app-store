@@ -1,2 +1,0 @@
-/* zgui-core/euclid-wheel.css — Euclidean polyrhythm rings (euclid-wheel.js). Canvas-painted. */
-.zg-euclid { display: block; background: #05050a; border: 1px solid var(--border, #1a1a3e); border-radius: 50%; cursor: pointer; touch-action: none; }

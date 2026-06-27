@@ -1,2 +1,0 @@
-/* zgui-core/piano-roll.css — MIDI note editor (piano-roll.js). Canvas-painted. */
-.zg-pianoroll { display: block; max-width: 100%; background: #070710; border: 1px solid var(--border, #1a1a3e); border-radius: 3px; cursor: crosshair; touch-action: none; }

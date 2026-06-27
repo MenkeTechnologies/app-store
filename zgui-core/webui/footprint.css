@@ -1,3 +1,0 @@
-/* zgui-core/footprint.css — order-flow footprint chart. Pairs with footprint.js. */
-.zg-fp { display: inline-block; line-height: 0; }
-.zg-fp-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

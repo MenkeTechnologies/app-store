@@ -1,3 +1,0 @@
-/* zgui-core/lane-grid.css — the multi-lane per-block value grid (SECTION OVERRIDES). Canvas-painted;
-   this just frames it. */
-.zg-lanegrid { display: block; width: 100%; background: #05050a; border: 1px solid var(--border); border-radius: 4px; cursor: crosshair; touch-action: none; }

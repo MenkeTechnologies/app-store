@@ -1,3 +1,0 @@
-/* zgui-core/candlestick.css — OHLC candle chart. Pairs with candlestick.js. */
-.zg-candle { display: inline-block; line-height: 0; }
-.zg-candle-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

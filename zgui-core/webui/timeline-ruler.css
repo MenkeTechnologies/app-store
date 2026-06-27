@@ -1,2 +1,0 @@
-/* zgui-core/timeline-ruler.css — bars/beats ruler (timeline-ruler.js). Canvas-painted. */
-.zg-ruler { display: block; max-width: 100%; background: #06060e; border: 1px solid var(--border, #1a1a3e); border-radius: 3px; cursor: text; touch-action: none; }

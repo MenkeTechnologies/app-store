@@ -1,6 +1,0 @@
-/* zgui-core/count-badge.css — notification count/dot badge. */
-.zg-count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 16px; height: 16px; padding: 0 4px; font-family: "Orbitron", sans-serif; font-size: 9px; font-weight: 700; line-height: 1; color: #0a0f18; border-radius: 8px; }
-.zg-count-dot { min-width: 8px; width: 8px; height: 8px; padding: 0; border-radius: 50%; }
-.zg-count-accent { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
-.zg-count-cyan { background: var(--cyan); box-shadow: 0 0 6px var(--cyan-glow); }
-.zg-count-red { background: var(--red, #ff073a); box-shadow: 0 0 6px rgba(255, 7, 58, 0.5); }

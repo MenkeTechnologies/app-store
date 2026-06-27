@@ -1,3 +1,0 @@
-/* zgui-core/vu-meter.css — analog needle VU meter. Pairs with vu-meter.js. */
-.zg-vu { display: inline-block; line-height: 0; }
-.zg-vu-canvas { display: block; background: var(--bg-card, #0d0d1a); border: 1px solid var(--border, #1a1a3e); border-radius: 4px; }

@@ -1,4 +1,0 @@
-/* zgui-core/masonry.css — equal-width / variable-height column packing (MUI Masonry). */
-.zg-masonry { display: flex; align-items: flex-start; width: 100%; }
-.zg-masonry-col { display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; }
-.zg-masonry-col > * { width: 100%; }

@@ -1,9 +1,0 @@
-/* zgui-core/cron-editor.css — 5-field cron builder. Pairs with cron-editor.js. */
-.zg-cron { font-family: 'Share Tech Mono', monospace; }
-.zg-cron-row { display: flex; gap: 6px; flex-wrap: wrap; }
-.zg-cron-cell { display: flex; flex-direction: column; gap: 3px; }
-.zg-cron-label { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted, #7a8ba8); }
-.zg-cron-input { width: 60px; text-align: center; }
-.zg-cron-out { margin-top: 10px; display: flex; flex-direction: column; gap: 4px; }
-.zg-cron-expr { font-size: 14px; color: var(--cyan, #05d9e8); letter-spacing: 2px; }
-.zg-cron-human { font-size: 11px; color: var(--text-muted, #7a8ba8); }

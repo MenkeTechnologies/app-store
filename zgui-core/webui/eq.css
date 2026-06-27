@@ -1,3 +1,0 @@
-/* zgui-core/eq.css — parametric EQ editor (FFT-with-EQ). The canvas paints grid/spectrum/curve/nodes. */
-.zg-eq { background: #06060e; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; max-width: 480px; }
-.zg-eq-canvas { width: 100%; aspect-ratio: 480 / 180; height: auto; display: block; cursor: crosshair; touch-action: none; }

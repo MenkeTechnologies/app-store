@@ -1,4 +1,0 @@
-/* zgui-core/pin-input.css — segmented PIN/OTP input. */
-.zg-pin { display: inline-flex; gap: 8px; }
-.zg-pin-cell { width: 38px; height: 46px; text-align: center; font-family: "Orbitron", sans-serif; font-size: 20px; color: var(--cyan); background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; transition: border-color 0.15s, box-shadow 0.15s; }
-.zg-pin-cell:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 12px var(--cyan-dim); }
