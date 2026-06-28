@@ -27,6 +27,19 @@
       ],
     },
     {
+      id: 'zphoto',
+      name: 'zphoto',
+      glyph: 'PH',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A from-scratch raster image editor that replaces GIMP and Photoshop — a full photo suite in Rust behind a cyberpunk HUD: layers, selections, brushes, filters, and non-destructive adjustments. Its pure-Rust zphoto-core engine is extracted so it embeds inside the other apps.',
+      pills: ['Tauri v2', 'Rust', 'Layers · filters · brushes', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zemail',
       name: 'zemail',
       glyph: 'E',
@@ -173,13 +186,13 @@
       ],
     },
     {
-      id: 'zterm',
-      name: 'zterm',
+      id: 'zterminal',
+      name: 'zterminal',
       glyph: 'TE',
       category: 'Desktop Apps',
       badge: 'NEW',
-      tagline: 'A GPU-accelerated terminal emulator in Rust — forked from the Alacritty OpenGL rendering core and built out. Cross-platform across BSD, Linux, macOS, and Windows, with sensible defaults, extensive TOML configuration, and high-throughput VTE performance. An owned, paid terminal for the MenkeTechnologies stack.',
-      pills: ['Rust', 'OpenGL GPU', 'BSD/Linux/macOS/Win', 'Alacritty-based'],
+      tagline: 'A GPU-accelerated, cross-platform terminal emulator in Rust (OpenGL) — sensible defaults, extensive TOML configuration, and high-throughput VTE performance across BSD, Linux, macOS, and Windows. Native tmux control via the wire protocol (no subprocess), cross-pane search, broadcast input, a unified exposé, and tmux-resurrect-style session save/restore — all from the command palette.',
+      pills: ['Rust', 'OpenGL GPU', 'BSD/Linux/macOS/Win', 'Native tmux control'],
       price: 20,
       tiers: [
         { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
@@ -614,6 +627,17 @@
         "Embeddable zpdf-core engine (rlib + staticlib + cdylib) — embeds into traderview and the other GUI apps"
       ]
     },
+    "zphoto": {
+      "overview": "A from-scratch raster image editor in Rust (Tauri v2 desktop app) that replaces GIMP and Photoshop — a full photo suite behind a cyberpunk HUD. Its pure-Rust zphoto-core engine is extracted so the same imaging engine embeds inside the other apps.",
+      "features": [
+        "Layer-based raster editing with blend modes",
+        "Selections, masks, brushes, and paint tools",
+        "Filters and non-destructive adjustments",
+        "Open / edit / export common image formats",
+        "Cyberpunk HUD interface from the shared zgui-core chrome",
+        "Embeddable zphoto-core engine (rlib + staticlib + cdylib) — embeds into the other GUI apps"
+      ]
+    },
     "zemail": {
       "overview": "A from-scratch desktop email client in Rust (Tauri v2) behind a cyberpunk HUD — a fast, owned mail app. Its pure-Rust zemail-core engine is extracted so the same mail engine embeds across the GUI stack.",
       "features": [
@@ -836,15 +860,15 @@
         "Embeddable zcontainer-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
       ]
     },
-    "zterm": {
-      "overview": "A GPU-accelerated terminal emulator in Rust, forked from the Alacritty OpenGL rendering core and built out for the MenkeTechnologies stack. Sensible defaults with extensive configuration, high VTE throughput, and cross-platform support.",
+    "zterminal": {
+      "overview": "A GPU-accelerated, cross-platform terminal emulator in Rust (OpenGL) for the MenkeTechnologies stack — sensible defaults, extensive TOML configuration, and high VTE throughput, with native tmux control and a command-palette-driven workflow.",
       "features": [
         "OpenGL GPU-accelerated rendering",
         "Cross-platform — BSD, Linux, macOS, and Windows",
-        "Extensive TOML configuration",
-        "High-throughput VTE performance",
-        "Built on the Alacritty rendering core, extended",
-        "Owned, paid terminal for the stack"
+        "Native tmux control via the wire protocol (no subprocess)",
+        "Cross-pane search, broadcast input, and a unified window exposé",
+        "tmux-resurrect-style session save/restore from the command palette",
+        "Extensive TOML configuration and high-throughput VTE performance"
       ]
     },
     "awkrs": {
