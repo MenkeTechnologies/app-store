@@ -319,6 +319,21 @@
       repo: 'https://github.com/MenkeTechnologies/vimlrs',
     },
     {
+      id: 'elisprs',
+      name: 'elisprs',
+      glyph: 'EL',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'Emacs Lisp in Rust — run .el outside Emacs. A Lisp-2 obarray (separate value/function cells) with dynamic binding and an elisp-correct reader on the rust_lisp value model, being lowered onto the fusevm bytecode VM (the engine behind stryke, zshrs, awkrs, and vimlrs). Standalone elisp binary with a REPL; LSP, DAP, and AOT planned. Free and open source.',
+      pills: ['Rust', 'Emacs Lisp', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/elisprs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/elisprs',
+    },
+    {
       id: 'zemacs',
       name: 'zemacs',
       glyph: 'EM',
