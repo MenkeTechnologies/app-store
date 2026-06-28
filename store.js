@@ -690,6 +690,18 @@
         "224 opcodes, AOP intercepts, parallel primitives (pmap/pgrep/peach)"
       ]
     },
+    "elisprs": {
+      "overview": "Emacs Lisp in Rust — run .el files outside Emacs. A Lisp-2 interpreter with a separate-value/function-cell obarray, dynamic binding, and an elisp-correct reader built on the rust_lisp value model, being lowered onto the fusevm bytecode VM that already backs stryke, zshrs, awkrs, and vimlrs. Ships as a standalone elisp binary with a REPL. Free and open source.",
+      "features": [
+        "Elisp interpreter in Rust — runs .el files standalone, no Emacs required",
+        "Lisp-2 obarray with separate value and function cells",
+        "Dynamic binding and an elisp-correct reader on the rust_lisp value model",
+        "Lowering onto the fusevm bytecode VM (the engine behind stryke, zshrs, awkrs, vimlrs)",
+        "Standalone elisp binary with an interactive REPL",
+        "LSP, DAP, and AOT compilation planned",
+        "Free / OSS — MIT licensed"
+      ]
+    },
     "zemacs": {
       "overview": "A Rust port of Emacs. The plan: start from a Helix fork — its Vim-style modal editing core in Rust — then build out toward full Spacemacs functionality. This is the terminal editor; a windowed GUI front-end ships separately as zemacs-gui. Free and open source.",
       "features": [
