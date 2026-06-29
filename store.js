@@ -464,6 +464,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'zemacs-book', name: 'The zemacs Book', glyph: 'eB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to zemacs — the modal editor on the Helix engine, with vim, emacs, and Spacemacs keymaps, and the first editor to embed five programming languages (elisp, vimscript, stryke, AWK, Zsh) in its core. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'zemacs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
       pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
@@ -563,6 +569,10 @@
     "zshrs-book": {
       "overview": "The companion book to zshrs — the first compiled Unix shell. Bytecode + Cranelift JIT, an 18-thread parallel runtime, and a persistent worker pool, with drop-in zsh compatibility.",
       "features": ["zshrs, the first compiled Unix shell", "Bytecode + Cranelift JIT, parallel runtime, worker pool", "Drop-in zsh compatibility and AOP intercepts", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "zemacs-book": {
+      "overview": "The companion book to zemacs — the modal editor on the Helix engine. Vim, emacs, and Spacemacs keymaps over a multiple-selection core, and the first editor ever to embed five complete programming languages — elisp, vimscript, stryke, AWK, and Zsh — compiled into one binary on a single shared bytecode VM, with no subprocess and no FFI.",
+      "features": ["zemacs, end to end — the Helix-engine editor wearing a vim default keymap", "Vim, emacs, and Spacemacs bindings on one multiple-selection engine", "World-first: five languages embedded in the core — elisp, vimscript, stryke, AWK, Zsh", "The engine underneath: rope, tree-sitter, fusevm, the AOT/JIT split", "Pandoc + LaTeX typeset, 102 pages, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
       "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
