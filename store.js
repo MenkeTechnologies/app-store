@@ -479,6 +479,24 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'elisprs-book', name: 'The elisprs Book', glyph: 'lB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to elisprs — Emacs Lisp as a fusevm frontend: the reader, the cons/symbol object heap, and the compiler that lowers elisp to fusevm bytecode, with no bespoke VM or JIT of its own. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'elisprs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'awkrs-book', name: 'The awkrs Book', glyph: 'aB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to awkrs — a modern AWK in Rust with broad POSIX + gawk compatibility, parallel records, its own bytecode VM, and an experimental Cranelift JIT and AOT path through fusevm. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'awkrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'vimlrs-book', name: 'The vimlrs Book', glyph: 'vB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to vimlrs — a faithful Rust port of the Vimscript interpreter from the Neovim eval engine, lowered to the shared fusevm bytecode machine. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'vimlrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
       pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
@@ -586,6 +604,18 @@
     "fusevm-book": {
       "overview": "The companion book to fusevm — the language-agnostic bytecode VM that stryke, zshrs, awkrs, and vimlrs all compile to. The value model and opcode set, the interpreter and its fused superinstructions, the three-tier Cranelift JIT, and the closed-world AOT compiler that lowers a whole program to native registers and a standalone binary.",
       "features": ["fusevm, end to end — the shared bytecode machine", "The value model, the opcode set, and the fused superinstructions", "The tiered execution ladder: interpreter, block JIT, tracing JIT", "The closed-world AOT compiler: registers, deopt, standalone binary", "Pandoc + LaTeX typeset, 34 pages, DRM-free PDF"]
+    },
+    "elisprs-book": {
+      "overview": "The companion book to elisprs — Emacs Lisp implemented as a pure fusevm frontend. The reader and its syntax, the cons/symbol/string object heap reached through fusevm's extension handler, the special forms and macros, and the compiler that lowers elisp to fusevm bytecode — so elisp inherits fusevm's interpreter, three-tier Cranelift JIT, and AOT native compiler with no bespoke VM of its own.",
+      "features": ["elisprs, end to end — Emacs Lisp on the shared machine", "The reader, quoting, and the cons/symbol object heap", "Special forms, macros, and the compiler's lowering to fusevm bytecode", "No bespoke VM or JIT — fusevm's interpreter, JIT, and AOT underneath", "Tooling: the elisp language server and DAP debugger", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "awkrs-book": {
+      "overview": "The companion book to awkrs — a modern AWK in Rust that keeps the one-liner culture while adding parallel records, a real bytecode VM, and an experimental Cranelift JIT and AOT path through fusevm. Broad POSIX and gawk compatibility, the record/field model, patterns and actions, the builtin library, and the machine underneath.",
+      "features": ["awkrs, end to end — the AWK programming model", "Records, fields, patterns and actions, BEGIN/END", "Broad POSIX + gawk compatibility, bignum and locale-aware numerics", "Parallel record processing, and the lexer→parser→bytecode→VM pipeline", "The Cranelift JIT and the fusevm AOT bridge; LSP and DAP tooling", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "vimlrs-book": {
+      "overview": "The companion book to vimlrs — a faithful Rust port of the Vimscript (VimL) interpreter, ported from the Neovim C eval engine and lowered to the shared fusevm bytecode machine. The command line versus expressions, scopes and types, functions and funcrefs, the regex engine, and what 'faithful port' means in practice.",
+      "features": ["vimlrs, end to end — Vimscript faithful to Neovim's eval engine", "The :command line vs expressions; scopes (g:/l:/s:/b:/w:/v:) and types", "Functions, ranges, varargs, dict functions, lambdas, and funcrefs", "The fidelity story: how the Rust port mirrors the Neovim C source", "Lowering to fusevm bytecode; the JIT/AOT path; LSP and DAP tooling", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
       "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
