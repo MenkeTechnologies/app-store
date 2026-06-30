@@ -470,6 +470,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'fusevm-book', name: 'The fusevm Book', glyph: 'fB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to fusevm — the shared bytecode VM behind stryke, zshrs, awkrs, and vimlrs: the value model, the tiered Cranelift JIT, and the closed-world AOT compiler that lowers a whole program to native registers and a standalone binary. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'fusevm', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
       pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
@@ -573,6 +579,10 @@
     "zemacs-book": {
       "overview": "The companion book to zemacs — the modal editor on the Helix engine. Vim, emacs, and Spacemacs keymaps over a multiple-selection core, and the first editor ever to embed five complete programming languages — elisp, vimscript, stryke, AWK, and Zsh — compiled into one binary on a single shared bytecode VM, with no subprocess and no FFI.",
       "features": ["zemacs, end to end — the Helix-engine editor wearing a vim default keymap", "Vim, emacs, and Spacemacs bindings on one multiple-selection engine", "World-first: five languages embedded in the core — elisp, vimscript, stryke, AWK, Zsh", "The engine underneath: rope, tree-sitter, fusevm, the AOT/JIT split", "Pandoc + LaTeX typeset, 102 pages, DRM-free PDF"]
+    },
+    "fusevm-book": {
+      "overview": "The companion book to fusevm — the language-agnostic bytecode VM that stryke, zshrs, awkrs, and vimlrs all compile to. The value model and opcode set, the interpreter and its fused superinstructions, the three-tier Cranelift JIT, and the closed-world AOT compiler that lowers a whole program to native registers and a standalone binary.",
+      "features": ["fusevm, end to end — the shared bytecode machine", "The value model, the opcode set, and the fused superinstructions", "The tiered execution ladder: interpreter, block JIT, tracing JIT", "The closed-world AOT compiler: registers, deopt, standalone binary", "Pandoc + LaTeX typeset, 34 pages, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
       "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
