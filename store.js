@@ -309,7 +309,7 @@
       glyph: 'VL',
       category: 'Developer Tools',
       badge: 'WORLD FIRST',
-      tagline: 'The first standalone VimL interpreter — runs Vimscript outside Vim. A faithful Rust port of Neovim’s eval engine, hosted on the fusevm bytecode VM with Cranelift JIT (the same engine behind zshrs, stryke, and awkrs); standalone binary, with a debugger and LSP planned. Free and open source.',
+      tagline: 'The first standalone VimL interpreter — runs Vimscript outside Vim. A faithful Rust port of Neovim’s eval engine, hosted on the fusevm bytecode VM with Cranelift JIT (the same engine behind zshrs, stryke, and awkrs); standalone binary, with an LSP language server, a DAP debugger, and an AOT native compiler. Free and open source.',
       pills: ['Rust', 'VimL', 'fusevm JIT', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -324,7 +324,7 @@
       glyph: 'EL',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'Emacs Lisp in Rust — run .el outside Emacs. A Lisp-2 obarray (separate value/function cells) with dynamic binding and an elisp-correct reader on the rust_lisp value model, being lowered onto the fusevm bytecode VM (the engine behind stryke, zshrs, awkrs, and vimlrs). Standalone elisp binary with a REPL; LSP, DAP, and AOT planned. Free and open source.',
+      tagline: 'Emacs Lisp in Rust — run .el outside Emacs. A Lisp-2 obarray (separate value/function cells) with dynamic binding and an elisp-correct reader on the rust_lisp value model, lowered onto the fusevm bytecode VM (the engine behind stryke, zshrs, awkrs, and vimlrs). Standalone elisp binary with a REPL, an LSP language server, a DAP debugger, and an AOT native compiler. Free and open source.',
       pills: ['Rust', 'Emacs Lisp', 'fusevm', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -339,7 +339,7 @@
       glyph: 'EM',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'A Rust port of Emacs — a terminal modal editor forked from Helix, bootstrapped from its Vim-style modal editing core and built out toward full Spacemacs functionality; a windowed GUI build ships as zemacs-gui. Free and open source.',
+      tagline: 'A Rust port of Emacs — a terminal modal editor forked from Helix, with a Vim-style modal editing core and full Spacemacs functionality layered on top; a windowed GUI build ships as zemacs-gui. Free and open source.',
       pills: ['Rust', 'Modal editing', 'Emacs / Spacemacs', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -754,22 +754,22 @@
       ]
     },
     "elisprs": {
-      "overview": "Emacs Lisp in Rust — run .el files outside Emacs. A Lisp-2 interpreter with a separate-value/function-cell obarray, dynamic binding, and an elisp-correct reader built on the rust_lisp value model, being lowered onto the fusevm bytecode VM that already backs stryke, zshrs, awkrs, and vimlrs. Ships as a standalone elisp binary with a REPL. Free and open source.",
+      "overview": "Emacs Lisp in Rust — run .el files outside Emacs. A Lisp-2 interpreter with a separate-value/function-cell obarray, dynamic binding, and an elisp-correct reader built on the rust_lisp value model, lowered onto the fusevm bytecode VM that already backs stryke, zshrs, awkrs, and vimlrs. Ships as a standalone elisp binary with a REPL. Free and open source.",
       "features": [
         "Elisp interpreter in Rust — runs .el files standalone, no Emacs required",
         "Lisp-2 obarray with separate value and function cells",
         "Dynamic binding and an elisp-correct reader on the rust_lisp value model",
         "Lowering onto the fusevm bytecode VM (the engine behind stryke, zshrs, awkrs, vimlrs)",
         "Standalone elisp binary with an interactive REPL",
-        "LSP, DAP, and AOT compilation planned",
+        "LSP language server, DAP debugger, and AOT native compilation",
         "Free / OSS — MIT licensed"
       ]
     },
     "zemacs": {
-      "overview": "A Rust port of Emacs. The plan: start from a Helix fork — its Vim-style modal editing core in Rust — then build out toward full Spacemacs functionality. This is the terminal editor; a windowed GUI front-end ships separately as zemacs-gui. Free and open source.",
+      "overview": "A Rust port of Emacs, built on a Helix fork — its Vim-style modal editing core in Rust — with full Spacemacs functionality layered on top. This is the terminal editor; a windowed GUI front-end ships separately as zemacs-gui. Free and open source.",
       "features": [
         "Rust core — a Helix fork, modal editing in the Vim tradition",
-        "Targets full Spacemacs functionality (keybindings, layers, leader-key UX)",
+        "Full Spacemacs functionality (keybindings, layers, leader-key UX)",
         "Emacs-style extensibility on a modern Rust foundation",
         "Terminal editor; the GUI build is zemacs-gui",
         "Cross-platform",
@@ -810,7 +810,7 @@
         "Hosted on fusevm: lex/parse → AST → fusevm bytecode → Cranelift JIT",
         "Vim-native value types ported: list, dict (insertion-ordered), blob, typval",
         "rkyv-backed bytecode script cache, mmap hot path — versioned from day one",
-        "Standalone binary; DAP debugger and LSP server planned",
+        "Standalone binary, LSP language server, DAP debugger, and AOT native compiler",
         "Free / OSS — MIT licensed"
       ]
     },
