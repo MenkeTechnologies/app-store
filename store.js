@@ -347,6 +347,9 @@
       ],
       download: 'https://github.com/MenkeTechnologies/zemacs/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zemacs',
+      docs: [
+        { label: 'Reference (PDF)', desc: 'The complete zemacs reference — every keybinding by mode, the full [editor] configuration schema, every typable : command, every static command with its default keys, and the language-support matrix. Generated from the source.', url: 'docs/zemacs-reference.pdf' },
+      ],
     },
     {
       id: 'zemacs-gui',
