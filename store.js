@@ -503,6 +503,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'powerliners-book', name: 'The powerliners Book', glyph: 'pB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to powerliners — the Rust port of the powerline statusline/prompt renderer: the segment model, the UNIX-socket daemon and its upstream wire protocol, the JSON theme/colorscheme system, and the shell/editor bindings, all with zero Python runtime. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'powerliners', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
       pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
@@ -626,6 +632,10 @@
     "zterminal-book": {
       "overview": "The companion book to zterminal — the GPU-accelerated, cross-platform terminal emulator in Rust. The OpenGL ES glyph-atlas renderer, xterm-compatible VT parsing, native i3-style tiling with one PTY per pane, native tmux control over the wire protocol (no subprocess), the embedded-WebView control panel, and the command-palette-driven workflow — across BSD, Linux, macOS, and Windows.",
       "features": ["zterminal, end to end — the GPU terminal emulator", "The OpenGL ES 2.0 glyph-atlas renderer and xterm-compatible VT parser", "Native i3-style tiling: one shell + PTY per pane, GL-scissored", "Native tmux control via the wire protocol; exposé, broadcast, cross-pane search, session save/restore", "The embedded-WebView control panel, command palette, and TOML configuration", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "powerliners-book": {
+      "overview": "The companion book to powerliners — a Rust port of Python's powerline-status statusline/prompt renderer, shipping as a multi-binary suite with zero Python runtime and sub-millisecond render. The segment model and the built-in segment library, the UNIX-socket daemon that speaks the upstream powerline wire protocol, the JSON theme and colorscheme format, and the shell, tmux, vim, and ipython bindings.",
+      "features": ["powerliners, end to end — the powerline prompt/statusline system in Rust", "The segment model and adapters — git_status, ci_status, kubecontext, and the net-new segments", "The UNIX-socket daemon and the upstream powerline wire protocol", "Drop-in JSON theme/colorscheme compatibility; tmux, zsh, bash, vim, ipython bindings", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
       "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
