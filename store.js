@@ -509,6 +509,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'desktop-in-rust-book', name: 'Rewriting the Desktop in Rust', glyph: 'dR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The cross-cutting book on the MenkeTechnologies desktop ports — zreq (Postman), zcite (Zotero), ztunnel (Tunnelblick), zgo (Alfred), zftp (Cyberduck), zcontainer (Docker Desktop / Lens), zoffice, zemail, zpdf, and zphoto — and the "engine core, thin shell" architecture they share: pure-Rust *-core engines with a C ABI, embedded across every app behind one Tauri v2 shell and the zgui-core toolkit. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'Architecture', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
       pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
@@ -636,6 +642,10 @@
     "powerliners-book": {
       "overview": "The companion book to powerliners — a Rust port of Python's powerline-status statusline/prompt renderer, shipping as a multi-binary suite with zero Python runtime and sub-millisecond render. The segment model and the built-in segment library, the UNIX-socket daemon that speaks the upstream powerline wire protocol, the JSON theme and colorscheme format, and the shell, tmux, vim, and ipython bindings.",
       "features": ["powerliners, end to end — the powerline prompt/statusline system in Rust", "The segment model and adapters — git_status, ci_status, kubecontext, and the net-new segments", "The UNIX-socket daemon and the upstream powerline wire protocol", "Drop-in JSON theme/colorscheme compatibility; tmux, zsh, bash, vim, ipython bindings", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "desktop-in-rust-book": {
+      "overview": "Rewriting the Desktop in Rust — the cross-cutting book on the MenkeTechnologies desktop-app fleet and the architecture that ties it together. Ten from-scratch Rust ports — zreq (Postman), zcite (Zotero), ztunnel (Tunnelblick), zgo (Alfred), zftp (Cyberduck), zcontainer (Docker Desktop / Lens), zoffice, zemail, zpdf (Acrobat / Preview), and zphoto (GIMP / Photoshop) — each a thin Tauri v2 shell over a pure-Rust *-core engine that exposes a native Rust API and a C ABI, so the same engine embeds inside every other app, all behind the shared zgui-core toolkit.",
+      "features": ["The 'engine core, thin shell' thesis: WebView shell, Tauri command bridge, GUI-free *-core engine", "The *-core pattern and its C ABI embedding contract — ten engines, one shape", "One app per chapter: zreq, zcite, ztunnel, zgo, zftp, zcontainer, zoffice, zemail, zpdf, zphoto", "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes, against an all-Electron field", "The embed matrix — how one engine bump reaches every shell that vendors it", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
       "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
