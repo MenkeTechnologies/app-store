@@ -415,6 +415,14 @@
       repo: 'https://github.com/MenkeTechnologies/powerliners',
     },
     {
+      id: 'ztmux', name: 'ztmux', glyph: 'zx', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A from-source Rust port of tmux — the whole server + client, not a wrapper or control-mode client: the grid/screen model, the VT input parser, layouts, the command language, formats, and the terminal back end, reimplemented in memory-safe Rust and validated against the upstream tmux C source of truth. Early (v0.0.1), ISC-licensed, toward a tmux superset.',
+      pills: ['Rust', 'tmux port', 'ISC / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'ISC licensed', price: 0 }],
+      download: 'https://github.com/MenkeTechnologies/ztmux/tags',
+      repo: 'https://github.com/MenkeTechnologies/ztmux',
+    },
+    {
       id: 'storageshower', name: 'storageshower', glyph: 'ss', category: 'CLI Tools', badge: 'FREE',
       tagline: 'A neon-drenched terminal UI for monitoring disk usage.',
       pills: ['Rust', 'TUI', 'Free / OSS'], price: 0,
