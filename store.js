@@ -1093,6 +1093,19 @@
         "Net-new segments: gpu_usage, thermal, aws/gcp context"
       ]
     },
+    "ztmux": {
+      "overview": "A from-source Rust port of tmux — the whole program, not a wrapper around the tmux binary and not a control-mode client. The server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end, reimplemented in memory-safe Rust. Early software (crate v0.0.1), ISC-licensed, on the road to a tmux superset.",
+      "features": [
+        "The whole tmux program in Rust: server + client, not a wrapper",
+        "Seeded from the tmux-rs port, then taken over as its own living code",
+        "Validated module-by-module against the vendored upstream tmux C source of truth",
+        "Grid/screen + scrollback model, VT input parser, and the layout engine",
+        "lalrpop command grammar; one file per command mirroring tmux's cmd-*.c",
+        "libevent event loop and the tmux client/server socket protocol",
+        "ISC-licensed, self-contained (vendors tmux C + tmux-rs as references)",
+        "Superset ambition: extend past the C original while staying familiar"
+      ]
+    },
     "storageshower": {
       "overview": "A neon-themed terminal UI for monitoring disk usage, built in Rust with ratatui and crossterm.",
       "features": [
