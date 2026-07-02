@@ -53,6 +53,19 @@
       ],
     },
     {
+      id: 'zstation',
+      name: 'zstation',
+      glyph: 'ST',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A workspace of isolated web apps in Rust behind a cyberpunk HUD — a from-scratch port of the defunct station.app. One window arranges Slack, Gmail, Discord, Notion, Linear, Claude and any site as Trello-like draggable tiles, each running in its OWN native, session-isolated webview so logging into one never spills cookies or storage into another (something an iframe fundamentally cannot do). Its pure-Rust zstation-core engine is extracted so the same station board embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'Isolated webviews', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zoffice',
       name: 'zoffice',
       glyph: 'O',
