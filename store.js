@@ -1004,6 +1004,10 @@
         "Compiled-native (not Electron / not a TUI)",
         "Cross-platform — macOS, Linux, and Windows",
         "Embeddable zcontainer-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zcontainer/dashboard.webp", "cap": "Overview — engine status, workload donut, live CPU chart, disk usage, and recent activity" },
+        { "src": "assets/zcontainer/containers.webp", "cap": "Containers — per-container CPU/memory sparklines, net & block I/O, PIDs, and port mappings" }
       ]
     },
     "zterminal": {
@@ -1015,6 +1019,10 @@
         "Cross-pane search, broadcast input, and a unified window exposé",
         "tmux-resurrect-style session save/restore from the command palette",
         "Extensive TOML configuration and high-throughput VTE performance"
+      ],
+      "screenshots": [
+        { "src": "assets/zterminal/dashboard.webp", "cap": "Dashboard — live tmux server stats, session/window/pane gauges, PTY throughput, and the zgui-core widget showcase" },
+        { "src": "assets/zterminal/settings.webp", "cap": "Settings — color-scheme presets, custom palette, CRT/vignette/neon effects, and live TOML config reload" }
       ]
     },
     "awkrs": {

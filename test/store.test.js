@@ -136,7 +136,7 @@ test('every product detail page has an overview and rich features', () => {
 });
 
 test('GUI apps render screenshots in grid, hero, and gallery; assets exist', () => {
-  const GUI = ['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx'];
+  const GUI = ['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx', 'zcontainer', 'zterminal'];
   const { html: grid } = run('productGrid', '');
   const referenced = new Set();
 
@@ -301,7 +301,7 @@ test('audio-haxor gallery: sequential shot indices, one caption + alt each', () 
 });
 
 test('screenshot hero appears on exactly the GUI products', () => {
-  const GUI = new Set(['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx', 'ztranslator']);
+  const GUI = new Set(['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx', 'ztranslator', 'zcontainer', 'zterminal']);
   const { html } = run('productGrid', '');
   for (const id of gridIds(html)) {
     const { html: d } = run('detailRoot', '?id=' + encodeURIComponent(id));
