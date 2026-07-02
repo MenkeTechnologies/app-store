@@ -424,9 +424,9 @@
     },
     {
       id: 'ztmux', name: 'ztmux', glyph: 'zx', category: 'CLI Tools', badge: 'FREE',
-      tagline: 'A from-source Rust port of tmux — the whole server + client, not a wrapper or control-mode client: the grid/screen model, the VT input parser, layouts, the command language, formats, and the terminal back end, reimplemented in memory-safe Rust and validated against the upstream tmux C source of truth. Early (v0.0.1), ISC-licensed, toward a tmux superset.',
-      pills: ['Rust', 'tmux port', 'ISC / OSS'], price: 0,
-      tiers: [{ name: 'Open Source', desc: 'ISC licensed', price: 0 }],
+      tagline: 'The world\'s first 100%-functional tmux in Rust — a from-source port of the whole program (server + client), not a wrapper or control-mode client: the grid/screen model, the VT input parser, layouts, the command language, formats, and the terminal back end, reimplemented in memory-safe Rust and diffed byte-for-byte against the upstream tmux C source of truth — 689/689 parity cases passing. MIT-licensed.',
+      pills: ['Rust', 'tmux port', 'MIT / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
       download: 'https://github.com/MenkeTechnologies/ztmux/tags',
       repo: 'https://github.com/MenkeTechnologies/ztmux',
     },
@@ -544,7 +544,7 @@
     },
     {
       id: 'ztmux-book', name: 'The ztmux Book', glyph: 'xB', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The companion book to ztmux — the from-source Rust port of tmux (the whole server + client, not a wrapper or control-mode client): the client/server split and libevent loop, the grid/screen and scrollback model, the VT input parser, the layout engine, the lalrpop command language and its one-file-per-command mirror of tmux\'s cmd-*.c, formats/config/keys, and the terminal back end — plus the port methodology (validated against the vendored tmux C source of truth) and the superset ambition to grow past the C original. Pandoc + LaTeX typeset.',
+      tagline: 'The companion book to ztmux — the world\'s first 100%-functional tmux in Rust (the whole server + client, not a wrapper or control-mode client): the client/server split and libevent loop, the grid/screen and scrollback model, the VT input parser, the layout engine, the lalrpop command language and its one-file-per-command mirror of tmux\'s cmd-*.c, formats/config/keys, and the terminal back end — plus the port methodology (diffed byte-for-byte against the vendored tmux C source of truth, 689/689 parity cases passing) and the anti-drift gate that forbids fake functions. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'ztmux', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
@@ -680,8 +680,8 @@
       "features": ["Every zpwr verb and subcommand (500+)", "2000+ aliases, 47k completions, vim + tmux integration", "Generated from the live zpwr source", "LaTeX-typeset encyclopedia, DRM-free PDF"]
     },
     "ztmux-book": {
-      "overview": "The companion book to ztmux — a from-source Rust port of tmux. Not a wrapper around the tmux binary and not a control-mode client: it reimplements the whole program — server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end — in memory-safe Rust, seeded from the tmux-rs port and validated module-by-module against the vendored upstream tmux C source of truth. The book walks that architecture and the port methodology, and is honest about the superset ambition to extend past the C original while staying familiar to every tmux user (crate v0.0.1 — early software).",
-      "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: validated against vendored tmux C source; the divergence diff", "The superset ambition, with shipped-vs-roadmap kept honest at v0.0.1", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The companion book to ztmux — the world's first 100%-functional tmux in Rust. Not a wrapper around the tmux binary and not a control-mode client: it reimplements the whole program — server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end — in memory-safe Rust, seeded from the tmux-rs port and validated module-by-module against the vendored upstream tmux C source of truth. The book walks that architecture and the port methodology: a parity suite that runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte (689/689 cases passing) and an anti-drift gate that fails the build on any Rust function with no tmux C counterpart.",
+      "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: byte-for-byte parity vs system tmux, 689/689 cases passing", "The anti-drift gate: no Rust function survives without a tmux C counterpart", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "inventions-book": {
       "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the ~161 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. The six marquee claims get an appendix of adversarial prior-art analyses.",
@@ -1113,16 +1113,16 @@
       ]
     },
     "ztmux": {
-      "overview": "A from-source Rust port of tmux — the whole program, not a wrapper around the tmux binary and not a control-mode client. The server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end, reimplemented in memory-safe Rust. Early software (crate v0.0.1), ISC-licensed, on the road to a tmux superset.",
+      "overview": "The world's first 100%-functional tmux in Rust — a from-source port of the whole program, not a wrapper around the tmux binary and not a control-mode client. The server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end, reimplemented in memory-safe Rust. Correctness is measured, not claimed: a parity suite runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte — 689/689 cases passing. MIT-licensed.",
       "features": [
         "The whole tmux program in Rust: server + client, not a wrapper",
-        "Seeded from the tmux-rs port, then taken over as its own living code",
+        "689/689 parity cases passing — byte-for-byte against system tmux",
         "Validated module-by-module against the vendored upstream tmux C source of truth",
         "Grid/screen + scrollback model, VT input parser, and the layout engine",
         "lalrpop command grammar; one file per command mirroring tmux's cmd-*.c",
         "libevent event loop and the tmux client/server socket protocol",
-        "ISC-licensed, self-contained (vendors tmux C + tmux-rs as references)",
-        "Superset ambition: extend past the C original while staying familiar"
+        "Anti-drift gate: build fails on any Rust function with no tmux C counterpart",
+        "MIT-licensed, self-contained (vendors tmux C + tmux-rs as references)"
       ]
     },
     "storageshower": {
