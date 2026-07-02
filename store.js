@@ -796,6 +796,18 @@
         "Owned, no-subscription desktop mail"
       ]
     },
+    "zstation": {
+      "overview": "A workspace of isolated web apps in Rust (Tauri v2) behind a cyberpunk HUD — a from-scratch port of the defunct station.app. One window arranges your web apps as Trello-like draggable, resizable tiles, each running in its OWN native, session-isolated webview (per-partition WKWebView data store on macOS / WebView2 data directory on Windows) so logging into one never spills cookies or storage into another. Its pure-Rust zstation-core engine is extracted so the same station board embeds across the GUI stack.",
+      "features": [
+        "Workspace of web apps in Rust + Tauri v2, ported from station.app",
+        "Trello-like draggable, resizable tiles on one board",
+        "Per-service session isolation via native child webviews (WKWebView / WebView2), not iframes",
+        "Built-in catalog of common web apps plus arbitrary custom URLs",
+        "On-disk tile-board persistence",
+        "Cyberpunk HUD interface",
+        "Embeddable zstation-core engine (rlib + staticlib + cdylib)"
+      ]
+    },
     "zoffice": {
       "overview": "A from-scratch office suite in Rust (Tauri v2 desktop app) that replaces Microsoft Office — documents, spreadsheets, and presentations behind a cyberpunk HUD. Its pure-Rust zoffice-core engine is extracted so the same office engine embeds inside the other apps.",
       "features": [
