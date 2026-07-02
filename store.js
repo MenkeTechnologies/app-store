@@ -399,6 +399,14 @@
       repo: 'https://github.com/MenkeTechnologies/iftoprs',
     },
     {
+      id: 'htoprs', name: 'htoprs', glyph: 'ht', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A from-source Rust port of htop — the interactive process viewer (process tree, per-core CPU/memory meters, sort/filter/search, signal sending, renice), reimplemented in memory-safe Rust against the upstream htop C source. Early scaffold (v0.1.0), GPL-2.0.',
+      pills: ['Rust', 'htop port', 'GPL-2.0 / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'GPL-2.0-or-later', price: 0 }],
+      download: 'https://github.com/MenkeTechnologies/htoprs/tags',
+      repo: 'https://github.com/MenkeTechnologies/htoprs',
+    },
+    {
       id: 'temprs', name: 'temprs', glyph: 'tm', category: 'CLI Tools', badge: 'FREE',
       tagline: 'A temporary-file stack manager — full-spectrum control over scratch files and data.',
       pills: ['Rust', 'CLI', 'Free / OSS'], price: 0,
@@ -1063,6 +1071,17 @@
         "Bandwidth threshold alerts: border flash, bell, status message",
         "macOS and Linux (requires libpcap)",
         "Completions for zsh, bash, fish, elvish, powershell"
+      ]
+    },
+    "htoprs": {
+      "overview": "A from-source Rust port of htop — the interactive process viewer, ported against the upstream htop C source rather than wrapping the htop binary. Early scaffold (crate v0.1.0), GPL-2.0-or-later.",
+      "features": [
+        "Interactive process viewer in Rust: live process table and tree view",
+        "Per-core CPU, memory, and swap meters",
+        "Sort, filter, search, and tag processes",
+        "Signal sending (kill) and renice from the UI",
+        "Ported module-by-module against the upstream htop C source of truth",
+        "GPL-2.0-or-later, matching htop's license"
       ]
     },
     "temprs": {
@@ -1881,8 +1900,8 @@
   // (audio-haxor, traderview) and Pages-disabled repos (zpwr-fx/synth/midi-fx,
   // which link a PDF catalog instead) are intentionally absent so no link 404s.
   var DOC_REPOS = [
-    'api-rest-generator', 'awkrs', 'fusevm', 'iftoprs', 'lsofrs', 'nmaprs',
-    'powerliners', 'storageshower', 'temprs', 'strykelang', 'zshrs', 'zpwr',
+    'api-rest-generator', 'awkrs', 'fusevm', 'htoprs', 'iftoprs', 'lsofrs', 'nmaprs',
+    'powerliners', 'storageshower', 'temprs', 'strykelang', 'zshrs', 'ztmux', 'zpwr',
     'zpwrchrome', 'stryke-arrow', 'stryke-aws', 'stryke-azure',
     'stryke-clickhouse', 'stryke-demo', 'stryke-docker', 'stryke-duckdb',
     'stryke-email', 'stryke-fleet', 'stryke-gcp', 'stryke-grpc', 'stryke-gui',
