@@ -380,6 +380,21 @@
       repo: 'https://github.com/MenkeTechnologies/zemacs-gui',
     },
     {
+      id: 'zbrowser',
+      name: 'zbrowser',
+      glyph: 'ZB',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'Chromium, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing: no source fork, nothing to compile. Free and open source.',
+      pills: ['Chromium', 'zpwrchrome', 'Cyberpunk', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/zbrowser/tags',
+      repo: 'https://github.com/MenkeTechnologies/zbrowser',
+    },
+    {
       id: 'awkrs', name: 'awkrs', glyph: 'ak', category: 'CLI Tools', badge: 'FREE',
       tagline: 'The world’s fastest awk — a parallel bytecode-engine awk written in Rust, with parallel record processing.',
       pills: ['Rust', 'awk', 'Free / OSS'], price: 0,
@@ -866,6 +881,17 @@
         "Modal editing, tree-sitter syntax, and LSP inherited from the zemacs core",
         "Cross-platform",
         "Free / OSS — MPL-2.0 licensed"
+      ]
+    },
+    "zbrowser": {
+      "overview": "A Chromium/Blink browser, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing (a real Chromium build that still honors the --load-extension switch dropped from branded Chrome 137+): a stable base binary launched against a dedicated profile with a fixed extension set, so there is no source fork and nothing to compile. Free and open source.",
+      "features": [
+        "Chromium/Blink base via Chrome for Testing — keeps --load-extension, so extensions preload from the command line",
+        "zpwrchrome, a cyberpunk chrome theme, and a cyberpunk new-tab page loaded on every launch",
+        "Runtime rebrand, not a fork — dedicated profile + fixed extension set, nothing to compile",
+        "macOS: rebrands the base bundle's Dock name, ⌘-Tab, and menu-bar title + icon in place, never touching a system Chrome install",
+        "One-command install — scripts/install.sh fetches the base, links the launcher on PATH, and rebrands",
+        "Free / OSS — MIT licensed"
       ]
     },
     "strykelang": {
