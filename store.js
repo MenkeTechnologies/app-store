@@ -380,19 +380,19 @@
       repo: 'https://github.com/MenkeTechnologies/zemacs-gui',
     },
     {
-      id: 'zbrowser',
-      name: 'zbrowser',
-      glyph: 'ZB',
+      id: 'zwire',
+      name: 'zwire',
+      glyph: 'ZW',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'Chromium, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing: no source fork, nothing to compile. Free and open source.',
+      tagline: 'Chromium, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing (no compile), with an optional source-fork build path. Free and open source.',
       pills: ['Chromium', 'zpwrchrome', 'Cyberpunk', 'Free / OSS'],
       price: 0,
       tiers: [
         { name: 'Open Source', desc: 'MIT licensed', price: 0 },
       ],
-      download: 'https://github.com/MenkeTechnologies/zbrowser/tags',
-      repo: 'https://github.com/MenkeTechnologies/zbrowser',
+      download: 'https://github.com/MenkeTechnologies/zwire/tags',
+      repo: 'https://github.com/MenkeTechnologies/zwire',
     },
     {
       id: 'awkrs', name: 'awkrs', glyph: 'ak', category: 'CLI Tools', badge: 'FREE',
@@ -883,8 +883,8 @@
         "Free / OSS — MPL-2.0 licensed"
       ]
     },
-    "zbrowser": {
-      "overview": "A Chromium/Blink browser, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing (a real Chromium build that still honors the --load-extension switch dropped from branded Chrome 137+): a stable base binary launched against a dedicated profile with a fixed extension set, so there is no source fork and nothing to compile. Free and open source.",
+    "zwire": {
+      "overview": "A Chromium/Blink browser, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing (a real Chromium build that still honors the --load-extension switch dropped from branded Chrome 137+): a stable base binary launched against a dedicated profile with a fixed extension set, so the default path needs no source fork and nothing to compile — with an optional source-fork build path for full chrome theming. Free and open source.",
       "features": [
         "Chromium/Blink base via Chrome for Testing — keeps --load-extension, so extensions preload from the command line",
         "zpwrchrome, a cyberpunk chrome theme, and a cyberpunk new-tab page loaded on every launch",
