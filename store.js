@@ -576,6 +576,12 @@
       pills: ['Reference', 'ztmux', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
+    {
+      id: 'zwire-book', name: 'The zwire Book', glyph: 'wB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to zwire — Chromium/Blink rebranded in the strykelang cyberpunk HUD (not a WebView wrapper, not a new engine): why a real Blink base is required for zpwrchrome\'s Manifest V3 surface, the unbranded snapshot that retains --load-extension, the runtime rebrand vs the source fork and its nine HUD patches, the new-tab HUD, the internal-page scheme picker and native host, the dedicated ~/.zwire profile, and the CDP overlay layer. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'zwire', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
   ];
 
   // stryke ecosystem packages — all free, all ship prebuilt binaries.
@@ -710,6 +716,10 @@
     "ztmux-book": {
       "overview": "The companion book to ztmux — the world's first 100%-functional tmux in Rust. Not a wrapper around the tmux binary and not a control-mode client: it reimplements the whole program — server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end — in memory-safe Rust, seeded from the tmux-rs port and validated module-by-module against the vendored upstream tmux C source of truth. The book walks that architecture and the port methodology: a parity suite that runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte (689/689 cases passing) and an anti-drift gate that fails the build on any Rust function with no tmux C counterpart.",
       "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: byte-for-byte parity vs system tmux, 689/689 cases passing", "The anti-drift gate: no Rust function survives without a tmux C counterpart", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "zwire-book": {
+      "overview": "The companion book to zwire — a Chromium/Blink browser rebranded in the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, skinned and extended, on a dedicated profile that never touches system Chrome. The book draws the line the whole project is built on — what a runtime rebrand can reach (HUD colors, the new-tab page, the internal-page skin, your extensions on a prebuilt base) versus what only a compiled source fork can (tab geometry, UI fonts, the neon toolbar, via nine authored patches against a pinned Chromium tag) — and is honest about which capability lives on which side.",
+      "features": ["Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)", "The unbranded Chromium snapshot that still carries --load-extension (removed from branded Chrome in v137)", "The two build paths: the no-compile runtime rebrand vs the source fork's nine HUD patches", "The new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host", "The dedicated ~/.zwire profile and per-user staged extensions — never collides with system Chrome", "The CDP overlay layer and the cross-platform / updating operations matrix", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "inventions-book": {
       "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the ~161 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. The six marquee claims get an appendix of adversarial prior-art analyses.",
