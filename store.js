@@ -385,7 +385,7 @@
       glyph: 'ZW',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'Chromium, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing (no compile), with an optional source-fork build path. Free and open source.',
+      tagline: 'A Chromium superset — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of an unbranded Chromium snapshot (no compile), with an optional source-fork build path. Free and open source.',
       pills: ['Chromium', 'zpwrchrome', 'Cyberpunk', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -884,9 +884,9 @@
       ]
     },
     "zwire": {
-      "overview": "A Chromium/Blink browser, rebranded — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of Chrome for Testing (a real Chromium build that still honors the --load-extension switch dropped from branded Chrome 137+): a stable base binary launched against a dedicated profile with a fixed extension set, so the default path needs no source fork and nothing to compile — with an optional source-fork build path for full chrome theming. Free and open source.",
+      "overview": "A Chromium superset — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch, on a real Chromium/Blink engine. The base is an unbranded Chromium snapshot (no Google branding, no \"for automated testing\" banner) that still honors the --load-extension switch dropped from branded Chrome 137+: a stable base binary launched against a dedicated profile with a fixed extension set, so the default path needs no source fork and nothing to compile — with an optional source-fork build path for full chrome theming. Free and open source.",
       "features": [
-        "Chromium/Blink base via Chrome for Testing — keeps --load-extension, so extensions preload from the command line",
+        "Chromium/Blink base = an unbranded Chromium snapshot — keeps --load-extension, so extensions preload from the command line",
         "zpwrchrome, a cyberpunk chrome theme, and a cyberpunk new-tab page loaded on every launch",
         "Runtime rebrand, not a fork — dedicated profile + fixed extension set, nothing to compile",
         "macOS: rebrands the base bundle's Dock name, ⌘-Tab, and menu-bar title + icon in place, never touching a system Chrome install",
