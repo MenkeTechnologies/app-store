@@ -230,6 +230,21 @@
       ],
     },
     {
+      id: 'zwire',
+      name: 'zwire',
+      glyph: 'ZW',
+      category: 'Desktop Apps',
+      badge: 'NEW',
+      tagline: 'A Chromium superset — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of an unbranded Chromium snapshot (no compile), with an optional source-fork build path. Free and open source.',
+      pills: ['Chromium', 'zpwrchrome', 'Cyberpunk', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/zwire/tags',
+      repo: 'https://github.com/MenkeTechnologies/zwire',
+    },
+    {
       id: 'zpwr-synth',
       name: 'zpwr-synth',
       glyph: 'S',
@@ -380,21 +395,6 @@
       repo: 'https://github.com/MenkeTechnologies/zemacs-gui',
     },
     {
-      id: 'zwire',
-      name: 'zwire',
-      glyph: 'ZW',
-      category: 'Developer Tools',
-      badge: 'NEW',
-      tagline: 'A Chromium superset — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of an unbranded Chromium snapshot (no compile), with an optional source-fork build path. Free and open source.',
-      pills: ['Chromium', 'zpwrchrome', 'Cyberpunk', 'Free / OSS'],
-      price: 0,
-      tiers: [
-        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
-      ],
-      download: 'https://github.com/MenkeTechnologies/zwire/tags',
-      repo: 'https://github.com/MenkeTechnologies/zwire',
-    },
-    {
       id: 'awkrs', name: 'awkrs', glyph: 'ak', category: 'CLI Tools', badge: 'FREE',
       tagline: 'The world’s fastest awk — a parallel bytecode-engine awk written in Rust, with parallel record processing.',
       pills: ['Rust', 'awk', 'Free / OSS'], price: 0,
@@ -473,6 +473,14 @@
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
       download: 'https://github.com/MenkeTechnologies/zpwrchrome/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zpwrchrome',
+    },
+    {
+      id: 'zwire-host', name: 'zwire-host', glyph: 'wh', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A universal local host — one ~500 KB Rust binary that exposes the machine (sysinfo, PTY terminals, filesystem watch/tail, exec, background jobs, a peered-mesh pub/sub event bus, and a per-app KV store) over both Chrome native-messaging and a newline-JSON local-socket daemon. Also embeddable as a Rust library.',
+      pills: ['Rust', 'native host · daemon', 'sysinfo · PTY · FS · exec', 'Free / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      download: 'https://github.com/MenkeTechnologies/zwire-host/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zwire-host',
     },
     {
       id: 'the-stack', name: 'The Stack', glyph: 'TS', category: 'Publications', badge: 'FICTION',
@@ -901,6 +909,18 @@
         "Runtime rebrand, not a fork — dedicated profile + fixed extension set, nothing to compile",
         "macOS: rebrands the base bundle's Dock name, ⌘-Tab, and menu-bar title + icon in place, never touching a system Chrome install",
         "One-command install — scripts/install.sh fetches the base, links the launcher on PATH, and rebrands",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "zwire-host": {
+      "overview": "A single self-contained Rust binary (~500 KB, no Python, no psutil) that exposes the local machine to any app over one JSON message protocol. It began as the Chrome native-messaging host for zwire's HUD and is now a universal local endpoint — reachable from a browser extension and, as a newline-delimited-JSON local-socket daemon, from tmux, emacs, desktop apps, plugins, shell scripts, and any language. Both transports feed the same dispatcher, so every command works over either one. Free and open source.",
+      "features": [
+        "One static Rust binary, zero runtime dependencies — no system Python, no pip install psutil, nothing to break on a fresh machine",
+        "Two transports, one dispatcher — Chrome native messaging (u32-length + JSON) and a local-socket daemon (Unix domain socket / Windows named pipe, newline-delimited JSON)",
+        "Streams live system stats (sysinfo), runs PTY terminals (portable-pty), crawls and watches/tails the filesystem, and execs commands",
+        "Background jobs that notify on completion, process list/kill, clipboard / notify / open, and a per-app key/value store",
+        "A pub/sub event bus that federates across a mesh of peered hosts",
+        "Also a Rust library — sibling hosts (e.g. zpwrchrome-host) embed it as a dependency",
         "Free / OSS — MIT licensed"
       ]
     },
