@@ -235,8 +235,8 @@
       glyph: 'ZW',
       category: 'Desktop Apps',
       badge: 'NEW',
-      tagline: 'A Chromium superset — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch. A runtime rebrand of an unbranded Chromium snapshot (no compile), with an optional source-fork build path. Free and open source.',
-      pills: ['Chromium', 'zpwrchrome', 'Cyberpunk', 'Free / OSS'],
+      tagline: 'A Chromium/Blink browser forked into a cyberpunk tiling HUD — a 9-patch C++ source fork that restyles the native chrome (tab shapes, UI font, neon toolbar, omnibox, 8 schemes in the color mixer + DevTools) plus a full keyboard-driven workspace: a tmux-style tiling overlay (ztmux), a ⌘K command palette, vim navigation, durable named sessions, and HUD reimplementations of Chrome\'s own internal pages. Free and open source.',
+      pills: ['Chromium fork', 'Tiling HUD', 'ztmux + ⌘K', 'Free / OSS'],
       price: 0,
       tiers: [
         { name: 'Open Source', desc: 'MIT licensed', price: 0 },
@@ -586,7 +586,7 @@
     },
     {
       id: 'zwire-book', name: 'The zwire Book', glyph: 'wB', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The companion book to zwire — Chromium/Blink rebranded in the strykelang cyberpunk HUD (not a WebView wrapper, not a new engine): why a real Blink base is required for zpwrchrome\'s Manifest V3 surface, the unbranded snapshot that retains --load-extension, the runtime rebrand vs the source fork and its nine HUD patches, the new-tab HUD, the internal-page scheme picker and native host, the dedicated ~/.zwire profile, and the CDP overlay layer. Pandoc + LaTeX typeset.',
+      tagline: 'The companion book to zwire — Chromium/Blink forked into the strykelang cyberpunk HUD (not a WebView wrapper, not a new engine): why a real Blink base is required for zpwrchrome\'s Manifest V3 surface, the nine HUD patches that compile the native chrome — tab shapes, UI font, neon toolbar, omnibox, the 8 schemes in the color mixer + DevTools — the ztmux tiling overlay and ⌘K palette, the new-tab HUD, the internal-page scheme picker and native host, the dedicated profile, and the CDP overlay layer. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'zwire', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
@@ -726,8 +726,8 @@
       "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: byte-for-byte parity vs system tmux, 689/689 cases passing", "The anti-drift gate: no Rust function survives without a tmux C counterpart", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zwire-book": {
-      "overview": "The companion book to zwire — a Chromium/Blink browser rebranded in the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, skinned and extended, on a dedicated profile that never touches system Chrome. The book draws the line the whole project is built on — what a runtime rebrand can reach (HUD colors, the new-tab page, the internal-page skin, your extensions on a prebuilt base) versus what only a compiled source fork can (tab geometry, UI fonts, the neon toolbar, via nine authored patches against a pinned Chromium tag) — and is honest about which capability lives on which side.",
-      "features": ["Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)", "The unbranded Chromium snapshot that still carries --load-extension (removed from branded Chrome in v137)", "The two build paths: the no-compile runtime rebrand vs the source fork's nine HUD patches", "The new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host", "The dedicated ~/.zwire profile and per-user staged extensions — never collides with system Chrome", "The CDP overlay layer and the cross-platform / updating operations matrix", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The companion book to zwire — a Chromium/Blink browser forked into the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, patched and extended, on a dedicated profile that never touches system Chrome. The book walks the full stack the project is built on — the HUD extension workspace (the ztmux tiling overlay, the ⌘K palette, sessions, the internal-page skin) and, under it, the nine authored patches that compile the native chrome an extension can't reach (tab geometry, UI fonts, the neon toolbar, the 8 schemes in the color mixer + DevTools) against a pinned Chromium tag.",
+      "features": ["Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)", "The unbranded fork build that still carries --load-extension (removed from branded Chrome in v137)", "The nine HUD patches that restyle the native chrome — tabs, UI font, neon toolbar, omnibox, the 8 schemes in the color mixer + DevTools — authored against a pinned Chromium tag", "The ztmux tiling overlay, the ⌘K palette, the new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host", "The dedicated profile and per-user staged extensions — never collides with system Chrome", "The CDP overlay layer and the cross-platform / updating operations matrix", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "inventions-book": {
       "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the ~161 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. The six marquee claims get an appendix of adversarial prior-art analyses.",
@@ -902,13 +902,15 @@
       ]
     },
     "zwire": {
-      "overview": "A Chromium superset — the zpwrchrome power-tool, a cyberpunk chrome theme, and a cyberpunk new-tab page preloaded on every launch, on a real Chromium/Blink engine. The base is an unbranded Chromium snapshot (no Google branding, no \"for automated testing\" banner) that still honors the --load-extension switch dropped from branded Chrome 137+: a stable base binary launched against a dedicated profile with a fixed extension set, so the default path needs no source fork and nothing to compile — with an optional source-fork build path for full chrome theming. Free and open source.",
+      "overview": "A Chromium/Blink browser forked into a cyberpunk HUD — not a theme and not a wrapper, but a real engine compiled from a 9-patch C++ source fork of Chromium and running a full keyboard-driven, tiling workspace on top. The fork restyles the native chrome the extension layer can't reach: sharp 2px tab shapes, the Share Tech Mono UI font, a neon under-toolbar line, a sharp omnibox, and the 8 HUD schemes wired into the color mixer + DevTools, all authored against a pinned Chromium tag. Layered over it, the HUD (extensions/hud-internal) adds a tmux-style tiling overlay, a ⌘K command palette, vim-style motions, a find bar, a powerline status bar, durable session management, and 13 HUD pages that reimplement Chrome's own internal pages — all against a dedicated profile so it never touches your system Chrome. Free and open source.",
       "features": [
-        "Chromium/Blink base = an unbranded Chromium snapshot — keeps --load-extension, so extensions preload from the command line",
-        "zpwrchrome, a cyberpunk chrome theme, and a cyberpunk new-tab page loaded on every launch",
-        "Runtime rebrand, not a fork — dedicated profile + fixed extension set, nothing to compile",
-        "macOS: rebrands the base bundle's Dock name, ⌘-Tab, and menu-bar title + icon in place, never touching a system Chrome install",
-        "One-command install — scripts/install.sh fetches the base, links the launcher on PATH, and rebrands",
+        "9-patch C++ source fork of Chromium (pinned tag) that restyles the native chrome: sharp 2px tabs, Share Tech Mono UI font, neon under-toolbar line, sharp omnibox, the 8 HUD schemes in the color mixer + DevTools, plus allow-framing so ztmux can iframe any site",
+        "ztmux — a tmux server in the browser (~900 LOC): recursive binary pane splits, unlimited windows, every pane a live webview of any URL, driven by a rebindable prefix with 45 remappable actions (panes, layouts, windows, partial synchronize-panes, copy mode, marks, clock)",
+        "⌘K command palette (zpalette), vim-style motions (zkeys), a find bar (zfind), and a powerline status bar (zstatus)",
+        "Durable named sessions saved to chrome.storage — full CRUD page (create / rename / duplicate / delete / load / import-export) with per-pane URL editing and a live SVG preview of each window's tiling",
+        "13 HUD pages reimplementing chrome://{extensions,settings,history,bookmarks,version} plus a Keyboard remapper, Commands, Sessions, CI, and an in-browser App Store tab",
+        "8 color schemes (cyberpunk, midnight, matrix, ember, arctic, crimson, toxic, vapor) that drive the browser chrome natively",
+        "zpwrchrome MV3 power-tool preloaded as a submodule (reuse, not copy) against a dedicated profile — needs a real Blink engine for userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, and a service-worker background",
         "Free / OSS — MIT licensed"
       ]
     },
