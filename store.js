@@ -912,6 +912,9 @@
         "8 color schemes (cyberpunk, midnight, matrix, ember, arctic, crimson, toxic, vapor) that drive the browser chrome natively",
         "zpwrchrome MV3 power-tool preloaded as a submodule (reuse, not copy) against a dedicated profile — needs a real Blink engine for userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, and a service-worker background",
         "Free / OSS — MIT licensed"
+      ],
+      "screenshots": [
+        { "src": "assets/zwire/tmux.webp", "cap": "ztmux — the tmux-style tiling overlay running in the forked Chromium HUD: recursive pane splits, each pane a live webview, driven by a rebindable prefix and the powerline status bar" }
       ]
     },
     "zwire-host": {
@@ -924,6 +927,9 @@
         "A pub/sub event bus that federates across a mesh of peered hosts",
         "Also a Rust library — sibling hosts (e.g. zpwrchrome-host) embed it as a dependency",
         "Free / OSS — MIT licensed"
+      ],
+      "screenshots": [
+        { "src": "assets/zwire/host.webp", "cap": "zwire-host — the single self-contained Rust binary exposing live system stats, PTY terminals, filesystem crawl/watch, background jobs, and the pub/sub event bus over one JSON protocol" }
       ]
     },
     "strykelang": {
