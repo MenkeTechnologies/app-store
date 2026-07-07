@@ -301,7 +301,7 @@ test('audio-haxor gallery: sequential shot indices, one caption + alt each', () 
 });
 
 test('screenshot hero appears on exactly the GUI products', () => {
-  const GUI = new Set(['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx', 'ztranslator', 'zcontainer', 'zterminal']);
+  const GUI = new Set(['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx', 'ztranslator', 'zcontainer', 'zterminal', 'zwire', 'zwire-host']);
   const { html } = run('productGrid', '');
   for (const id of gridIds(html)) {
     const { html: d } = run('detailRoot', '?id=' + encodeURIComponent(id));
