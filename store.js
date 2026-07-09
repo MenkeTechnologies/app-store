@@ -254,7 +254,7 @@
       tiers: [
         { name: 'Open Source', desc: 'MIT licensed', price: 0 },
       ],
-      download: 'https://github.com/MenkeTechnologies/zwire/tags',
+      download: 'https://github.com/MenkeTechnologies/zwire/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zwire',
     },
     {
