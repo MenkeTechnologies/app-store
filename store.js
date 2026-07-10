@@ -165,8 +165,8 @@
       glyph: 'ZT',
       category: 'Desktop Apps',
       badge: 'NEW',
-      tagline: 'A from-scratch system stress & benchmark tool in Rust behind a cyberpunk HUD — disk, network, CPU, and memory throughput/IOPS benchmarks that go beyond single-axis tools like Blackmagic Disk Speed Test with a world-first contention profiler: it drives every subsystem at once and reports the interaction matrix and bottleneck-migration timeline. Its pure-Rust zthrottle-core engine is extracted so the same benchmark engine embeds inside the other MenkeTechnologies apps.',
-      pills: ['Tauri v2', 'Rust', 'Disk · Net · CPU · Mem', 'Contention profiler'],
+      tagline: 'A from-scratch system stress & benchmark tool in Rust behind a cyberpunk HUD — disk, network, CPU, and memory throughput/IOPS benchmarks that go beyond single-axis tools like Blackmagic Disk Speed Test with a world-first contention profiler: it drives every subsystem at once and reports the interaction matrix and bottleneck-migration timeline. It also carries a full system monitor: processes with signal control, per-interface network history and live flows, and a persistent storage tree — a SQLite directory index built by one full scan and then kept live by filesystem hooks (no re-walk), with junk detection and a "what can I free?" reclaim view. Its pure-Rust zthrottle-core engine is extracted so the same engine embeds inside the other MenkeTechnologies apps.',
+      pills: ['Tauri v2', 'Rust', 'Benchmarks + contention', 'System monitor + storage'],
       price: 20,
       tiers: [
         { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
@@ -1072,13 +1072,16 @@
       ]
     },
     "zthrottle": {
-      "overview": "A from-scratch system stress & benchmark tool in Rust (Tauri v2 desktop app) — disk, network, CPU, and memory throughput/IOPS behind a cyberpunk HUD, going beyond single-axis tools like Blackmagic Disk Speed Test with a world-first contention profiler. Its pure-Rust zthrottle-core engine is extracted so the same benchmark engine embeds across the GUI stack.",
+      "overview": "A from-scratch system stress + benchmark tool AND full system monitor in Rust (Tauri v2 desktop app), behind a cyberpunk HUD. Four real single-axis benchmarks plus a world-first contention profiler that drives every subsystem at once, going beyond single-axis tools like Blackmagic Disk Speed Test. Around the benchmarks sits a live monitor: processes, network, and a persistent storage tree. Its pure-Rust zthrottle-core engine is extracted so the same engine embeds across the GUI stack.",
       "features": [
         "Disk throughput + random 4 KiB IOPS, uncached via F_NOCACHE / O_DIRECT",
         "Network throughput (loopback or a host:port peer) — TCP, UDP, and RTT",
         "CPU integer + f64 matmul kernels with multi-thread scaling",
         "Memory STREAM Copy/Scale/Add/Triad bandwidth + pointer-chase latency",
         "World-first contention profiler — every axis driven at once, with an interaction matrix and bottleneck-migration timeline",
+        "System monitor — processes with signal control (TERM/KILL/STOP/CONT/HUP…), CPU-history graph, per-interface network history + live flows",
+        "Storage tree — a persistent SQLite directory index built by ONE full scan, then kept live by filesystem-watch hooks (targeted updates, no re-walk); instant reads, no loading screen",
+        "\"What can I free?\" — junk detection with a user-editable pattern list, per-owner filter, and multi-select bulk delete (.git internals never flagged)",
         "Cross-platform — macOS, Linux, and Windows",
         "Embeddable zthrottle-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
       ]
