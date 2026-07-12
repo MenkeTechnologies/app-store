@@ -154,24 +154,30 @@ a sticky order summary with discount codes). Add to cart → cart modal →
 **Checkout** navigates here. Discount codes live in the `DISCOUNTS` map in
 `store.js` (`LAUNCH20` = 20% off, `HUD10` = $10 off by default).
 
-### Payments are client-side placeholders
+### Payments
 
-`completeOrder()` in `store.js` simulates a successful order — **no real charge
-happens**. GitHub Pages is static-only (no server), so wire each method to a
-provider that supports a client-side or redirect flow:
+**PayPal is wired for live capture.** Selecting the PayPal method (or the
+express **PayPal** button) loads the PayPal JS SDK and renders Smart Buttons
+into `#paypalButtonContainer`. The order is itemized from the cart and its total
+matches the summary panel (including discounts), captured client-side; the
+buyer's PayPal email is used for license delivery. To activate it, set your
+**public** Live client ID in `store.js`:
 
-- **Shopify (recommended for this layout)** — the screenshot's checkout is
-  Shopify's own hosted page. Point the wallet/Shop-Pay buttons (and the
-  `goCheckout` redirect) at your Shopify checkout URL; Shopify hosts the real
-  checkout, so no backend is needed. Requires your store domain + variant IDs.
-- **PayPal** — load the PayPal JS SDK with your public client ID and render
-  Smart Buttons into `#paypalButtonContainer`. Works on static hosting; for
-  verified server-side capture add a serverless function.
-- **Stripe / Google Pay / Venmo** — drop their SDKs into the matching
-  `startWallet()` / method branches.
+```js
+var PAYPAL_CLIENT_ID = '';   // from a Live REST app at developer.paypal.com
+```
 
-The integration hooks are marked with `INTEGRATION HOOKS:` comments in
-`wireCheckoutPage()`.
+The client ID is a public credential — it ships in client JS and is safe to
+commit. The API secret is never needed (client-side capture requires no
+secret). While it is empty, the PayPal method shows a "not configured" note. For
+verified server-side capture, add a serverless function; the client-side flow
+above works on static GitHub Pages with no backend.
+
+**Other methods are still client-side placeholders.** Card, Shop Pay, Google
+Pay, and Venmo route through `completeOrder()` / `startWallet()` in `store.js`,
+which simulates a successful order — **no real charge happens**. Wire each to a
+provider with a client-side or redirect flow (e.g. a Shopify hosted checkout
+URL for the wallet buttons, or the Stripe / Braintree SDKs).
 
 ## Hosting on GitHub Pages
 

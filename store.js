@@ -2387,6 +2387,44 @@
   };
   var appliedCode = null;
 
+  // ---- PayPal Smart Buttons ------------------------------------------
+  // Public client ID from a LIVE REST app at developer.paypal.com. This is a
+  // PUBLIC credential — it ships in client-side JS and is safe to commit. The
+  // API *secret* never appears here (client-side capture needs no secret).
+  // Empty string => the PayPal method shows a "not configured" note instead of
+  // attempting to load the SDK.
+  var PAYPAL_CLIENT_ID = 'AZZQjvgmEJpt12iT7We_BGQ_HkVWMR2J_P3sOsqGihpRRWLagbI7S3A4w6uGnwNXyisFxw1czHRD0bZs';
+
+  var paypalSdkState = 0;        // 0 unloaded · 1 loading · 2 ready · 3 failed
+  var paypalWaiters = [];
+
+  function loadPayPalSdk(onReady, onFail) {
+    if (paypalSdkState === 2) { onReady(); return; }
+    if (paypalSdkState === 3) { onFail(); return; }
+    paypalWaiters.push({ ok: onReady, fail: onFail });
+    if (paypalSdkState === 1) return;
+    paypalSdkState = 1;
+    var s = document.createElement('script');
+    s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(PAYPAL_CLIENT_ID) +
+            '&currency=USD&intent=capture&components=buttons';
+    s.onload = function () { paypalSdkState = 2; flushPayPalWaiters(true); };
+    s.onerror = function () { paypalSdkState = 3; flushPayPalWaiters(false); };
+    document.head.appendChild(s);
+  }
+  function flushPayPalWaiters(ok) {
+    var w = paypalWaiters; paypalWaiters = [];
+    w.forEach(function (cb) { (ok ? cb.ok : cb.fail)(); });
+  }
+
+  // Single source of truth for the checkout money math — the summary panel and
+  // the PayPal order both read from here so amounts can never diverge.
+  function checkoutTotals() {
+    var cart = readCart();
+    var subtotal = cartTotal(cart);
+    var disc = discountAmount(subtotal);
+    return { cart: cart, subtotal: subtotal, disc: disc, total: subtotal - disc };
+  }
+
   function discountAmount(subtotal) {
     if (!appliedCode) return 0;
     var d = DISCOUNTS[appliedCode];
@@ -2405,10 +2443,8 @@
   }
 
   function summaryHtml() {
-    var cart = readCart();
-    var subtotal = cartTotal(cart);
-    var disc = discountAmount(subtotal);
-    var total = subtotal - disc;
+    var t = checkoutTotals();
+    var cart = t.cart, subtotal = t.subtotal, disc = t.disc, total = t.total;
     var discLine = disc
       ? '<div class="sum-line"><span>Discount (' + appliedCode + ')</span><span>-' + fmtPrice(disc) + '</span></div>'
       : '';
@@ -2478,7 +2514,7 @@
               '</div>' +
               '<div class="pay-method" data-method="paypal">' +
                 '<div class="pay-method-head"><span class="radio"></span><span class="pm-label">PayPal</span><span class="brand-logo paypal">PayPal</span></div>' +
-                '<div class="pay-method-body"><div id="paypalButtonContainer"><p class="checkout-note">You will be redirected to PayPal to complete your purchase securely.</p></div></div>' +
+                '<div class="pay-method-body"><div id="paypalButtonContainer"><p class="checkout-note">Pay securely with your PayPal balance, bank, or card.</p></div></div>' +
               '</div>' +
             '</div>' +
             // Billing
@@ -2538,23 +2574,25 @@
   function wireCheckoutPage(root) {
     wireSummary(root);
 
-    // Payment-method accordion (single open at a time).
+    // Payment-method accordion (single open at a time). Selecting PayPal mounts
+    // its Smart Buttons and hides the generic "Pay now".
     var methods = root.querySelector('#payMethods');
     if (methods) methods.addEventListener('click', function (e) {
       var head = e.target.closest('.pay-method-head');
       if (!head) return;
-      var all = methods.querySelectorAll('.pay-method');
-      for (var i = 0; i < all.length; i++) all[i].classList.remove('active');
-      head.parentElement.classList.add('active');
+      activateMethod(root, head.parentElement.getAttribute('data-method'));
     });
 
-    // Express wallet buttons + branded radios route to the provider.
-    // INTEGRATION HOOKS: replace the alert() calls below.
-    //   shop / shopPay  -> redirect to your Shopify hosted checkout URL
-    //   paypal          -> render PayPal Smart Buttons into #paypalButtonContainer
-    //   gpay / venmo    -> Google Pay / Braintree-Venmo SDK
+    // Express wallet buttons route to the provider.
+    //   paypal          -> select the PayPal method + render Smart Buttons (live)
+    //   shop / gpay / venmo -> client-side placeholders (see README)
     function startWallet(name) {
-      // e.g. shop: location.href = SHOPIFY_CHECKOUT_URL;
+      if (name === 'paypal') {
+        activateMethod(root, 'paypal');
+        var pm = root.querySelector('.pay-method[data-method="paypal"]');
+        if (pm && pm.scrollIntoView) pm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
       completeOrder(root, name);
     }
     root.querySelectorAll('[data-wallet]').forEach(function (b) {
@@ -2566,15 +2604,101 @@
       e.preventDefault();
       var active = root.querySelector('.pay-method.active');
       var method = active ? active.getAttribute('data-method') : 'card';
+      // PayPal is captured by its own buttons — the form submit is a no-op.
+      if (method === 'paypal') return;
       completeOrder(root, method);
     });
   }
 
-  function completeOrder(root, method) {
-    // CLIENT-SIDE PLACEHOLDER — no real charge happens here. Wire `method`
-    // to Stripe / PayPal / Shopify before going live (see README).
+  function paypalNote(msg) {
+    return '<p class="checkout-note">' + msg + '</p>';
+  }
+
+  // Mount PayPal Smart Buttons into #paypalButtonContainer. Idempotent: a second
+  // call while already mounted is a no-op. The order is built live inside
+  // createOrder, so discount changes are picked up without re-rendering.
+  function renderPayPalButtons(root) {
+    var container = root.querySelector('#paypalButtonContainer');
+    if (!container) return;
+    if (!PAYPAL_CLIENT_ID) {
+      container.innerHTML = paypalNote('PayPal is not configured yet.');
+      return;
+    }
+    if (container.getAttribute('data-rendered') === '1') return;
+    container.innerHTML = paypalNote('Loading PayPal…');
+
+    var fail = function () {
+      container.removeAttribute('data-rendered');
+      container.innerHTML = paypalNote('Could not reach PayPal — check your connection and try again.');
+    };
+
+    loadPayPalSdk(function () {
+      if (!window.paypal || !window.paypal.Buttons) { fail(); return; }
+      container.innerHTML = '';
+      container.setAttribute('data-rendered', '1');
+
+      window.paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'paypal' },
+
+        createOrder: function (data, actions) {
+          var t = checkoutTotals();
+          var unit = {
+            amount: {
+              currency_code: 'USD',
+              value: t.total.toFixed(2),
+              breakdown: {
+                item_total: { currency_code: 'USD', value: t.subtotal.toFixed(2) },
+              },
+            },
+            items: t.cart.map(function (i) {
+              var p = byId(i.id) || { name: i.id };
+              return {
+                name: (p.name + ' — ' + i.tier + ' license').slice(0, 127),
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: { currency_code: 'USD', value: (i.price || 0).toFixed(2) },
+              };
+            }),
+          };
+          if (t.disc > 0) {
+            unit.amount.breakdown.discount = { currency_code: 'USD', value: t.disc.toFixed(2) };
+          }
+          return actions.order.create({ intent: 'CAPTURE', purchase_units: [unit] });
+        },
+
+        onApprove: function (data, actions) {
+          return actions.order.capture().then(function (details) {
+            var payer = details && details.payer && details.payer.email_address;
+            completeOrder(root, 'PayPal', payer);
+          });
+        },
+
+        onError: fail,
+      }).render(container).catch(fail);
+    }, fail);
+  }
+
+  // Activate one payment method: sync the accordion, hide the generic "Pay now"
+  // when PayPal is chosen (its own buttons submit), and mount those buttons.
+  function activateMethod(root, method) {
+    var methods = root.querySelector('#payMethods');
+    if (methods) {
+      var all = methods.querySelectorAll('.pay-method');
+      for (var i = 0; i < all.length; i++) {
+        all[i].classList.toggle('active', all[i].getAttribute('data-method') === method);
+      }
+    }
+    var payNow = root.querySelector('#payNow');
+    if (payNow) payNow.style.display = (method === 'paypal') ? 'none' : '';
+    if (method === 'paypal') renderPayPalButtons(root);
+  }
+
+  function completeOrder(root, method, payerEmail) {
+    // Card / Shop Pay / Google Pay / Venmo are still client-side placeholders —
+    // no real charge. PayPal (Smart Buttons) is a live capture; `payerEmail`
+    // comes back from the PayPal payer record for license delivery.
     var emailEl = root.querySelector('#ckEmail');
-    var email = (emailEl && emailEl.value) || 'your inbox';
+    var email = payerEmail || (emailEl && emailEl.value) || 'your inbox';
     writeCart([]);
     appliedCode = null;
     root.innerHTML = '<div class="checkout-ok" style="max-width:34rem;margin:3rem auto;">' +
