@@ -2663,6 +2663,18 @@
           if (t.disc > 0) {
             unit.amount.breakdown.discount = { currency_code: 'USD', value: t.disc.toFixed(2) };
           }
+          // Pack fulfillment data onto the order so the PayPal "payment received"
+          // email / transaction record carries what's needed to send the app +
+          // license: the buyer's delivery email (custom_id) and the apps + tiers
+          // purchased (description). PayPal field caps are 127 chars.
+          var deliveryEl = root.querySelector('#ckEmail');
+          var deliveryEmail = (deliveryEl && deliveryEl.value || '').trim();
+          if (deliveryEmail) unit.custom_id = deliveryEmail.slice(0, 127);
+          unit.description = ('Deliver to ' + (deliveryEmail || 'PayPal email') + ' — ' +
+            t.cart.map(function (i) {
+              var p = byId(i.id) || { name: i.id };
+              return p.name + ' (' + i.tier + ')';
+            }).join(', ')).slice(0, 127);
           return actions.order.create({ intent: 'CAPTURE', purchase_units: [unit] });
         },
 

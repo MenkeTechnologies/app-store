@@ -173,6 +173,20 @@ secret). While it is empty, the PayPal method shows a "not configured" note. For
 verified server-side capture, add a serverless function; the client-side flow
 above works on static GitHub Pages with no backend.
 
+**Purchase notification / fulfillment.** PayPal emails the merchant account on
+every captured payment — that email is the notification. Each order is enriched
+so that email and the transaction record carry what a manual fulfillment needs:
+
+- **items** — one line per product, `"<App> — <Tier> license"`;
+- **description** — `Deliver to <buyer email> — <App> (<Tier>), …`;
+- **custom_id** — the buyer's delivery email (falls back to the PayPal payer
+  email if the contact field was left blank).
+
+For a formatted email to a specific inbox and/or automated delivery of the
+download link + license key, add a PayPal webhook (`PAYMENT.CAPTURE.COMPLETED`)
+pointing at a serverless function that sends the mail — this fires server-side,
+so it is reliable even if the buyer closes the tab after paying.
+
 **Other methods are still client-side placeholders.** Card, Shop Pay, Google
 Pay, and Venmo route through `completeOrder()` / `startWallet()` in `store.js`,
 which simulates a successful order — **no real charge happens**. Wire each to a
