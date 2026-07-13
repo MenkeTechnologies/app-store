@@ -448,6 +448,14 @@
       repo: 'https://github.com/MenkeTechnologies/htoprs',
     },
     {
+      id: 'grcrs', name: 'grcrs', glyph: 'gr', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A from-source Rust port of grc (Generic Colouriser 1.13) — the two-binary suite grc (the wrapper: parses options, matches the command line against grc.conf regexps, runs the command and pipes its stdout/stderr through grcat, with --pty mode) plus grcat (the colouriser filter driving the per-command config rules), ported against the upstream grc sources rather than wrapping them. GPL-2.0.',
+      pills: ['Rust', 'grc port', 'GPL-2.0 / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'GPL-2.0-or-later', price: 0 }],
+      download: 'https://github.com/MenkeTechnologies/grcrs/tags',
+      repo: 'https://github.com/MenkeTechnologies/grcrs',
+    },
+    {
       id: 'temprs', name: 'temprs', glyph: 'tm', category: 'CLI Tools', badge: 'FREE',
       tagline: 'A temporary-file stack manager — full-spectrum control over scratch files and data.',
       pills: ['Rust', 'CLI', 'Free / OSS'], price: 0,
@@ -1210,6 +1218,17 @@
         "Signal sending (kill) and renice from the UI",
         "Ported module-by-module against the upstream htop C source of truth",
         "GPL-2.0-or-later, matching htop's license"
+      ]
+    },
+    "grcrs": {
+      "overview": "A from-source Rust port of grc, the Generic Colouriser (1.13) — the two-binary grc/grcat suite reimplemented against the upstream grc sources rather than wrapping them, so any command's output can be colourised by config-driven regexp rules.",
+      "features": [
+        "Two binaries: grc (the wrapper) and grcat (the colouriser filter)",
+        "grc parses options, matches the command against grc.conf, runs it, and pipes stdout/stderr through grcat",
+        "grcat drives per-command config rules — regexp-matched colour, count, and skip directives",
+        "--pty mode so colour-suppressing commands still emit colourable output",
+        "Ported against the upstream grc source of truth, not a shell wrapper",
+        "GPL-2.0-or-later, matching grc's license"
       ]
     },
     "temprs": {
