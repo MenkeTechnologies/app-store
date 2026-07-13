@@ -903,7 +903,7 @@
         "Free / OSS — MPL-2.0 licensed"
       ],
       "screenshots": [
-        { "src": "assets/zemacs/editor.webp", "cap": "zemacs — the terminal modal IDE: Vim-style modal editing core with Spacemacs layers, tree-sitter syntax, and the leader-key UX" }
+        { "src": "assets/zemacs/editor.webp", "cap": "zemacs in NOR mode — file-tree, split editors over stryke source, the IDE action menu (Find Usages, Refactor, Run/Debug, Git), and an embedded terminal, all running in the terminal" }
       ]
     },
     "zemacs-gui": {
