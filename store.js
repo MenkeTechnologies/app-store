@@ -441,17 +441,17 @@
     },
     {
       id: 'htoprs', name: 'htoprs', glyph: 'ht', category: 'CLI Tools', badge: 'FREE',
-      tagline: 'A from-source Rust port of htop — the interactive process viewer (process tree, per-core CPU/memory meters, sort/filter/search, signal sending, renice), reimplemented in memory-safe Rust against the upstream htop C source. Early scaffold (v0.1.0), GPL-2.0.',
-      pills: ['Rust', 'htop port', 'GPL-2.0 / OSS'], price: 0,
-      tiers: [{ name: 'Open Source', desc: 'GPL-2.0-or-later', price: 0 }],
+      tagline: 'A from-source Rust port of htop — the interactive process viewer (process tree, per-core CPU/memory meters, sort/filter/search, signal sending, renice), reimplemented in memory-safe Rust against the upstream htop C source. Early scaffold (v0.1.0), MIT.',
+      pills: ['Rust', 'htop port', 'MIT / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT', price: 0 }],
       download: 'https://github.com/MenkeTechnologies/htoprs/tags',
       repo: 'https://github.com/MenkeTechnologies/htoprs',
     },
     {
       id: 'grcrs', name: 'grcrs', glyph: 'gr', category: 'CLI Tools', badge: 'FREE',
-      tagline: 'A from-source Rust port of grc (Generic Colouriser 1.13) — the two-binary suite grc (the wrapper: parses options, matches the command line against grc.conf regexps, runs the command and pipes its stdout/stderr through grcat, with --pty mode) plus grcat (the colouriser filter driving the per-command config rules), ported against the upstream grc sources rather than wrapping them. GPL-2.0.',
-      pills: ['Rust', 'grc port', 'GPL-2.0 / OSS'], price: 0,
-      tiers: [{ name: 'Open Source', desc: 'GPL-2.0-or-later', price: 0 }],
+      tagline: 'A from-source Rust port of grc (Generic Colouriser 1.13) — the two-binary suite grc (the wrapper: parses options, matches the command line against grc.conf regexps, runs the command and pipes its stdout/stderr through grcat, with --pty mode) plus grcat (the colouriser filter driving the per-command config rules), ported against the upstream grc sources rather than wrapping them. MIT — original Rust code.',
+      pills: ['Rust', 'grc port', 'MIT / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT', price: 0 }],
       download: 'https://github.com/MenkeTechnologies/grcrs/tags',
       repo: 'https://github.com/MenkeTechnologies/grcrs',
     },
@@ -589,7 +589,7 @@
     },
     {
       id: 'cli-fleet-book', name: 'The CLI Fleet', glyph: 'cF', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The CLI-side companion to "Rewriting the Desktop in Rust" — one compendium mapping every command-line tool in the MenkeTechnologies stack. Full chapters for the nine tools with no book of their own: lsofrs (lsof), nmaprs (nmap), iftoprs (iftop), htoprs (htop), temprs (a shell temporary-file stack manager), storageshower (disk-usage TUI), zcolorizer (real-time log colouriser), grcrs (grc), zpwr-jobs (the stryke job-application pipeline), and zpwrchrome + zwire-host (the MV3 browser extension and its Rust native-messaging host) — plus an opening shared-architecture chapter and a cross-reference index to the seven already documented (zshrs, strykelang, awkrs, vimlrs, elisprs, powerliners, ztmux). Port-honest throughout: each reimplementation names its upstream and the original work is the Rust engineering. Pandoc + LaTeX typeset.',
+      tagline: 'The CLI-side companion to "Rewriting the Desktop in Rust" — one compendium mapping every command-line tool in the MenkeTechnologies stack. Full chapters for the tools with no book of their own: lsofrs (lsof), nmaprs (nmap), iftoprs (iftop), htoprs (htop), temprs (a shell temporary-file stack manager), storageshower (disk-usage TUI), zcolorizer (real-time log colouriser), grcrs (grc), and the two browser-adjacent native-messaging host binaries zpwrchrome-host and zwire-host — plus an opening shared-architecture chapter and a cross-reference index to the seven already documented (zshrs, strykelang, awkrs, vimlrs, elisprs, powerliners, ztmux). Every tool is MIT and original Rust; port-honest throughout — each reimplementation names its upstream and the original work is the Rust engineering. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'CLI fleet', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
@@ -745,8 +745,8 @@
       "features": ["The 'engine core, thin shell' thesis: WebView shell, Tauri command bridge, GUI-free *-core engine", "The *-core pattern and its C ABI embedding contract — ten engines, one shape", "One app per chapter: zreq, zcite, ztunnel, zgo, zftp, zcontainer, zoffice, zemail, zpdf, zphoto", "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes, against an all-Electron field", "The embed matrix — how one engine bump reaches every shell that vendors it", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "cli-fleet-book": {
-      "overview": "The CLI Fleet — the cross-cutting compendium of every command-line tool in the MenkeTechnologies stack, and the CLI-side twin of 'Rewriting the Desktop in Rust'. Part I is an index: the seven tools that already carry their own book (zshrs, strykelang, awkrs, vimlrs, elisprs, powerliners, ztmux) are situated in the fleet and pointed at their volumes, not re-documented. Part II gives a full, source-grounded chapter to each tool that had none — the Unix reimplementations lsofrs (lsof), nmaprs (nmap), iftoprs (iftop) and htoprs (htop), the shell temporary-file stack manager temprs, the disk-usage TUI storageshower, the two colourisers zcolorizer (its own theme grammar) and grcrs (a port of grc), zpwr-jobs (the stryke-office job-application pipeline), and zpwrchrome with its zwire-host native-messaging binary. An opening chapter, 'The shape of the fleet', frames the shared architecture — the ratatui TUI stack, the CLI/capture layers, the licensing split, and the port method.",
-      "features": ["Part I: a cross-reference index to the seven CLI tools with their own books", "Part II: a full grounded chapter for each of the eleven tools that had none (nine CLI/TUI tools plus zpwrchrome and zwire-host)", "A shared-architecture chapter: the ratatui TUI stack, clap/pcap/procfs, the GPL-vs-MIT licensing split, and the port-parity method", "Port-honest — every reimplementation names its upstream; the original work is the Rust engineering", "The Unix ports: lsofrs, nmaprs, iftoprs, htoprs — architecture, CLI surface, parity vs upstream", "The originals: zcolorizer's theme grammar, storageshower's scanner, zpwr-jobs' stryke render path", "The CLI-side twin of 'Rewriting the Desktop in Rust' (the GUI fleet)", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The CLI Fleet — the cross-cutting compendium of every command-line tool in the MenkeTechnologies stack, and the CLI-side twin of 'Rewriting the Desktop in Rust'. Part I is an index: the seven tools that already carry their own book (zshrs, strykelang, awkrs, vimlrs, elisprs, powerliners, ztmux) are situated in the fleet and pointed at their volumes, not re-documented. Part II gives a full, source-grounded chapter to each tool that had none — the Unix reimplementations lsofrs (lsof), nmaprs (nmap), iftoprs (iftop) and htoprs (htop), the shell temporary-file stack manager temprs, the disk-usage TUI storageshower, the two colourisers zcolorizer (its own theme grammar) and grcrs (a port of grc), and the two browser-adjacent native-messaging host binaries zpwrchrome-host (a Rust port of browserpass-native plus extension actions) and zwire-host (the universal local host). An opening chapter, 'The shape of the fleet', frames the shared architecture — the ratatui TUI stack, the CLI/capture layers, the uniform MIT licensing, and the port method.",
+      "features": ["Part I: a cross-reference index to the seven CLI tools with their own books", "Part II: a full grounded chapter for each of the ten tools that had none (eight CLI/TUI tools plus the two native hosts zpwrchrome-host and zwire-host)", "A shared-architecture chapter: the ratatui TUI stack, clap/pcap/procfs, the uniform MIT licensing, and the port-parity method", "Port-honest — every reimplementation names its upstream; the original work is the Rust engineering", "The Unix ports: lsofrs, nmaprs, iftoprs, htoprs — architecture, CLI surface, parity vs upstream", "The originals: zcolorizer's theme grammar, storageshower's scanner, the two native hosts' JSON protocols", "The CLI-side twin of 'Rewriting the Desktop in Rust' (the GUI fleet)", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
       "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
@@ -1220,14 +1220,14 @@
       ]
     },
     "htoprs": {
-      "overview": "A from-source Rust port of htop — the interactive process viewer, ported against the upstream htop C source rather than wrapping the htop binary. Early scaffold (crate v0.1.0), GPL-2.0-or-later.",
+      "overview": "A from-source Rust port of htop — the interactive process viewer, ported against the upstream htop C source rather than wrapping the htop binary. Early scaffold (crate v0.1.0), MIT.",
       "features": [
         "Interactive process viewer in Rust: live process table and tree view",
         "Per-core CPU, memory, and swap meters",
         "Sort, filter, search, and tag processes",
         "Signal sending (kill) and renice from the UI",
         "Ported module-by-module against the upstream htop C source of truth",
-        "GPL-2.0-or-later, matching htop's license"
+        "MIT — original Rust reimplementation of htop"
       ]
     },
     "grcrs": {
@@ -1238,7 +1238,7 @@
         "grcat drives per-command config rules — regexp-matched colour, count, and skip directives",
         "--pty mode so colour-suppressing commands still emit colourable output",
         "Ported against the upstream grc source of truth, not a shell wrapper",
-        "GPL-2.0-or-later, matching grc's license"
+        "MIT — original Rust reimplementation of grc"
       ]
     },
     "temprs": {
