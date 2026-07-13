@@ -300,12 +300,26 @@ test('audio-haxor gallery: sequential shot indices, one caption + alt each', () 
   assert.ok(alts.length >= thumbs.length && alts.every((a) => a.length > 0), 'every gallery image has alt text');
 });
 
-test('screenshot hero appears on exactly the GUI products', () => {
-  const GUI = new Set(['audio-haxor', 'traderview', 'zpwr-synth', 'zpwr-fx', 'zpwr-midi-fx', 'ztranslator', 'zcontainer', 'zterminal', 'zwire', 'zwire-host']);
+test('detail screenshot hero appears exactly where the grid thumb has one', () => {
+  // Both the grid thumb (product-thumb has-shot) and the detail hero (detail-hero has-shot)
+  // render from the same product screenshots[] field. Cross-check that the two render paths
+  // agree per product instead of pinning a hardcoded id list that goes stale on every
+  // screenshot addition. Split on product-card so each card's thumb flag is read from its own
+  // chunk (robust against '>' appearing inside a tagline).
   const { html } = run('productGrid', '');
-  for (const id of gridIds(html)) {
+  const cards = html.split('class="product-card"').slice(1);
+  const thumbHasShot = new Map();
+  for (const c of cards) {
+    const idm = c.match(/product\.html\?id=([^"]+)"/);
+    if (!idm) continue;
+    const tm = c.match(/<div class="product-thumb( has-shot)?"/);
+    thumbHasShot.set(decodeURIComponent(idm[1]), Boolean(tm && tm[1]));
+  }
+  const ids = gridIds(html);
+  assert.strictEqual(thumbHasShot.size, ids.length, 'read a thumb has-shot flag for every grid card');
+  for (const id of ids) {
     const { html: d } = run('detailRoot', '?id=' + encodeURIComponent(id));
-    assert.strictEqual(d.includes('detail-hero has-shot'), GUI.has(id), `${id}: hero has-shot mismatch`);
+    assert.strictEqual(d.includes('detail-hero has-shot'), thumbHasShot.get(id), `${id}: hero has-shot mismatch`);
   }
 });
 
