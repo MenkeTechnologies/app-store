@@ -2112,6 +2112,11 @@
   // ---- Helpers --------------------------------------------------------
   var CART_KEY = 'appstore-cart';
 
+  // Contact form target. The store is a static site with no backend, so the
+  // contact form assembles a mailto: link and hands off to the visitor's mail
+  // client (see renderContactPage). This address is intentionally public.
+  var CONTACT_EMAIL = 'linux.dev25@gmail.com';
+
   function byId(id) {
     for (var i = 0; i < PRODUCTS.length; i++) {
       if (PRODUCTS[i].id === id) return PRODUCTS[i];
@@ -2505,6 +2510,67 @@
       '<div class="sum-line total"><span class="t-lbl">Total</span><span class="t-amt"><span class="cur">USD</span>' + fmtPrice(total) + '</span></div>';
   }
 
+  // Contact page: name / email / subject / message. On submit, build a mailto:
+  // to CONTACT_EMAIL and hand off to the visitor's mail client. No backend, no
+  // third party — the static site can't POST anywhere.
+  function renderContactPage() {
+    var root = document.getElementById('contactRoot');
+    if (!root) return;
+
+    root.innerHTML = '' +
+      '<div class="contact-wrap">' +
+        '<p class="contact-intro">Questions about a product, a license, a bug, or a custom build? Fill this out and it opens your mail client with the message ready to send.</p>' +
+        '<form id="contactForm" novalidate>' +
+          '<div class="field"><label for="cfName">Your name</label>' +
+            '<input id="cfName" type="text" autocomplete="name" placeholder="Name"></div>' +
+          '<div class="field"><label for="cfEmail">Your email</label>' +
+            '<input id="cfEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>' +
+          '<div class="field"><label for="cfSubject">Subject</label>' +
+            '<input id="cfSubject" type="text" placeholder="What\'s this about?"></div>' +
+          '<div class="field"><label for="cfMessage">Message</label>' +
+            '<textarea id="cfMessage" placeholder="Type your message…"></textarea></div>' +
+          '<div class="contact-err" id="cfErr" role="alert" aria-live="polite"></div>' +
+          '<button type="submit" class="btn btn-buy pay-now-btn">Send message</button>' +
+        '</form>' +
+        '<div id="cfSent"></div>' +
+        '<p class="contact-direct">Prefer your own client? Email ' +
+          '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a> directly.</p>' +
+      '</div>';
+
+    var form = root.querySelector('#contactForm');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = (root.querySelector('#cfName').value || '').trim();
+      var email = (root.querySelector('#cfEmail').value || '').trim();
+      var subject = (root.querySelector('#cfSubject').value || '').trim();
+      var message = (root.querySelector('#cfMessage').value || '').trim();
+      var errEl = root.querySelector('#cfErr');
+
+      var missing = [];
+      if (!name) missing.push('name');
+      if (!email || email.indexOf('@') < 1) missing.push('a valid email');
+      if (!message) missing.push('a message');
+      if (missing.length) {
+        errEl.textContent = 'Please add ' + missing.join(', ') + '.';
+        return;
+      }
+      errEl.textContent = '';
+
+      var subj = subject || ('Contact from ' + name);
+      var body = 'From: ' + name + ' <' + email + '>\n\n' + message;
+      window.location.href = 'mailto:' + CONTACT_EMAIL +
+        '?subject=' + encodeURIComponent(subj) +
+        '&body=' + encodeURIComponent(body);
+
+      var sent = root.querySelector('#cfSent');
+      if (sent) {
+        sent.innerHTML = '<div class="contact-sent">Your mail client should be opening with the message ready. ' +
+          'If nothing happened, email <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a> directly.</div>';
+      }
+    });
+  }
+
   function renderCheckoutPage() {
     var root = document.getElementById('checkoutRoot');
     if (!root) return;
@@ -2841,6 +2907,7 @@
     renderGrid('All', '');
     renderDetail();
     renderCheckoutPage();
+    renderContactPage();
 
     var activeCat = 'All';
     var search = document.getElementById('storeSearch');

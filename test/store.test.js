@@ -264,6 +264,22 @@ function runWithCart(targetId, cart) {
   return { html, stats };
 }
 
+test('contact page renders the form fields and a mailto fallback to the real address', () => {
+  const { html } = run('contactRoot', '');
+  for (const id of ['cfName', 'cfEmail', 'cfSubject', 'cfMessage']) {
+    assert.ok(html.includes('id="' + id + '"'), `contact form has field ${id}`);
+  }
+  assert.match(html, /id="contactForm"/, 'renders the contact form');
+  assert.match(html, /<textarea id="cfMessage"/, 'message is a textarea');
+  assert.match(html, /Send message/, 'has a submit button');
+  // The mailto handler builds the link at submit time, but a plain mailto
+  // fallback (and the destination address) must be present in the source.
+  assert.match(html, /href="mailto:linux\.dev25@gmail\.com"/, 'fallback mailto link present');
+  assert.match(CODE, /var CONTACT_EMAIL = 'linux\.dev25@gmail\.com'/, 'contact address defined');
+  assert.match(CODE, /window\.location\.href = 'mailto:' \+ CONTACT_EMAIL/, 'submit builds a mailto');
+  assert.ok(!html.includes('[object'), 'no object leaks');
+});
+
 test('screenshot assets: refs resolve, no orphans, all webp, size-budgeted', () => {
   // Pull every assets/ reference straight from source (covers all products,
   // not just the ones we render in this run).
@@ -374,6 +390,7 @@ test('HTML pages reference the shared assets and mount points', () => {
     'index.html': ['store.css', 'hud-theme.js', 'store.js', 'id="productGrid"', 'id="modalOverlay"'],
     'product.html': ['store.css', 'hud-theme.js', 'store.js', 'id="detailRoot"'],
     'checkout.html': ['store.css', 'hud-theme.js', 'store.js', 'id="checkoutRoot"'],
+    'contact.html': ['store.css', 'hud-theme.js', 'store.js', 'id="contactRoot"'],
   };
   for (const [page, needles] of Object.entries(pages)) {
     const src = fs.readFileSync(path.join(ROOT, page), 'utf8');

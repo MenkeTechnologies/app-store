@@ -127,6 +127,7 @@ HTML sanity check on every push and pull request.
 | `index.html`    | Storefront: hero, search, category filters, product grid      |
 | `product.html`  | Product detail page, reads `?id=<product>` from the URL        |
 | `checkout.html` | Shopify-style checkout: express wallets, card form, summary    |
+| `contact.html`  | Contact form: builds a `mailto:` and hands off to the mail client |
 | `docs/index.html`  | Developer documentation (HUD-themed)                       |
 | `docs/report.html` | Engineering report (live catalog stats + metrics)         |
 | `docs/zpwr-patch-core-block-catalog.pdf` | Full shared block catalog (every shared module across the four plugins, with an alphabetical index) — linked as the "Full Catalog" doc from all three audio-plugin product pages (`docs[]` in `store.js`) |
@@ -153,6 +154,16 @@ contact, credit-card / Shop Pay / PayPal payment methods, billing address, and
 a sticky order summary with discount codes). Add to cart → cart modal →
 **Checkout** navigates here. Discount codes live in the `DISCOUNTS` map in
 `store.js` (`LAUNCH20` = 20% off, `HUD10` = $10 off by default).
+
+## Contact
+
+`contact.html` is a name / email / subject / message form linked from the
+storefront breadcrumb. Since the site is static (no backend), submitting
+assembles a `mailto:` link and hands off to the visitor's mail client — the
+message body carries their name, reply-to, and text. The destination address
+lives in one place, `CONTACT_EMAIL` in `store.js`; a plain `mailto:` fallback
+is also rendered for visitors who prefer to email directly. `renderContactPage()`
+mounts into `#contactRoot`, mirroring the checkout render pattern.
 
 ### Payments
 

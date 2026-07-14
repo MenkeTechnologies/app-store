@@ -505,7 +505,8 @@
   margin-bottom: 0.3rem;
 }
 .field input,
-.field select {
+.field select,
+.field textarea {
   width: 100%;
   font-family: 'Share Tech Mono', monospace;
   font-size: 12px;
@@ -516,12 +517,41 @@
   padding: 0.5rem 0.65rem;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.5;
+}
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.field textarea:focus {
   outline: none;
   border-color: var(--cyan);
   box-shadow: 0 0 10px var(--cyan-dim);
 }
+/* Contact page */
+.contact-wrap { max-width: 40rem; margin: 0 auto; }
+.contact-intro { color: var(--text-dim); margin-bottom: 1.3rem; line-height: 1.6; }
+.contact-err {
+  color: var(--red, #ff5470);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  margin: 0.4rem 0 0.8rem;
+  min-height: 1em;
+}
+.contact-sent {
+  border: 1px solid var(--cyan);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--cyan-dim) 30%, transparent);
+  padding: 0.7rem 0.9rem;
+  margin-top: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+}
+.contact-sent::before { content: "// "; color: var(--accent); }
+.contact-direct { color: var(--text-dim); font-size: 12px; margin-top: 1.2rem; }
+.contact-direct a { color: var(--cyan); }
 .field-row { display: flex; gap: 0.6rem; }
 .field-row .field { flex: 1; }
 .checkout-ok {
