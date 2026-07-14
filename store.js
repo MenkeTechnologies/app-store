@@ -2113,9 +2113,11 @@
   var CART_KEY = 'appstore-cart';
 
   // Contact form target. The store is a static site with no backend, so the
-  // contact form assembles a mailto: link and hands off to the visitor's mail
-  // client (see renderContactPage). This address is intentionally public.
+  // contact form POSTs to the Web3Forms relay (see renderContactPage), which
+  // forwards the message to CONTACT_EMAIL. A mailto: link is offered as a
+  // fallback. Both the address and the Web3Forms access key are public.
   var CONTACT_EMAIL = 'linux.dev25@gmail.com';
+  var WEB3FORMS_KEY = '7937cf02-fe17-4a96-8869-98165c3a1f73';
 
   function byId(id) {
     for (var i = 0; i < PRODUCTS.length; i++) {
@@ -2510,16 +2512,17 @@
       '<div class="sum-line total"><span class="t-lbl">Total</span><span class="t-amt"><span class="cur">USD</span>' + fmtPrice(total) + '</span></div>';
   }
 
-  // Contact page: name / email / subject / message. On submit, build a mailto:
-  // to CONTACT_EMAIL and hand off to the visitor's mail client. No backend, no
-  // third party — the static site can't POST anywhere.
+  // Contact page: name / email / subject / message. On submit, POST to the
+  // Web3Forms relay via fetch (15s timeout so a slow/down relay surfaces an
+  // error instead of hanging) and show inline success/error. A mailto: link is
+  // offered as a fallback for visitors who prefer their own client.
   function renderContactPage() {
     var root = document.getElementById('contactRoot');
     if (!root) return;
 
     root.innerHTML = '' +
       '<div class="contact-wrap">' +
-        '<p class="contact-intro">Questions about a product, a license, a bug, or a custom build? Fill this out and it opens your mail client with the message ready to send.</p>' +
+        '<p class="contact-intro">Questions about a product, a license, a bug, or a custom build? Fill this out and it sends straight to my inbox.</p>' +
         '<form id="contactForm" novalidate>' +
           '<div class="field"><label for="cfName">Your name</label>' +
             '<input id="cfName" type="text" autocomplete="name" placeholder="Name"></div>' +
@@ -2529,6 +2532,8 @@
             '<input id="cfSubject" type="text" placeholder="What\'s this about?"></div>' +
           '<div class="field"><label for="cfMessage">Message</label>' +
             '<textarea id="cfMessage" placeholder="Type your message…"></textarea></div>' +
+          // honeypot — hidden from humans, tempts bots; Web3Forms drops it if filled
+          '<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">' +
           '<div class="contact-err" id="cfErr" role="alert" aria-live="polite"></div>' +
           '<button type="submit" class="btn btn-buy pay-now-btn">Send message</button>' +
         '</form>' +
@@ -2539,13 +2544,18 @@
 
     var form = root.querySelector('#contactForm');
     if (!form) return;
+    var btn = form.querySelector('button[type="submit"]');
+    var btnText = btn ? btn.textContent : 'Send message';
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = (root.querySelector('#cfName').value || '').trim();
       var email = (root.querySelector('#cfEmail').value || '').trim();
       var subject = (root.querySelector('#cfSubject').value || '').trim();
       var message = (root.querySelector('#cfMessage').value || '').trim();
+      var botcheck = form.querySelector('input[name="botcheck"]').checked;
       var errEl = root.querySelector('#cfErr');
+      var sent = root.querySelector('#cfSent');
 
       var missing = [];
       if (!name) missing.push('name');
@@ -2556,18 +2566,46 @@
         return;
       }
       errEl.textContent = '';
+      if (sent) sent.innerHTML = '';
 
-      var subj = subject || ('Contact from ' + name);
-      var body = 'From: ' + name + ' <' + email + '>\n\n' + message;
-      window.location.href = 'mailto:' + CONTACT_EMAIL +
-        '?subject=' + encodeURIComponent(subj) +
-        '&body=' + encodeURIComponent(body);
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
 
-      var sent = root.querySelector('#cfSent');
-      if (sent) {
-        sent.innerHTML = '<div class="contact-sent">Your mail client should be opening with the message ready. ' +
-          'If nothing happened, email <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a> directly.</div>';
-      }
+      // Hard timeout so a dead backend surfaces an error instead of hanging.
+      var controller = new AbortController();
+      var timer = setTimeout(function () { controller.abort(); }, 15000);
+
+      var payload = {
+        access_key: WEB3FORMS_KEY,
+        name: name,
+        email: email,
+        subject: subject || ('Contact from ' + name),
+        message: message,
+        botcheck: botcheck
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      }).then(function (res) {
+        if (!res.ok) { throw new Error('HTTP ' + res.status); }
+        return res.json();
+      }).then(function (data) {
+        if (!data || !data.success) { throw new Error('relay rejected'); }
+        form.reset();
+        if (sent) {
+          sent.innerHTML = '<div class="contact-sent">Message sent — thanks. I\'ll get back to you at ' +
+            email.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '.</div>';
+        }
+      }).catch(function () {
+        errEl.textContent = 'Could not send right now. Please try again, or email ' + CONTACT_EMAIL + ' directly.';
+      }).then(function () {
+        clearTimeout(timer);
+        btn.disabled = false;
+        btn.textContent = btnText;
+      });
     });
   }
 

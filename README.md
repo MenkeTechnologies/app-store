@@ -127,7 +127,7 @@ HTML sanity check on every push and pull request.
 | `index.html`    | Storefront: hero, search, category filters, product grid      |
 | `product.html`  | Product detail page, reads `?id=<product>` from the URL        |
 | `checkout.html` | Shopify-style checkout: express wallets, card form, summary    |
-| `contact.html`  | Contact form: builds a `mailto:` and hands off to the mail client |
+| `contact.html`  | Contact form: POSTs to the Web3Forms relay, emails `CONTACT_EMAIL` |
 | `docs/index.html`  | Developer documentation (HUD-themed)                       |
 | `docs/report.html` | Engineering report (live catalog stats + metrics)         |
 | `docs/zpwr-patch-core-block-catalog.pdf` | Full shared block catalog (every shared module across the four plugins, with an alphabetical index) — linked as the "Full Catalog" doc from all three audio-plugin product pages (`docs[]` in `store.js`) |
@@ -158,12 +158,15 @@ a sticky order summary with discount codes). Add to cart → cart modal →
 ## Contact
 
 `contact.html` is a name / email / subject / message form linked from the
-storefront breadcrumb. Since the site is static (no backend), submitting
-assembles a `mailto:` link and hands off to the visitor's mail client — the
-message body carries their name, reply-to, and text. The destination address
-lives in one place, `CONTACT_EMAIL` in `store.js`; a plain `mailto:` fallback
-is also rendered for visitors who prefer to email directly. `renderContactPage()`
-mounts into `#contactRoot`, mirroring the checkout render pattern.
+storefront breadcrumb. Since the site is static (no backend), submitting POSTs
+to the [Web3Forms](https://web3forms.com) relay via `fetch`, which forwards the
+message to `CONTACT_EMAIL`. The request has a 15s timeout and shows inline
+success / error so it can never hang on a slow or down relay; a hidden
+`botcheck` honeypot filters bots. The destination address (`CONTACT_EMAIL`) and
+the public Web3Forms access key (`WEB3FORMS_KEY`) both live in `store.js`; a
+plain `mailto:` fallback is also rendered for visitors who prefer to email
+directly. `renderContactPage()` mounts into `#contactRoot`, mirroring the
+checkout render pattern.
 
 ### Payments
 
