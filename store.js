@@ -958,7 +958,9 @@
         "Free / OSS — MIT licensed"
       ],
       "screenshots": [
-        { "src": "assets/zwire/tmux.webp", "cap": "ztmux — the tmux-style tiling overlay running in the forked Chromium HUD: recursive pane splits, each pane a live webview, driven by a rebindable prefix and the powerline status bar" }
+        { "src": "assets/zwire/tmux.webp", "cap": "ztmux — the tmux-style tiling overlay running in the forked Chromium HUD: recursive pane splits, each pane a live webview, driven by a rebindable prefix and the powerline status bar" },
+        { "src": "assets/zwire/audio.webp", "cap": "The Audio HUD page — a browser-wide C++ audio engine applied live to every tab: the full signal chain, an always-on preamp + compressor, an 8-band draggable parametric EQ, and a metering column (peak/LUFS, stereo goniometer, phase correlation, VU)" },
+        { "src": "assets/zwire/audio2.webp", "cap": "The Audio HUD engine strip — gain/pan/mono/drive, space & glue (width/delay/reverb/limiter), and the two FX racks (gate·crush·exciter·Haas·cross-feed·chorus·flanger·phaser, then waveshaper·ring-mod·tremolo·auto-pan·auto-wah), over a live spectrum analyzer and scrolling spectrogram" }
       ]
     },
     "zwire-host": {
