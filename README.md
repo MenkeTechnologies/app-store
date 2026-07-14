@@ -162,11 +162,10 @@ storefront breadcrumb. Since the site is static (no backend), submitting POSTs
 to the [Web3Forms](https://web3forms.com) relay via `fetch`, which forwards the
 message to `CONTACT_EMAIL`. The request has a 15s timeout and shows inline
 success / error so it can never hang on a slow or down relay; a hidden
-`botcheck` honeypot filters bots. The destination address (`CONTACT_EMAIL`) and
-the public Web3Forms access key (`WEB3FORMS_KEY`) both live in `store.js`; a
-plain `mailto:` fallback is also rendered for visitors who prefer to email
-directly. `renderContactPage()` mounts into `#contactRoot`, mirroring the
-checkout render pattern.
+`botcheck` honeypot filters bots. The relay routes to the inbox registered to
+the public Web3Forms access key (`WEB3FORMS_KEY` in `store.js`), so the raw
+address is never exposed on the page. `renderContactPage()` mounts into
+`#contactRoot`, mirroring the checkout render pattern.
 
 ### Payments
 

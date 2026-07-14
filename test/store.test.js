@@ -264,7 +264,7 @@ function runWithCart(targetId, cart) {
   return { html, stats };
 }
 
-test('contact page renders the form fields and a mailto fallback to the real address', () => {
+test('contact page renders the form fields and sends via Web3Forms', () => {
   const { html } = run('contactRoot', '');
   for (const id of ['cfName', 'cfEmail', 'cfSubject', 'cfMessage']) {
     assert.ok(html.includes('id="' + id + '"'), `contact form has field ${id}`);
@@ -272,11 +272,13 @@ test('contact page renders the form fields and a mailto fallback to the real add
   assert.match(html, /id="contactForm"/, 'renders the contact form');
   assert.match(html, /<textarea id="cfMessage"/, 'message is a textarea');
   assert.match(html, /Send message/, 'has a submit button');
-  // The mailto handler builds the link at submit time, but a plain mailto
-  // fallback (and the destination address) must be present in the source.
-  assert.match(html, /href="mailto:linux\.dev25@gmail\.com"/, 'fallback mailto link present');
-  assert.match(CODE, /var CONTACT_EMAIL = 'linux\.dev25@gmail\.com'/, 'contact address defined');
-  assert.match(CODE, /window\.location\.href = 'mailto:' \+ CONTACT_EMAIL/, 'submit builds a mailto');
+  assert.match(html, /name="botcheck"/, 'honeypot field present');
+  // The raw address must not be exposed on the page — the relay routes it.
+  assert.ok(!html.includes('mailto:'), 'no mailto link / raw address on the page');
+  assert.match(CODE, /var WEB3FORMS_KEY = '[0-9a-f-]{36}'/, 'Web3Forms access key defined');
+  // Submit POSTs to the Web3Forms relay with a hard timeout so it can't hang.
+  assert.match(CODE, /fetch\('https:\/\/api\.web3forms\.com\/submit'/, 'submit POSTs to Web3Forms');
+  assert.match(CODE, /new AbortController\(\)/, 'submit has an abort timeout');
   assert.ok(!html.includes('[object'), 'no object leaks');
 });
 

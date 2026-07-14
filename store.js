@@ -2114,9 +2114,7 @@
 
   // Contact form target. The store is a static site with no backend, so the
   // contact form POSTs to the Web3Forms relay (see renderContactPage), which
-  // forwards the message to CONTACT_EMAIL. A mailto: link is offered as a
-  // fallback. Both the address and the Web3Forms access key are public.
-  var CONTACT_EMAIL = 'linux.dev25@gmail.com';
+  // forwards the message to the inbox registered to this public access key.
   var WEB3FORMS_KEY = '7937cf02-fe17-4a96-8869-98165c3a1f73';
 
   function byId(id) {
@@ -2514,8 +2512,7 @@
 
   // Contact page: name / email / subject / message. On submit, POST to the
   // Web3Forms relay via fetch (15s timeout so a slow/down relay surfaces an
-  // error instead of hanging) and show inline success/error. A mailto: link is
-  // offered as a fallback for visitors who prefer their own client.
+  // error instead of hanging) and show inline success/error.
   function renderContactPage() {
     var root = document.getElementById('contactRoot');
     if (!root) return;
@@ -2538,8 +2535,6 @@
           '<button type="submit" class="btn btn-buy pay-now-btn">Send message</button>' +
         '</form>' +
         '<div id="cfSent"></div>' +
-        '<p class="contact-direct">Prefer your own client? Email ' +
-          '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a> directly.</p>' +
       '</div>';
 
     var form = root.querySelector('#contactForm');
@@ -2600,7 +2595,7 @@
             email.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '.</div>';
         }
       }).catch(function () {
-        errEl.textContent = 'Could not send right now. Please try again, or email ' + CONTACT_EMAIL + ' directly.';
+        errEl.textContent = 'Could not send right now. Please try again shortly.';
       }).then(function () {
         clearTimeout(timer);
         btn.disabled = false;
