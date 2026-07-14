@@ -846,6 +846,9 @@
         "Page management — insert / delete / extract / merge / split / rotate / crop",
         "Convert & export — Office formats, images, text, PDF/A",
         "Embeddable zpdf-core engine (rlib + staticlib + cdylib) — embeds into traderview and the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zpdf.webp", "cap": "Two-page spread view — page thumbnails, the PAGE / TEXT / FIELDS / METADATA / BOOKMARKS / TIMELINE / INSIGHTS / COMPARE tabs, and open/merge/extract/export actions in the cyberpunk HUD" }
       ]
     },
     "zphoto": {
