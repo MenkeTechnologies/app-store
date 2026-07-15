@@ -903,6 +903,9 @@
         "Cyberpunk HUD interface",
         "Embeddable zoffice-core engine (rlib + staticlib + cdylib)",
         "Owned, no-subscription office suite"
+      ],
+      "screenshots": [
+        { "src": "assets/zoffice.webp", "cap": "Office suite — Writer / Calc / Impress editing over the ODF/OOXML zoffice-core engine in the cyberpunk HUD" }
       ]
     },
     "zshrs": {
@@ -1090,6 +1093,9 @@
         "Identifier lookup — DOI (CrossRef), ISBN (Open Library), and PMID",
         "Duplicate detection across the library",
         "Embeddable zcite-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zcite.webp", "cap": "Reference library — collections, tags, and per-item metadata with citation/bibliography styles in the cyberpunk HUD" }
       ]
     },
     "zreq": {
@@ -1102,6 +1108,9 @@
         "Code generation from a request",
         "Import / export of collections and environments",
         "Embeddable zreq-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zreq.webp", "cap": "API client — collection sidebar, request builder, and response viewer with environments and history in the cyberpunk HUD" }
       ]
     },
     "ztunnel": {
@@ -1114,6 +1123,9 @@
         "Connect / disconnect with live status",
         "Cross-platform — macOS, Linux, and Windows",
         "Embeddable ztunnel-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/ztunnel.webp", "cap": "VPN manager — OpenVPN/WireGuard tunnel list with live connection status, logs, and stats in the cyberpunk HUD" }
       ]
     },
     "zthrottle": {
@@ -1129,6 +1141,9 @@
         "\"What can I free?\" — junk detection with a user-editable pattern list, per-owner filter, and multi-select bulk delete (.git internals never flagged)",
         "Cross-platform — macOS, Linux, and Windows",
         "Embeddable zthrottle-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zthrottle.webp", "cap": "Stress-bench + system monitor — multi-axis benchmarks, the contention profiler, and live process/network/storage panels in the cyberpunk HUD" }
       ]
     },
     "zgo": {
@@ -1141,6 +1156,9 @@
         "Clipboard history",
         "Snippets with auto-expansion",
         "Embeddable zgo-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zgo.webp", "cap": "Launcher — fuzzy launch bar, workflows, clipboard history, and snippets in the cyberpunk HUD" }
       ]
     },
     "zftp": {
@@ -1154,6 +1172,9 @@
         "Per-session logs and throughput stats",
         "Stored credentials",
         "Embeddable zftp-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zftp.webp", "cap": "File-transfer client — bookmarks, remote browser, and the download/upload/sync transfer queue across FTP/SFTP/WebDAV/cloud stores in the cyberpunk HUD" }
       ]
     },
     "zcontainer": {
