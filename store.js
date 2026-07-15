@@ -1328,6 +1328,9 @@
         "libevent event loop and the tmux client/server socket protocol",
         "Anti-drift gate: build fails on any Rust function with no tmux C counterpart",
         "MIT-licensed, self-contained (vendors tmux C + tmux-rs as references)"
+      ],
+      "screenshots": [
+        { "src": "assets/ztmux.webp", "cap": "ztmux — the from-source Rust tmux: recursive pane splits, windows, and the status bar, byte-for-byte parity with system tmux" }
       ]
     },
     "storageshower": {
