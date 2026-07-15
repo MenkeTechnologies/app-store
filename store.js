@@ -860,6 +860,9 @@
         "Open / edit / export common image formats",
         "Cyberpunk HUD interface from the shared zgui-core chrome",
         "Embeddable zphoto-core engine (rlib + staticlib + cdylib) — embeds into the other GUI apps"
+      ],
+      "screenshots": [
+        { "src": "assets/zphoto.webp", "cap": "Raster editing workspace — layers panel, tool palette, brushes and selections, and non-destructive adjustments in the cyberpunk HUD" }
       ]
     },
     "zemail": {
@@ -871,6 +874,9 @@
         "Cyberpunk HUD interface",
         "Embeddable zemail-core engine (rlib + staticlib + cdylib)",
         "Owned, no-subscription desktop mail"
+      ],
+      "screenshots": [
+        { "src": "assets/zemail.webp", "cap": "Mail client — folder sidebar, message list, and reading pane over the IMAP/SMTP zemail-core engine in the cyberpunk HUD" }
       ]
     },
     "zstation": {
@@ -883,6 +889,9 @@
         "On-disk tile-board persistence",
         "Cyberpunk HUD interface",
         "Embeddable zstation-core engine (rlib + staticlib + cdylib)"
+      ],
+      "screenshots": [
+        { "src": "assets/zstation.webp", "cap": "One board of session-isolated web apps — Trello-like draggable, resizable tiles, each its own native webview, in the cyberpunk HUD" }
       ]
     },
     "zoffice": {
