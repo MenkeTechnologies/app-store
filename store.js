@@ -1359,6 +1359,9 @@
         "Wappalyzer-compatible detection, 3,993-fingerprint corpus",
         "Full-page screenshot capture with OffscreenCanvas stitching",
         "54 commands; 3012 node:test + 127 cargo test cases"
+      ],
+      "screenshots": [
+        { "src": "assets/zpwrchrome.webp", "cap": "zpwrchrome — the MV3 toolbar popup: pass integration, download manager, tab switcher, history search, and userscript engine in one icon" }
       ]
     },
     "zpwr-daw": {
