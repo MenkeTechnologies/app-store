@@ -958,6 +958,9 @@
         "Modal editing, tree-sitter syntax, and LSP inherited from the zemacs core",
         "Cross-platform",
         "Free / OSS — MPL-2.0 licensed"
+      ],
+      "screenshots": [
+        { "src": "assets/zemacs-gui.webp", "cap": "zemacs-gui — the windowed front-end over the zemacs modal IDE core: native tabs, menu bar, GUI font rendering, and split editors" }
       ]
     },
     "zwire": {
