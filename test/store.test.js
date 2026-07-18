@@ -106,10 +106,15 @@ test('free products download from GitHub; paid products add to cart', () => {
     if (free) {
       const m = card.match(/data-download="([^"]+)"/);
       assert.ok(m, 'free card has a download button');
+      // A free product downloads from one of two well-formed sources: a GitHub
+      // release/tags URL (the CLI tools and native hosts, whose binaries ship as
+      // release assets), or a local docs/<name>.pdf served by the store site
+      // itself (the free reference manuals and block catalogs, which are typeset
+      // PDFs shipped in app-store/docs/, not GitHub release assets).
       assert.match(
         m[1],
-        /^https:\/\/github\.com\/MenkeTechnologies\/[^"]+\/(releases\/latest|tags)$/,
-        `download URL well-formed: ${m && m[1]}`,
+        /^(https:\/\/github\.com\/MenkeTechnologies\/[^"]+\/(releases\/latest|tags)|docs\/[^"]+\.pdf)$/,
+        `download well-formed (GitHub release URL or local docs PDF): ${m && m[1]}`,
       );
     } else {
       assert.match(card, /data-add="/, 'paid card has add-to-cart');
