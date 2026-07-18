@@ -375,6 +375,36 @@
       repo: 'https://github.com/MenkeTechnologies/elisprs',
     },
     {
+      id: 'rubyrs',
+      name: 'rubyrs',
+      glyph: 'RB',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'Ruby in Rust — a compiled Ruby runtime. Ruby source is lexed and parsed to an AST, lowered to fusevm bytecode, and run on the same bytecode VM + three-tier Cranelift JIT behind zshrs, stryke, awkrs, and elisprs; arithmetic lowers to native VM ops while dispatch, blocks, and objects are served by a thread-local runtime host. Free and open source.',
+      pills: ['Rust', 'Ruby', 'fusevm JIT', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/rubyrs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/rubyrs',
+    },
+    {
+      id: 'arb',
+      name: 'arb',
+      glyph: 'ar',
+      category: 'Developer Tools',
+      badge: 'WORLD FIRST',
+      tagline: 'A TUI for every pipeline. Pipe any Unix stream into arb and it spawns a dynamic full-screen TUI (and, later, a web page) built from a declarative, Tcl/Tk-flavored spec — a jq/xpath/css/yq superset, an interactive megafilter/map over the live passthrough, running on the fusevm bytecode VM + Cranelift JIT. Free and open source.',
+      pills: ['Rust', 'pipeline TUI', 'fusevm JIT', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/arb/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/arb',
+    },
+    {
       id: 'zmax',
       name: 'zmax',
       glyph: 'EM',
@@ -1242,6 +1272,30 @@
         "Vim-native value types ported: list, dict (insertion-ordered), blob, typval",
         "rkyv-backed bytecode script cache, mmap hot path — versioned from day one",
         "Standalone binary, LSP language server, DAP debugger, and AOT native compiler",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "rubyrs": {
+      "overview": "Ruby in Rust — a compiled Ruby runtime. MRI runs Ruby by walking an AST in C; rubyrs lexes and parses Ruby to an AST, lowers it to fusevm bytecode, and runs it on a compiled VM with a three-tier Cranelift JIT — the same engine behind zshrs, stryke, awkrs, and elisprs. Arithmetic and comparison operators lower to native VM ops so the JIT can trace hot loops, while Ruby-specific behaviour (method dispatch, blocks, object construction, yield) is served by a thread-local runtime host. rubyrs carries no VM or JIT of its own. Free and open source.",
+      "features": [
+        "Compiled Ruby runtime — Ruby source → lexer → parser (AST) → fusevm bytecode → VM + Cranelift JIT",
+        "Arithmetic and comparison lower to native VM ops so the JIT traces hot loops",
+        "RubyHost heap serves method dispatch, blocks, object construction, and yield",
+        "Classes, exceptions, modules/include, super, class methods, parallel assignment, default + splat params, &:sym block-pass",
+        "Runs a file, a one-liner (ruby -e), or an interactive REPL (ruby --repl)",
+        "Differential parity harness: snippets run against real Ruby 4.0.6",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb": {
+      "overview": "Visualize and modify Unix pipelines. Pipe a stream into arb and it spawns a dynamic full-screen TUI (and, later, a web page) built from a declarative, Tcl/Tk-flavored spec. It is a jq / xpath / css / yq superset, an interactive megafilter/map over the live passthrough, and it runs on the fusevm bytecode VM + Cranelift JIT. Milestone 0 ships zero-config live-tail — pipe any stream in and watch it in a full-screen TUI; with no controlling terminal it prints a headless summary instead. Free and open source.",
+      "features": [
+        "A TUI for every pipeline — pipe any Unix stream in, get a dynamic full-screen TUI",
+        "Declarative, Tcl/Tk-flavored spec drives widgets, layout, and sources",
+        "A jq / xpath / css / yq query superset over the live stream",
+        "Interactive megafilter/map that shapes the passthrough in place",
+        "Runs on the fusevm bytecode VM + Cranelift JIT",
+        "Zero-config live-tail (Milestone 0); headless summary when there is no TTY",
         "Free / OSS — MIT licensed"
       ]
     },
