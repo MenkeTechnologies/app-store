@@ -588,6 +588,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'studio-book', name: 'The Studio', glyph: 'St', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The cross-cutting book on the MenkeTechnologies audio stack — zpwr-synth, zpwr-fx, zpwr-midi-fx, and zpwr-daw, plus Audio-Haxor and zwire\'s ported browser audio path — and the two shared cores they stand on: zdsp-core (the shared DSP substrate) and zpwr-patch-core (the signal-agnostic patch graph, one templated engine instantiated for mono, stereo, and MIDI). Covers the mono-to-stereo block reuse, the mono and stereo plugin-host adapters, the voice/layer/MIDI engines, and the shared clip engine. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'Audio / DSP', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'cli-fleet-book', name: 'The CLI Fleet', glyph: 'cF', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The CLI-side companion to "Rewriting the Desktop in Rust" — one compendium mapping every command-line tool in the MenkeTechnologies stack. Full chapters for the tools with no book of their own: lsofrs (lsof), nmaprs (nmap), iftoprs (iftop), htoprs (htop), temprs (a shell temporary-file stack manager), storageshower (disk-usage TUI), zcolorizer (real-time log colouriser), grcrs (grc), and the two browser-adjacent native-messaging host binaries zpwrchrome-host and zwire-host — plus an opening shared-architecture chapter and a cross-reference index to the seven already documented (zshrs, strykelang, awkrs, vimlrs, elisprs, powerliners, ztmux). Every tool is MIT and original Rust; port-honest throughout — each reimplementation names its upstream and the original work is the Rust engineering. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'CLI fleet', 'DRM-free PDF'], price: 20,
@@ -941,6 +947,10 @@
     "desktop-in-rust-book": {
       "overview": "Rewriting the Desktop in Rust — the cross-cutting book on the MenkeTechnologies desktop-app fleet and the architecture that ties it together. Ten from-scratch Rust ports — zreq (Postman), zcite (Zotero), ztunnel (Tunnelblick), zgo (Alfred), zftp (Cyberduck), zcontainer (Docker Desktop / Lens), zoffice, zemail, zpdf (Acrobat / Preview), and zphoto (GIMP / Photoshop) — each a thin Tauri v2 shell over a pure-Rust *-core engine that exposes a native Rust API and a C ABI, so the same engine embeds inside every other app, all behind the shared zgui-core toolkit.",
       "features": ["The 'engine core, thin shell' thesis: WebView shell, Tauri command bridge, GUI-free *-core engine", "The *-core pattern and its C ABI embedding contract — ten engines, one shape", "One app per chapter: zreq, zcite, ztunnel, zgo, zftp, zcontainer, zoffice, zemail, zpdf, zphoto", "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes, against an all-Electron field", "The embed matrix — how one engine bump reaches every shell that vendors it", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "studio-book": {
+      "overview": "The Studio — the cross-cutting book on the MenkeTechnologies audio stack and the two shared C++ cores it stands on. zdsp-core is the shared DSP substrate (the channel strip, the overlap-add time stretcher, the spectrogram analyzer, the lock-free streaming file source, and the playback orchestrator that composes them) and zpwr-patch-core is the signal-agnostic modular patch graph — one templated engine, PatchEngineT<S>, instantiated three ways: float for the mono audio graph, a stereo sample carrying L and R on one cable, and a note-event stream for MIDI. On those two cores sit the four plugins (zpwr-synth, zpwr-fx, zpwr-midi-fx, zpwr-daw), the desktop app Audio-Haxor, and zwire, whose browser-wide equalizer source-ports the same zdsp-core chain into Chromium's audio service so one EQ shapes every sound the browser makes. The book is the continuous account of how one DSP implementation and one graph engine serve a whole product family without any of them re-deriving the work.",
+      "features": ["The two shared cores: zdsp-core (the DSP substrate) and zpwr-patch-core (the signal-agnostic patch graph)", "One templated engine, three instantiations: mono float, stereo L/R on one cable, and the note-event MIDI stream", "Mono-to-stereo reuse: the ~3,500 mono blocks wrapped once per channel instead of hand-written stereo copies", "The plugin-host adapter, mono vs stereo: the dual-mono insert vs the native stereo block that doubles as an instrument", "The voice, layer, MIDI, and WebEditor engines that all ride the one graph", "The shared clip engine: a pure-C++ C-ABI core linked native by the DAW and loaded over Rust FFI by the Tauri apps", "The three manifestations of one DSP core: native JUCE, ported into Chromium's audio service, and a JS mirror", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "cli-fleet-book": {
       "overview": "The CLI Fleet — the cross-cutting compendium of every command-line tool in the MenkeTechnologies stack, and the CLI-side twin of 'Rewriting the Desktop in Rust'. Part I is an index: the seven tools that already carry their own book (zshrs, strykelang, awkrs, vimlrs, elisprs, powerliners, ztmux) are situated in the fleet and pointed at their volumes, not re-documented. Part II gives a full, source-grounded chapter to each tool that had none — the Unix reimplementations lsofrs (lsof), nmaprs (nmap), iftoprs (iftop) and htoprs (htop), the shell temporary-file stack manager temprs, the disk-usage TUI storageshower, the two colourisers zcolorizer (its own theme grammar) and grcrs (a port of grc), and the two browser-adjacent native-messaging host binaries zpwrchrome-host (a Rust port of browserpass-native plus extension actions) and zwire-host (the universal local host). An opening chapter, 'The shape of the fleet', frames the shared architecture — the ratatui TUI stack, the CLI/capture layers, the uniform MIT licensing, and the port method.",
@@ -2283,6 +2293,82 @@
         "Includes a Solaris nroff shim",
         "Installs via zinit, oh-my-zsh, or manual sourcing"
       ]
+    },
+    "awkrs-reference": {
+      "overview": "The complete awkrs reference — the AWK language surface, builtins, and command-line interface of awkrs, the parallel Rust AWK, generated from the live implementation so every function and flag matches the shipping binary.",
+      "features": ["Every AWK builtin and language construct, generated from the live awkrs source", "The command-line surface: options, field and record separators, program invocation", "Parallel-execution notes specific to the Rust implementation", "The dense companion to The awkrs Book", "Free, DRM-free PDF"]
+    },
+    "elisprs-reference": {
+      "overview": "The complete elisprs reference — the Emacs Lisp subroutines and special forms implemented as a fusevm frontend, generated from the live implementation.",
+      "features": ["Every implemented Emacs Lisp subroutine and special form", "The fusevm-frontend model: Emacs Lisp lowered to the shared bytecode VM", "Generated from the live elisprs source", "The dense companion to The elisprs Book", "Free, DRM-free PDF"]
+    },
+    "gui-automation-bus-book": {
+      "overview": "The companion book to the GUI automation bus — the cross-app event-routing layer that wires the MenkeTechnologies desktop suite together, letting one app drive another over a shared message bus.",
+      "features": ["The cross-app event-routing architecture", "The message model: how apps subscribe and publish", "Per-app endpoints across the desktop suite", "Worked automation flows spanning multiple apps", "Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "gui-automation-bus-reference": {
+      "overview": "The dense reference for the GUI automation bus — its message types, routing model, and per-app endpoints, for scripting the desktop suite.",
+      "features": ["Every message type on the bus", "The routing model: addressing, fan-out, and delivery", "The per-app endpoint catalog", "The companion reference to The GUI Automation Bus", "Free, DRM-free PDF"]
+    },
+    "strykelang-reference": {
+      "overview": "The complete strykelang language reference — every builtin, operator, sigil, and pipeline form of the parallel Perl 5 superset, generated from the live implementation. The dense companion to The strykelang Book.",
+      "features": ["Every strykelang builtin, generated from the live implementation", "Operators, sigils, and the pipe-forward pipeline forms", "The parallel-execution and Cranelift-JIT model", "The dense companion to The strykelang Book", "Free, DRM-free PDF"]
+    },
+    "vimlrs-reference": {
+      "overview": "The complete vimlrs reference — the VimL builtin functions, commands, and options implemented as a fusevm frontend, generated from the live implementation.",
+      "features": ["Every implemented VimL builtin function", "Ex commands and options coverage", "The fusevm-frontend model: VimL lowered to the shared bytecode VM", "The dense companion to The vimlrs Book", "Free, DRM-free PDF"]
+    },
+    "zgui-core-component-catalog": {
+      "overview": "The zgui-core component catalog — every UI component in the shared GUI toolkit behind the MenkeTechnologies desktop apps, the one library each app builds its interface from.",
+      "features": ["Every component in the shared zgui-core toolkit", "The window, panel, knob, file-browser, and HUD chrome shared across apps", "How one component implementation serves the whole desktop fleet", "The UI-side analog of zdsp-core and zpwr-patch-core", "Free, DRM-free PDF"]
+    },
+    "zmax-reference": {
+      "overview": "The complete zmax reference — every command, keymap, and embedded-language entry point of the modal IDE. The dense companion to The zmax Book.",
+      "features": ["Every zmax command and default keymap", "The embedded-language entry points", "The modal editing model", "The dense companion to The zmax Book", "Free, DRM-free PDF"]
+    },
+    "znative-book": {
+      "overview": "The companion book to znative — the zshrs package manager, and the first shell package manager whose unit of installation can be native compiled code rather than shell text. It walks the published, versioned ABI that makes a native plugin safe to install, the eight-command surface, source auto-classification with @ref pinning, the content-addressed store, and the worked plugin ports.",
+      "features": ["The published, versioned plugin ABI (the znative crate on crates.io; the repr(C) boundary and ABI_VERSION checked at load)", "The eight-command surface: load / add / remove / list / info / update, plus gc / clean", "Source auto-classification (owner/repo, github:, git+URL, path:) with @ref pinning and shallow clone", "The content-addressed store at $ZSHRS_HOME/pkg/ with its installed.toml index and sha256 integrity", "The worked plugin ports: forgit, git-fuzzy, revolver, kubectl, zsh-z", "Global-only, no lockfile, by design. Pandoc + LaTeX typeset, DRM-free PDF"]
+    },
+    "zpwr-clip-engine-reference": {
+      "overview": "The zpwr-daw clip-engine reference — the timeline, clip, and playback model behind the DAW's arrangement and session views.",
+      "features": ["The pattern, clip, and event model", "The step, transport, and scheduling core", "MIDI export and project serialization", "The pure-C++ C-ABI engine shared by the DAW and the Tauri apps", "Free, DRM-free PDF"]
+    },
+    "zpwr-daw-reference": {
+      "overview": "The zpwr-daw manual — a shared-engine architecture overview plus a per-module node and parameter reference for the note-stream blocks every track wires, generated from the live registry.",
+      "features": ["Shared-engine architecture overview", "Per-module node and parameter reference, generated from the live registry", "The note-stream blocks every track wires", "The stereo-graph track model", "Free, DRM-free PDF"]
+    },
+    "zpwr-fx-block-catalog": {
+      "overview": "Every DSP block zpwr-fx ships — the full audio patch-graph pack, including 194 analog-circuit models, each with its parameters.",
+      "features": ["Every audio DSP block in the zpwr-fx pack", "194 analog-circuit models", "Per-block parameter reference", "Built on the shared zpwr-patch-core graph and zdsp-core substrate", "Free, DRM-free PDF"]
+    },
+    "zpwr-fx-reference": {
+      "overview": "The zpwr-fx manual — a shared-engine architecture overview plus a per-module node and parameter reference, generated from the live registry.",
+      "features": ["Shared-engine architecture overview", "Per-module node and parameter reference, generated from the live registry", "The single-graph, stereo-locked effects model", "Built on zpwr-patch-core and zdsp-core", "Free, DRM-free PDF"]
+    },
+    "zpwr-midi-fx-block-catalog": {
+      "overview": "Every block zpwr-midi-fx ships — its note-stream module pack: arpeggiators, chord generators, scale quantizers, Euclidean and generative sequencers, humanize, and remap.",
+      "features": ["Every note-stream block in the zpwr-midi-fx pack", "Arp, chord, scale, Euclidean and generative sequencing, humanize, remap", "Per-block parameter reference", "Runs on the note-stream instantiation of the shared graph", "Free, DRM-free PDF"]
+    },
+    "zpwr-midi-fx-reference": {
+      "overview": "The zpwr-midi-fx manual — a shared-engine architecture overview plus a per-module node and parameter reference, generated from the live registry.",
+      "features": ["Shared-engine architecture overview", "Per-module node and parameter reference, generated from the live registry", "The note-event stream signal model", "Built on zpwr-patch-core", "Free, DRM-free PDF"]
+    },
+    "zpwr-patch-core-block-catalog": {
+      "overview": "The complete shared patch-graph reference — every block across all four plugins (zpwr-synth, zpwr-fx, zpwr-midi-fx, zpwr-daw), with an alphabetical index.",
+      "features": ["Every block across all four plugins in one volume", "An alphabetical cross-plugin index", "The shared zpwr-patch-core graph model", "Per-block parameters and categories", "Free, DRM-free PDF"]
+    },
+    "zpwr-synth-block-catalog": {
+      "overview": "Every DSP block zpwr-synth ships — its 49 synth-voice modules plus the shared audio pack on the master and aux FX bus.",
+      "features": ["49 synth-voice modules", "The shared audio pack on the master and aux FX bus", "Per-block parameter reference", "Runs across the polyphonic voice pool (PolyEngine)", "Free, DRM-free PDF"]
+    },
+    "zpwr-synth-reference": {
+      "overview": "The zpwr-synth manual — a per-module node and parameter reference for the modular voice engine, generated from the live registry.",
+      "features": ["Per-module node and parameter reference, generated from the live registry", "The modular voice-engine model (PolyEngine)", "Oscillators, filters, envelopes, LFOs, and effects", "Built on zpwr-patch-core and zdsp-core", "Free, DRM-free PDF"]
+    },
+    "zshrs-reference": {
+      "overview": "The complete zshrs reference — every builtin, option, parameter flag, and completion primitive of the first compiled Unix shell. The dense companion to The zshrs Book.",
+      "features": ["Every zshrs builtin and option", "Parameter flags and completion primitives", "Generated from the live zshrs source", "The dense companion to The zshrs Book", "Free, DRM-free PDF"]
     }
   };
 
