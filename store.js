@@ -624,6 +624,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'znative-book', name: 'The znative Book', glyph: 'nB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to znative — the zshrs package manager, and the first shell package manager whose unit of installation can be native compiled code rather than shell text. The published, versioned ABI that makes a native plugin safe to install (the zshrs-plugin crate on crates.io + zmodload -R, #[repr(C)] boundary, ABI_VERSION checked at load); the six-verb command surface (load / add / remove / list / info / update); source auto-classification (owner/repo · github: · git+URL · path:) with @ref pinning and shallow clone; the content-addressed store at $ZSHRS_HOME/pkg/ with its installed.toml index and sha256 integrity; native-vs-script kind detection, the optional znative.toml manifest, the worked plugin ports (forgit, git-fuzzy, revolver, kubectl, zsh-z), and the one self-installing .zshrc line the whole workflow collapses to. Global-only, no lockfile — by design. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'znative', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'strykelang-reference', name: 'The strykelang Reference', glyph: 'sR', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete strykelang language reference — every builtin, operator, sigil, and pipeline form of the parallel Perl 5 superset, generated from the live implementation. The dense companion to The strykelang Book. Free, DRM-free PDF.',
       pills: ['Reference', 'strykelang', 'Free · DRM-free PDF'], price: 0,
