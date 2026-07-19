@@ -486,7 +486,7 @@
       id: 'zmax-gui',
       name: 'zmax-gui',
       glyph: 'EG',
-      category: 'Developer Tools',
+      category: 'Desktop Apps',
       badge: 'NEW',
       tagline: 'A native desktop GUI for the zmax IDE — wraps the zmax modal-editing core in a windowed front-end with GUI tabs, menus, font rendering, mouse support, and native open/save dialogs, the way MacVim wraps Vim. Free and open source.',
       pills: ['Rust', 'GUI editor', 'Emacs / Spacemacs', 'Free / OSS'],
