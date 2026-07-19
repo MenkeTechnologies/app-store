@@ -897,10 +897,160 @@
   [["fusevm","VM","Developer Tools","Language-agnostic bytecode VM with fused superinstructions and a three-tier Cranelift JIT — the engine behind stryke, zshrs, awkrs, and vimlrs.",["Rust","VM","JIT","Free / OSS"],false],["api-rest-generator","API","Developer Tools","Parses SQL DDL dumps and generates a fully-wired REST backend — Spring Boot (Java/Kotlin/Groovy) or Loco (Rust/Axum/SeaORM).",["codegen","JVM/Rust","Free / OSS"],false],["LearningCollectionAPI","LC","Developer Tools","A Spring Boot + Kotlin REST API for managing a personal collection of learning notes, backed by MySQL.",["Kotlin","Spring Boot","Free / OSS"],false],["stryke-demo","SD","Developer Tools","Live demo scripts for every stryke-* package — one .stk per package, one install pulls them all.",["stryke","demos","Free / OSS"],false],["VimColorSchemes","VC","Developer Tools","The largest curated Vim colorscheme bundle — 732 working :colorscheme targets in one plugin.",["Vim","732 themes","Free / OSS"],false],["zpwr","zp","Zsh Plugins","The world’s most advanced UNIX terminal environment — 500+ subcommands, 2000+ aliases, 47k completions, vim + tmux integration.",["zsh","terminal env","Free / OSS"],true],["zsh-more-completions","mc","Zsh Plugins","The largest curated zsh completion corpus in existence — 47k+ command completions wired into compsys.",["zsh","completions","Free / OSS"],false],["zsh-expand","ze","Zsh Plugins","The most powerful zsh expansion plugin — spacebar-expands aliases, globs, history, params, and typo fixes in pure zsh.",["zsh","expansion","Free / OSS"],true],["zsh-learn","zl","Zsh Plugins","Turn your terminal into a MySQL-backed knowledge base — save, search, and quiz yourself on snippets and notes.",["zsh","MySQL","Free / OSS"],false],["zsh-git-acp","ga","Zsh Plugins","Stage, commit, and push in one keybinding — ZLE widgets that use the command line as your commit message, plus 159 git aliases.",["zsh","git","Free / OSS"],false],["zsh-git-repo-cache","rc","Zsh Plugins","Finds and caches every git repo on your machine for instant prompts and fzf-powered cd.",["zsh","git","fzf","Free / OSS"],false],["zsh-zinit-final","zf","Zsh Plugins","An intentionally-empty plugin that loads last under zinit — a deterministic carrier for trailing atinit/atload hooks.",["zsh","zinit","Free / OSS"],false],["zsh-sudo","su","Zsh Plugins","Toggle sudo on the current command line with a single keybind — prepend or strip without retyping.",["zsh","ZLE","Free / OSS"],false],["zsh-cargo-completion","cg","Zsh Plugins","Zsh tab-completion for Rust’s Cargo, with live crates.io search for add and install.",["zsh","completion","Free / OSS"],false],["zsh-cpan-completion","cpn","Zsh Plugins","Zsh completion that pulls live Perl module names from CPAN for cpan and cpanm.",["zsh","completion","Free / OSS"],false],["zsh-dotnet-completion","dn","Zsh Plugins","Zsh tab-completion and aliases for the .NET (dotnet) CLI.",["zsh","completion","Free / OSS"],false],["zsh-gem-completion","gm","Zsh Plugins","Zsh completion for Ruby’s gem, with live remote gem search on install.",["zsh","completion","Free / OSS"],false],["zsh-nginx","ng","Zsh Plugins","Zsh tab-completion for nginx commands.",["zsh","completion","Free / OSS"],false],["zsh-openshift-aliases","oc","Zsh Plugins","53 short aliases over the OpenShift oc CLI, plus login macros and oc completion.",["zsh","oc","Free / OSS"],false],["zsh-pip-description-completion","pp","Zsh Plugins","Zsh completion for pip with package version and description shown in the menu.",["zsh","completion","Free / OSS"],false],["zsh-sed-sub","sb","Zsh Plugins","A ZLE keybinding for global sed-style search-and-replace on the current command line.",["zsh","ZLE","Free / OSS"],false],["zsh-very-colorful-manuals","mn","Zsh Plugins","Renders man pages in cyberpunk ANSI colors via scoped LESS_TERMCAP_* injection.",["zsh","man","Free / OSS"],false],["zshrs-forgit","fg","znative Plugins","forgit (interactive git + fzf) ported to a native zshrs plugin — the ga/glo/gd command set as compiled Rust builtins in a cdylib, no per-startup sourcing.",["zshrs","native","Free / OSS"],false],["zshrs-git-fuzzy","gz","znative Plugins","git-fuzzy (full-screen fzf git UI) status ported to a native zshrs plugin — self-reentrant helpers as builtins, no per-keystroke library sourcing.",["zshrs","native","Free / OSS"],false],["zshrs-git-repos","gp","znative Plugins","zsh-git-repo-cache ported to a native zshrs plugin — in-process filesystem walk with parallel clean/dirty classification, then fzf-jump.",["zshrs","native","Free / OSS"],false],["zshrs-revolver","rv","znative Plugins","revolver (shell progress spinner) ported to a native zshrs plugin — the animator runs on an in-process thread, no fork and no statefile.",["zshrs","native","Free / OSS"],false],["zshrs-kubectl-completion","kb","znative Plugins","kubectl completion as a native zshrs plugin — delegates to cobra's kubectl __complete, always in sync with the installed kubectl.",["zshrs","native","Free / OSS"],false],["zshrs-zsh-z","jz","znative Plugins","zsh-z (frecency directory jumper) ported to a native zshrs plugin — a faithful Rust reimplementation of the ~/.z datafile, frecency formula, and aging.",["zshrs","native","Free / OSS"],false],["zshrs-fasd","fd","znative Plugins","fasd (frecency for files AND directories — a/s/d/f/j/v) ported to a native zshrs plugin — a preexec hook tracks every path argument; regex + fuzzy matching and frecency scoring reimplemented in Rust.",["zshrs","native","Free / OSS"],false],["zshrs-reveal","rl","znative Plugins","reveal (open the current repo's GitHub / Heroku pages in the browser) ported to a native zshrs plugin — OS opener detection, git remote -v parsing, and SSH/HTTPS URL normalization in Rust.",["zshrs","native","Free / OSS"],false],["vscode-stryke","VS","Editor Plugins","VS Code / VSCodium extension for the stryke language — *.stk detection, a stryke-native TextMate grammar from the binary's reflection tables, and LSP via stryke --lsp.",["VS Code","stryke","LSP","Free / OSS"],false],["vim-stryke","Vi","Editor Plugins","Vim / Neovim support for stryke — filetype detection, a reflection-generated syntax grammar, brace indent, ALE lint, and LSP via stryke --lsp.",["Vim","stryke","LSP","Free / OSS"],false],["emacs-stryke","Es","Editor Plugins","stryke-mode for Emacs — a generated stryke-stdlib.el with the full builtin surface, brace indent, and LSP via stryke --lsp (eglot + lsp-mode).",["Emacs","stryke","LSP","Free / OSS"],false],["vscode-zsh","Vz","Editor Plugins","VS Code / VSCodium support for zshrs — a source.zshrs grammar from zshrs --dump-reflection, *.zsh / dotfile / shebang detection, and LSP via zshrs --lsp.",["VS Code","zshrs","LSP","Free / OSS"],false],["vim-zsh","vz","Editor Plugins","Vim / Neovim support for zshrs — *.zsh / dotfile / shebang detection, a reflection-generated grammar, shell-block indent, ALE, and LSP via zshrs --lsp.",["Vim","zshrs","LSP","Free / OSS"],false],["emacs-zsh","ez","Editor Plugins","zshrs-mode for Emacs — font-lock from zshrs --dump-reflection, shell-block indent, and LSP via zshrs --lsp (eglot + lsp-mode).",["Emacs","zshrs","LSP","Free / OSS"],false],["vscode-awk","Va","Editor Plugins","VS Code / VSCodium extension for AWK (awkrs) — *.awk detection, a source.awk grammar, an awk.run command, LSP via awkrs --lsp, and DAP debugging via awkrs --dap.",["VS Code","awk","LSP · DAP","Free / OSS"],false],["vim-awk","va","Editor Plugins","Vim / Neovim support for AWK (awkrs) — *.awk detection, syntax + brace indent, run / :make, and LSP via awkrs --lsp.",["Vim","awk","LSP","Free / OSS"],false],["emacs-awk","ea","Editor Plugins","awkrs-mode for Emacs — font-lock for AWK, indent, run, eldoc + completion, and LSP via awkrs --lsp (eglot + lsp-mode).",["Emacs","awk","LSP","Free / OSS"],false],["zpwr-theme","th","Editor Plugins","Cyberpunk editor theme — VS Code (5 color schemes × dark/light = 10 themes) plus a matching JetBrains UI theme + editor scheme, generated from one palette.",["VS Code","JetBrains","theme","Free / OSS"],false],["tmux-fzf-url","tx","Editor Plugins","Pop an fzf picker over every URL visible in the tmux pane; the selected URL opens in your browser.",["tmux","fzf","Free / OSS"],false],["gh_reveal","gh","Developer Tools","Open the current git repo's GitHub page in your browser from the terminal.",["git","CLI","Free / OSS"],false],["zsh-better-npm-completion","np","Zsh Plugins","Smarter zsh completion for npm — completes installed packages for run / uninstall and caches the script list.",["zsh","npm","Free / OSS"],false],["zsh-xcode-completions","xc","Zsh Plugins","Zsh tab-completion for Xcode's xcodebuild and related developer CLI tools.",["zsh","Xcode","Free / OSS"],false],["zsh-travis","tv","Zsh Plugins","Zsh aliases + functions for the Travis CI CLI — open build / PR pages from inside a project.",["zsh","Travis CI","Free / OSS"],false]]
     .forEach(function (e) { PRODUCTS.push(metaProduct(e[0], e[1], e[2], e[3], e[4], e[5])); });
 
+  // arb ecosystem packages — dashboards distributed as git repos through the
+  // arb-registry git index (no build artifacts; `arb install <name>` is a git
+  // clone), so the download link is the repo's /tags page of source archives.
+  // Reuses metaProduct so the shape stays identical to every other free repo.
+  [
+    ['arb-registry', 'RG', 'The community package index for arb — a git-index registry on the crates.io-index / homebrew-core model. No server and no API: the index is a JSON file in a git repo, every package is an ordinary git repo, resolution is a git pull, and publishing is a commit.', ['arb', 'registry', 'Free / OSS']],
+    ['arb-procmon', 'PM', 'Top processes by CPU — a self-sourcing table that re-runs ps -A -o pcpu=,comm= every 2 seconds and keeps the 20 busiest, sorted by CPU% descending.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-memtop', 'MT', 'Top processes by resident memory — a self-sourcing table over ps -A -o rss=,comm= on a 2-second timer, sorted by RSS descending and capped at 20 rows.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-diskwatch', 'DW', 'Live disk-usage dashboard — self-sourced from df -P every 5 seconds, rendering each mount’s usage as a table. Nothing needs to be piped in.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-netstates', 'NS', 'TCP connection-states histogram — netstat -an re-run every 3 seconds, tallied into a bar chart of ESTABLISHED / LISTEN / TIME_WAIT / CLOSE_WAIT / SYN_SENT, plus a table of the raw connections.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-listeners', 'LI', 'Live dashboard of listening TCP sockets — lsof -iTCP -sTCP:LISTEN -P -n every 5 seconds, rendered as a total, a per-socket table, and a bar chart of listeners grouped by process command.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-pinglat', 'PL', 'Live ping latency dashboard — spawns ping, extracts the time=NN.N millisecond field from each reply, and renders a braille sparkline of the series plus the latest round-trip time.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-gitauthors', 'GA', 'Git commit activity by author for the current repository — git log --pretty=format:%an re-run every 15 seconds, tallied and rendered as a bar chart of the top 15 authors.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-streamstat', 'ST', 'Live statistics for any line stream — drop it in a pipe and get total lines, lines per second, distinct lines, and a tail of the most recent lines, all reading the same STDIN stream.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-logwatch', 'LW', 'Live stream log-watcher — pipe a log in and it scrolls in a tail widget capped at the last 2000 lines, flashing the border red on error/fail/panic/fatal/exception lines and yellow on warnings.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-jsonlog', 'JL', 'JSON-lines log viewer — projects each entry to ts / level / msg in a scrollable table alongside a bar chart of entry counts per level, with error and fatal lines flashing the table red.', ['arb', 'dashboard', 'Free / OSS']],
+    ['arb-envbrowser', 'EB', 'Interactive fuzzy-search browser for environment variables — spawns env into an fzf-style select widget that matches your typing against the variable name while displaying the full KEY=value row.', ['arb', 'dashboard', 'Free / OSS']],
+  ].forEach(function (e) { PRODUCTS.push(metaProduct(e[0], e[1], 'arb Packages', e[2], e[3], false)); });
+
   // Long-form detail copy (overview + rich features), ported from each repo's
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "arb-registry": {
+      "overview": "The community package index for arb, built on the crates.io-index / homebrew-core model: a git-index registry rather than a service. There is no HTTP API, no database, and no auth layer — the index is index.json in this repo, every package is an ordinary git repo, and the arb CLI is the client. Resolving a package is a git pull; publishing one is a commit.",
+      "features": [
+        "Git-index registry — no server to run, no API to call, no uptime to keep",
+        "index.json maps a package name to its repo URL, description, and version",
+        "Packages are ordinary git repos; installing one is a clone",
+        "Resolution is a git pull; publishing is a commit and a pull request",
+        "The arb CLI is the only client — arb install <name> reads the index directly",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-procmon": {
+      "overview": "A live arb TUI dashboard of the busiest processes by CPU. The package is self-sourcing — nothing needs to be piped in. It re-runs ps -A -o pcpu=,comm= every 2 seconds and feeds each run into the stream; the trailing = on both field specifiers suppresses the ps header on macOS and Linux alike, so every emitted line is a data row.",
+      "features": [
+        "Two-column table of CPU% and COMMAND, sorted by CPU percentage descending",
+        "Self-sourcing on a 2-second timer — no pipeline required",
+        "Query pipeline drops blank lines, sorts numerically in reverse, keeps the top 20",
+        "Runs as a terminal dashboard or, with -t web, a served browser dashboard",
+        "Portable across macOS and Linux — uses only ps -A -o pcpu=,comm=",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-memtop": {
+      "overview": "A self-sourcing arb TUI dashboard of the top processes by resident memory. It runs ps -A -o rss=,comm= on a 2-second timer and feeds each run into the stream, so nothing needs to be piped in. RSS is reported in kilobytes exactly as ps emits it.",
+      "features": [
+        "Table of resident memory (RSS, in KB) and command name, largest first",
+        "Self-sourcing on a 2-second timer — no pipeline required",
+        "Keeps numeric process rows, sorts numerically in reverse, takes the top 20",
+        "Run by package name (arb -p memtop) or directly from the spec file",
+        "Portable across macOS and Linux",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-diskwatch": {
+      "overview": "A live disk-usage dashboard for arb. It is self-sourced: the spec polls df -P every 5 seconds and renders each mount's usage as a table, so no pipeline is needed to drive it.",
+      "features": [
+        "Per-mount disk usage rendered as a live table",
+        "Self-sourcing — polls df -P on a 5-second timer, nothing piped in",
+        "Installs from the arb-registry git index with arb install diskwatch",
+        "Run by package name with arb -p diskwatch",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-netstates": {
+      "overview": "A live TUI dashboard giving the fastest read on socket health: a histogram of TCP connection states built from netstat -an re-run every 3 seconds. A wall of TIME_WAIT means churn, a spike in SYN_SENT means a peer is not answering, and growing CLOSE_WAIT means the local app is not closing sockets it should.",
+      "features": [
+        "Bar chart tallying sockets per TCP state (ESTABLISHED, LISTEN, TIME_WAIT, CLOSE_WAIT, SYN_SENT, …)",
+        "Companion table of the raw rows — proto, local address, foreign address, state",
+        "States chart flashes yellow whenever a TIME_WAIT / CLOSE_WAIT line appears",
+        "Self-sourcing — netstat -an on a 3-second timer, nothing piped in",
+        "State extracted with field 6, which is the state column on both BSD and net-tools netstat",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-listeners": {
+      "overview": "A live TUI dashboard of the machine's listening TCP sockets. It re-runs lsof -iTCP -sTCP:LISTEN -P -n every 5 seconds — LISTEN-state TCP sockets only, numeric ports, no reverse DNS — so it needs nothing piped in and works unchanged on macOS and Linux.",
+      "features": [
+        "Total count of listening file descriptors",
+        "Table of one row per listening socket: COMMAND / PID / USER / TYPE / ADDRESS",
+        "ADDRESS is the bound addr:port (*:22, 127.0.0.1:6986, [::1]:6986); the lsof header row is rejected",
+        "Bar chart of listener count grouped by process command, busiest first, top 15",
+        "Self-sourcing on a 5-second timer — no pipeline required",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-pinglat": {
+      "overview": "A live ping latency dashboard for arb. The spec is self-sourcing: it spawns ping, pulls the round-trip time out of each reply line with a regex capture on the time=NN.N millisecond field, and drives two widgets from the same stream.",
+      "features": [
+        "Braille sparkline of the latency series over time",
+        "Text readout of the most recent round-trip time in milliseconds",
+        "Self-sourcing — spawns ping itself, nothing piped in",
+        "extract /time=([0-9.]+)/ pulls the numeric milliseconds; numeric keeps the series clean",
+        "Runs as a TUI dashboard or, with -t web, a served web dashboard",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-gitauthors": {
+      "overview": "An arb TUI dashboard showing git commit activity by author for the current repository. Run from inside a git repo, it re-runs git log --pretty=format:%an every 15 seconds, tallies commits per author, and renders the most active as a bar chart.",
+      "features": [
+        "Bar chart of total commits per author across the repo's history",
+        "Authors sorted by commit count descending, capped at the top 15",
+        "Self-sourcing — spawns git log on a 15-second timer, nothing piped in",
+        "Query pipeline trims whitespace, drops blank lines, and tallies into (author, count) pairs",
+        "Requires only arb and git on PATH",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-streamstat": {
+      "overview": "Live statistics for any line stream. Drop streamstat in a pipe and it renders a TUI dashboard that updates as lines flow through STDIN — tail -f, journalctl -f, ping, or any other line-oriented producer. Each statistic is a separate widget source reading the same shared input stream.",
+      "features": [
+        "Lines — total lines seen on the stream (count reducer)",
+        "Lines/sec — throughput over the window (rate reducer)",
+        "Distinct lines — count of unique lines seen (distinct reducer)",
+        "Recent — a full-width tail of the most recent lines for context",
+        "Layout is three stat widgets across the top row, the tail beneath",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-logwatch": {
+      "overview": "A live stream log-watcher for arb. It reads a log stream on STDIN and renders it in a scrolling tail widget, tinting the border by severity as lines arrive. This package is not self-sourcing — it consumes whatever you pipe into it, so tail -f, journalctl -f, kubectl logs -f, and docker logs -f all work unchanged.",
+      "features": [
+        "Scrolling tail widget capped at the last 2000 lines",
+        "Bound to the shared incoming stream — every piped line is appended",
+        "Event-driven highlighting: error|fail|panic|fatal|exception flashes the border red",
+        "warn|warning flashes the border yellow",
+        "Case-insensitive matching via the inline (?i) flag inside the regex literal",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-jsonlog": {
+      "overview": "An arb dashboard for JSON-lines logs — streams where every line is one JSON object. It projects the fields you care about into a scrollable table and shows a live count of entries per level, so error/warn/info volume is visible at a glance. Any producer that emits one JSON object per line works: kubectl logs --output=json, tail -f app.jsonl, journalctl -o json -f.",
+      "features": [
+        "Table of each log entry projected to ts, level, and msg",
+        "Bar chart of entry counts grouped by level, from the same stream",
+        "Error and fatal lines flash the table red; warnings flash it yellow",
+        "Both widgets read the same incoming JSON-lines stream",
+        "Retarget to different keys by editing the pick list, the table columns, and the count_by field",
+        "Free / OSS — MIT licensed"
+      ]
+    },
+    "arb-envbrowser": {
+      "overview": "An interactive arb dashboard that turns the env command into a live, fuzzy-searchable browser for your environment variables. It runs env as its own data source, so nothing needs to be piped in, and it doubles as an interactive filter when used mid-pipe.",
+      "features": [
+        "Self-sourcing — spawn env makes env's stdout the shared line stream",
+        "Every KEY=value row lands in an fzf-style select widget: type to narrow, Enter to emit",
+        "Variables sorted by name so the list is stable and scannable",
+        "Typing matches the variable name only, while each row still displays the full KEY=value",
+        "A filter control shapes the downstream passthrough, forwarding only matching variables",
+        "Free / OSS — MIT licensed"
+      ]
+    },
     "zshrs-forgit": {
       "overview": "forgit — the interactive git + fzf utility — ported to a native zshrs plugin. The commands are compiled Rust builtins in a cdylib loaded through zshrs's stable plugin ABI with zmodload -R, instead of shell functions parsed on every startup.",
       "features": [
