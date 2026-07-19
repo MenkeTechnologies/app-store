@@ -960,6 +960,326 @@
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "arb-apt": {
+          "overview": "A self-sourcing arb TUI dashboard: upgradable APT packages, with a live count. It runs `apt list --upgradable` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Upgradable APT packages, with a live count.",
+                "Self-sourcing \u2014 runs `apt list --upgradable` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install apt`",
+                "Run standalone by package name with `arb apt`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-battery": {
+          "overview": "A self-sourcing arb TUI dashboard: macOS battery charge gauge, self-sourced from pmset. It runs `pmset -g batt` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "macOS battery charge gauge, self-sourced from pmset.",
+                "Self-sourcing \u2014 runs `pmset -g batt` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install battery`",
+                "Run standalone by package name with `arb battery`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-brew": {
+          "overview": "A self-sourcing arb TUI dashboard: outdated Homebrew formulae, with a live count. It runs `brew outdated` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Outdated Homebrew formulae, with a live count.",
+                "Self-sourcing \u2014 runs `brew outdated` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install brew`",
+                "Run standalone by package name with `arb brew`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-brewsvc": {
+          "overview": "A self-sourcing arb TUI dashboard: homebrew-managed background services and their state. It runs `brew services list` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Homebrew-managed background services and their state.",
+                "Self-sourcing \u2014 runs `brew services list` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install brewsvc`",
+                "Run standalone by package name with `arb brewsvc`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-cal": {
+          "overview": "A self-sourcing arb TUI dashboard: the current month's calendar. It runs `cal` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "The current month's calendar.",
+                "Self-sourcing \u2014 runs `cal` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install cal`",
+                "Run standalone by package name with `arb cal`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-crontab": {
+          "overview": "A self-sourcing arb TUI dashboard: the current user's scheduled cron jobs. It runs `crontab -l` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "The current user's scheduled cron jobs.",
+                "Self-sourcing \u2014 runs `crontab -l` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install crontab`",
+                "Run standalone by package name with `arb crontab`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-du": {
+          "overview": "A self-sourcing arb TUI dashboard: largest immediate subdirectories bar chart, self-sourced from du. It runs `du -d 1 -h` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Largest immediate subdirectories bar chart, self-sourced from du.",
+                "Self-sourcing \u2014 runs `du -d 1 -h` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install du`",
+                "Run standalone by package name with `arb du`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-free": {
+          "overview": "A self-sourcing arb TUI dashboard: used-vs-total memory gauge, self-sourced from free. It runs `free -m` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Used-vs-total memory gauge, self-sourced from free.",
+                "Self-sourcing \u2014 runs `free -m` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install free`",
+                "Run standalone by package name with `arb free`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-gitstatus": {
+          "overview": "A self-sourcing arb TUI dashboard: short git working-tree status. It runs `git status -s` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Short git working-tree status.",
+                "Self-sourcing \u2014 runs `git status -s` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install gitstatus`",
+                "Run standalone by package name with `arb gitstatus`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-gpu": {
+          "overview": "A self-sourcing arb TUI dashboard: nVIDIA GPU utilization sparkline + gauge, self-sourced from nvidia-smi. It runs `nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "NVIDIA GPU utilization sparkline + gauge, self-sourced from nvidia-smi.",
+                "Self-sourcing \u2014 runs `nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install gpu`",
+                "Run standalone by package name with `arb gpu`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-inodes": {
+          "overview": "A self-sourcing arb TUI dashboard: per-filesystem inode usage. It runs `df -i` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Per-filesystem inode usage.",
+                "Self-sourcing \u2014 runs `df -i` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install inodes`",
+                "Run standalone by package name with `arb inodes`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-iotop": {
+          "overview": "A self-sourcing arb TUI dashboard: per-process disk I/O from iotop. It runs `iotop -b -n 1` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Per-process disk I/O from iotop.",
+                "Self-sourcing \u2014 runs `iotop -b -n 1` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install iotop`",
+                "Run standalone by package name with `arb iotop`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-launchd": {
+          "overview": "A self-sourcing arb TUI dashboard: macOS launchd jobs, their PID and status. It runs `launchctl list` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "macOS launchd jobs, their PID and status.",
+                "Self-sourcing \u2014 runs `launchctl list` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install launchd`",
+                "Run standalone by package name with `arb launchd`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-lsblk": {
+          "overview": "A self-sourcing arb TUI dashboard: block devices, their size and mountpoints. It runs `lsblk` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Block devices, their size and mountpoints.",
+                "Self-sourcing \u2014 runs `lsblk` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install lsblk`",
+                "Run standalone by package name with `arb lsblk`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-mount": {
+          "overview": "A self-sourcing arb TUI dashboard: currently mounted filesystems. It runs `mount` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Currently mounted filesystems.",
+                "Self-sourcing \u2014 runs `mount` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install mount`",
+                "Run standalone by package name with `arb mount`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-mpstat": {
+          "overview": "A self-sourcing arb TUI dashboard: per-CPU utilization from mpstat. It runs `mpstat -P ALL 1 1` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Per-CPU utilization from mpstat.",
+                "Self-sourcing \u2014 runs `mpstat -P ALL 1 1` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install mpstat`",
+                "Run standalone by package name with `arb mpstat`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-npm": {
+          "overview": "A self-sourcing arb TUI dashboard: outdated npm dependencies in the current project. It runs `npm outdated` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Outdated npm dependencies in the current project.",
+                "Self-sourcing \u2014 runs `npm outdated` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install npm`",
+                "Run standalone by package name with `arb npm`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-ollama": {
+          "overview": "A self-sourcing arb TUI dashboard: live view of the models loaded in the local Ollama LLM server (ollama ps). It runs `ollama ps` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Live view of the models loaded in the local Ollama LLM server (ollama ps).",
+                "Self-sourcing \u2014 runs `ollama ps` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install ollama`",
+                "Run standalone by package name with `arb ollama`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-pacman": {
+          "overview": "A self-sourcing arb TUI dashboard: pacman packages with pending updates. It runs `pacman -Qu` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Pacman packages with pending updates.",
+                "Self-sourcing \u2014 runs `pacman -Qu` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install pacman`",
+                "Run standalone by package name with `arb pacman`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-ping": {
+          "overview": "A self-sourcing arb TUI dashboard: round-trip latency sparkline, self-sourced by pinging once a second. It runs `ping -c 1 8.8.8.8` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Round-trip latency sparkline, self-sourced by pinging once a second.",
+                "Self-sourcing \u2014 runs `ping -c 1 8.8.8.8` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install ping`",
+                "Run standalone by package name with `arb ping`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-pip": {
+          "overview": "A self-sourcing arb TUI dashboard: outdated pip packages. It runs `pip list --outdated` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Outdated pip packages.",
+                "Self-sourcing \u2014 runs `pip list --outdated` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install pip`",
+                "Run standalone by package name with `arb pip`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-rustup": {
+          "overview": "A self-sourcing arb TUI dashboard: installed Rust toolchains. It runs `rustup toolchain list` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Installed Rust toolchains.",
+                "Self-sourcing \u2014 runs `rustup toolchain list` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install rustup`",
+                "Run standalone by package name with `arb rustup`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-sensors": {
+          "overview": "A self-sourcing arb TUI dashboard: hardware temperature/fan/voltage readouts from lm-sensors. It runs `sensors` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Hardware temperature/fan/voltage readouts from lm-sensors.",
+                "Self-sourcing \u2014 runs `sensors` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install sensors`",
+                "Run standalone by package name with `arb sensors`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-speedtest": {
+          "overview": "A self-sourcing arb TUI dashboard: ping/download/upload throughput from speedtest-cli. It runs `speedtest-cli --simple` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Ping/download/upload throughput from speedtest-cli.",
+                "Self-sourcing \u2014 runs `speedtest-cli --simple` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install speedtest`",
+                "Run standalone by package name with `arb speedtest`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-swap": {
+          "overview": "A self-sourcing arb TUI dashboard: active swap devices and their usage. It runs `swapon --show` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Active swap devices and their usage.",
+                "Self-sourcing \u2014 runs `swapon --show` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install swap`",
+                "Run standalone by package name with `arb swap`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-tokei": {
+          "overview": "A self-sourcing arb TUI dashboard: lines of code by language from tokei. It runs `tokei` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Lines of code by language from tokei.",
+                "Self-sourcing \u2014 runs `tokei` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install tokei`",
+                "Run standalone by package name with `arb tokei`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-ufw": {
+          "overview": "A self-sourcing arb TUI dashboard: uFW firewall rules and status. It runs `ufw status` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "UFW firewall rules and status.",
+                "Self-sourcing \u2014 runs `ufw status` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install ufw`",
+                "Run standalone by package name with `arb ufw`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-uptime": {
+          "overview": "A self-sourcing arb TUI dashboard: 1-minute load-average sparkline, self-sourced from uptime. It runs `uptime` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "1-minute load-average sparkline, self-sourced from uptime.",
+                "Self-sourcing \u2014 runs `uptime` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install uptime`",
+                "Run standalone by package name with `arb uptime`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-usb": {
+          "overview": "A self-sourcing arb TUI dashboard: connected USB devices. It runs `lsusb` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Connected USB devices.",
+                "Self-sourcing \u2014 runs `lsusb` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install usb`",
+                "Run standalone by package name with `arb usb`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-weather": {
+          "overview": "A self-sourcing arb TUI dashboard: current conditions from wttr.in, refreshed every 10 minutes. It runs `curl -s wttr.in/?format=%l:+%c+%t+%w` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Current conditions from wttr.in, refreshed every 10 minutes.",
+                "Self-sourcing \u2014 runs `curl -s wttr.in/?format=%l:+%c+%t+%w` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install weather`",
+                "Run standalone by package name with `arb weather`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-who": {
+          "overview": "A self-sourcing arb TUI dashboard: logged-in users, their tty, and login time. It runs `who` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Logged-in users, their tty, and login time.",
+                "Self-sourcing \u2014 runs `who` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install who`",
+                "Run standalone by package name with `arb who`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
+    "arb-wifi": {
+          "overview": "A self-sourcing arb TUI dashboard: visible Wi-Fi networks by signal strength (nmcli). It runs `nmcli -f SIGNAL,SSID dev wifi` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
+          "features": [
+                "Visible Wi-Fi networks by signal strength (nmcli).",
+                "Self-sourcing \u2014 runs `nmcli -f SIGNAL,SSID dev wifi` on a timer, no pipeline required",
+                "Installs from the arb-registry git index with `arb install wifi`",
+                "Run standalone by package name with `arb wifi`",
+                "Free / OSS \u2014 MIT licensed"
+          ]
+    },
     "arb-registry": {
       "overview": "The community package index for arb, built on the crates.io-index / homebrew-core model: a git-index registry rather than a service. There is no HTTP API, no database, and no auth layer — the index is index.json in this repo, every package is an ordinary git repo, and the arb CLI is the client. Resolving a package is a git pull; publishing one is a commit.",
       "features": [
