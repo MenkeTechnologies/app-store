@@ -375,6 +375,51 @@
       repo: 'https://github.com/MenkeTechnologies/elisprs',
     },
     {
+      id: 'phplang',
+      name: 'phplang',
+      glyph: 'PH',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'PHP in Rust — run .php outside the Zend engine. PHP as a fusevm frontend (lex/parse → AST → fusevm bytecode) on a PhpHost object heap, no bespoke VM or JIT — the first compiled standalone PHP runtime, on the shared bytecode VM + Cranelift JIT behind stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, and pythonrs. Standalone php binary with an LSP language server and DAP debugger, zsh completion, man pages, and an HTML docs site. Free and open source.',
+      pills: ['Rust', 'PHP', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/phplang/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/phplang',
+    },
+    {
+      id: 'node-js',
+      name: 'node-js',
+      glyph: 'JS',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'JavaScript in Rust — a compiled standalone JavaScript runtime. JS as a fusevm frontend (lex/parse → AST → fusevm bytecode) on the shared bytecode VM + Cranelift JIT behind stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, and php. Standalone node binary with an LSP language server and DAP debugger, zsh completion, man pages, and an HTML docs site. Free and open source.',
+      pills: ['Rust', 'JavaScript', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/node-js/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/node-js',
+    },
+    {
+      id: 'zvcs',
+      name: 'zvcs',
+      glyph: 'ZV',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'A git superset for high-velocity, automated version-control workflows over deep submodule trees — concurrent, lock-free operations that eliminate the index-lock contention git hits under many parallel writers. Built for fleets of automated agents committing across a meta-repo of nested submodules. Free and open source.',
+      pills: ['Rust', 'Git', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/zvcs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zvcs',
+    },
+    {
       id: 'rubyrs',
       name: 'rubyrs',
       glyph: 'RB',
@@ -673,7 +718,7 @@
     },
     {
       id: 'inventions-book', name: 'Firsts', glyph: 'iF', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The narrative edition of the MenkeTechnologies invention ledger — ~161 candidate "world\'s first" capabilities across the stack, each with its claim, its in-repo basis, and an honest caveat and confidence tag. From the solo from-scratch JIT VM hosting five language frontends and the compiled Unix shell to the fully modular DAW and the first compiled-native Docker+Kubernetes GUI, with an appendix of adversarial prior-art analyses for the six marquee claims. Pandoc + LaTeX typeset.',
+      tagline: 'The narrative edition of the MenkeTechnologies invention ledger — ~161 candidate "world\'s first" capabilities across the stack, each with its claim, its in-repo basis, and an honest caveat and confidence tag. From the solo from-scratch JIT VM hosting ten language frontends and the compiled Unix shell to the fully modular DAW and the first compiled-native Docker+Kubernetes GUI, with an appendix of adversarial prior-art analyses for the six marquee claims. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'Inventions', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
@@ -966,6 +1011,39 @@
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "phplang": {
+      "overview": "PHP in Rust — run .php files outside the Zend engine. PHP as a fusevm frontend that lexes and parses PHP, lowers it to fusevm bytecode, and runs on a PhpHost object heap with no bespoke VM or JIT, on the shared 3-tier Cranelift JIT behind the rest of the fleet. The first compiled standalone PHP runtime. Free and open source.",
+      "features": [
+        "PHP interpreter in Rust — runs .php files standalone, no Zend engine or PHP-FPM required",
+        "PHP frontend lowered to fusevm bytecode on a PhpHost object heap",
+        "Runs on the shared bytecode VM + 3-tier Cranelift JIT (stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs)",
+        "Standalone php binary with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "zsh completion, man pages, and an HTML docs/report site",
+        "Free and open source (MIT)"
+      ]
+    },
+    "node-js": {
+      "overview": "JavaScript in Rust — a compiled standalone JavaScript runtime. JS as a fusevm frontend that lexes and parses JavaScript, lowers it to fusevm bytecode, and runs on the shared bytecode VM + 3-tier Cranelift JIT behind the rest of the fleet. Free and open source.",
+      "features": [
+        "JavaScript runtime in Rust — runs JS standalone on the fusevm engine",
+        "JS frontend lowered to fusevm bytecode, no bespoke VM or JIT",
+        "Runs on the shared bytecode VM + 3-tier Cranelift JIT (stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, php)",
+        "Standalone node binary with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "zsh completion, man pages, and an HTML docs/report site",
+        "Free and open source (MIT)"
+      ]
+    },
+    "zvcs": {
+      "overview": "A git superset for high-velocity, automated version-control workflows over deep submodule trees. Concurrent, lock-free operations eliminate the index-lock contention git hits under many parallel writers — built for fleets of automated agents committing across a meta-repo of nested submodules. Free and open source.",
+      "features": [
+        "Git superset — a drop-in for git tuned for automated, high-velocity VCS workflows",
+        "Lock-free concurrent operations — no .git/index.lock contention under many parallel writers",
+        "First-class deep submodule / nested meta-repo workflows",
+        "Designed for fleets of automated agents committing across a submodule tree",
+        "Forward-only, conflict-minimizing pointer updates",
+        "Free and open source (MIT)"
+      ]
+    },
     "arb-apt": {
           "overview": "A self-sourcing arb TUI dashboard: upgradable APT packages, with a live count. It runs `apt list --upgradable` on a timer and feeds each run into the stream, so nothing needs to be piped in.",
           "features": [
@@ -1624,7 +1702,7 @@
     },
     "inventions-book": {
       "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the ~161 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. The six marquee claims get an appendix of adversarial prior-art analyses.",
-      "features": ["~161 candidate firsts, each as claim + in-repo basis + honest caveat + confidence tag", "The execution engine: a solo from-scratch JIT VM hosting five language frontends on one bytecode", "The compiled Unix shell, the Perl-5 superset, and the fully modular patch-graph DAW", "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes", "Appendix: adversarial prior-art analyses for the six marquee (★) claims", "The methodology: how to claim — and how to refute — a first honestly", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "features": ["~161 candidate firsts, each as claim + in-repo basis + honest caveat + confidence tag", "The execution engine: a solo from-scratch JIT VM hosting ten language frontends on one bytecode", "The compiled Unix shell, the Perl-5 superset, and the fully modular patch-graph DAW", "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes", "Appendix: adversarial prior-art analyses for the six marquee (★) claims", "The methodology: how to claim — and how to refute — a first honestly", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "vscode-stryke": {
       "overview": "A VS Code / VSCodium extension that turns the editor into a full stryke IDE — syntax highlighting, completion, and diagnostics for the stryke language.",
