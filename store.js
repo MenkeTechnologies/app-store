@@ -872,6 +872,30 @@
     ['stryke-zmq', 'ZQ', 'ZeroMQ client for stryke — REQ/REP, PUB/SUB, PUSH/PULL, and DEALER/ROUTER.'],
   ].forEach(function (e) { PRODUCTS.push(strykePkg(e[0], e[1], e[2])); });
 
+  // arb community packages: self-sourcing dashboards installed via `arb install
+  // NAME` from the arb-registry index. Package name is NAME; the repo is arb-NAME.
+  function arbPkg(id, glyph, desc) {
+    return {
+      id: 'arb-' + id, name: id, glyph: glyph, category: 'arb Packages', badge: 'FREE',
+      tagline: desc,
+      pills: ['arb', 'dashboard', 'Free / OSS'],
+      price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
+      download: 'https://github.com/MenkeTechnologies/arb-' + id + '/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/arb-' + id,
+    };
+  }
+  [
+    ['ollama', 'Ol', 'Live view of the models loaded in the local Ollama LLM server (ollama ps).'],
+    ['gpu', 'Gp', 'NVIDIA GPU utilization sparkline + gauge, self-sourced from nvidia-smi.'],
+    ['ping', 'Pg', 'Round-trip latency sparkline, self-sourced by pinging once a second.'],
+    ['uptime', 'Up', '1-minute load-average sparkline, self-sourced from uptime.'],
+    ['battery', 'Bt', 'macOS battery charge gauge, self-sourced from pmset.'],
+    ['du', 'Du', 'Largest immediate subdirectories bar chart, self-sourced from du.'],
+    ['free', 'Fr', 'Used-vs-total memory gauge, self-sourced from free.'],
+    ['weather', 'Wx', 'Current conditions from wttr.in, refreshed every 10 minutes.'],
+  ].forEach(function (e) { PRODUCTS.push(arbPkg(e[0], e[1], e[2])); });
+
   // Other MenkeTechnologies repos (free). download -> releases/latest when a
   // release exists, else the repo's /tags page (per-tag source archives).
   function metaProduct(id, glyph, category, tagline, pills, hasRelease) {
