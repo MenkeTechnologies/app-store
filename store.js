@@ -672,6 +672,36 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'zvcs-book', name: 'The zvcs Book', glyph: 'ZV', category: 'Publications', badge: 'COMPANION',
+      tagline: 'The companion book to zvcs — a git-shadowing superset VCS: the shadow `git` binary, the per-repo zdaemon FIFO coordinator that replaces index.lock\'s O_EXCL flock with a fair arrival-order queue, RepoLock\'s RAII client, the zsync/zbump submodule discipline, and the vendored gitoxide engine underneath. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'zvcs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'phplang-book', name: 'The phplang Book', glyph: 'HB', category: 'Publications', badge: 'COMPANION',
+      tagline: 'The companion book to phplang — PHP as a fusevm frontend and the first compiled standalone PHP runtime (no Zend engine): the dual-mode lexer, the recursive-descent parser, lowering PHP to fusevm bytecode, the PhpHost array/value runtime, the builtin library, and the differential parity harness against PHP. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'phplang', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'phplang-reference', name: 'The phplang Reference', glyph: 'HR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The phplang reference — every PHP keyword, construct, cast, and library function (string / array / math / type / output) the current phplang build recognizes, generated from the language-server corpus with a runnable example each. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'phplang', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'node-js-book', name: 'The node-js Book', glyph: 'JB', category: 'Publications', badge: 'COMPANION',
+      tagline: 'The companion book to node-js — JavaScript as a fusevm frontend and a compiled standalone JS runtime: the ASI-aware lexer, the Pratt parser, lowering JS to fusevm bytecode (native arithmetic vs the JsHost object heap), the builtin standard library, and the differential parity harness against Node. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'node-js', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'node-js-reference', name: 'The node-js Reference', glyph: 'JR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The node-js reference — every JavaScript keyword, global, and array / string / number / Math / JSON method the current node-js build recognizes, generated from the language-server corpus with a runnable example each. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'node-js', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'arb-book', name: 'The arb Book', glyph: 'rB', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The companion book to arb — the pipeline-to-TUI language on fusevm: pipe any Unix stream in and get a dynamic TUI (and web page) from a declarative, Tcl/Tk-flavored spec. The spec language and widget/source model, the jq/xpath/css/yq query superset, the interactive megafilter/map over the live passthrough, and the fusevm runtime underneath. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'arb', 'DRM-free PDF'], price: 20,
@@ -1668,6 +1698,62 @@
         "Native arithmetic ops for the JIT vs the PythonHost runtime that serves dispatch, comprehensions, and object construction",
         "rkyv-cached bytecode and AOT-native compilation of your scripts",
         "The differential parity harness against CPython",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "zvcs-book": {
+      "overview": "The companion book to zvcs — a git-shadowing superset VCS built for many-writer, submodule-heavy automated workflows. A single binary named git shadows stock git on PATH (porcelain served by vendored gitoxide); on top, a coordination layer replaces git's index.lock flock with a per-repo FIFO zdaemon so concurrent writers serialize fairly instead of racing.",
+      "features": [
+        "zvcs, end to end — a git superset for lock-free automated VCS",
+        "The shadow git binary and the superset-verb vs git-compat dispatch",
+        "zdaemon: the per-repo FIFO coordinator (mpsc + VecDeque, ACQUIRE/GRANTED/RELEASE, auto-release on EOF)",
+        "RepoLock: the RAII client that serializes index writers fairly",
+        "zsync and zbump: ff-only submodule reconcile and forward-only gitlink bumps",
+        "The vendored gitoxide engine, and the coordination test proving occupancy is exactly one",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "phplang-book": {
+      "overview": "The companion book to phplang — PHP as a fusevm frontend, the first compiled standalone PHP runtime with no Zend engine. It lexes and parses PHP in both inline-HTML and PHP modes, lowers it to fusevm bytecode with native arithmetic ops for the JIT, and serves PHP semantics — arrays, coercion, the builtin library — from a PhpHost runtime.",
+      "features": [
+        "phplang, end to end — PHP on the shared fusevm machine",
+        "The dual-mode lexer (inline HTML + PHP) and the recursive-descent parser",
+        "Lowering PHP to fusevm bytecode; native arithmetic vs the PhpHost runtime",
+        "The PHP array object model (ordered map, key coercion) and value semantics",
+        "The builtin library and the aspect-oriented intercept substrate",
+        "The differential parity harness against PHP (and a Drupal-7 procedural corpus)",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "phplang-reference": {
+      "overview": "The complete phplang reference — the PHP keyword set, language constructs, casts, and the builtin library surface of phplang, generated from the language server's own corpus so every function and construct matches the shipping php binary, each with a runnable example.",
+      "features": [
+        "Every keyword, construct, cast, and library function the build recognizes",
+        "Grouped by chapter: Keyword, Construct, Cast, String, Array, Math, Type, Output",
+        "Generated from the src/lsp.rs corpus that also drives editor completion",
+        "A runnable PHP example for every entry",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "node-js-book": {
+      "overview": "The companion book to node-js — JavaScript as a fusevm frontend and a compiled standalone JS runtime. It lexes JS with automatic semicolon insertion, Pratt-parses it, lowers it to fusevm bytecode (native arithmetic for the JIT, a dedicated DIV builtin for JS division semantics), and serves objects, arrays, and the standard library from a JsHost object heap.",
+      "features": [
+        "node-js, end to end — JavaScript on the shared fusevm machine",
+        "The ASI-aware lexer and the Pratt expression parser",
+        "Lowering JS to fusevm bytecode; native arithmetic vs the JsHost object heap",
+        "The object model (ordered property maps) and the builtin standard library",
+        "The differential parity harness against Node (byte-for-byte on its corpus)",
+        "Honest boundaries: no event loop, classes, or regex yet",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "node-js-reference": {
+      "overview": "The complete node-js reference — the JavaScript keyword set, globals, and the array / string / number / Math / JSON method surface of node-js, generated from the language server's own corpus so every name matches the shipping node binary, each with a runnable example.",
+      "features": [
+        "Every keyword, global, and method the build recognizes",
+        "Grouped by chapter: keywords, globals, and per-type method sets",
+        "Generated from the src/lsp.rs corpus that also drives editor completion",
+        "A runnable JavaScript example for every entry",
         "Pandoc + LaTeX typeset, DRM-free PDF"
       ]
     },
