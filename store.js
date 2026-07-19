@@ -606,6 +606,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'pythonrs-book', name: 'The pythonrs Book', glyph: 'PB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to pythonrs — Python as a fusevm frontend: the indentation-aware lexer and parser, the lowering of Python to fusevm bytecode, native arithmetic ops for the JIT versus the PythonHost runtime that serves dispatch, comprehensions, and object construction, and the differential parity harness against CPython. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'pythonrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'arb-book', name: 'The arb Book', glyph: 'rB', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The companion book to arb — the pipeline-to-TUI language on fusevm: pipe any Unix stream in and get a dynamic TUI (and web page) from a declarative, Tcl/Tk-flavored spec. The spec language and widget/source model, the jq/xpath/css/yq query superset, the interactive megafilter/map over the live passthrough, and the fusevm runtime underneath. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'arb', 'DRM-free PDF'], price: 20,
@@ -725,6 +731,13 @@
       pills: ['Reference', 'rubyrs', 'Free · DRM-free PDF'], price: 0,
       tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
       download: 'docs/rubyrs-reference.pdf',
+    },
+    {
+      id: 'pythonrs-reference', name: 'The pythonrs Reference', glyph: 'PR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The complete pythonrs reference — the Python surface of the compiled Python runtime on fusevm: builtins, core types, and the CLI, generated from the live implementation. The dense companion to The pythonrs Book. Free, DRM-free PDF.',
+      pills: ['Reference', 'pythonrs', 'Free · DRM-free PDF'], price: 0,
+      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
+      download: 'docs/pythonrs-reference.pdf',
     },
     {
       id: 'zpwr-synth-reference', name: 'The zpwr-synth Reference', glyph: 'yR', category: 'Publications', badge: 'REFERENCE',
