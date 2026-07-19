@@ -618,6 +618,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'arb-registry-book', name: 'The arb-registry Book', glyph: 'iB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to arb-registry — the community package index for arb: a server-less git-index registry on the crates.io-index / homebrew-core model. The index.json format, the arb client (update/search/install/publish), the import resolution chain, package anatomy (arb.toml + .arb modules), and the trust model of a shared JSON index in a git repo. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'arb-registry', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zterminal-book', name: 'The zterminal Book', glyph: 'tB', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The companion book to zterminal — the GPU-accelerated, cross-platform terminal emulator in Rust (OpenGL ES glyph-atlas renderer, xterm-compatible VT parsing) with native i3-style tiling, native tmux control over the wire protocol, an embedded-WebView control panel, and a command-palette-driven workflow. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'zterminal', 'DRM-free PDF'], price: 20,
