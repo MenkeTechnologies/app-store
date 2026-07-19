@@ -1650,6 +1650,18 @@
       "overview": "zshrs-mode for Emacs — a major mode for the zshrs shell.",
       "features": ["Font-lock generated from zshrs --dump-reflection", "Dedicated zshrs-extension-face for the 113 zshrs extensions", "Shell-block-aware indentation", "LSP via zshrs --lsp (eglot + lsp-mode)"]
     },
+    "vscode-arb": {
+      "overview": "A VS Code / VSCodium extension for arb — the pipeline-visualization language — with both an LSP and a DAP.",
+      "features": ["*.arb filetype detection", "Hand-written source.arb TextMate grammar (widgets, ~130 query verbs, input sources, /regex/, durations/sizes, dotted widget paths, -flags)", "arb.run command (arb <file>)", "LSP via arb --lsp", "DAP debugging via arb --dap — step the stream, regex breakpoints"]
+    },
+    "vim-arb": {
+      "overview": "Vim / Neovim support for arb — syntax, indent, run, lint, and LSP.",
+      "features": ["*.arb filetype detection", "arb syntax + brace-aware indent", "Run / :make via arb --check", "ALE lint via arb --check", "LSP via arb --lsp"]
+    },
+    "emacs-arb": {
+      "overview": "arb-mode for Emacs — a major mode for the arb pipeline language.",
+      "features": ["Font-lock for arb keywords, widgets, query verbs, /regex/, widget paths", "Brace indentation + run via arb", "eldoc + completion for query verbs", "LSP via arb --lsp (eglot + lsp-mode)"]
+    },
     "vscode-awk": {
       "overview": "A VS Code / VSCodium extension for AWK (the awkrs implementation) — the first AWK with both an LSP and a DAP.",
       "features": ["*.awk filetype detection", "Hand-written source.awk TextMate grammar (BEGIN/END, built-in vars + functions, field refs, /regex/)", "awk.run command", "LSP via awkrs --lsp", "DAP debugging via awkrs --dap — breakpoints, stepping, variables"]
