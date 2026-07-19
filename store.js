@@ -1029,6 +1029,39 @@
       "overview": "The companion book to rubyrs — a compiled Ruby runtime hosted on the shared fusevm bytecode VM. MRI walks an AST in C; rubyrs lexes and parses Ruby to an AST, lowers it to fusevm bytecode, and runs it on a compiled VM with a three-tier Cranelift JIT. Arithmetic and comparison lower to native VM ops so the JIT can trace hot loops, while Ruby-specific behaviour — method dispatch, blocks, object construction, yield — is served by a thread-local RubyHost runtime. rubyrs carries no VM or JIT of its own.",
       "features": ["rubyrs, end to end — Ruby on the shared fusevm machine", "The pipeline: Ruby source → lexer → parser (AST) → fusevm bytecode → VM + JIT", "Native arithmetic/comparison ops vs the RubyHost runtime (dispatch, blocks, yield)", "Classes, modules/include, super, exceptions, splat/default params, &:sym block-pass", "The differential parity harness against real Ruby", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
+    "arb-registry-book": {
+      "overview": "The companion book to arb-registry — the community package index for arb. A registry is usually a server: an HTTP API, a database, an auth layer, uptime. arb-registry is none of that. It borrows the model Cargo and Homebrew use for their indexes: the index is a JSON file in a git repo, every package is an ordinary git repo, resolution is a git pull, and publishing is a commit. The book covers that model end to end.",
+      "features": [
+        "The index.json format — name, description, repo URL, and version per package",
+        "The arb client commands: update, search, install, and publish",
+        "The import resolution chain, from package name to cloned repo to loaded module",
+        "Package anatomy — the arb.toml manifest and the .arb spec modules beside it",
+        "The trust model of a shared JSON index living in a git repo",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "pythonrs-book": {
+      "overview": "The companion book to pythonrs — Python as a fusevm frontend, and the first compiled standalone Python runtime. CPython interprets a bytecode it re-dispatches every run; pythonrs lexes and parses Python with an indentation-aware front end, lowers it to fusevm bytecode, caches that bytecode with rkyv, and runs it on the shared VM with a Cranelift JIT — with AOT-native compilation of your scripts as the end of the same pipeline.",
+      "features": [
+        "pythonrs, end to end — Python on the shared fusevm machine",
+        "The indentation-aware lexer and parser, and the lowering of Python to fusevm bytecode",
+        "Native arithmetic ops for the JIT vs the PythonHost runtime that serves dispatch, comprehensions, and object construction",
+        "rkyv-cached bytecode and AOT-native compilation of your scripts",
+        "The differential parity harness against CPython",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "pythonrs-reference": {
+      "overview": "The dense reference companion to The pythonrs Book — the complete Python surface of the compiled Python runtime on fusevm. Generated from the live implementation rather than written by hand, so the builtin, type, and CLI listings track what the binary actually ships. Free, DRM-free PDF.",
+      "features": [
+        "Every builtin exposed by the pythonrs runtime",
+        "The core type surface and the methods implemented on each",
+        "The full command-line interface — running a file, a one-liner, and the REPL",
+        "Generated from the live implementation, so it does not drift from the binary",
+        "The dense companion to The pythonrs Book",
+        "Free, DRM-free PDF"
+      ]
+    },
     "arb-book": {
       "overview": "The companion book to arb — the pipeline-to-TUI language on fusevm. Pipe any Unix stream into arb and it spawns a dynamic full-screen TUI (and, later, a web page) built from a declarative, Tcl/Tk-flavored spec. The book covers the spec language and its widget/source model, the jq/xpath/css/yq query superset over the live stream, the interactive megafilter/map that shapes the passthrough in place, and the fusevm bytecode VM + Cranelift JIT it runs on — from the zero-config live-tail of Milestone 0 outward.",
       "features": ["arb, end to end — a TUI for every pipeline", "The declarative, Tcl/Tk-flavored spec and its widget/source model", "The jq / xpath / css / yq query superset over the live stream", "The interactive megafilter/map that shapes the passthrough in place", "Running on the fusevm bytecode VM + Cranelift JIT", "Pandoc + LaTeX typeset, DRM-free PDF"]
