@@ -375,6 +375,21 @@
       repo: 'https://github.com/MenkeTechnologies/elisprs',
     },
     {
+      id: 'pythonrs',
+      name: 'pythonrs',
+      glyph: 'PY',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'Python in Rust — run .py outside CPython. Python as a fusevm frontend (lex/parse → AST → fusevm bytecode) on a PythonHost object heap, no bespoke VM or JIT — the first compiled standalone Python runtime, on the shared bytecode VM + Cranelift JIT behind stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, and arb. Standalone python binary with an LSP language server, a DAP debugger, an AOT native compiler, and a transparent rkyv bytecode cache. Free and open source.',
+      pills: ['Rust', 'Python', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/pythonrs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/pythonrs',
+    },
+    {
       id: 'phplang',
       name: 'phplang',
       glyph: 'PH',
@@ -1011,6 +1026,17 @@
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "pythonrs": {
+      "overview": "Python in Rust — run .py files outside CPython. Python as a fusevm frontend that lexes and parses Python, lowers it to fusevm bytecode, and runs on a PythonHost object heap with no bespoke VM or JIT, on the shared 3-tier Cranelift JIT behind the rest of the fleet. The first compiled standalone Python runtime. Free and open source.",
+      "features": [
+        "Python interpreter in Rust — runs .py files standalone, no CPython required",
+        "Python frontend lowered to fusevm bytecode on a PythonHost object heap",
+        "Runs on the shared bytecode VM + 3-tier Cranelift JIT (stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb)",
+        "Standalone python binary with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "AOT native-binary compilation and a transparent rkyv bytecode cache",
+        "Free and open source (MIT)"
+      ]
+    },
     "phplang": {
       "overview": "PHP in Rust — run .php files outside the Zend engine. PHP as a fusevm frontend that lexes and parses PHP, lowers it to fusevm bytecode, and runs on a PhpHost object heap with no bespoke VM or JIT, on the shared 3-tier Cranelift JIT behind the rest of the fleet. The first compiled standalone PHP runtime. Free and open source.",
       "features": [
