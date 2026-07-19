@@ -691,59 +691,51 @@
     },
     {
       id: 'strykelang-reference', name: 'The strykelang Reference', glyph: 'sR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete strykelang language reference — every builtin, operator, sigil, and pipeline form of the parallel Perl 5 superset, generated from the live implementation. The dense companion to The strykelang Book. Free, DRM-free PDF.',
-      pills: ['Reference', 'strykelang', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/strykelang-reference.pdf',
+      tagline: 'The complete strykelang language reference — every builtin, operator, sigil, and pipeline form of the parallel Perl 5 superset, generated from the live implementation. The dense companion to The strykelang Book. DRM-free PDF.',
+      pills: ['Reference', 'strykelang', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'zshrs-reference', name: 'The zshrs Reference', glyph: 'zR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete zshrs reference — every builtin, option, parameter flag, and completion primitive of the first compiled Unix shell. The dense companion to The zshrs Book. Free, DRM-free PDF.',
-      pills: ['Reference', 'zshrs', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/zshrs-reference.pdf',
+      tagline: 'The complete zshrs reference — every builtin, option, parameter flag, and completion primitive of the first compiled Unix shell. The dense companion to The zshrs Book. DRM-free PDF.',
+      pills: ['Reference', 'zshrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'zmax-reference', name: 'The zmax Reference', glyph: 'eR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete zmax reference — every command, keymap, and embedded-language entry point of the modal IDE. The dense companion to The zmax Book. Free, DRM-free PDF.',
-      pills: ['Reference', 'zmax', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/zmax-reference.pdf',
+      tagline: 'The complete zmax reference — every command, keymap, and embedded-language entry point of the modal IDE. The dense companion to The zmax Book. DRM-free PDF.',
+      pills: ['Reference', 'zmax', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'vimlrs-reference', name: 'The vimlrs Reference', glyph: 'vR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete vimlrs reference — the VimL builtin functions, commands, and options implemented as a fusevm frontend. Free, DRM-free PDF.',
-      pills: ['Reference', 'vimlrs', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/vimlrs-reference.pdf',
+      tagline: 'The complete vimlrs reference — the VimL builtin functions, commands, and options implemented as a fusevm frontend. DRM-free PDF.',
+      pills: ['Reference', 'vimlrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'elisprs-reference', name: 'The elisprs Reference', glyph: 'lR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete elisprs reference — the Emacs Lisp subroutines and special forms implemented as a fusevm frontend. Free, DRM-free PDF.',
-      pills: ['Reference', 'elisprs', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/elisprs-reference.pdf',
+      tagline: 'The complete elisprs reference — the Emacs Lisp subroutines and special forms implemented as a fusevm frontend. DRM-free PDF.',
+      pills: ['Reference', 'elisprs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'awkrs-reference', name: 'The awkrs Reference', glyph: 'aR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete awkrs reference — the AWK language surface, builtins, and CLI of the parallel Rust AWK. Free, DRM-free PDF.',
-      pills: ['Reference', 'awkrs', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/awkrs-reference.pdf',
+      tagline: 'The complete awkrs reference — the AWK language surface, builtins, and CLI of the parallel Rust AWK. DRM-free PDF.',
+      pills: ['Reference', 'awkrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'rubyrs-reference', name: 'The rubyrs Reference', glyph: 'rR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete rubyrs reference — the Ruby surface of the compiled Ruby runtime on fusevm: builtins, core classes, and the CLI, generated from the live implementation. The dense companion to The rubyrs Book. Free, DRM-free PDF.',
-      pills: ['Reference', 'rubyrs', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/rubyrs-reference.pdf',
+      tagline: 'The complete rubyrs reference — the Ruby surface of the compiled Ruby runtime on fusevm: builtins, core classes, and the CLI, generated from the live implementation. The dense companion to The rubyrs Book. DRM-free PDF.',
+      pills: ['Reference', 'rubyrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'pythonrs-reference', name: 'The pythonrs Reference', glyph: 'PR', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete pythonrs reference — the Python surface of the compiled Python runtime on fusevm: builtins, core types, and the CLI, generated from the live implementation. The dense companion to The pythonrs Book. Free, DRM-free PDF.',
-      pills: ['Reference', 'pythonrs', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/pythonrs-reference.pdf',
+      tagline: 'The complete pythonrs reference — the Python surface of the compiled Python runtime on fusevm: builtins, core types, and the CLI, generated from the live implementation. The dense companion to The pythonrs Book. DRM-free PDF.',
+      pills: ['Reference', 'pythonrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'zpwr-synth-reference', name: 'The zpwr-synth Reference', glyph: 'yR', category: 'Publications', badge: 'REFERENCE',
@@ -1202,14 +1194,14 @@
       ]
     },
     "pythonrs-reference": {
-      "overview": "The dense reference companion to The pythonrs Book — the complete Python surface of the compiled Python runtime on fusevm. Generated from the live implementation rather than written by hand, so the builtin, type, and CLI listings track what the binary actually ships. Free, DRM-free PDF.",
+      "overview": "The dense reference companion to The pythonrs Book — the complete Python surface of the compiled Python runtime on fusevm. Generated from the live implementation rather than written by hand, so the builtin, type, and CLI listings track what the binary actually ships. DRM-free PDF.",
       "features": [
         "Every builtin exposed by the pythonrs runtime",
         "The core type surface and the methods implemented on each",
         "The full command-line interface — running a file, a one-liner, and the REPL",
         "Generated from the live implementation, so it does not drift from the binary",
         "The dense companion to The pythonrs Book",
-        "Free, DRM-free PDF"
+        "DRM-free PDF"
       ]
     },
     "arb-book": {
@@ -2612,11 +2604,11 @@
     },
     "awkrs-reference": {
       "overview": "The complete awkrs reference — the AWK language surface, builtins, and command-line interface of awkrs, the parallel Rust AWK, generated from the live implementation so every function and flag matches the shipping binary.",
-      "features": ["Every AWK builtin and language construct, generated from the live awkrs source", "The command-line surface: options, field and record separators, program invocation", "Parallel-execution notes specific to the Rust implementation", "The dense companion to The awkrs Book", "Free, DRM-free PDF"]
+      "features": ["Every AWK builtin and language construct, generated from the live awkrs source", "The command-line surface: options, field and record separators, program invocation", "Parallel-execution notes specific to the Rust implementation", "The dense companion to The awkrs Book", "DRM-free PDF"]
     },
     "elisprs-reference": {
       "overview": "The complete elisprs reference — the Emacs Lisp subroutines and special forms implemented as a fusevm frontend, generated from the live implementation.",
-      "features": ["Every implemented Emacs Lisp subroutine and special form", "The fusevm-frontend model: Emacs Lisp lowered to the shared bytecode VM", "Generated from the live elisprs source", "The dense companion to The elisprs Book", "Free, DRM-free PDF"]
+      "features": ["Every implemented Emacs Lisp subroutine and special form", "The fusevm-frontend model: Emacs Lisp lowered to the shared bytecode VM", "Generated from the live elisprs source", "The dense companion to The elisprs Book", "DRM-free PDF"]
     },
     "gui-automation-bus-book": {
       "overview": "The companion book to the GUI automation bus — the cross-app event-routing layer that wires the MenkeTechnologies desktop suite together, letting one app drive another over a shared message bus.",
@@ -2628,15 +2620,15 @@
     },
     "rubyrs-reference": {
       "overview": "The complete rubyrs reference — the Ruby language surface of the compiled Ruby runtime on fusevm: builtins, core classes (String / Array / Hash), and the CLI, generated from the live implementation so every method and flag matches the shipping binary.",
-      "features": ["The Ruby surface implemented by rubyrs, generated from the live source", "Core classes and their methods: String, Array, Hash, and friends", "The CLI: run a file, a -e one-liner, or the REPL", "The runtime model: native VM ops vs the RubyHost (dispatch, blocks, yield)", "The dense companion to The rubyrs Book", "Free, DRM-free PDF"]
+      "features": ["The Ruby surface implemented by rubyrs, generated from the live source", "Core classes and their methods: String, Array, Hash, and friends", "The CLI: run a file, a -e one-liner, or the REPL", "The runtime model: native VM ops vs the RubyHost (dispatch, blocks, yield)", "The dense companion to The rubyrs Book", "DRM-free PDF"]
     },
     "strykelang-reference": {
       "overview": "The complete strykelang language reference — every builtin, operator, sigil, and pipeline form of the parallel Perl 5 superset, generated from the live implementation. The dense companion to The strykelang Book.",
-      "features": ["Every strykelang builtin, generated from the live implementation", "Operators, sigils, and the pipe-forward pipeline forms", "The parallel-execution and Cranelift-JIT model", "The dense companion to The strykelang Book", "Free, DRM-free PDF"]
+      "features": ["Every strykelang builtin, generated from the live implementation", "Operators, sigils, and the pipe-forward pipeline forms", "The parallel-execution and Cranelift-JIT model", "The dense companion to The strykelang Book", "DRM-free PDF"]
     },
     "vimlrs-reference": {
       "overview": "The complete vimlrs reference — the VimL builtin functions, commands, and options implemented as a fusevm frontend, generated from the live implementation.",
-      "features": ["Every implemented VimL builtin function", "Ex commands and options coverage", "The fusevm-frontend model: VimL lowered to the shared bytecode VM", "The dense companion to The vimlrs Book", "Free, DRM-free PDF"]
+      "features": ["Every implemented VimL builtin function", "Ex commands and options coverage", "The fusevm-frontend model: VimL lowered to the shared bytecode VM", "The dense companion to The vimlrs Book", "DRM-free PDF"]
     },
     "zgui-core-component-catalog": {
       "overview": "The zgui-core component catalog — every UI component in the shared GUI toolkit behind the MenkeTechnologies desktop apps, the one library each app builds its interface from.",
@@ -2644,7 +2636,7 @@
     },
     "zmax-reference": {
       "overview": "The complete zmax reference — every command, keymap, and embedded-language entry point of the modal IDE. The dense companion to The zmax Book.",
-      "features": ["Every zmax command and default keymap", "The embedded-language entry points", "The modal editing model", "The dense companion to The zmax Book", "Free, DRM-free PDF"]
+      "features": ["Every zmax command and default keymap", "The embedded-language entry points", "The modal editing model", "The dense companion to The zmax Book", "DRM-free PDF"]
     },
     "znative-book": {
       "overview": "The companion book to znative — the zshrs package manager, and the first shell package manager whose unit of installation can be native compiled code rather than shell text. It walks the published, versioned ABI that makes a native plugin safe to install, the eight-command surface, source auto-classification with @ref pinning, the content-addressed store, and the worked plugin ports.",
@@ -2688,7 +2680,7 @@
     },
     "zshrs-reference": {
       "overview": "The complete zshrs reference — every builtin, option, parameter flag, and completion primitive of the first compiled Unix shell. The dense companion to The zshrs Book.",
-      "features": ["Every zshrs builtin and option", "Parameter flags and completion primitives", "Generated from the live zshrs source", "The dense companion to The zshrs Book", "Free, DRM-free PDF"]
+      "features": ["Every zshrs builtin and option", "Parameter flags and completion primitives", "Generated from the live zshrs source", "The dense companion to The zshrs Book", "DRM-free PDF"]
     }
   };
 

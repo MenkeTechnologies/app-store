@@ -23,14 +23,19 @@ MenkeTechnologies App Store — a static storefront for the MenkeTechnologies
 stack.
 
 Every MenkeTechnologies-authored repo in the meta collection is listed, across
-six categories (Desktop Apps, Audio Plugins, Developer Tools, CLI Tools, Zsh
-Plugins, stryke Packages):
+ten categories (Desktop Apps, Audio Plugins, Developer Tools, CLI Tools, Zsh
+Plugins, znative Plugins, Editor Plugins, stryke Packages, arb Packages,
+Publications):
 
 - **Paid** — `audio haxor`, `traderview`, `zpwr-daw`, `zpwr-synth`, `zpwr-fx`,
-  `zpwr-midi-fx`.
+  `zpwr-midi-fx`, plus the Publications: the companion books, and the language
+  reference manuals whose subject is itself free (`zshrs`, `strykelang`, `zmax`,
+  `vimlrs`, `elisprs`, `awkrs`, `rubyrs`, `pythonrs`).
 - **Free / open source** — everything else: `zshrs`, `stryke`, the Rust CLI
-  tools, the **stryke package ecosystem** (30 packages), `zpwr`,
-  `zsh-more-completions`, `fusevm`, and the rest of the zsh-plugin family.
+  tools, the **stryke package ecosystem**, the **arb dashboard packages**,
+  `zpwr`, `zsh-more-completions`, `fusevm`, and the rest of the zsh-plugin
+  family. The references and block catalogs that ship *with* a paid product
+  (`zpwr-daw`, `zpwr-synth`, `zpwr-fx`, `zpwr-midi-fx`) stay free.
 
 **Third-party forks are intentionally excluded** (`fzf-tab`, `zsh-z`, `zunit`,
 `kubectl-aliases`, `revolver`, `tmux-fzf-url`, `fasd-simple`, etc.) — they are
