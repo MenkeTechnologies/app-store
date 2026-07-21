@@ -1197,6 +1197,50 @@
         "Free and open source (MIT)"
       ]
     },
+    "javars": {
+      "overview": "Java in Rust — a compiled standalone Java runtime with no JVM. Java as a fusevm frontend that lexes and parses Java to an AST, lowers it to fusevm bytecode, and runs on the shared bytecode VM + 3-tier Cranelift JIT behind the rest of the fleet, with a JavaHost object heap serving Java semantics. Free and open source.",
+      "features": [
+        "Java runtime in Rust — runs .java files standalone, no JVM required",
+        "Hand-written lexer and recursive-descent parser; the single-class main-entry model",
+        "Java frontend lowered to fusevm bytecode on a JavaHost object heap",
+        "Runs on the shared bytecode VM + 3-tier Cranelift JIT (stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, php, node-js)",
+        "Standalone javars binary with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "Free and open source (MIT)"
+      ]
+    },
+    "kotlinrs": {
+      "overview": "Kotlin in Rust — the first compiled standalone Kotlin runtime with no JVM. Kotlin as a fusevm frontend that tokenizes and parses Kotlin to an AST, lowers it to fusevm bytecode, and runs on the shared bytecode VM + 3-tier Cranelift JIT behind the rest of the fleet, with a KotlinHost object heap serving Kotlin semantics. Free and open source.",
+      "features": [
+        "Kotlin runtime in Rust — runs .kt files standalone, no JVM required",
+        "Tokenizer and parser; the top-level fun entry model and the Int/Double split with integer-division ops",
+        "Kotlin frontend lowered to fusevm bytecode on a KotlinHost object heap",
+        "Inline Rust FFI via rust { } blocks compiled to a cached cdylib and called by name",
+        "Standalone kotlinrs binary with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "Free and open source (MIT)"
+      ]
+    },
+    "scalars": {
+      "overview": "Scala in Rust — a compiled standalone Scala runtime with no JVM. Scala as a fusevm frontend with a newline-inferring lexer that parses Scala to an AST, lowers it to fusevm bytecode, and runs on the shared bytecode VM + 3-tier Cranelift JIT behind the rest of the fleet, with a ScalaHost object heap serving Scala semantics. Free and open source.",
+      "features": [
+        "Scala runtime in Rust — runs .scala files standalone, no JVM required",
+        "Newline-inferring lexer; object/def-main and extends App entry models, val/var, range for",
+        "Scala frontend lowered to fusevm bytecode on a ScalaHost object heap; the SDIV integer-division op vs native float arithmetic",
+        "Runs on the shared bytecode VM + 3-tier Cranelift JIT (stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, php, node-js)",
+        "A differential parity-fuzz harness byte-diffed against real scala",
+        "Free and open source (MIT)"
+      ]
+    },
+    "groovyrs": {
+      "overview": "Groovy in Rust — the first compiled standalone Groovy runtime with no JVM. Groovy as a fusevm frontend with a newline-significant lexer and a script-model parser, lowered to fusevm bytecode and run on the shared bytecode VM + 3-tier Cranelift JIT behind the rest of the fleet, with a GroovyHost object heap serving Groovy semantics. Free and open source.",
+      "features": [
+        "Groovy runtime in Rust — runs .groovy scripts standalone, no JVM required",
+        "Newline-significant lexer and the Groovy script-model parser",
+        "Groovy frontend lowered to fusevm bytecode on a GroovyHost object heap; the GDIV division op and for-in range desugaring",
+        "Runs on the shared bytecode VM + 3-tier Cranelift JIT (stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, php, node-js)",
+        "A differential parity harness against real groovy",
+        "Free and open source (MIT)"
+      ]
+    },
     "zvcs": {
       "overview": "A git superset for high-velocity, automated version-control workflows over deep submodule trees. Concurrent, lock-free operations eliminate the index-lock contention git hits under many parallel writers — built for fleets of automated agents committing across a meta-repo of nested submodules. Free and open source.",
       "features": [
@@ -1862,6 +1906,89 @@
         "Grouped by chapter: keywords, globals, and per-type method sets",
         "Generated from the src/lsp.rs corpus that also drives editor completion",
         "A runnable JavaScript example for every entry",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "javars-book": {
+      "overview": "The companion book to javars — Java as a fusevm frontend and a compiled standalone Java runtime with no JVM. It lexes and parses Java with a hand-written recursive-descent parser, models the single-class main entry point, lowers Java to fusevm bytecode, and serves Java semantics from a JavaHost runtime, with a DAP debugger over the same pipeline.",
+      "features": [
+        "javars, end to end — Java on the shared fusevm machine",
+        "The hand-written lexer and recursive-descent parser; the single-class main-entry model",
+        "Lowering Java to fusevm bytecode; the JavaHost runtime and builtin set",
+        "The DAP debug adapter and the LSP language server",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "javars-reference": {
+      "overview": "The complete javars reference — every Java keyword, type, operator, and builtin the current javars build recognizes, generated from the language server's own corpus so every entry matches the shipping javars binary, each with a runnable example.",
+      "features": [
+        "Every keyword, type, operator, and builtin the build recognizes",
+        "Grouped by chapter for the Java surface",
+        "Generated from the src/lsp.rs corpus that also drives editor completion",
+        "A runnable Java example for every entry",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "kotlinrs-book": {
+      "overview": "The companion book to kotlinrs — Kotlin as a fusevm frontend and a compiled standalone Kotlin runtime with no JVM. It tokenizes and parses Kotlin, models the top-level fun entry point, lowers Kotlin to fusevm bytecode (the Int/Double split and integer-division ops), compiles inline Rust FFI via rust { } blocks to a cached cdylib, and ships a DAP debugger over the same pipeline.",
+      "features": [
+        "kotlinrs, end to end — Kotlin on the shared fusevm machine",
+        "The tokenizer and parser; the top-level fun model",
+        "Lowering Kotlin to fusevm bytecode; the Int/Double split and integer-division ops",
+        "Inline Rust FFI via rust { } blocks compiled to a cached cdylib",
+        "The DAP debug adapter and the LSP language server",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "kotlinrs-reference": {
+      "overview": "The complete kotlinrs reference — every Kotlin keyword, operator, and builtin the current kotlinrs build recognizes, generated from the language server's own corpus so every entry matches the shipping kotlinrs binary, each with a runnable example.",
+      "features": [
+        "Every keyword, operator, and builtin the build recognizes",
+        "Grouped by chapter for the Kotlin surface",
+        "Generated from the src/lsp.rs corpus that also drives editor completion",
+        "A runnable Kotlin example for every entry",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "scalars-book": {
+      "overview": "The companion book to scalars — Scala as a fusevm frontend and a compiled standalone Scala runtime with no JVM. It lexes Scala with a newline-inferring lexer, parses it, lowers Scala to fusevm bytecode (the SDIV integer-division op vs native float arithmetic), serves Scala semantics from a ScalaHost runtime, and is validated by a differential parity-fuzz harness against real scala.",
+      "features": [
+        "scalars, end to end — Scala on the shared fusevm machine",
+        "The newline-inferring lexer and the parser",
+        "Lowering Scala to fusevm bytecode; the SDIV integer-division op vs native float arithmetic",
+        "The differential parity-fuzz harness byte-diffed against real scala",
+        "The LSP language server for editor completion",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "scalars-reference": {
+      "overview": "The complete scalars reference — every Scala keyword, operator, and builtin the current scalars build recognizes, generated from the language server's own corpus so every entry matches the shipping scalars binary, each with a runnable example.",
+      "features": [
+        "Every keyword, operator, and builtin the build recognizes",
+        "Grouped by chapter for the Scala surface",
+        "Generated from the src/lsp.rs corpus that also drives editor completion",
+        "A runnable Scala example for every entry",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "groovyrs-book": {
+      "overview": "The companion book to groovyrs — Groovy as a fusevm frontend and a compiled standalone Groovy runtime with no JVM. It lexes Groovy with a newline-significant lexer, parses it with a script-model parser, lowers Groovy to fusevm bytecode (the GDIV division op and for-in range desugaring), serves Groovy semantics from a GroovyHost runtime, and is validated by a differential parity harness against real groovy.",
+      "features": [
+        "groovyrs, end to end — Groovy on the shared fusevm machine",
+        "The newline-significant lexer and the script-model parser",
+        "Lowering Groovy to fusevm bytecode; the GDIV division op and for-in range desugaring",
+        "The differential parity harness against real groovy",
+        "The LSP language server for editor completion",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "groovyrs-reference": {
+      "overview": "The complete groovyrs reference — every Groovy keyword, operator, and builtin the current groovyrs build recognizes, generated from the language server's own corpus so every entry matches the shipping groovyrs binary, each with a runnable example.",
+      "features": [
+        "Every keyword, operator, and builtin the build recognizes",
+        "Grouped by chapter for the Groovy surface",
+        "Generated from the src/lsp.rs corpus that also drives editor completion",
+        "A runnable Groovy example for every entry",
         "Pandoc + LaTeX typeset, DRM-free PDF"
       ]
     },
