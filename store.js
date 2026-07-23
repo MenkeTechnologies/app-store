@@ -480,6 +480,36 @@
       repo: 'https://github.com/MenkeTechnologies/groovyrs',
     },
     {
+      id: 'rlang',
+      name: 'rlang',
+      glyph: 'RL',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'R in Rust — run .R outside GNU R. R as a fusevm frontend (lex/parse → AST → fusevm bytecode) on the shared bytecode VM + Cranelift JIT: every value is a vector with attributes on an RHost heap, so recycling, NA propagation, three-valued logic, and copy-on-modify are the runtime semantics themselves. All four index forms, closures and <<-, S3 UseMethod, 131 primitives — checked byte-for-byte against GNU R by a differential parity harness. Standalone Rscript binary + REPL, an LSP language server, a DAP debugger, and a transparent rkyv bytecode cache. Free and open source.',
+      pills: ['Rust', 'R', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/rlang/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/rlang',
+    },
+    {
+      id: 'go-rs',
+      name: 'go-rs',
+      glyph: 'GO',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'Go in Rust — run Go with no garbage collector and no go toolchain. Go as a fusevm frontend (lex with automatic semicolon insertion / parse → AST → fusevm bytecode) on the shared bytecode VM + Cranelift JIT behind stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, php, js, and rlang. No bespoke VM, no goroutine runtime, no gc. Standalone go binary with an LSP language server, a DAP debugger, inline rust {} FFI, and corpus-driven docs. Free and open source.',
+      pills: ['Rust', 'Go', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/go-rs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/go-rs',
+    },
+    {
       id: 'zvcs',
       name: 'zvcs',
       glyph: 'ZV',
@@ -822,6 +852,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'arb-reference', name: 'The arb Reference', glyph: 'rR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The complete arb reference — the pipeline-to-TUI language surface on fusevm: the spec directives, widget and source types, the jq/xpath/css/yq query operators, and the CLI, generated from the live implementation. The dense companion to The arb Book. DRM-free PDF.',
+      pills: ['Reference', 'arb', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'arb-registry-book', name: 'The arb-registry Book', glyph: 'iB', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The companion book to arb-registry — the community package index for arb: a server-less git-index registry on the crates.io-index / homebrew-core model. The index.json format, the arb client (update/search/install/publish), the import resolution chain, package anatomy (arb.toml + .arb modules), and the trust model of a shared JSON index in a git repo. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'arb-registry', 'DRM-free PDF'], price: 20,
@@ -951,6 +987,18 @@
       id: 'rlang-reference', name: 'The rlang Reference', glyph: 'RR', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete rlang reference — the R surface of the compiled R runtime on fusevm: primitives, builtins, and the CLI, generated from the live implementation. The dense companion to The rlang Book. DRM-free PDF.',
       pills: ['Reference', 'rlang', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'go-rs-book', name: 'The go-rs Book', glyph: 'GB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to go-rs — Go as a fusevm frontend with no garbage collector: Go source lexed (with automatic semicolon insertion) and parsed, lowered to bytecode on the shared VM with a three-tier Cranelift JIT instead of the go toolchain. The frontend/engine split, functions and call-frame slots, Go int/int truncation and %v formatting, the string numeric hook, and the in-binary tooling — an LSP server, a DAP debugger, inline rust {} FFI, and corpus-driven docs. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'go-rs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'go-rs-reference', name: 'The go-rs Reference', glyph: 'GR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The complete go-rs reference — the Go surface on fusevm: keywords, operators, builtins, types, and the fmt print family, generated from the language-server corpus so the reference never drifts from the tooling. The dense companion to The go-rs Book. DRM-free PDF.',
+      pills: ['Reference', 'go-rs', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
@@ -1176,6 +1224,61 @@
   // README / source. Authoritative source for the product-detail page; merged
   // into PRODUCTS below so PRODUCTS stays the single object the UI reads.
   var DETAILS = {
+    "rlang": {
+      "overview": "R in Rust — run .R files outside GNU R. R as a fusevm frontend that lexes and parses R, lowers it to fusevm bytecode, and runs on an RHost vector heap with no bespoke VM or JIT, on the shared 3-tier Cranelift JIT behind the rest of the fleet. Every value is a vector with attributes, so recycling, NA propagation, three-valued logic, and copy-on-modify are the runtime semantics themselves. Free and open source.",
+      "features": [
+        "R interpreter in Rust — runs .R files standalone, no GNU R required",
+        "Vector value model on an RHost heap — attributes, recycling, NA propagation, three-valued logic, copy-on-modify",
+        "All four index forms, closures and <<-, replacement functions, S3 UseMethod, 131 primitives",
+        "Byte-for-byte checked against GNU R by a differential parity harness",
+        "Standalone Rscript binary + REPL with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "Transparent rkyv bytecode cache and AOP intercepts — free and open source (MIT)"
+      ]
+    },
+    "go-rs": {
+      "overview": "Go in Rust — run Go with no garbage collector and no go toolchain. Go as a fusevm frontend that lexes Go (with automatic semicolon insertion) and parses it, lowers it to fusevm bytecode, and runs on the shared 3-tier Cranelift JIT with no bespoke VM, no goroutine runtime, and no gc. Free and open source.",
+      "features": [
+        "Go compiler in Rust — runs Go standalone, no go toolchain, no goroutine runtime, no garbage collector",
+        "Go frontend lowered to fusevm bytecode on the shared bytecode VM + 3-tier Cranelift JIT",
+        "Go semantics — automatic semicolon insertion, int/int truncation, %v formatting, string concatenation and ordering",
+        "Standalone go binary with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "Inline rust {} FFI, corpus-driven reference docs, and --dump-tokens/--dump-ast/--disasm introspection",
+        "Free and open source (MIT)"
+      ]
+    },
+    "arb-reference": {
+      "overview": "The dense reference companion to The arb Book — the complete surface of the pipeline-to-TUI language on fusevm. Generated from the live implementation rather than written by hand, so the directive, widget, source, and query listings track what the binary actually ships. DRM-free PDF.",
+      "features": [
+        "Every spec directive and the widget and source types arb renders",
+        "The jq/xpath/css/yq query operator surface over the live passthrough",
+        "The interactive megafilter/map and the full command-line interface",
+        "Generated from the live implementation, so it does not drift from the binary",
+        "The dense companion to The arb Book",
+        "DRM-free PDF"
+      ]
+    },
+    "go-rs-book": {
+      "overview": "The companion book to go-rs — Go as a fusevm frontend with no garbage collector. The reference go toolchain ships a collector and a scheduler; go-rs keeps Go's syntax and semantics and does without the runtime, lowering Go to bytecode on the shared VM with a three-tier Cranelift JIT. The frontend/engine split, functions and call-frame slots, and the in-binary tooling.",
+      "features": [
+        "go-rs, end to end — Go on the shared fusevm machine, no gc and no go toolchain",
+        "Own the language, rent the engine — the frontend/engine split that defines the project",
+        "Functions, call-frame slots, and recursion; Go int/int truncation and %v formatting",
+        "The string numeric hook and how strings stay strings in an arithmetic context",
+        "The in-binary tooling — LSP server, DAP debugger, inline rust {} FFI, corpus-driven docs",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "go-rs-reference": {
+      "overview": "The dense reference companion to The go-rs Book — the complete Go surface of the frontend on fusevm. Generated from the language-server corpus rather than written by hand, so the keyword, operator, builtin, and type listings track what the tooling and binary actually ship. DRM-free PDF.",
+      "features": [
+        "Every keyword, operator, builtin, and type the go-rs build recognizes",
+        "The fmt print family and Go's %v value formatting",
+        "The full command-line interface — go run, go on a file, and the introspection dumps",
+        "Generated from the language-server corpus, so it never drifts from the tooling",
+        "The dense companion to The go-rs Book",
+        "DRM-free PDF"
+      ]
+    },
     "pythonrs": {
       "overview": "Python in Rust — run .py files outside CPython. Python as a fusevm frontend that lexes and parses Python, lowers it to fusevm bytecode, and runs on a PythonHost object heap with no bespoke VM or JIT, on the shared 3-tier Cranelift JIT behind the rest of the fleet. The first compiled standalone Python runtime. Free and open source.",
       "features": [
