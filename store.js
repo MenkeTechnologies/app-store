@@ -732,6 +732,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'rlang-book', name: 'The rlang Book', glyph: 'Rb', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to rlang — R as a fusevm frontend: a compiled R runtime that lowers R to bytecode on the shared VM with a three-tier Cranelift JIT instead of walking a parse tree. The vector value model with no scalars, copy-on-modify semantics, three-valued logic and NA propagation, S3 dispatch, AOP intercepts, the AOT native-executable and inline-Rust FFI paths, the wasm build, and the differential parity harness against GNU R. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'rlang', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zvcs-book', name: 'The zvcs Book', glyph: 'ZV', category: 'Publications', badge: 'COMPANION',
       tagline: 'The companion book to zvcs — a git-shadowing superset VCS: the shadow `git` binary, the per-repo zdaemon FIFO coordinator that replaces index.lock\'s O_EXCL flock with a fair arrival-order queue, RepoLock\'s RAII client, the zsync/zbump submodule discipline, and the vendored gitoxide engine underneath. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'zvcs', 'DRM-free PDF'], price: 20,
@@ -939,6 +945,12 @@
       id: 'pythonrs-reference', name: 'The pythonrs Reference', glyph: 'PR', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The complete pythonrs reference — the Python surface of the compiled Python runtime on fusevm: builtins, core types, and the CLI, generated from the live implementation. The dense companion to The pythonrs Book. DRM-free PDF.',
       pills: ['Reference', 'pythonrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'rlang-reference', name: 'The rlang Reference', glyph: 'RR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The complete rlang reference — the R surface of the compiled R runtime on fusevm: primitives, builtins, and the CLI, generated from the live implementation. The dense companion to The rlang Book. DRM-free PDF.',
+      pills: ['Reference', 'rlang', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
@@ -1853,6 +1865,17 @@
         "Pandoc + LaTeX typeset, DRM-free PDF"
       ]
     },
+    "rlang-book": {
+      "overview": "The companion book to rlang — R as a fusevm frontend, a compiled R runtime. GNU R walks a parse tree in C; rlang lexes and parses R to an AST, lowers it to fusevm bytecode, and runs it on the shared VM with a three-tier Cranelift JIT — carrying no VM or JIT of its own. for/while/repeat/if/&&/|| lower to native fusevm jumps with native integer loop counters, so the tracing JIT sees ordinary loops.",
+      "features": [
+        "rlang, end to end — R on the shared fusevm machine",
+        "The vector value model — no scalars, attributes (names/dim/class), recycling and NA propagation, three-valued logic",
+        "Copy-on-modify semantics and the way complex assignment targets rebuild and re-bind",
+        "S3 dispatch, AOP before/after/around intercepts, the AOT native-executable and inline-Rust FFI paths, and the wasm build",
+        "The differential parity harness against GNU R",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
     "zvcs-book": {
       "overview": "The companion book to zvcs — a git-shadowing superset VCS built for many-writer, submodule-heavy automated workflows. A single binary named git shadows stock git on PATH (porcelain served by vendored gitoxide); on top, a coordination layer replaces git's index.lock flock with a per-repo FIFO zdaemon so concurrent writers serialize fairly instead of racing.",
       "features": [
@@ -2000,6 +2023,17 @@
         "The full command-line interface — running a file, a one-liner, and the REPL",
         "Generated from the live implementation, so it does not drift from the binary",
         "The dense companion to The pythonrs Book",
+        "DRM-free PDF"
+      ]
+    },
+    "rlang-reference": {
+      "overview": "The dense reference companion to The rlang Book — the complete R surface of the compiled R runtime on fusevm. Generated from the live implementation rather than written by hand, so the primitive, builtin, and CLI listings track what the binary actually ships. DRM-free PDF.",
+      "features": [
+        "Every primitive and builtin exposed by the rlang runtime",
+        "The core vector/attribute surface and the operations implemented on each",
+        "The full command-line interface — Rscript on a file, a -e one-liner, and the REPL",
+        "Generated from the live implementation, so it does not drift from the binary",
+        "The dense companion to The rlang Book",
         "DRM-free PDF"
       ]
     },
