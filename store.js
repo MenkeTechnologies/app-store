@@ -485,7 +485,7 @@
       glyph: 'RL',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'R in Rust — run .R outside GNU R. R as a fusevm frontend (lex/parse → AST → fusevm bytecode) on the shared bytecode VM + Cranelift JIT: every value is a vector with attributes on an RHost heap, so recycling, NA propagation, three-valued logic, and copy-on-modify are the runtime semantics themselves. All four index forms, closures and <<-, S3 UseMethod, 131 primitives — checked byte-for-byte against GNU R by a differential parity harness. Standalone Rscript binary + REPL, an LSP language server, a DAP debugger, and a transparent rkyv bytecode cache. Free and open source.',
+      tagline: 'R in Rust — run .R outside GNU R. R as a fusevm frontend (lex/parse → AST → fusevm bytecode) on the shared bytecode VM + Cranelift JIT: every value is a vector with attributes on an RHost heap, so recycling, NA propagation, three-valued logic, and copy-on-modify are the runtime semantics themselves. All four index forms, closures and <<-, S3 UseMethod, 131 primitives — checked byte-for-byte against GNU R by a differential parity harness. Standalone Rscript binary + REPL, an LSP language server, a DAP debugger, inline-Rust FFI (.rust / .Call), and a transparent rkyv bytecode cache. Free and open source.',
       pills: ['Rust', 'R', 'fusevm', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -1232,6 +1232,7 @@
         "All four index forms, closures and <<-, replacement functions, S3 UseMethod, 131 primitives",
         "Byte-for-byte checked against GNU R by a differential parity harness",
         "Standalone Rscript binary + REPL with an LSP language server (--lsp) and DAP debugger (--dap)",
+        "Inline-Rust FFI — .rust(code) compiles a pub extern \"C\" block to a cached cdylib, .Call(name, …) invokes it (shared fusevm FFI runtime)",
         "Transparent rkyv bytecode cache and AOP intercepts — free and open source (MIT)"
       ]
     },
