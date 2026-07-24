@@ -1093,6 +1093,12 @@
       tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
       download: 'docs/gui-automation-bus-reference.pdf',
     },
+    {
+      id: 'zdbview-book', name: 'The zdbview Book', glyph: 'dB', category: 'Publications', badge: 'COMPANION',
+      tagline: 'The companion book to zdbview — the terminal inspector and CRUD editor that opens both halves of the cache from one binary. Header-magic detection over filenames, generic CRUD on any SQLite database, and the format registry that makes non-self-describing rkyv archives readable and writable: faithful archive-type copies, magic pre-filter, rkyv validation, structural fallback when nothing matches — plus the atomic write-back path, the TUI state model, and the optional fusevm bytecode disassembler. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'zdbview', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
   ];
 
   // stryke ecosystem packages — all free, all ship prebuilt binaries.
@@ -2799,6 +2805,18 @@
         "Backend chosen by header magic, not filename — a .db whose bytes are not a SQLite header opens as an archive",
         "No-arg launch opens an MRU picker of recently opened files; SQLite is compiled in (no system library)",
         "MIT — original Rust, ratatui + crossterm"
+      ]
+    },
+    "zdbview-book": {
+      "overview": "The companion book to zdbview — the terminal inspector and CRUD editor for rkyv archives and SQLite databases. It follows the tool from the sixteen bytes that decide which backend opens a file, through the generic CRUD surface a self-describing database allows, to the format registry that makes a non-self-describing rkyv archive readable and writable at all — and states plainly where recognition stops.",
+      "features": [
+        "Detection: the SQLite header magic as sole authority, with the extension only as a tie-breaker for files too short to carry a header",
+        "The SQLite half: rowid addressing, identifier and LIKE escaping, whole-table SQL-backed search, and the WITHOUT ROWID limit",
+        "The rkyv problem: no field names, no type tags — what a structural inspector can and cannot recover",
+        "The format registry: three archive families, the magic pre-filter, rkyv validation gates, and the structural fallback",
+        "Write-back: one generic deserialize-mutate-reserialize path, stable record identity, and the temp-file-plus-rename write",
+        "The TUI state model, the disasm feature's linked-fusevm tradeoff, and the tests that hold the backend contract",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
       ]
     },
     "grcrs": {
