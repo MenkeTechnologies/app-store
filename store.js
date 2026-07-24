@@ -660,6 +660,14 @@
       repo: 'https://github.com/MenkeTechnologies/ztmux',
     },
     {
+      id: 'zdbview', name: 'zdbview', glyph: 'db', category: 'CLI Tools', badge: 'FREE',
+      tagline: 'A terminal inspector and CRUD editor for rkyv archives and SQLite databases — one binary for both halves of the cache. rkyv archives carry no schema, so known formats are decoded to real key/value through a magic-detected, validated format registry and everything else falls back to strings + hex; SQLite gets full generic CRUD. Backend chosen by header magic, not filename. MIT.',
+      pills: ['Rust', 'rkyv + SQLite', 'MIT / OSS'], price: 0,
+      tiers: [{ name: 'Open Source', desc: 'MIT', price: 0 }],
+      download: 'https://github.com/MenkeTechnologies/zdbview/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/zdbview',
+    },
+    {
       id: 'storageshower', name: 'storageshower', glyph: 'ss', category: 'CLI Tools', badge: 'FREE',
       tagline: 'A neon-drenched terminal UI for monitoring disk usage.',
       pills: ['Rust', 'TUI', 'Free / OSS'], price: 0,
@@ -2781,6 +2789,18 @@
         "MIT — original Rust reimplementation of htop"
       ]
     },
+    "zdbview": {
+      "overview": "A terminal store inspector for the two file formats a Rust cache layer actually uses: rkyv archives and SQLite databases, in one binary. SQLite is self-describing, so it gets full generic CRUD on any database. rkyv is not — the format stores layout and relative pointers, no field names and no type tags — so zdbview carries a format registry instead: faithful copies of the producer's archive types, detected by magic header and validated with rkyv::check_archived_root, decoded to real key/value records. Anything unrecognized degrades to a structural view rather than a guess.",
+      "features": [
+        "rkyv Records view — key/value table for a recognized archive: keys left, the selected value's decoded scalar fields plus a hex pane right, searchable by key",
+        "Format registry — magic-detected, validated decode; a version or feature drift fails validation and falls back, never decodes garbage silently",
+        "Structural fallback for unknown archives — printable-string runs with byte offsets, plus an xxd-style hex/ascii dump",
+        "Full generic SQLite CRUD — tables with row counts, paginated rows, in-place cell edit, insert with column defaults, rowid delete, arbitrary SQL",
+        "Backend chosen by header magic, not filename — a .db whose bytes are not a SQLite header opens as an archive",
+        "No-arg launch opens an MRU picker of recently opened files; SQLite is compiled in (no system library)",
+        "MIT — original Rust, ratatui + crossterm"
+      ]
+    },
     "grcrs": {
       "overview": "A from-source Rust port of grc, the Generic Colouriser (1.13) — the two-binary grc/grcat suite reimplemented against the upstream grc sources rather than wrapping them, so any command's output can be colourised by config-driven regexp rules.",
       "features": [
@@ -3707,7 +3727,7 @@
   // which link a PDF catalog instead) are intentionally absent so no link 404s.
   var DOC_REPOS = [
     'api-rest-generator', 'arb', 'awkrs', 'fusevm', 'htoprs', 'iftoprs', 'lsofrs', 'nmaprs',
-    'powerliners', 'storageshower', 'temprs', 'strykelang', 'zshrs', 'ztmux', 'zpwr',
+    'powerliners', 'storageshower', 'temprs', 'strykelang', 'zdbview', 'zshrs', 'ztmux', 'zpwr',
     'zpwrchrome', 'stryke-arrow', 'stryke-aws', 'stryke-azure',
     'stryke-clickhouse', 'stryke-demo', 'stryke-docker', 'stryke-duckdb',
     'stryke-email', 'stryke-fleet', 'stryke-gcp', 'stryke-grpc', 'stryke-gui',
