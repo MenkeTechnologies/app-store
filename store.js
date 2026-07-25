@@ -734,6 +734,12 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'zmax-native-book', name: 'The zmax-native Book', glyph: 'nP', category: 'Publications', badge: 'COMPANION',
+      tagline: 'The plugin guide for zmax — how to write, build, ship and install a native (compiled Rust) editor plugin over the frozen C ABI. Why the boundary is #[repr(C)] function pointers and not a Rust API, what ABI_VERSION refuses and why the refusal is hard; the declare_plugin! macro read as its expansion (the static PluginInfo, the #[no_mangle] init, one extern "C" trampoline per handler); the six host callbacks and the context window that makes them legal; the five SDK examples line by line; then shipping — zmax-native.toml, the package manager, the content-addressed store at ~/.zmax/pkg, publishing an owner/repo plugin — and the rules of the road: TUI safety, panics that abort across FFI, ABI versioning, testing. Closes on an honest inventory of where the API stops. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'zmax-native', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'fusevm-book', name: 'The fusevm Book', glyph: 'fB', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The companion book to fusevm — the shared bytecode VM behind stryke, zshrs, awkrs, and vimlrs: the value model, the tiered Cranelift JIT, and the closed-world AOT compiler that lowers a whole program to native registers and a standalone binary. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'fusevm', 'DRM-free PDF'], price: 20,
@@ -1980,6 +1986,10 @@
     "zmax-book": {
       "overview": "The companion book to zmax — the modal IDE with vim, emacs, and Spacemacs keymaps over a multiple-selection core, and the first IDE ever to embed ten complete programming languages — elisp, vimscript, stryke, AWK, and Zsh — compiled into one binary on a single shared bytecode VM, with no subprocess and no FFI.",
       "features": ["zmax, end to end — the modal IDE wearing a vim default keymap", "Vim, emacs, and Spacemacs bindings on one multiple-selection engine", "World-first: ten languages embedded in the core — elisp, vimscript, stryke, AWK, zsh, Ruby, PHP, Python, JavaScript, arb", "The engine underneath: rope, tree-sitter, fusevm, the AOT/JIT split", "Pandoc + LaTeX typeset, 102 pages, DRM-free PDF"]
+    },
+    "zmax-native-book": {
+      "overview": "The plugin guide for zmax — writing a native, compiled Rust plugin for the editor over its frozen C ABI. Helix, which zmax forks, ships no plugin system at all; zmax publishes a versioned binary interface a stranger can compile against, plus a package manager that installs the result from owner/repo into a content-addressed store and maps it into the process. The book covers the boundary and why it is a C ABI, the declare_plugin! macro read as its expansion, the six host callbacks and the context window that governs them, the five SDK examples line by line, shipping and the package manager, and the rules of the road — closing on an honest inventory of where the API stops.",
+      "features": ["The frozen C ABI: #[repr(C)] tables, extern \"C\" fn pointers, ABI_VERSION checked from both sides at load", "declare_plugin! read as its expansion — the static PluginInfo, the #[no_mangle] init, one trampoline per handler", "The six host callbacks (message, error, eval, buffer_text, insert_text, register_command) and the context window that makes them legal", "The five SDK examples line by line: hello, insert-date, buffer-stats, trim-trailing, banner", "Shipping: zmax-native.toml, the package manager, the ~/.zmax/pkg store, publishing an owner/repo plugin", "Rules of the road: TUI safety, panics that abort across FFI, ABI versioning, testing — and where the API stops", "Pandoc + LaTeX typeset, 61 pages, DRM-free PDF"]
     },
     "fusevm-book": {
       "overview": "The companion book to fusevm — the language-agnostic bytecode VM that stryke, zshrs, awkrs, and vimlrs all compile to. The value model and opcode set, the interpreter and its fused superinstructions, the three-tier Cranelift JIT, and the closed-world AOT compiler that lowers a whole program to native registers and a standalone binary.",
