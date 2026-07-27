@@ -14,6 +14,19 @@
   // ---- Catalog --------------------------------------------------------
   var PRODUCTS = [
     {
+      id: 'zmusic',
+      name: 'zmusic',
+      glyph: 'MU',
+      category: 'Desktop Apps',
+      badge: 'WIP',
+      tagline: 'A Melodics superset in Rust behind a cyberpunk HUD — a play-along instrument trainer for keys, pads, and drums that grades you against YOUR OWN MIDI and audio files instead of a closed subscription content library: drop in a file, get a chart, play it on your controller. Charts are zpwr-clip-engine ClipSeq patterns — the same grid and sequencer engine as zpwr-daw, not a second note format — and a JUCE audio sidecar owns the scoring clock so MIDI input and the playhead share one process. Its pure-Rust zmusic-core engine is extracted so the same trainer embeds inside the other MenkeTechnologies apps. In development.',
+      pills: ['Tauri v2', 'JUCE sidecar', 'Keys · pads · drums', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zpdf',
       name: 'zpdf',
       glyph: 'P',
@@ -2336,6 +2349,18 @@
     "zsh-travis": {
       "overview": "Zsh aliases and functions for the Travis CI command line.",
       "features": ["tg / tb / tbr / tpr open Travis build / PR pages from inside a project", "Autoloaded helper functions", "Detects the project's .travis.yml", "Pure zsh"]
+    },
+    "zmusic": {
+      "overview": "A Melodics superset in Rust (Tauri v2 desktop app) behind a cyberpunk HUD — a play-along trainer for keys, pads, and drums that grades your playing against your own MIDI and audio files rather than a closed subscription content library. A chart is a zpwr-clip-engine ClipSeq pattern, so the trainer reuses the grid and sequencer engine already behind zpwr-daw instead of inventing a second note format, and a JUCE audio sidecar keeps MIDI input and the playhead in one process — hit-vs-target timing is a subtraction, never an IPC round trip. Its pure-Rust zmusic-core engine is extracted so the same trainer embeds across the GUI stack. In development.",
+      "features": [
+        "Play along to your own MIDI + audio files — keys, pads, and drums, no closed content library",
+        "Charts are zpwr-clip-engine ClipSeq patterns — the same grid/sequencer engine as zpwr-daw, one note format",
+        "Scrolling highway play surface: light-guide 88-key keyboard, MPC pad grid, and GM drum lanes",
+        "JUCE audio sidecar owns the scoring clock — MIDI-in and the playhead share one process, so grading never crosses IPC",
+        "Cyberpunk HUD interface from the shared zgui-core chrome",
+        "Embeddable zmusic-core engine (rlib + staticlib + cdylib)",
+        "In development — the app and its core are being built out"
+      ]
     },
     "zpdf": {
       "overview": "A from-scratch PDF editor in Rust (Tauri v2 desktop app) that replaces Adobe Acrobat and macOS Preview — full document editing, annotation, forms, and signatures behind a cyberpunk HUD. Its pure-Rust zpdf-core engine is extracted so the same PDF engine embeds inside the other apps.",
