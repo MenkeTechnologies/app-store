@@ -248,8 +248,8 @@
       glyph: 'ZW',
       category: 'Desktop Apps',
       badge: 'NEW',
-      tagline: 'A Chromium/Blink browser forked into a cyberpunk tiling HUD — a 9-patch C++ source fork that restyles the native chrome (tab shapes, UI font, neon toolbar, omnibox, 8 schemes in the color mixer + DevTools) plus a full keyboard-driven workspace: a tmux-style tiling overlay (ztmux), a ⌘K command palette, vim navigation, durable named sessions, and HUD reimplementations of Chrome\'s own internal pages. Free and open source.',
-      pills: ['Chromium fork', 'Tiling HUD', 'ztmux + ⌘K', 'Free / OSS'],
+      tagline: 'A Chromium/Blink browser forked into a cyberpunk tiling HUD — a 25-patch C++ source fork that restyles the native chrome (tab shapes, UI font, neon toolbar, omnibox, 8 schemes in the color mixer + DevTools) and compiles a browser-wide audio engine into the audio service, plus a full keyboard-driven workspace: a tmux-style tiling overlay (ztmux), a ⌘K command palette, vim navigation, durable named sessions, stryke lifecycle hooks, output triggers, pane pipelines, and 23 HUD pages that reimplement Chrome\'s own internal pages. Free and open source.',
+      pills: ['Chromium fork', 'Tiling HUD', 'ztmux + ⌘K', 'Browser-wide audio', 'Free / OSS'],
       price: 0,
       tiers: [
         { name: 'Open Source', desc: 'MIT licensed', price: 0 },
@@ -653,7 +653,7 @@
     },
     {
       id: 'ztmux', name: 'ztmux', glyph: 'zx', category: 'CLI Tools', badge: 'FREE',
-      tagline: 'The world\'s first 100%-functional tmux in Rust — a from-source port of the whole program (server + client), not a wrapper or control-mode client: the grid/screen model, the VT input parser, layouts, the command language, formats, and the terminal back end, reimplemented in memory-safe Rust and diffed byte-for-byte against the upstream tmux C source of truth — 1080/1080 parity cases passing. MIT-licensed.',
+      tagline: 'The world\'s first 100%-functional tmux in Rust — a from-source port of the whole program (server + client), not a wrapper or control-mode client: the grid/screen model, the VT input parser, layouts, the command language, formats, and the terminal back end, reimplemented in memory-safe Rust and diffed byte-for-byte against the upstream tmux C source of truth — 1107/1107 parity cases passing. MIT-licensed.',
       pills: ['Rust', 'tmux port', 'MIT / OSS'], price: 0,
       tiers: [{ name: 'Open Source', desc: 'MIT licensed', price: 0 }],
       download: 'https://github.com/MenkeTechnologies/ztmux/tags',
@@ -933,13 +933,13 @@
     },
     {
       id: 'ztmux-book', name: 'The ztmux Book', glyph: 'xB', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The companion book to ztmux — the world\'s first 100%-functional tmux in Rust (the whole server + client, not a wrapper or control-mode client): the client/server split and libevent loop, the grid/screen and scrollback model, the VT input parser, the layout engine, the lalrpop command language and its one-file-per-command mirror of tmux\'s cmd-*.c, formats/config/keys, and the terminal back end — plus the port methodology (diffed byte-for-byte against the vendored tmux C source of truth, 1080/1080 parity cases passing) and the anti-drift gate that forbids fake functions. Pandoc + LaTeX typeset.',
+      tagline: 'The companion book to ztmux — the world\'s first 100%-functional tmux in Rust (the whole server + client, not a wrapper or control-mode client): the client/server split and libevent loop, the grid/screen and scrollback model, the VT input parser, the layout engine, the lalrpop command language and its one-file-per-command mirror of tmux\'s cmd-*.c, formats/config/keys, and the terminal back end — plus the port methodology (diffed byte-for-byte against the vendored tmux C source of truth, 1107/1107 parity cases passing) and the anti-drift gate that forbids fake functions. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'ztmux', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'zwire-book', name: 'The zwire Book', glyph: 'wB', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The companion book to zwire — Chromium/Blink forked into the strykelang cyberpunk HUD (not a WebView wrapper, not a new engine): why a real Blink base is required for zpwrchrome\'s Manifest V3 surface, the nine HUD patches that compile the native chrome — tab shapes, UI font, neon toolbar, omnibox, the 8 schemes in the color mixer + DevTools — the ztmux tiling overlay and ⌘K palette, the new-tab HUD, the internal-page scheme picker and native host, the dedicated profile, and the CDP overlay layer. Pandoc + LaTeX typeset.',
+      tagline: 'The companion book to zwire — Chromium/Blink forked into the strykelang cyberpunk HUD (not a WebView wrapper, not a new engine): why a real Blink base is required for zpwrchrome\'s Manifest V3 surface, the authored HUD patch series that compiles the native chrome — tab shapes, UI font, neon toolbar, omnibox, the 8 schemes in the color mixer + DevTools — the ztmux tiling overlay and ⌘K palette, the new-tab HUD, the internal-page scheme picker and native host, the dedicated profile, and the CDP overlay layer. Pandoc + LaTeX typeset.',
       pills: ['Reference', 'zwire', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
@@ -2242,12 +2242,12 @@
       "features": ["Every zpwr verb and subcommand (500+)", "2000+ aliases, 47k completions, vim + tmux integration", "Generated from the live zpwr source", "LaTeX-typeset encyclopedia, DRM-free PDF"]
     },
     "ztmux-book": {
-      "overview": "The companion book to ztmux — the world's first 100%-functional tmux in Rust. Not a wrapper around the tmux binary and not a control-mode client: it reimplements the whole program — server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end — in memory-safe Rust, seeded from the tmux-rs port and validated module-by-module against the vendored upstream tmux C source of truth. The book walks that architecture and the port methodology: a parity suite that runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte (1080/1080 cases passing) and an anti-drift gate that fails the build on any Rust function with no tmux C counterpart.",
-      "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: byte-for-byte parity vs system tmux, 1080/1080 cases passing", "The anti-drift gate: no Rust function survives without a tmux C counterpart", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The companion book to ztmux — the world's first 100%-functional tmux in Rust. Not a wrapper around the tmux binary and not a control-mode client: it reimplements the whole program — server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end — in memory-safe Rust, seeded from the tmux-rs port and validated module-by-module against the vendored upstream tmux C source of truth. The book walks that architecture and the port methodology: a parity suite that runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte (1107/1107 cases passing) and an anti-drift gate that fails the build on any Rust function with no tmux C counterpart.",
+      "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: byte-for-byte parity vs system tmux, 1107/1107 cases passing", "The anti-drift gate: no Rust function survives without a tmux C counterpart", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zwire-book": {
-      "overview": "The companion book to zwire — a Chromium/Blink browser forked into the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, patched and extended, on a dedicated profile that never touches system Chrome. The book walks the full stack the project is built on — the HUD extension workspace (the ztmux tiling overlay, the ⌘K palette, sessions, the internal-page skin) and, under it, the nine authored patches that compile the native chrome an extension can't reach (tab geometry, UI fonts, the neon toolbar, the 8 schemes in the color mixer + DevTools) against a pinned Chromium tag.",
-      "features": ["Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)", "The unbranded fork build that still carries --load-extension (removed from branded Chrome in v137)", "The nine HUD patches that restyle the native chrome — tabs, UI font, neon toolbar, omnibox, the 8 schemes in the color mixer + DevTools — authored against a pinned Chromium tag", "The ztmux tiling overlay, the ⌘K palette, the new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host", "The dedicated profile and per-user staged extensions — never collides with system Chrome", "The CDP overlay layer and the cross-platform / updating operations matrix", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The companion book to zwire — a Chromium/Blink browser forked into the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, patched and extended, on a dedicated profile that never touches system Chrome. The book walks the full stack the project is built on — the HUD extension workspace (the ztmux tiling overlay, the ⌘K palette, sessions, the internal-page skin) and, under it, the authored C++ patch series that compiles the native chrome an extension can't reach (tab geometry, UI fonts, the neon toolbar, the 8 schemes in the color mixer + DevTools) against a pinned Chromium tag.",
+      "features": ["Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)", "The unbranded fork build that still carries --load-extension (removed from branded Chrome in v137)", "The authored HUD patch series that restyles the native chrome — tabs, UI font, neon toolbar, omnibox, the 8 schemes in the color mixer + DevTools — written against a pinned Chromium tag", "The ztmux tiling overlay, the ⌘K palette, the new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host", "The dedicated profile and per-user staged extensions — never collides with system Chrome", "The CDP overlay layer and the cross-platform / updating operations matrix", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "inventions-book": {
       "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the ~161 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. The six marquee claims get an appendix of adversarial prior-art analyses.",
@@ -2414,7 +2414,7 @@
     "zshrs": {
       "overview": "A drop-in zsh replacement written in Rust that compiles shell commands to bytecode and runs them on a virtual machine instead of forking, with a persistent worker thread pool replacing fork+exec. Framed as the first compiled Unix shell.",
       "features": [
-        "658k+ lines, 614 source files across a 2-crate Rust workspace",
+        "802k+ lines, 694 source files across a 2-crate Rust workspace",
         "Compiles commands to fusevm bytecode with Cranelift JIT",
         "Persistent worker thread pool (2–18 threads) replaces fork+exec",
         "23 coreutils builtins run in-process, zero fork",
@@ -2467,14 +2467,20 @@
       ]
     },
     "zwire": {
-      "overview": "A Chromium/Blink browser forked into a cyberpunk HUD — not a theme and not a wrapper, but a real engine compiled from a 9-patch C++ source fork of Chromium and running a full keyboard-driven, tiling workspace on top. The fork restyles the native chrome the extension layer can't reach: sharp 2px tab shapes, the Share Tech Mono UI font, a neon under-toolbar line, a sharp omnibox, and the 8 HUD schemes wired into the color mixer + DevTools, all authored against a pinned Chromium tag. Layered over it, the HUD (extensions/hud-internal) adds a tmux-style tiling overlay, a ⌘K command palette, vim-style motions, a find bar, a powerline status bar, durable session management, and 13 HUD pages that reimplement Chrome's own internal pages — all against a dedicated profile so it never touches your system Chrome. Free and open source.",
+      "overview": "A Chromium/Blink browser forked into a cyberpunk HUD — not a theme and not a wrapper, but a real engine compiled from a 25-patch C++ source fork of Chromium and running a full keyboard-driven, tiling workspace on top. The fork restyles the native chrome the extension layer can't reach — sharp 2px tab shapes, the Share Tech Mono UI font, a neon under-toolbar line, a sharp omnibox, native Views menus and dialogs bound to the HUD palette, and the 8 HUD schemes wired into the color mixer + DevTools — and compiles a browser-wide DSP engine into Chromium's audio service so one chain shapes every sound the browser makes. Layered over it, the HUD (extensions/hud-internal) adds a tmux-style tiling overlay, a ⌘K command palette, vim-style motions, a find bar, a powerline status bar, durable session management, stryke lifecycle hooks, page-content triggers, reactive pane pipelines, and 23 HUD pages that reimplement Chrome's own internal pages — all against a dedicated profile so it never touches your system Chrome. Free and open source.",
       "features": [
-        "9-patch C++ source fork of Chromium (pinned tag) that restyles the native chrome: sharp 2px tabs, Share Tech Mono UI font, neon under-toolbar line, sharp omnibox, the 8 HUD schemes in the color mixer + DevTools, plus allow-framing so ztmux can iframe any site",
-        "ztmux — a tmux server in the browser (~900 LOC): recursive binary pane splits, unlimited windows, every pane a live webview of any URL, driven by a rebindable prefix with 45 remappable actions (panes, layouts, windows, partial synchronize-panes, copy mode, marks, clock)",
-        "⌘K command palette (zpalette), vim-style motions (zkeys), a find bar (zfind), and a powerline status bar (zstatus)",
+        "25-patch C++ source fork of Chromium (pinned tag) that restyles the native chrome: sharp 2px tabs, Share Tech Mono UI font, neon under-toolbar line, sharp omnibox, the 8 HUD schemes in the color mixer + DevTools, native menu/dialog colors bound to the HUD palette, plus allow-framing so ztmux can iframe any site",
+        "Browser-wide audio engine compiled into Chromium's audio service — an always-on zdsp-core chain (EQ cascade, channel strip, saturation/dynamics, modulation, delay + reverb, spatial, brickwall limiter) on every output stream (media element, MSE/YouTube, Web Audio, WebRTC), live-reconfigurable with nothing open and no relaunch, with real post-DSP spectrum and meters pumped back to the Audio HUD page",
+        "ztmux — a tmux server in the browser: recursive binary pane splits, unlimited windows, every pane a live webview of any URL, driven by a rebindable prefix with 49 remappable actions (panes, layouts, windows, partial synchronize-panes, copy mode, marks, clock)",
+        "⌘K command palette (zpalette), vim-style motions (zkeys/zvim), a find bar (zfind), and a powerline status bar (zpowerline)",
         "Durable named sessions saved to chrome.storage — full CRUD page (create / rename / duplicate / delete / load / import-export) with per-pane URL editing and a live SVG preview of each window's tiling",
-        "13 HUD pages reimplementing chrome://{extensions,settings,history,bookmarks,version} plus a Keyboard remapper, Commands, Sessions, CI, and an in-browser App Store tab",
-        "8 color schemes (cyberpunk, midnight, matrix, ember, arctic, crimson, toxic, vapor) that drive the browser chrome natively",
+        "stryke lifecycle hooks — bind scripts to ~160 browser events (tab / window / navigation / download / bookmark / terminal / scheme / audio / ⌘K-command, plus an action catch-all), run by zwire-host with the event JSON on stdin",
+        "Output triggers — bind a regex to page text as it renders and streams, then run a chain of typed steps (shell / stryke / JS / AppleScript / batch / browser-action / scheme / host) with the matched line as {q}; per-trigger cooldown, once-per-page mode, URL filter",
+        "Pane pipelines — a persisted, reactive dataflow edge between tiled webviews: extract from a source pane (selector / regex / selection / URL), transform it (a stryke |> op chain, JS, or passthrough), deliver it to a sink pane (navigate / fill / replace / append / batch-open), with a graph cycle-check that refuses an A→B→A loop",
+        "One namespaced browser.* automation verb bus — tab / group / window ops, edge snapping, navigation, downloads, browsing-data clearing, bookmarks, reading list, extensions, power, screenshot, notify, tmux toggle — driven by the palette, shortcuts, and hooks through a single service-worker executor and published as a typed, introspectable manifest",
+        "23 HUD pages reimplementing chrome://{extensions,settings,history,bookmarks,downloads,version} plus Audio, Hooks, Triggers, Pipelines, Terminal, Notes, Feeds, Translate, Reading list, a dashboard, a Keyboard remapper, Commands, Sessions, CI, a Host console, and an in-browser App Store tab",
+        "8 color schemes (cyberpunk, midnight, matrix, ember, arctic, crimson, toxic, vapor), each with a light variant, driving the browser chrome natively with a light/dark toggle synced across the HUD, new-tab page, and zpwrchrome",
+        "Built on zgui-core — the shared ZGui cyberpunk web-component toolkit (258 webui modules), loaded straight from the submodule path so no copy can go stale",
         "zpwrchrome MV3 power-tool preloaded as a submodule (reuse, not copy) against a dedicated profile — needs a real Blink engine for userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, and a service-worker background",
         "Free / OSS — MIT licensed"
       ],
@@ -2507,7 +2513,7 @@
         "Three-tier regex: regex, fancy-regex, pcre2",
         "Bytecode VM plus Cranelift block and linear JIT",
         "Rayon work-stealing parallelism across all cores",
-        "10,450 stdlib primaries (11,183 keys including aliases)",
+        "10,487 stdlib primaries (11,263 keys including aliases)",
         "44 MB single static binary, sub-10ms cold start",
         "Parallel primitives: pmap/pgrep/psort/preduce, streaming iterators",
         "rkyv KV store, sketch algebra, zsh glob qualifiers",
@@ -2860,7 +2866,7 @@
     "powerliners": {
       "overview": "A Rust port of Python's powerline-status statusline/prompt renderer, shipping as a 5-binary suite with zero Python runtime and sub-millisecond render.",
       "features": [
-        "134/137 upstream files ported (97.8%), 2473 lib tests",
+        "134/137 upstream files ported (97.8%), 2436 lib tests",
         "462 parity tests byte-compared against live upstream Python",
         "5 binaries: powerline, -daemon, -config, -render, -lint",
         "UNIX-socket daemon speaks the upstream powerline wire format",
@@ -2872,10 +2878,10 @@
       ]
     },
     "ztmux": {
-      "overview": "The world's first 100%-functional tmux in Rust — a from-source port of the whole program, not a wrapper around the tmux binary and not a control-mode client. The server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end, reimplemented in memory-safe Rust. Correctness is measured, not claimed: a parity suite runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte — 1080/1080 cases passing. MIT-licensed.",
+      "overview": "The world's first 100%-functional tmux in Rust — a from-source port of the whole program, not a wrapper around the tmux binary and not a control-mode client. The server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end, reimplemented in memory-safe Rust. Correctness is measured, not claimed: a parity suite runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte — 1107/1107 cases passing. MIT-licensed.",
       "features": [
         "The whole tmux program in Rust: server + client, not a wrapper",
-        "1080/1080 parity cases passing — byte-for-byte against system tmux",
+        "1107/1107 parity cases passing — byte-for-byte against system tmux",
         "Validated module-by-module against the vendored upstream tmux C source of truth",
         "Grid/screen + scrollback model, VT input parser, and the layout engine",
         "lalrpop command grammar; one file per command mirroring tmux's cmd-*.c",
@@ -2902,7 +2908,7 @@
       ]
     },
     "zpwrchrome": {
-      "overview": "A Chrome MV3 extension bundling six daily-driver browser tools into one toolbar icon, with a vendored Rust native-messaging host and 54 keyboard commands.",
+      "overview": "A Chrome MV3 extension bundling six daily-driver browser tools into one toolbar icon, with a vendored Rust native-messaging host and 55 keyboard commands.",
       "features": [
         "UNIX pass integration: fill, copy, OTP, full CRUD manager",
         "Profile + credit-card autofill from pass entries",
@@ -2912,7 +2918,7 @@
         "Tampermonkey-equivalent userscript engine with GM_* shim",
         "Wappalyzer-compatible detection, 3,993-fingerprint corpus",
         "Full-page screenshot capture with OffscreenCanvas stitching",
-        "54 commands; 3012 node:test + 127 cargo test cases"
+        "55 commands; 3064 node:test + 127 cargo test cases"
       ],
       "screenshots": [
         { "src": "assets/zpwrchrome.webp", "cap": "zpwrchrome — the MV3 toolbar popup: pass integration, download manager, tab switcher, history search, and userscript engine in one icon" }
@@ -3412,10 +3418,10 @@
     "fusevm": {
       "overview": "A language-agnostic bytecode virtual machine with fused superinstructions and a three-tier Cranelift JIT — the shared execution engine behind strykelang, zshrs, awkrs, and vimlrs.",
       "features": [
-        "224 opcodes across 21 sections, 11 fused superinstructions",
+        "224 opcodes across 17 sections, 11 fused superinstructions",
         "Three-tier Cranelift JIT: linear, block, and tracing",
         "Tracing JIT records hot loops, deopts on guard miss",
-        "29 first-class shell ops, 87 first-class AWK ops",
+        "29 first-class shell ops, 61 first-class AWK ops",
         "Extension dispatch via Extended(u16,u8) handler tables",
         "Stack-based execution with slot-indexed local fast paths",
         "Optional jit-disk-cache persists native code across restarts",
@@ -3464,9 +3470,9 @@
     "zpwr": {
       "overview": "ZPWR is a zinit-based zsh terminal environment layered with custom zsh, bash, vimL, and stryke code — a full command-line cyberdeck with autocomplete, vim keybindings, and tmux integration.",
       "features": [
-        "505 zpwr subcommands with colorized zsh menucompletion",
-        "2000+ aliases plus 430+ git aliases",
-        "40k zsh tab completions for predictive input",
+        "504 zpwr subcommands with colorized zsh menucompletion",
+        "2000+ aliases plus 360+ git aliases",
+        "48k zsh tab completions for predictive input",
         "177 centralized ZPWR-namespace environment variables",
         "890+ centralized files in ~/.zpwr for clean uninstall",
         "77 neovim plugins; 48 zinit plugins (33 custom)",
@@ -3477,7 +3483,7 @@
     "zsh-more-completions": {
       "overview": "The largest curated zsh completion corpus in existence, wiring over 47k command completions into compsys — auto-generated from --help, man pages, and web research, then cleaned and verified.",
       "features": [
-        "The largest curated zsh completion corpus: 47,365 files",
+        "The largest curated zsh completion corpus: 47,393 files",
         "Over 47k command completions wired into compsys",
         "Harvested from Nix, Homebrew, APT, Fedora, Kali, Alpine, FreeBSD",
         "Exotic ecosystems: Hackage, OPAM, Hex.pm, CPAN, CRAN",
