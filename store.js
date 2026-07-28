@@ -523,6 +523,21 @@
       repo: 'https://github.com/MenkeTechnologies/go-rs',
     },
     {
+      id: 'tclrs',
+      name: 'tclrs',
+      glyph: 'TC',
+      category: 'Developer Tools',
+      badge: 'NEW',
+      tagline: 'Tcl in Rust — run Tcl with no tclsh. Tcl as a fusevm frontend (parsed once, resolving every substitution the grammar permits → fusevm bytecode) on the shared bytecode VM + Cranelift JIT behind stryke, zshrs, awkrs, vimlrs, elisprs, rubyrs, arb, pythonrs, php, js, rlang, and go-rs. No bespoke VM and no dual-representation object model: a braced if / while / for body or braced expr compiles once instead of being re-parsed on every evaluation. Standalone tclrs binary with a line-editing REPL, --aot native executables, and a differential suite that runs every case under tclsh and compares byte for byte. Free and open source.',
+      pills: ['Rust', 'Tcl', 'fusevm', 'Free / OSS'],
+      price: 0,
+      tiers: [
+        { name: 'Open Source', desc: 'MIT licensed', price: 0 },
+      ],
+      download: 'https://github.com/MenkeTechnologies/tclrs/releases/latest',
+      repo: 'https://github.com/MenkeTechnologies/tclrs',
+    },
+    {
       id: 'zvcs',
       name: 'zvcs',
       glyph: 'ZV',
@@ -1029,6 +1044,18 @@
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
+      id: 'tclrs-book', name: 'The tclrs Book', glyph: 'TB', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The companion book to tclrs — Tcl as a fusevm frontend, compiled rather than re-parsed: the dodekalogue and the two rules that make a compiler worth building, rotated loops and why every loop goes through one emitter, a value model with no object heap, what Tcl\'s boolean rule costs in trace eligibility, lists as strings, arrays-as-variables against dicts-as-values, procedures as frame slots, catch as the one unwinder, coroutines as second VMs over the same chunk, and a tiers chapter that gives both halves of the JIT result — 36.9x inside a procedure, nothing at all at the top level. It closes on the ledger rather than a claim. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'tclrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
+      id: 'tclrs-reference', name: 'The tclrs Reference', glyph: 'TR', category: 'Publications', badge: 'REFERENCE',
+      tagline: 'The complete tclrs command reference — every command, ensemble subcommand, expr operator and format conversion the frontend implements, generated rather than written: gen-docs renders each command from the compiler\'s own tables, asks the compiler about each ensemble subcommand and the runtime about each conversion, and prints the expr ladder from the table the parser binds with. A command it lists exists; one it does not is invalid command name. The dense companion to The tclrs Book. DRM-free PDF.',
+      pills: ['Reference', 'tclrs', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
+    },
+    {
       id: 'zpwr-synth-reference', name: 'The zpwr-synth Reference', glyph: 'yR', category: 'Publications', badge: 'REFERENCE',
       tagline: 'The zpwr-synth manual — per-module node and parameter reference for the modular voice engine, generated from the live registry. Free, DRM-free PDF.',
       pills: ['Reference', 'zpwr-synth', 'Free · DRM-free PDF'], price: 0,
@@ -1310,6 +1337,43 @@
         "The full command-line interface — go run, go on a file, and the introspection dumps",
         "Generated from the language-server corpus, so it never drifts from the tooling",
         "The dense companion to The go-rs Book",
+        "DRM-free PDF"
+      ]
+    },
+    "tclrs": {
+      "overview": "Tcl in Rust — run Tcl with no tclsh. Tcl as a fusevm frontend that parses a script once, resolving every substitution the grammar permits at parse time, and lowers each command to fusevm bytecode on the shared 3-tier Cranelift JIT. No bespoke VM and no dual-representation object model: a value produced as a number stays a number in a VM slot and only acquires a string representation when something asks for one. The reference implementation is tclsh 9.0.4, and it is the specification. Free and open source.",
+      "features": [
+        "Tcl compiler in Rust — runs Tcl standalone, no tclsh required",
+        "Compiled, not re-parsed — a braced if / while / for body or braced expr compiles once into bytecode instead of being re-parsed on every evaluation",
+        "Native arithmetic — the comparisons, bitwise and shift operators and short-circuiting && / || lower to native fusevm ops; only /, % and **, whose Tcl meaning differs, take a frontend op",
+        "Ahead-of-time compilation — tclrs --aot links a standalone native executable with no parser and no bytecode dispatch loop inside it",
+        "JIT armed and measured — 3,000,000 iterations of while {$i < $n} {incr i} inside a procedure in 6.6 ms against 243.7 ms interpreted, and --tiers reports which tiers a given script actually reaches",
+        "Differentially tested — every program in the suite runs under both tclsh and tclrs and the exit code, result and stdout are compared byte for byte; no expected output is written by hand",
+        "Nothing is approximated — a construct the frontend has not built is an error, and BUGS.md is the ledger",
+        "Free and open source (MIT)"
+      ]
+    },
+    "tclrs-book": {
+      "overview": "The companion book to tclrs — Tcl as a fusevm frontend. Tcl 9 evaluates through a bytecode engine wrapped around a dual-representation object model; tclrs parses once and lowers to shared bytecode, and this book is the narrative the generated reference cannot carry: what the dodekalogue costs a compiler, why every loop goes through one emitter, and where the JIT does and does not reach.",
+      "features": [
+        "The dodekalogue, and the two rules that make a compiler worth building",
+        "Lowering to fusevm bytecode — rotated loops, and why every loop goes through one emitter",
+        "A value model with no object heap; expr, and what Tcl's boolean rule costs in trace eligibility",
+        "Lists are strings — including the quadratic lappend this loses on; arrays are variables, dicts are values",
+        "Procedures are frames not tables; catch, the one unwinder; coroutines as second VMs over the same chunk",
+        "What the tiers actually reach — 36.9x inside a procedure, nothing at the top level, with fusevm's own predicates as the source",
+        "Ahead of time, the binary and the REPL, and a closing ledger of what the shape does not do",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
+    },
+    "tclrs-reference": {
+      "overview": "The dense reference companion to The tclrs Book — the complete command surface of the Tcl frontend on fusevm. Generated by the crate's own gen-docs rather than written by hand: each command is rendered from the compiler's tables, each ensemble subcommand is answered by the compiler itself, each format conversion by the runtime, and the expr ladder is printed from the table the parser binds with. DRM-free PDF.",
+      "features": [
+        "Every command the tclrs build recognizes, rendered from the compiler's own tables",
+        "The string, array and dict ensembles, with the compiler's own answer for each subcommand",
+        "The expr operator ladder and the format conversions the runtime implements",
+        "Generated by gen-docs, so it does not drift from the binary — a command it lists exists, one it does not is invalid command name",
+        "The dense companion to The tclrs Book",
         "DRM-free PDF"
       ]
     },
