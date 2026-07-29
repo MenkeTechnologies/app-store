@@ -4068,6 +4068,62 @@
     return m ? decodeURIComponent(m[1]) : null;
   }
 
+  // ---- Branch marks ---------------------------------------------------
+  // Every product belongs to one of the four MenkeTechnologies branches. The
+  // mark is the corporate hex + MT monogram (identical in all four -- that is
+  // the family DNA) plus a branch glyph in the four corner voids the hexagon
+  // leaves empty. Source of truth: branding/branches/*.svg in the meta repo.
+  var BRANCH_CORE =
+    '<g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round">' +
+      '<path d="M32 6 L55 19 V45 L32 58 L9 45 V19 Z"/></g>' +
+    '<g fill="none" stroke="var(--neon)" stroke-width="3.5" stroke-linejoin="miter" stroke-linecap="butt">' +
+      '<path d="M19 40 V26 L25 32 L31 26 V40"/><path d="M35 26 H45 M40 26 V40"/></g>';
+
+  // The glyph is authored once in the top-left void and mirrored into the other
+  // three, so the corners cannot drift out of symmetry when one is edited.
+  function branchCorners(glyph) {
+    return ['', ' transform="translate(64,0) scale(-1,1)"',
+                ' transform="translate(0,64) scale(1,-1)"',
+                ' transform="translate(64,64) scale(-1,-1)"']
+      .map(function (t) { return '<g' + t + '>' + glyph + '</g>'; }).join('');
+  }
+
+  var BRANCHES = {
+    audio: { name: 'MTAudio',
+      glyph: '<path d="M2 18 A8 8 0 0 1 10 10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="butt"/>' },
+    publishing: { name: 'MTPublishing',
+      glyph: '<path d="M2 9 H11 L2 18 Z" fill="currentColor"/>' },
+    app: { name: 'MTApp',
+      glyph: '<path d="M2 18 V10 H10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="butt"/>' },
+    oss: { name: 'MTOpensource',
+      glyph: '<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="butt"><path d="M3 8 V20 M9 11 V17"/></g>' },
+  };
+
+  // Category is the signal for everything except three products: zpwr-daw,
+  // audio-haxor and zmusic are audio products that happen to ship as desktop
+  // apps, so category alone would file them under MTApp. Named explicitly
+  // rather than inferred.
+  var BRANCH_BY_CATEGORY = {
+    'Audio Plugins': 'audio',
+    'Publications': 'publishing',
+    'Desktop Apps': 'app',
+    'Developer Tools': 'oss',
+    'CLI Tools': 'oss',
+    'stryke Packages': 'oss',
+    'arb Packages': 'oss',
+  };
+  var BRANCH_BY_ID = { 'zpwr-daw': 'audio', 'audio-haxor': 'audio', zmusic: 'audio' };
+
+  function branchOf(p) { return BRANCH_BY_ID[p.id] || BRANCH_BY_CATEGORY[p.category] || 'oss'; }
+
+  function branchBadge(p) {
+    var key = branchOf(p), b = BRANCHES[key];
+    return '<span class="p-branch b-' + key + '">' +
+      '<svg class="p-branch-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +
+        BRANCH_CORE + branchCorners(b.glyph) +
+      '</svg>' + b.name + '</span>';
+  }
+
   function renderDetail() {
     var root = document.getElementById('detailRoot');
     if (!root) return;
@@ -4147,7 +4203,7 @@
       '<div class="detail-top">' +
         heroHtml +
         '<div class="detail-buy">' +
-          '<span class="p-cat">' + p.category + '</span>' +
+          '<div class="p-branchrow">' + branchBadge(p) + '<span class="p-cat">' + p.category + '</span></div>' +
           '<h2>' + p.name + '</h2>' +
           '<p class="p-tag">' + p.tagline + '</p>' +
           '<div class="p-meta">' + pills + '</div>' +

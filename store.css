@@ -1207,3 +1207,40 @@
 .brand-lockup text {
   font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 }
+
+/* Branch badge on the product detail page. Every product belongs to one of the
+   four MenkeTechnologies branches; the mark is the corporate hex + MT monogram
+   with a branch glyph in the corner voids.
+
+   The package and the monogram must not resolve to the same value or the MT
+   stops reading as figure against the hex, so the mark keeps the house
+   treatment -- light package, accent monogram -- while the label and border
+   take the branch accent. That is why .p-branch-mark resets its own colour
+   rather than inheriting the badge's. */
+.p-branchrow { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+.p-branch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px 4px 5px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+}
+.p-branch-mark { width: 20px; height: 20px; flex: none; color: var(--text); }
+
+.b-audio      { color: #ff2a6d; } .b-audio      .p-branch-mark { --neon: #ff2a6d; }
+.b-publishing { color: #ffb020; } .b-publishing .p-branch-mark { --neon: #ffb020; }
+.b-app        { color: #9d6bff; } .b-app        .p-branch-mark { --neon: #9d6bff; }
+.b-oss        { color: #2ee65f; } .b-oss        .p-branch-mark { --neon: #2ee65f; }
+
+/* The neon values are tuned for the void ground; on the light theme each needs
+   its paper-safe variant or the label drops below readable contrast on white. */
+[data-theme="light"] .b-audio      { color: #c4004f; } [data-theme="light"] .b-audio      .p-branch-mark { --neon: #c4004f; }
+[data-theme="light"] .b-publishing { color: #8a5a00; } [data-theme="light"] .b-publishing .p-branch-mark { --neon: #8a5a00; }
+[data-theme="light"] .b-app        { color: #5b2fb8; } [data-theme="light"] .b-app        .p-branch-mark { --neon: #5b2fb8; }
+[data-theme="light"] .b-oss        { color: #157a33; } [data-theme="light"] .b-oss        .p-branch-mark { --neon: #157a33; }
