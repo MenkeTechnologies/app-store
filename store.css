@@ -1179,3 +1179,17 @@
   line-height: 1.45;
   color: var(--text-dim);
 }
+
+/* Corporate mark in the header brand line. The package inherits currentColor,
+   which .tutorial-brand already sets to --accent, and the monogram takes
+   --cyan; both are scheme variables, so the mark recolours with the HUD scheme
+   picker instead of pinning its own hex. --cyan is already paper-safe in the
+   light theme (#0891b2), which is exactly the contrast the mark needs there.
+   Inline SVG rather than <img> for that reason: an <img> cannot inherit. */
+.brand-mark {
+  --neon: var(--cyan);
+  width: 1.95em;
+  height: 1.95em;
+  vertical-align: -0.62em;
+  margin-right: 0.5em;
+}
