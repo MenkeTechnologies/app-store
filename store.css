@@ -1262,3 +1262,29 @@
 [data-theme="light"] .b-publishing { color: #8a5a00; } [data-theme="light"] .b-publishing .p-branch-mark { color: #ffb020; --neon: #8a5a00; }
 [data-theme="light"] .b-app        { color: #5b2fb8; } [data-theme="light"] .b-app        .p-branch-mark { color: #9d6bff; --neon: #5b2fb8; }
 [data-theme="light"] .b-oss        { color: #157a33; } [data-theme="light"] .b-oss        .p-branch-mark { color: #2ee65f; --neon: #157a33; }
+
+/* Header lockup draws itself in on load, the same gesture as the identity
+   board's hero mark: the package strokes on, then the pins and monogram follow.
+
+   pathLength="1" on each path normalises its length to 1 user unit, so one
+   dasharray works for all of them regardless of actual geometry. Without it the
+   dasharray has to exceed the true perimeter, and any excess is dead time at
+   the start where the dash has not reached the path yet and nothing is drawn.
+
+   The <text> in the lockup is deliberately not animated -- .tutorial-brand
+   already runs bootFlicker over the whole header line, and stacking a second
+   entrance on the wordmark reads as two logos arriving separately. */
+@keyframes lk-draw { to { stroke-dashoffset: 0; } }
+
+.brand-lockup .lk-hex,
+.brand-lockup .lk-late {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: lk-draw 0.55s ease-out forwards;
+}
+.brand-lockup .lk-late { animation-delay: 0.4s; animation-duration: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-lockup .lk-hex,
+  .brand-lockup .lk-late { animation: none; stroke-dashoffset: 0; }
+}
