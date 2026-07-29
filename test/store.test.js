@@ -217,12 +217,27 @@ test('non-GUI products keep the glyph thumbnail, no screenshots', () => {
   assert.match(html, /class="detail-hero"><span class="glyph"/, 'zshrs: glyph hero');
 });
 
-test('paid detail page: add-to-cart, per-major-version note, no lifetime', () => {
+test('subscription detail page: monthly price, Subscribe, no cart or tier picker', () => {
+  // audio-haxor is a desktop app, so it is billed monthly by the account server.
+  // The cart here charges once and cannot open a plan, so a subscription must
+  // not offer it — and there is one monthly price, so no tier picker either.
   const { html } = run('detailRoot', '?id=audio-haxor');
+  assert.match(html, /per month/, 'shows the monthly label');
+  assert.match(html, /class="amt">\$\d+</, 'shows a monthly amount');
+  assert.match(html, />Subscribe</, 'has a Subscribe action');
+  assert.ok(!html.includes('id="detailAdd"'), 'no add-to-cart on a subscription');
+  assert.ok(!html.includes('license-opt'), 'no tier picker on a subscription');
+  assert.ok(!/per major version/.test(html), 'no perpetual copy on a subscription');
+  assert.ok(!/lifetime/i.test(html), 'no lifetime copy');
+});
+
+test('one-time detail page: add-to-cart, tier picker, per-major-version note', () => {
+  // The publications stay one-time purchases, so the original flow is intact.
+  const { html } = run('detailRoot', '?id=arb-book');
   assert.match(html, /id="detailAdd"/, 'has Add to cart');
-  assert.match(html, /per major version/, 'shows per-major-version label');
+  assert.match(html, /one-time/, 'labelled one-time');
   assert.match(html, /Future major versions are a separate purchase/, 'has model note');
-  assert.match(html, /license-opt/, 'has license tier picker');
+  assert.ok(!/per month/.test(html), 'a one-time product is not priced per month');
   assert.ok(!/lifetime/i.test(html), 'no lifetime copy');
 });
 

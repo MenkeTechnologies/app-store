@@ -4197,12 +4197,24 @@
     var pills = (p.pills || []).map(function (t) { return '<span class="p-pill">' + t + '</span>'; }).join('');
     var free = isFree(p);
 
-    // Free products download from GitHub; paid products pick a license + add to cart.
-    var pricingHtml = free
-      ? '<div class="price detail-price"><span class="amt free">Free</span><span class="per">open source</span></div>'
-      : '<div class="license-pick">' + tiersHtml + '</div>' +
-        '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span><span class="per">per major version</span></div>' +
+    // Three shapes: free downloads from GitHub, subscriptions are billed monthly
+    // by the account server, one-time products pick a licence tier and go in the
+    // cart. The tier picker is deliberately absent for a subscription — there is
+    // one monthly price and the seat count comes with the plan.
+    var subscription = isSubscription(p);
+    var pricingHtml;
+    if (free) {
+      pricingHtml = '<div class="price detail-price"><span class="amt free">Free</span><span class="per">open source</span></div>';
+    } else if (subscription) {
+      pricingHtml =
+        '<div class="price detail-price"><span class="amt">' + fmtMonthly(p) + '</span><span class="per">per month</span></div>' +
+        '<p class="version-note">Billed monthly through your MenkeTechnologies account. Cancel whenever you like — access runs to the end of the period you have paid for. Updates are included for as long as you subscribe.</p>';
+    } else {
+      pricingHtml =
+        '<div class="license-pick">' + tiersHtml + '</div>' +
+        '<div class="price detail-price"><span class="amt" id="detailAmt">' + fmtPrice((p.tiers[0] || {}).price) + '</span><span class="per">one-time</span></div>' +
         '<p class="version-note">Each purchase licenses the current major version, including all minor &amp; patch updates within it. Future major versions are a separate purchase.</p>';
+    }
     // "Source" only when a public repo is set — proprietary paid products omit it.
     var sourceBtn = p.repo
       ? '<a class="btn btn-secondary" href="' + p.repo + '" target="_blank" rel="noopener noreferrer">Source</a>'
@@ -4214,9 +4226,16 @@
     var docsBtn = primaryDoc
       ? '<a class="btn btn-secondary" href="' + primaryDoc + '" target="_blank" rel="noopener noreferrer">Docs ↗</a>'
       : '';
-    var actionsHtml = free
-      ? '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn + docsBtn
-      : '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' + sourceBtn + docsBtn;
+    var actionsHtml;
+    if (free) {
+      actionsHtml = '<a class="btn btn-buy" href="' + (p.download || p.repo) + '" target="_blank" rel="noopener noreferrer">Download ↗</a>' + sourceBtn + docsBtn;
+    } else if (subscription) {
+      // Subscribing happens at the account server, which opens the plan and
+      // grants access. This cart charges once and cannot do that.
+      actionsHtml = '<a class="btn btn-buy" href="' + ACCOUNT_URL + '/#/apps">Subscribe</a>' + sourceBtn + docsBtn;
+    } else {
+      actionsHtml = '<button type="button" class="btn btn-buy" id="detailAdd">Add to cart</button>' + sourceBtn + docsBtn;
+    }
 
     var shots = p.screenshots || [];
     var heroHtml = shots.length
@@ -4285,7 +4304,9 @@
       }
     }
 
-    if (free) return;
+    // A subscription has no tier picker and no cart button — its action is a
+    // link to the account server, which needs no wiring here.
+    if (free || isSubscription(p)) return;
 
     var selected = 0;
     var opts = root.querySelectorAll('.license-opt');
