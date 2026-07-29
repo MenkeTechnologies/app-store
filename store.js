@@ -4044,7 +4044,7 @@
       '<a class="product-card" href="product.html?id=' + encodeURIComponent(p.id) + '" data-cat="' + p.category + '" data-name="' + p.name.toLowerCase() + ' ' + p.tagline.toLowerCase() + '">' +
         '<div class="product-thumb' + (p.screenshots ? ' has-shot' : '') + '">' + badge + shot + '</div>' +
         '<div class="product-body">' +
-          '<span class="p-cat">' + branchCardMark(p) + p.category + '</span>' +
+          '<span class="p-cat">' + p.category + '</span>' +
           '<span class="p-name">' + hl(p.name, q) + '</span>' +
           '<span class="p-tag">' + hl(p.tagline, q) + '</span>' +
           '<div class="p-meta">' + pills + '</div>' +
@@ -4087,7 +4087,7 @@
       grid.innerHTML = '<div class="empty-state">no products match that search</div>';
       return;
     }
-    grid.innerHTML = branchSprite() + list.map(function (p) { return cardHtml(p, q); }).join('');
+    grid.innerHTML = list.map(function (p) { return cardHtml(p, q); }).join('');
     // Stagger the entrance animation.
     var cards = grid.querySelectorAll('.product-card');
     for (var i = 0; i < cards.length; i++) {
@@ -4174,25 +4174,6 @@
       '<svg class="p-branch-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +
         BRANCH_CORE + branchCorners(b.glyph) +
       '</svg>' + b.name + '</span>';
-  }
-
-  // The grid renders up to a few hundred cards, so the mark goes in once as a
-  // sprite and each card references it. Inlining the full mark per card would
-  // repeat ~600 bytes of path data a hundred-odd times for no benefit.
-  // Custom properties and currentColor both inherit into a <use> shadow tree,
-  // so one symbol still recolours per branch from CSS.
-  function branchSprite() {
-    return '<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>' +
-      Object.keys(BRANCHES).map(function (k) {
-        return '<symbol id="bm-' + k + '" viewBox="0 0 64 64">' +
-          BRANCH_CORE + branchCorners(BRANCHES[k].glyph) + '</symbol>';
-      }).join('') + '</defs></svg>';
-  }
-
-  function branchCardMark(p) {
-    var key = branchOf(p);
-    return '<svg class="card-branch b-' + key + '" aria-hidden="true" focusable="false">' +
-      '<use href="#bm-' + key + '"/></svg>';
   }
 
   function renderDetail() {

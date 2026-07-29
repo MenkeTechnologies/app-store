@@ -1253,24 +1253,12 @@
    down one: the accent becomes the package and the paper-safe value becomes the
    monogram, so the monogram stays the darker of the two and keeps reading as
    figure against the package. */
-.b-audio      { color: #ff2a6d; } .b-audio      .p-branch-mark, .b-audio.card-branch { color: #ff9fbd; --neon: #ff2a6d; }
-.b-publishing { color: #ffb020; } .b-publishing .p-branch-mark, .b-publishing.card-branch { color: #ffd68a; --neon: #ffb020; }
-.b-app        { color: #9d6bff; } .b-app        .p-branch-mark, .b-app.card-branch { color: #c9adff; --neon: #9d6bff; }
-.b-oss        { color: #2ee65f; } .b-oss        .p-branch-mark, .b-oss.card-branch { color: #a5f5bd; --neon: #2ee65f; }
+.b-audio      { color: #ff2a6d; } .b-audio      .p-branch-mark { color: #ff9fbd; --neon: #ff2a6d; }
+.b-publishing { color: #ffb020; } .b-publishing .p-branch-mark { color: #ffd68a; --neon: #ffb020; }
+.b-app        { color: #9d6bff; } .b-app        .p-branch-mark { color: #c9adff; --neon: #9d6bff; }
+.b-oss        { color: #2ee65f; } .b-oss        .p-branch-mark { color: #a5f5bd; --neon: #2ee65f; }
 
-[data-theme="light"] .b-audio      { color: #c4004f; } [data-theme="light"] .b-audio      .p-branch-mark, [data-theme="light"] .b-audio.card-branch { color: #ff2a6d; --neon: #c4004f; }
-[data-theme="light"] .b-publishing { color: #8a5a00; } [data-theme="light"] .b-publishing .p-branch-mark, [data-theme="light"] .b-publishing.card-branch { color: #ffb020; --neon: #8a5a00; }
-[data-theme="light"] .b-app        { color: #5b2fb8; } [data-theme="light"] .b-app        .p-branch-mark, [data-theme="light"] .b-app.card-branch { color: #9d6bff; --neon: #5b2fb8; }
-[data-theme="light"] .b-oss        { color: #157a33; } [data-theme="light"] .b-oss        .p-branch-mark, [data-theme="light"] .b-oss.card-branch { color: #2ee65f; --neon: #157a33; }
-
-/* Branch mark on the grid cards. Sits inside .p-cat, which is 8px Orbitron, so
-   the mark is sized in px rather than em -- at 1em it would render 8px square
-   and the monogram would close up. Colours come from the .b-* rules above, one
-   source of truth shared with the detail-page badge. */
-.card-branch {
-  width: 18px;
-  height: 18px;
-  vertical-align: -4.5px;
-  margin-right: 0.45em;
-}
-.product-card .p-cat { display: flex; align-items: center; }
+[data-theme="light"] .b-audio      { color: #c4004f; } [data-theme="light"] .b-audio      .p-branch-mark { color: #ff2a6d; --neon: #c4004f; }
+[data-theme="light"] .b-publishing { color: #8a5a00; } [data-theme="light"] .b-publishing .p-branch-mark { color: #ffb020; --neon: #8a5a00; }
+[data-theme="light"] .b-app        { color: #5b2fb8; } [data-theme="light"] .b-app        .p-branch-mark { color: #9d6bff; --neon: #5b2fb8; }
+[data-theme="light"] .b-oss        { color: #157a33; } [data-theme="light"] .b-oss        .p-branch-mark { color: #2ee65f; --neon: #157a33; }
