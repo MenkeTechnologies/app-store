@@ -1215,7 +1215,8 @@
    The package and the monogram must not resolve to the same value or the MT
    stops reading as figure against the hex, so the mark keeps the house
    treatment -- light package, accent monogram -- while the label and border
-   take the branch accent. That is why .p-branch-mark resets its own colour
+   take the branch accent. No border or chip around it - the mark and the
+   wordmark are the badge. That is why .p-branch-mark resets its own colour
    rather than inheriting the badge's. */
 .p-branchrow { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
 .p-branch {
@@ -1227,9 +1228,6 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 4px 10px 4px 5px;
-  border: 1px solid currentColor;
-  border-radius: 3px;
 }
 .p-branch-mark { width: 20px; height: 20px; flex: none; color: var(--text); }
 
