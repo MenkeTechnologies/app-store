@@ -1193,15 +1193,16 @@
    Do not swap those two roles. Putting the accent on the package and the
    monogram in cyan inverts the figure/ground and no longer reads as the mark. */
 .brand-lockup {
-  /* Pinned to the brand palette, not --text and not the scheme cyan. --text is
-     #e0f0ff on the dark theme but #1e293b on the light one, so the package
-     rendered a near-black hex on white. The corporate mark also should not
-     restyle itself when someone picks a HUD scheme -- the branch badges on the
-     product pages carry the colour variation, the company mark stays fixed.
-     Package is the light tint, monogram the accent, so the monogram reads as
-     figure against the package. */
-  color: #8cdbff;
-  --neon: #00b0ff;
+  /* Follows the colour scheme. The house treatment is a light package with the
+     saturated monogram inside it, so the package takes --cyan and the monogram
+     --accent: both are scheme variables, so the mark recolours with the HUD
+     picker and inverts correctly on the light theme without a second rule.
+
+     Do not swap those two roles. Putting the accent on the package and the
+     cyan in the monogram inverts the figure/ground and no longer reads as the
+     mark. */
+  color: var(--cyan);
+  --neon: var(--accent);
   height: 3.4em;
   width: auto;
   vertical-align: -1.35em;
@@ -1214,11 +1215,6 @@
 .brand-lockup text {
   font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 }
-
-/* On the light theme both step down one: the accent becomes the package and the
-   paper-safe value the monogram, keeping the monogram the darker of the two.
-   #00b0ff has too little contrast on white to carry the monogram. */
-[data-theme="light"] .brand-lockup { color: #00b0ff; --neon: #0069a8; }
 
 /* Branch badge on the product detail page. Every product belongs to one of the
    four MenkeTechnologies branches; the mark is the corporate hex + MT monogram
