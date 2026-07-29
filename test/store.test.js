@@ -116,9 +116,19 @@ test('free products download from GitHub; paid products add to cart', () => {
         /^(https:\/\/github\.com\/MenkeTechnologies\/[^"]+\/(releases\/latest|tags)|docs\/[^"]+\.pdf)$/,
         `download well-formed (GitHub release URL or local docs PDF): ${m && m[1]}`,
       );
+    } else if (/data-subscribe="/.test(card)) {
+      // Subscription products (the apps and audio plugins). They are billed and
+      // granted by the account server, so they must NOT be addable to a cart
+      // that charges once — a recurring product in a one-time basket would take
+      // a single payment for something that renews.
+      assert.doesNotMatch(card, /data-add="/, 'subscription card is not addable to the cart');
+      assert.match(card, /per month/, 'subscription card is priced per month');
+      assert.match(card, /class="amt">\$\d+</, 'subscription card shows a monthly amount');
     } else {
-      assert.match(card, /data-add="/, 'paid card has add-to-cart');
-      assert.match(card, /per major version/, 'paid card shows per-major-version pricing');
+      // One-time products (the publications).
+      assert.match(card, /data-add="/, 'one-time card has add-to-cart');
+      assert.match(card, /one-time/, 'one-time card says so');
+      assert.doesNotMatch(card, /per month/, 'a one-time product is not priced per month');
     }
   }
 });
@@ -126,7 +136,37 @@ test('free products download from GitHub; paid products add to cart', () => {
 test('no stale pricing copy remains', () => {
   assert.ok(!/lifetime/i.test(CODE), 'no "lifetime" pricing copy');
   const { html } = run('productGrid', '');
-  assert.ok(!html.includes('>one-time<'), 'no "one-time" label rendered');
+  // "per major version" was the perpetual-only wording. The apps are monthly
+  // subscriptions now, so it must not survive anywhere in the grid.
+  assert.ok(!html.includes('per major version'), 'no "per major version" label rendered');
+});
+
+test('every subscription is priced inside the stated $5-$30 band', () => {
+  const { html } = run('productGrid', '');
+  const cards = html.split('class="product-card"').slice(1);
+  let subscriptions = 0;
+  for (const card of cards) {
+    if (!/data-subscribe="/.test(card)) continue;
+    subscriptions += 1;
+    const m = card.match(/class="amt">\$(\d+)</);
+    assert.ok(m, 'subscription card shows an amount');
+    const dollars = Number(m[1]);
+    assert.ok(dollars >= 5 && dollars <= 30, `monthly price out of band: $${dollars}`);
+  }
+  assert.ok(subscriptions > 10, `expected the app catalog to be subscriptions, got ${subscriptions}`);
+});
+
+test('the two hand-set subscription prices are exactly what was decided', () => {
+  // zftp is the $5 anchor and zpwr-synth the $30 anchor; the rest interpolate
+  // between them. If the derivation ever stops reproducing these two, the whole
+  // price list has silently moved.
+  const { html } = run('productGrid', '');
+  for (const [id, expected] of [['zftp', '$5'], ['zpwr-synth', '$30']]) {
+    const card = html.split('class="product-card"').slice(1)
+      .find((c) => c.includes('data-subscribe="' + id + '"'));
+    assert.ok(card, `${id} is on sale as a subscription`);
+    assert.match(card, new RegExp('class="amt">\\' + expected + '<'), `${id} is ${expected}/month`);
+  }
 });
 
 test('every product detail page has an overview and rich features', () => {

@@ -3934,6 +3934,45 @@
     return !t.price;
   }
 
+  // ---- Billing model ---------------------------------------------------
+  // Desktop apps and audio plugins are monthly subscriptions; the publications
+  // are one-time purchases; anything priced at zero is free whatever its
+  // category says. The same rule drives zpwr-account's catalog export, so the
+  // storefront and the billing tables cannot drift apart.
+  var SUBSCRIPTION_CATEGORIES = [
+    'Desktop Apps',
+    'Audio Plugins',
+    'Developer Tools',
+    'CLI Tools',
+    'stryke Packages',
+    'arb Packages',
+  ];
+
+  // Where subscriptions are managed. Subscribing does not go through this
+  // cart: a recurring charge and a one-time purchase are different PayPal
+  // flows, and mixing them in one basket produces a checkout that can only be
+  // half right.
+  var ACCOUNT_URL = 'https://accounts.menketechnologies.com';
+
+  function isSubscription(p) {
+    if (isFree(p)) return false;
+    return SUBSCRIPTION_CATEGORIES.indexOf(p.category) !== -1;
+  }
+
+  // Monthly price in whole dollars, derived from the perpetual price.
+  //
+  // Anchored on the two set by hand — zftp at $20 perpetual is $5/month,
+  // zpwr-synth at $149 is $30 — so one fifth clamped to that $5-$30 band
+  // reproduces both exactly and interpolates the rest.
+  function monthlyOf(p) {
+    var tier = (p.tiers && p.tiers[0]) || { price: p.price };
+    return Math.min(30, Math.max(5, Math.round((tier.price || 0) / 5)));
+  }
+
+  function fmtMonthly(p) {
+    return '$' + monthlyOf(p);
+  }
+
   function readCart() {
     try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
     catch (_) { return []; }
@@ -3946,6 +3985,14 @@
     return cart.reduce(function (sum, item) { return sum + (item.price || 0); }, 0);
   }
   function addToCart(productId, tierName, price) {
+    var product = byId(productId);
+    if (product && isSubscription(product)) {
+      // A subscription is billed by PayPal on its own schedule and is granted
+      // by the account server, not by this checkout. Sending someone here with
+      // one in the basket would charge them once for something that renews.
+      window.location.href = ACCOUNT_URL + '/#/apps';
+      return;
+    }
     var cart = readCart();
     // One license per product in the cart; re-adding swaps the tier.
     cart = cart.filter(function (i) { return i.id !== productId; });
@@ -4003,11 +4050,16 @@
           '<div class="p-meta">' + pills + '</div>' +
         '</div>' +
         '<div class="product-foot">' +
-          '<span class="price"><span class="amt' + priceCls + '">' + fmtPrice(tier.price) + '</span>' +
-            (tier.price ? '<span class="per">per major version</span>' : '') + '</span>' +
+          (isSubscription(p)
+            ? '<span class="price"><span class="amt">' + fmtMonthly(p) + '</span>' +
+                '<span class="per">per month</span></span>'
+            : '<span class="price"><span class="amt' + priceCls + '">' + fmtPrice(tier.price) + '</span>' +
+                (tier.price ? '<span class="per">one-time</span>' : '') + '</span>') +
           (isFree(p)
             ? '<button type="button" class="btn btn-buy" data-download="' + (p.download || p.repo) + '">Download ↗</button>'
-            : '<button type="button" class="btn btn-buy" data-add="' + p.id + '">Add</button>') +
+            : isSubscription(p)
+              ? '<button type="button" class="btn btn-buy" data-subscribe="' + p.id + '">Subscribe</button>'
+              : '<button type="button" class="btn btn-buy" data-add="' + p.id + '">Add</button>') +
         '</div>' +
       '</a>';
   }
@@ -4841,6 +4893,15 @@
         e.preventDefault();
         e.stopPropagation();
         window.open(dl.getAttribute('data-download'), '_blank', 'noopener');
+        return;
+      }
+      var sub = e.target.closest('[data-subscribe]');
+      if (sub) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Subscriptions are opened, billed and granted by the account server.
+        // The storefront's job ends at sending the customer there.
+        window.location.href = ACCOUNT_URL + '/#/apps';
         return;
       }
       var add = e.target.closest('[data-add]');
