@@ -1180,16 +1180,24 @@
   color: var(--text-dim);
 }
 
-/* Corporate mark in the header brand line. The package inherits currentColor,
-   which .tutorial-brand already sets to --accent, and the monogram takes
-   --cyan; both are scheme variables, so the mark recolours with the HUD scheme
-   picker instead of pinning its own hex. --cyan is already paper-safe in the
-   light theme (#0891b2), which is exactly the contrast the mark needs there.
-   Inline SVG rather than <img> for that reason: an <img> cannot inherit. */
+/* Corporate mark in the header brand line. The full variant, with the pin
+   stubs: the compact one reads as a different, lesser mark next to the
+   wordmark. Sized at 2.4em of the 14px brand line so the stubs stay legible --
+   below about 32px they fuse into the package edge.
+
+   The package takes --text and the monogram --cyan, matching the house
+   treatment: a light package with the cyan monogram inside it. Both are scheme
+   variables, so the mark recolours with the HUD scheme picker rather than
+   pinning its own hex, and --text/--cyan both invert correctly in the light
+   theme. Inline SVG rather than <img> for that reason: an <img> cannot inherit.
+
+   Do not swap these two roles. Putting the accent on the package and the
+   monogram in cyan inverts the figure/ground and no longer reads as the mark. */
 .brand-mark {
+  color: var(--text);
   --neon: var(--cyan);
-  width: 1.95em;
-  height: 1.95em;
-  vertical-align: -0.62em;
-  margin-right: 0.5em;
+  width: 2.4em;
+  height: 2.4em;
+  vertical-align: -0.9em;
+  margin-right: 0.45em;
 }
