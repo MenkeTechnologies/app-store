@@ -27,6 +27,32 @@
       ],
     },
     {
+      id: 'ztorrent',
+      name: 'ztorrent',
+      glyph: 'BT',
+      category: 'Desktop Apps',
+      badge: 'WIP',
+      tagline: 'A from-scratch BitTorrent client in Rust behind a cyberpunk HUD, modeled on Transmission — torrents, files, peers, trackers, and labels, plus the policy layer that sits above the wire: a download/seed queue, ratio and idle seeding limits, the alt-speed (turtle) scheduler, blocklists, and watch directories. Byte-exact bencode means the info-hash is taken from the original info bytes, and a Transmission RPC compatibility layer answers in Transmission\'s own envelope, so transmission-remote and the phone apps drive it unchanged. Its pure-Rust ztorrent-core engine is extracted so the same client embeds inside the other MenkeTechnologies apps. In development.',
+      pills: ['Tauri v2', 'Rust', 'Transmission RPC', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
+      id: 'zlatex',
+      name: 'zlatex',
+      glyph: 'LX',
+      category: 'Desktop Apps',
+      badge: 'WIP',
+      tagline: 'A from-scratch LaTeX equation editor in Rust behind a cyberpunk HUD — source on the left, positioned ink on the right, with no TeX distribution behind the curtain: the tokenizer, the macro expander, the math grammar, and TeX\'s box-and-glue layout are all implemented here, with the layout parameters read from the face\'s own OpenType MATH table rather than hardcoded. Every glyph carries the byte span of the source that produced it, so clicking the preview selects the source. Exports self-contained SVG / PNG / PDF drawn from glyph outlines, and an exported PDF carries its LaTeX source, so dropping it back in re-opens an editable equation. Its pure-Rust zlatex-core engine is extracted so the same typesetter embeds inside the other MenkeTechnologies apps. In development.',
+      pills: ['Tauri v2', 'Rust', 'No TeX install', 'Embeddable core'],
+      price: 20,
+      tiers: [
+        { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
+      ],
+    },
+    {
       id: 'zpdf',
       name: 'zpdf',
       glyph: 'P',
@@ -2423,6 +2449,41 @@
         "JUCE audio sidecar owns the scoring clock — MIDI-in and the playhead share one process, so grading never crosses IPC",
         "Cyberpunk HUD interface from the shared zgui-core chrome",
         "Embeddable zmusic-core engine (rlib + staticlib + cdylib)",
+        "In development — the app and its core are being built out"
+      ]
+    },
+    "ztorrent": {
+      "overview": "A from-scratch BitTorrent client in Rust (Tauri v2 desktop app) modeled on Transmission, behind a cyberpunk HUD. The engine carries the session model — torrents, files, peers, trackers, labels — and the policy Transmission applies above the wire: the download/seed queue, ratio and idle seeding limits, the alt-speed (turtle) scheduler, blocklists, and watch directories. Formats are handled byte-exactly, and a Transmission RPC translation lets existing remotes drive it. Its pure-Rust ztorrent-core engine is extracted so the same client embeds across the GUI stack. In development.",
+      "features": [
+        "Session model — torrents, queue order, labels, per-torrent limits, per-file wanted/priority flags, with atomic JSON persistence",
+        "Download / seed queue — slot limits, stalled detection, and priority",
+        "Seeding policy — ratio and idle limits decide when a seed stops",
+        "Alt-speed (turtle) scheduler — time window plus weekday bitfield, overnight windows included",
+        "Blocklists — P2P-plaintext and CIDR sources merged into sorted ranges with binary-search lookup",
+        "Watch directories — polled, reporting only files whose size has settled",
+        "Byte-exact bencode — the info-hash is SHA-1 of the ORIGINAL info bytes; .torrent read/write and magnet parse/build (hex + Base32)",
+        "BitTorrent wire via librqbit — peers, HTTP/UDP trackers, DHT, magnet metadata exchange, UPnP",
+        "Transmission RPC compatibility — transmission-remote and the phone apps speak to this engine unchanged",
+        "Client view from zgui-core — status-filter sidebar with live counts, a sortable/resizable table with fuzzy filtering, and an Info / Files / Peers / Trackers / Options details pane",
+        "Embeddable ztorrent-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps",
+        "In development — the app and its core are being built out"
+      ]
+    },
+    "zlatex": {
+      "overview": "A from-scratch LaTeX equation editor in Rust (Tauri v2 desktop app) behind a cyberpunk HUD: LaTeX source goes in, positioned ink comes out — as a render tree the WebView paints, or as self-contained SVG / PNG / PDF. There is no external TeX distribution and no subprocess; TeX's own pipeline is implemented in the crate, with the layout parameters sourced from the loaded face's OpenType MATH table instead of hardcoded constants. Its pure-Rust zlatex-core engine is extracted so the same typesetter embeds across the GUI stack. In development.",
+      "features": [
+        "TeX's pipeline in Rust — category codes, macro expansion (\\def / \\newcommand / \\let), the math grammar, and box-and-glue layout (mlist_to_hlist) with the 8×8 inter-atom spacing table",
+        "Layout parameters read from the font's OpenType MATH constants, so the engine's measurements and the painted result cannot drift",
+        "No TeX distribution, no subprocess, nothing to install",
+        "Structure — the \\frac family, \\sqrt with an optional index, \\left…\\right delimiter growth, scripts, primes, accents, \\overline / \\underline",
+        "Environments — matrix, pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix, cases, aligned, and array with a column spec",
+        "Alphabets mapped to real Unicode math code points — \\mathbb{R} is U+211D, not a styled R",
+        "Live preview mapped both ways — every glyph run carries the byte span of the source that produced it, so a click on the ink selects the source",
+        "Export — SVG, PNG, and PDF drawn from glyph outlines; an exported PDF carries its LaTeX source and re-opens as an editable equation",
+        "Equation library (bundled SQLite) and symbol palettes generated from the control-sequence table",
+        "One JSON command bus — app, CLI, and the automation bus all enter through it, so every GUI feature is scriptable",
+        "Math mode only, by design — formulas, not documents: no paragraph or page breaking, and no \\usepackage",
+        "Embeddable zlatex-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps",
         "In development — the app and its core are being built out"
       ]
     },
