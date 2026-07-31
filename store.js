@@ -45,8 +45,8 @@
       glyph: 'LX',
       category: 'Desktop Apps',
       badge: 'WIP',
-      tagline: 'A from-scratch LaTeX equation editor in Rust behind a cyberpunk HUD — source on the left, positioned ink on the right, with no TeX distribution behind the curtain: the tokenizer, the macro expander, the math grammar, and TeX\'s box-and-glue layout are all implemented here, with the layout parameters read from the face\'s own OpenType MATH table rather than hardcoded. Every glyph carries the byte span of the source that produced it, so clicking the preview selects the source. Exports self-contained SVG / PNG / PDF drawn from glyph outlines, and an exported PDF carries its LaTeX source, so dropping it back in re-opens an editable equation. Its pure-Rust zlatex-core engine is extracted so the same typesetter embeds inside the other MenkeTechnologies apps. In development.',
-      pills: ['Tauri v2', 'Rust', 'No TeX install', 'Embeddable core'],
+      tagline: 'A from-scratch LaTeX editor in Rust behind a cyberpunk HUD — source on the left, typeset pages on the right, with no TeX distribution behind the curtain. The whole typesetter is implemented here: the tokenizer and macro expander, a text mode that reads a document (preamble, sectioning, lists, tables, floats, cross-references, citations, bibliography), Knuth-Plass line breaking, page building, and math layout whose parameters come from the face\'s own OpenType MATH table rather than hardcoded. Every glyph carries the byte span of the source that produced it, so clicking the preview selects the source. A document exports as a multi-page PDF that carries its own LaTeX source, so dropping it back in re-opens editable source. Its pure-Rust zlatex-core engine is extracted so the same typesetter embeds inside the other MenkeTechnologies apps. In development.',
+      pills: ['Tauri v2', 'Rust', 'Documents + math', 'No TeX install'],
       price: 20,
       tiers: [
         { name: 'Personal', desc: 'Single user, all platforms; updates within this major version', price: 20 },
