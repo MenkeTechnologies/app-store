@@ -2450,6 +2450,9 @@
         "Cyberpunk HUD interface from the shared zgui-core chrome",
         "Embeddable zmusic-core engine (rlib + staticlib + cdylib)",
         "In development — the app and its core are being built out"
+      ],
+      "screenshots": [
+        { "src": "assets/zmusic.webp", "cap": "PLAY tab — a keys lesson on the ClipSeq note grid with draw/paint/slice tools and 1/4–1/32 grid, practice-speed and backing-track controls, the score / accuracy / streak / perfect / miss / extra / mean-err readouts, and the light-guide 88-key keyboard in the cyberpunk HUD" }
       ]
     },
     "ztorrent": {
@@ -2467,10 +2470,13 @@
         "Client view from zgui-core — status-filter sidebar with live counts, a sortable/resizable table with fuzzy filtering, and an Info / Files / Peers / Trackers / Options details pane",
         "Embeddable ztorrent-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps",
         "In development — the app and its core are being built out"
+      ],
+      "screenshots": [
+        { "src": "assets/ztorrent.webp", "cap": "Client view — status-filter sidebar with live counts, the sortable torrent table (size, done, status, up/down, ratio, ETA, peers), add/magnet/start/pause/remove and turtle-mode actions, and the Info / Files / Peers / Trackers / Pieces / Options details pane in the cyberpunk HUD" }
       ]
     },
     "zlatex": {
-      "overview": "A from-scratch LaTeX equation editor in Rust (Tauri v2 desktop app) behind a cyberpunk HUD: LaTeX source goes in, positioned ink comes out — as a render tree the WebView paints, or as self-contained SVG / PNG / PDF. There is no external TeX distribution and no subprocess; TeX's own pipeline is implemented in the crate, with the layout parameters sourced from the loaded face's OpenType MATH table instead of hardcoded constants. Its pure-Rust zlatex-core engine is extracted so the same typesetter embeds across the GUI stack. In development.",
+      "overview": "A from-scratch LaTeX editor in Rust (Tauri v2 desktop app) behind a cyberpunk HUD: source on the left, live-typeset pages on the right. There is no external TeX distribution and no subprocess — no pdflatex, no MacTeX, no tectonic; TeX's own pipeline is implemented in the crate, text mode included (preamble, sectioning, cross-references, Knuth–Plass line breaking, page building), with math layout parameters sourced from the loaded face's OpenType MATH table instead of hardcoded constants. Its pure-Rust zlatex-core engine is extracted so the same typesetter embeds across the GUI stack. In development.",
       "features": [
         "TeX's pipeline in Rust — category codes, macro expansion (\\def / \\newcommand / \\let), the math grammar, and box-and-glue layout (mlist_to_hlist) with the 8×8 inter-atom spacing table",
         "Layout parameters read from the font's OpenType MATH constants, so the engine's measurements and the painted result cannot drift",
@@ -2482,9 +2488,13 @@
         "Export — SVG, PNG, and PDF drawn from glyph outlines; an exported PDF carries its LaTeX source and re-opens as an editable equation",
         "Equation library (bundled SQLite) and symbol palettes generated from the control-sequence table",
         "One JSON command bus — app, CLI, and the automation bus all enter through it, so every GUI feature is scriptable",
-        "Math mode only, by design — formulas, not documents: no paragraph or page breaking, and no \\usepackage",
+        "Text mode as well as math — documents typeset to real pages via Knuth–Plass line breaking and page building, not single-formula previews",
+        "Editor pane with syntax highlighting, minimap, Vim and Emacs keymaps, and 50–200% preview zoom",
         "Embeddable zlatex-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps",
         "In development — the app and its core are being built out"
+      ],
+      "screenshots": [
+        { "src": "assets/zlatex.webp", "cap": "Split editor — LaTeX source with syntax highlighting and a minimap on the left, the typeset page (title, section, inline math, numbered display equation) on the right, plus display/inline mode, Vim and Emacs keymaps, zoom, and SVG / PNG / PDF export in the cyberpunk HUD" }
       ]
     },
     "zpdf": {
