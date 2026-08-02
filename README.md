@@ -27,15 +27,24 @@ eleven categories (Desktop Apps, Audio Plugins, Developer Tools, CLI Tools, Zsh
 Plugins, znative Plugins, zmax-native Plugins, Editor Plugins, stryke Packages,
 arb Packages, Publications):
 
-- **Paid** — `audio haxor`, `traderview`, `zpwr-daw`, `zpwr-synth`, `zpwr-fx`,
-  `zpwr-midi-fx`, plus the Publications: the companion books, and the language
-  reference manuals whose subject is itself free (`zshrs`, `strykelang`, `zmax`,
-  `vimlrs`, `elisprs`, `awkrs`, `rubyrs`, `pythonrs`).
-- **Free / open source** — everything else: `zshrs`, `stryke`, the Rust CLI
-  tools, the **stryke package ecosystem**, the **arb dashboard packages**, the
-  **zmax-native editor plugins**, `zpwr`, `zsh-more-completions`, `fusevm`, and
-  the rest of the zsh-plugin family. The references and block catalogs that ship *with* a paid product
+- **Paid** — every Desktop App except `zwire` and `zmax-gui`: `zmusic`,
+  `ztorrent`, `zlatex`, `zpdf`, `zphoto`, `zemail`, `zstation`, `zoffice`,
+  `audio-haxor`, `traderview`, `ztranslator`, `zcite`, `zreq`, `ztunnel`,
+  `zthrottle`, `zgo`, `zftp`, `zcontainer`, `zterminal`, `zpwr-daw`; the three
+  Audio Plugins `zpwr-synth`, `zpwr-fx`, `zpwr-midi-fx`; plus most Publications —
+  the companion books, and the language reference manuals whose subject is itself
+  free (`zshrs`, `strykelang`, `zmax`, `vimlrs`, `elisprs`, `awkrs`, `rubyrs`,
+  `pythonrs`).
+- **Free / open source** — everything else: `zwire`, `zmax-gui`, `zshrs`,
+  `stryke`, the Rust CLI tools, the **stryke package ecosystem**, the **arb
+  dashboard packages**, the **zmax-native editor plugins**, `zpwr`,
+  `zsh-more-completions`, `fusevm`, and the rest of the zsh-plugin family. The
+  references and block catalogs that ship *with* a paid product
   (`zpwr-daw`, `zpwr-synth`, `zpwr-fx`, `zpwr-midi-fx`) stay free.
+
+Both tiers are derived from the catalog itself: a product is free when its first
+tier has no price (`store.js:4003-4006`). `docs/report.html` carries the
+per-category composition table.
 
 **Third-party forks are intentionally excluded** (`fzf-tab`, `zsh-z`, `zunit`,
 `kubectl-aliases`, `revolver`, `tmux-fzf-url`, `fasd-simple`, etc.) — they are
@@ -135,7 +144,7 @@ HTML sanity check on every push and pull request.
 | `index.html`    | Storefront: hero, search, category filters, product grid      |
 | `product.html`  | Product detail page, reads `?id=<product>` from the URL        |
 | `checkout.html` | Shopify-style checkout: express wallets, card form, summary    |
-| `contact.html`  | Contact form: POSTs to the Web3Forms relay, emails `CONTACT_EMAIL` |
+| `contact.html`  | Contact form: POSTs to the Web3Forms relay, emails the inbox behind `WEB3FORMS_KEY` |
 | `docs/index.html`  | Developer documentation (HUD-themed)                       |
 | `docs/report.html` | Engineering report (live catalog stats + metrics)         |
 | `docs/zpwr-patch-core-block-catalog.pdf` | Full shared block catalog (every shared module across the four plugins, with an alphabetical index) — linked as the "Full Catalog" doc from all three audio-plugin product pages (`docs[]` in `store.js`) |
@@ -168,7 +177,7 @@ a sticky order summary with discount codes). Add to cart → cart modal →
 `contact.html` is a name / email / subject / message form linked from the
 storefront breadcrumb. Since the site is static (no backend), submitting POSTs
 to the [Web3Forms](https://web3forms.com) relay via `fetch`, which forwards the
-message to `CONTACT_EMAIL`. The request has a 15s timeout and shows inline
+message on. The request has a 15s timeout and shows inline
 success / error so it can never hang on a slow or down relay; a hidden
 `botcheck` honeypot filters bots. The relay routes to the inbox registered to
 the public Web3Forms access key (`WEB3FORMS_KEY` in `store.js`), so the raw
@@ -181,16 +190,17 @@ address is never exposed on the page. `renderContactPage()` mounts into
 express **PayPal** button) loads the PayPal JS SDK and renders Smart Buttons
 into `#paypalButtonContainer`. The order is itemized from the cart and its total
 matches the summary panel (including discounts), captured client-side; the
-buyer's PayPal email is used for license delivery. To activate it, set your
-**public** Live client ID in `store.js`:
+buyer's PayPal email is used for license delivery. The Live client ID is already
+set in `store.js`:
 
 ```js
-var PAYPAL_CLIENT_ID = '';   // from a Live REST app at developer.paypal.com
+var PAYPAL_CLIENT_ID = 'AZZQjvgm…';   // from a Live REST app at developer.paypal.com
 ```
 
 The client ID is a public credential — it ships in client JS and is safe to
 commit. The API secret is never needed (client-side capture requires no
-secret). While it is empty, the PayPal method shows a "not configured" note. For
+secret). Blank it out and the PayPal method falls back to a "not configured"
+note instead of rendering the buttons (`store.js:4765`). For
 verified server-side capture, add a serverless function; the client-side flow
 above works on static GitHub Pages with no backend.
 
