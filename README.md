@@ -105,7 +105,10 @@ Images live under `assets/` (one folder per multi-shot product, e.g.
 ≤1600 px and converted to WebP (`cwebp -q 82`) so each is ~50–160 KB. To add
 shots for a product: drop the WebP files in `assets/`, then list them in that
 product's `screenshots` array. A test asserts every referenced asset exists on
-disk.
+disk, that nothing under `assets/` is unreferenced, and that the tree holds
+WebP only — so `assets/` is screenshots and nothing else. Brand artwork (the
+corporate mark and the favicon) is SVG and lives in `brand/`, outside that
+budget.
 
 Uses the same HUD / cyberpunk design system as the strykelang docs
 (`hud-static.css`, `tutorial.css`, `hud-theme.js`) so the store and the docs
