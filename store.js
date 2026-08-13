@@ -2552,6 +2552,7 @@
         "One JSON command bus — app, CLI, and the automation bus all enter through it, so every GUI feature is scriptable",
         "Text mode as well as math — documents typeset to real pages via Knuth–Plass line breaking, TeX's own hyphenation patterns, footnotes at the foot of their page, floats with captions, and page building, not single-formula previews",
         "Books, not just files — \\input and \\include resolve against the open document, so a book split across chapter files previews as one book with one outline",
+        "The reference fixed point, proved or refuted — a document is finished only when a pass reads exactly the numbers and pages it wrote, so the layout iterates in memory and reports either the pass it converged on or the cycle and its period, naming every entry that alternates and every \\ref / \\pageref site that read one, at a source line and column, with what it printed on each pass",
         "TeX Live package manager in the editor — Updates / Packages / This document tabs, status joined from the local texlive.tlpdb against the mirror, installs unpacked into ~/.zlatex/texmf with no tlmgr, no perl and no root; Ingest macros mines a .sty and reports what it could not honour",
         "Editor pane with syntax highlighting, minimap, Vim and Emacs keymaps, and 50–200% preview zoom",
         "Embeddable zlatex-core engine (rlib + staticlib + cdylib) — mounts into the other GUI apps",
