@@ -569,7 +569,7 @@
       glyph: 'ZV',
       category: 'Developer Tools',
       badge: 'NEW',
-      tagline: 'A git-shadowing superset VCS — a single Rust binary named git that replaces stock git on PATH and serves 181 subcommands natively over vendored gitoxide, with no fork/exec of stock git and no fallthrough. On top of git compatibility it adds 117 coordination verbs git structurally cannot have: a fair FIFO index-lock daemon in place of the O_EXCL lockfile, submodule reconcile that leaves HEAD attached, and forward-only gitlink bumps — built for a meta-repo of nested submodules driven by many concurrent automated agents. Free and open source.',
+      tagline: 'A git-shadowing superset VCS — a single Rust binary named git that replaces stock git on PATH and serves 181 subcommands natively over vendored gitoxide, with no fork/exec of stock git and no fallthrough. On top of git compatibility it adds 119 coordination verbs git structurally cannot have: a fair FIFO index-lock daemon in place of the O_EXCL lockfile, submodule reconcile that leaves HEAD attached, and forward-only gitlink bumps — built for a meta-repo of nested submodules driven by many concurrent automated agents. Free and open source.',
       pills: ['Rust', 'gitoxide', 'Git superset', 'Free / OSS'],
       price: 0,
       tiers: [
@@ -981,7 +981,7 @@
     },
     {
       id: 'zpwr-encyclopedia', name: 'The zpwr Encyclopedia', glyph: 'zE', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (500+ subcommands, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
+      tagline: 'The complete reference to zpwr — the most advanced UNIX terminal environment (504 verbs, 2000+ aliases). Every verb, alias, and subsystem, LaTeX-typeset into one volume.',
       pills: ['Encyclopedia', 'zpwr', 'DRM-free PDF'], price: 20,
       tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
@@ -2411,20 +2411,43 @@
       "features": ["An opening chapter on the shared package model — cdylib + [ffi] namespace, JSON boundary, OnceCell connection cache, s pkg install", "Part I Databases: postgres, mysql, mssql, mongo, redis, neo4j, scylla, clickhouse, search", "Part II Data & analytics: arrow, parquet, polars, duckdb, spark", "Part III Messaging & RPC: kafka, zmq, grpc", "Part IV Cloud & infrastructure: aws, gcp, azure, k8s, docker", "Part V Web & automation: scrape, selenium, mcpd, email", "Part VI Documents (office) and Part VII Foundation (utils, gui) — the packages that are not external-system clients, framed honestly as such", "Each chapter names the wrapped crate and the exported verbs from source — no invented APIs, one real example per package", "The connector-fleet companion to the strykelang language reference. Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zpwr-encyclopedia": {
-      "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 500+ subcommands and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
-      "features": ["Every zpwr verb and subcommand (500+)", "2000+ aliases, 47k completions, vim + tmux integration", "Generated from the live zpwr source", "LaTeX-typeset encyclopedia, DRM-free PDF"]
+      "overview": "The complete reference to zpwr — the most advanced UNIX terminal environment, with 504 verbs and 2000+ aliases. Every verb, alias, and subsystem, LaTeX-typeset into one volume.",
+      "features": [
+        "Every zpwr verb and subcommand (504)",
+        "2000+ aliases, 47k completions, vim + tmux integration",
+        "Generated from the live zpwr source",
+        "LaTeX-typeset encyclopedia, DRM-free PDF"
+      ]
     },
     "ztmux-book": {
       "overview": "The companion book to ztmux — the world's first 100%-functional tmux in Rust. Not a wrapper around the tmux binary and not a control-mode client: it reimplements the whole program — server, client, grid/screen model, input parser, layouts, command language, formats, and terminal back end — in memory-safe Rust, seeded from the tmux-rs port and validated module-by-module against the vendored upstream tmux C source of truth. The book walks that architecture and the port methodology: a parity suite that runs identical inputs through the real tmux and ztmux and diffs them byte-for-byte (1242/1242 gated cases passing) and an anti-drift gate that fails the build on any Rust function with no tmux C counterpart.",
       "features": ["ztmux, end to end — the whole tmux program reimplemented in Rust", "The client/server split, the libevent loop, and the session/window/pane state tree", "The grid/screen + scrollback model, the VT input parser, and the layout engine", "The lalrpop command language, one file per command mirroring tmux's cmd-*.c", "The port methodology: byte-for-byte parity vs the vendored tmux C source, 1242/1242 gated cases passing", "The anti-drift gate: no Rust function survives without a tmux C counterpart", "Pandoc + LaTeX typeset, DRM-free PDF"]
     },
     "zwire-book": {
-      "overview": "The companion book to zwire — a Chromium/Blink browser forked into the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, patched and extended, on a dedicated profile that never touches system Chrome. The book walks the full stack the project is built on — the HUD extension workspace (the ztmux tiling overlay, the ⌘K palette, sessions, the internal-page skin) and, under it, the 25 authored C++ patches that compile the native chrome an extension cannot reach (tab geometry, UI fonts, the neon toolbar, native menus and dialogs, the 8 schemes in the color mixer + DevTools, and a browser-wide DSP engine inside Chromium's audio service) against a pinned Chromium tag.",
-      "features": ["Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)", "The unbranded fork build that still carries --load-extension (removed from branded Chrome in v137)", "The 25 HUD patches that restyle the native chrome — tabs, UI font, neon toolbar, omnibox, native menus, the 8 schemes in the color mixer + DevTools — and compile the browser-wide audio engine, written against a pinned Chromium tag", "The ztmux tiling overlay, the ⌘K palette, the new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host", "The automation layer, chapter by chapter: stryke lifecycle hooks (53 catalogued browser events), output triggers on rendered page text, and pane pipelines — reactive dataflow edges between tiled webviews, with the cycle check that refuses a loop", "The audio dashboard over the browser-wide DSP engine: the spec-on-disk control loop, the live meters back-channel, and why it never uses tabCapture", "The dedicated profile and per-user staged extensions — never collides with system Chrome", "The CDP overlay layer and the cross-platform / updating operations matrix", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The companion book to zwire — a Chromium/Blink browser forked into the strykelang cyberpunk HUD. Not a WebView wrapper (WebKit, no MV3) and not a fresh engine: a real Blink base, patched and extended, on a dedicated profile that never touches system Chrome. The book walks the full stack the project is built on — the HUD extension workspace (the ztmux tiling overlay, the ⌘K palette, sessions, the internal-page skin) and, under it, the 27 authored C++ patches that compile the native chrome an extension cannot reach (tab geometry, UI fonts, the neon toolbar, native menus and dialogs, the 8 schemes in the color mixer + DevTools, and a browser-wide DSP engine inside Chromium's audio service) against a pinned Chromium tag.",
+      "features": [
+        "Why a real Blink base is required — zpwrchrome's Manifest V3 surface (userScripts, declarativeNetRequestWithHostAccess, nativeMessaging, webRequest, service-worker background)",
+        "The unbranded fork build that still carries --load-extension (removed from branded Chrome in v137)",
+        "The 27 HUD patches that restyle the native chrome — tabs, UI font, neon toolbar, omnibox, native menus, the 8 schemes in the color mixer + DevTools — and compile the browser-wide audio engine, written against a pinned Chromium tag",
+        "The ztmux tiling overlay, the ⌘K palette, the new-tab HUD, the internal-page scheme picker, its eight schemes, and the native host",
+        "The automation layer, chapter by chapter: stryke lifecycle hooks (53 catalogued browser events), output triggers on rendered page text, and pane pipelines — reactive dataflow edges between tiled webviews, with the cycle check that refuses a loop",
+        "The audio dashboard over the browser-wide DSP engine: the spec-on-disk control loop, the live meters back-channel, and why it never uses tabCapture",
+        "The dedicated profile and per-user staged extensions — never collides with system Chrome",
+        "The CDP overlay layer and the cross-platform / updating operations matrix",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
     },
     "inventions-book": {
-      "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the 269 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. The six marquee claims get an appendix of adversarial prior-art analyses.",
-      "features": ["269 candidate firsts, each as claim + in-repo basis + honest caveat + confidence tag", "The execution engine: a solo from-scratch JIT VM hosting eighteen language frontends on one bytecode", "The compiled Unix shell, the Perl-5 superset, and the fully modular patch-graph DAW", "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes", "Appendix: adversarial prior-art analyses for five of the eight marquee (★) claims", "The methodology: how to claim — and how to refute — a first honestly", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "Firsts — the narrative edition of the MenkeTechnologies invention ledger (INVENTIONS.md). It walks the 269 candidate 'world's first' capabilities across the stack, grouped by subsystem, and holds each to the same falsifiable bar: a genuinely novel capability plus a real in-repo implementation. Every claim carries its basis (files, functions, build artifacts) and an honest caveat — 'no prior art found' is recorded as exactly that, never as proof — plus a high/med/low confidence tag. Eight marquee claims are flagged ★, five of them with an appendix of adversarial prior-art analyses.",
+      "features": [
+        "269 candidate firsts, each as claim + in-repo basis + honest caveat + confidence tag",
+        "The execution engine: a solo from-scratch JIT VM hosting eighteen language frontends on one bytecode",
+        "The compiled Unix shell, the Perl-5 superset, and the fully modular patch-graph DAW",
+        "zcontainer: the first compiled-native desktop GUI for both Docker and Kubernetes",
+        "Appendix: adversarial prior-art analyses for five of the eight marquee (★) claims",
+        "The methodology: how to claim — and how to refute — a first honestly",
+        "Pandoc + LaTeX typeset, DRM-free PDF"
+      ]
     },
     "vscode-stryke": {
       "overview": "A VS Code / VSCodium extension that turns the editor into a full stryke IDE — syntax highlighting, completion, and diagnostics for the stryke language.",

@@ -190,12 +190,12 @@
           <table>
             <thead><tr><th>File</th><th>Lines</th><th>Role</th></tr></thead>
             <tbody>
-              <tr><td><code>store.js</code></td><td>~2,482</td><td>Catalog + render + cart + checkout</td></tr>
-              <tr><td><code>store.css</code></td><td>~1,143</td><td>Commerce surfaces</td></tr>
+              <tr><td><code>store.js</code></td><td>~5,391</td><td>Catalog + render + cart + checkout</td></tr>
+              <tr><td><code>store.css</code></td><td>~1,286</td><td>Commerce surfaces</td></tr>
               <tr><td><code>hud-static.css</code></td><td>656</td><td>Vendored HUD design system</td></tr>
-              <tr><td><code>tutorial.css</code></td><td>669</td><td>Vendored section / card styles</td></tr>
-              <tr><td><code>hud-theme.js</code></td><td>304</td><td>Theme / CRT / neon / scheme toggles</td></tr>
-              <tr><td><code>test/store.test.js</code></td><td>~370</td><td>20 storefront tests</td></tr>
+              <tr><td><code>tutorial.css</code></td><td>672</td><td>Vendored section / card styles</td></tr>
+              <tr><td><code>hud-theme.js</code></td><td>394</td><td>Theme / CRT / neon / scheme toggles</td></tr>
+              <tr><td><code>test/store.test.js</code></td><td>~463</td><td>24 storefront tests</td></tr>
             </tbody>
           </table>
         </div>
@@ -204,7 +204,7 @@
 
       <div class="doc-card">
         <h2>Test coverage</h2>
-        <p>A dependency-free <code>node:test</code> suite (20 tests in <code>test/store.test.js</code>) loads <code>store.js</code> into a minimal DOM/<code>localStorage</code> shim and asserts on the rendered HTML — the same surface a browser would paint. Coverage areas:</p>
+        <p>A dependency-free <code>node:test</code> suite (24 tests in <code>test/store.test.js</code>) loads <code>store.js</code> into a minimal DOM/<code>localStorage</code> shim and asserts on the rendered HTML — the same surface a browser would paint. Coverage areas:</p>
         <ul>
           <li>Parse &amp; render — <code>store.js</code> parses and renders the grid into <code>#productGrid</code>.</li>
           <li>Catalog size and uniqueness — product count matches the live hero stat, all ids unique.</li>
