@@ -89,6 +89,14 @@ for all of them, and an **API Reference** (`reference.html`) for the ids in
 are intentionally omitted so no link 404s. A shipped reference PDF still lives
 in a product's `docs` array and renders alongside the HTML doc-cards.
 
+**Only free PDFs ship in `docs/`.** The paid publications — the companion books
+and the language reference manuals — are sold, not served: their PDFs are built
+in `MenkeTechnologiesPublications/<title>/docs/` and are deliberately absent
+from this repo, so nothing in `docs/` is a paid product handed out for free.
+What remains is the free set: the GUI Automation Bus book and reference, the
+`zgui-core` component catalog, and the audio-plugin references and block
+catalogs that ship with their paid plugin.
+
 ### Screenshots
 
 GUI products (the desktop apps and audio plugins) carry a `screenshots` array
