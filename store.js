@@ -622,9 +622,6 @@
       ],
       download: 'https://github.com/MenkeTechnologies/zmax/releases/latest',
       repo: 'https://github.com/MenkeTechnologies/zmax',
-      docs: [
-        { label: 'Reference (PDF)', desc: 'The complete zmax reference — every keybinding by mode, the full IDE configuration schema, every typable : command, every static command with its default keys, and the language-support matrix. Generated from the source.', url: 'docs/zmax-reference.pdf' },
-      ],
     },
     {
       id: 'zmax-gui',
@@ -2147,12 +2144,20 @@
         "Vim, emacs, helix, cua and Spacemacs bindings on one multiple-selection engine",
         "World-first: twelve languages embedded in the core — elisp, vimscript, AWK, zsh, stryke, Ruby, PHP, Python, JavaScript, arb, Tcl and R",
         "The engine underneath: rope, tree-sitter, fusevm, the AOT/JIT split",
-        "Pandoc + LaTeX typeset, 312 pages, DRM-free PDF"
+        "Pandoc + LaTeX typeset, 431 pages, DRM-free PDF"
       ]
     },
     "zmax-native-book": {
       "overview": "The plugin guide for zmax — writing a native, compiled Rust plugin for the editor over its frozen C ABI. Helix, which zmax forks, ships no plugin system at all; zmax publishes a versioned binary interface a stranger can compile against, plus a package manager that installs the result from owner/repo into a content-addressed store and maps it into the process. The book covers the boundary and why it is a C ABI, the declare_plugin! macro read as its expansion, the six host callbacks and the context window that governs them, the five SDK examples line by line, shipping and the package manager, and the rules of the road — closing on an honest inventory of where the API stops.",
-      "features": ["The frozen C ABI: #[repr(C)] tables, extern \"C\" fn pointers, ABI_VERSION checked from both sides at load", "declare_plugin! read as its expansion — the static PluginInfo, the #[no_mangle] init, one trampoline per handler", "The six host callbacks (message, error, eval, buffer_text, insert_text, register_command) and the context window that makes them legal", "The five SDK examples line by line: hello, insert-date, buffer-stats, trim-trailing, banner", "Shipping: zmax-native.toml, the package manager, the ~/.zmax/pkg store, publishing an owner/repo plugin", "Rules of the road: TUI safety, panics that abort across FFI, ABI versioning, testing — and where the API stops", "Pandoc + LaTeX typeset, 61 pages, DRM-free PDF"]
+      "features": [
+        "The frozen C ABI: #[repr(C)] tables, extern \"C\" fn pointers, ABI_VERSION checked from both sides at load",
+        "declare_plugin! read as its expansion — the static PluginInfo, the #[no_mangle] init, one trampoline per handler",
+        "The six host callbacks (message, error, eval, buffer_text, insert_text, register_command) and the context window that makes them legal",
+        "The five SDK examples line by line: hello, insert-date, buffer-stats, trim-trailing, banner",
+        "Shipping: zmax-native.toml, the package manager, the ~/.zmax/pkg store, publishing an owner/repo plugin",
+        "Rules of the road: TUI safety, panics that abort across FFI, ABI versioning, testing — and where the API stops",
+        "Pandoc + LaTeX typeset, 245 pages, DRM-free PDF"
+      ]
     },
     "fusevm-book": {
       "overview": "The companion book to fusevm — the language-agnostic bytecode VM that stryke, zshrs, awkrs, vimlrs and fourteen other frontends all compile to. The value model and opcode set, the interpreter and its fused superinstructions, the three-tier Cranelift JIT, and the closed-world AOT compiler that lowers a whole program to native registers and a standalone binary.",
@@ -2161,7 +2166,7 @@
         "The value model, the opcode set, and the fused superinstructions",
         "The tiered execution ladder: interpreter, block JIT, tracing JIT",
         "The closed-world AOT compiler: registers, deopt, standalone binary",
-        "Pandoc + LaTeX typeset, 311 pages, DRM-free PDF"
+        "Pandoc + LaTeX typeset, 403 pages, DRM-free PDF"
       ]
     },
     "elisprs-book": {
