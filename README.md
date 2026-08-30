@@ -32,9 +32,9 @@ arb Packages, Publications):
   `audio-haxor`, `traderview`, `ztranslator`, `zcite`, `zreq`, `ztunnel`,
   `zthrottle`, `zgo`, `zftp`, `zcontainer`, `zterminal`, `zpwr-daw`; the three
   Audio Plugins `zpwr-synth`, `zpwr-fx`, `zpwr-midi-fx`; plus most Publications —
-  the companion books, and the language reference manuals whose subject is itself
-  free (`zshrs`, `strykelang`, `zmax`, `vimlrs`, `elisprs`, `awkrs`, `rubyrs`,
-  `pythonrs`).
+  every companion book without exception, and the language reference manuals
+  whose subject is itself free (`zshrs`, `strykelang`, `zmax`, `vimlrs`,
+  `elisprs`, `awkrs`, `rubyrs`, `pythonrs`).
 - **Free / open source** — everything else: `zwire`, `zmax-gui`, `zshrs`,
   `stryke`, the Rust CLI tools, the **stryke package ecosystem**, the **arb
   dashboard packages**, the **zmax-native editor plugins**, `zpwr`,
@@ -93,9 +93,10 @@ in a product's `docs` array and renders alongside the HTML doc-cards.
 and the language reference manuals — are sold, not served: their PDFs are built
 in `MenkeTechnologiesPublications/<title>/docs/` and are deliberately absent
 from this repo, so nothing in `docs/` is a paid product handed out for free.
-What remains is the free set: the GUI Automation Bus book and reference, the
+What remains is the free set: the GUI Automation Bus *reference*, the
 `zgui-core` component catalog, and the audio-plugin references and block
-catalogs that ship with their paid plugin.
+catalogs that ship with their paid plugin. Every companion **book** is paid,
+including *The GUI Automation Bus* — no book ships as a direct download.
 
 ### Screenshots
 

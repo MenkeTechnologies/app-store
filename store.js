@@ -1156,10 +1156,9 @@
     },
     {
       id: 'gui-automation-bus-book', name: 'The GUI Automation Bus', glyph: 'gB', category: 'Publications', badge: 'REFERENCE',
-      tagline: 'The companion book to the GUI Automation Bus — the typed verb-call layer that turns every app\'s existing engine command surface into a scriptable API: one stryke script calls a named verb on any app, in-process or over a local socket, and gets the return value back. Free, DRM-free PDF.',
-      pills: ['Reference', 'gui-automation-bus', 'Free · DRM-free PDF'], price: 0,
-      tiers: [{ name: 'PDF', desc: 'Free DRM-free PDF download', price: 0 }],
-      download: 'docs/gui-automation-bus-book.pdf',
+      tagline: 'The companion book to the GUI Automation Bus — the typed verb-call layer that turns every app\'s existing engine command surface into a scriptable API: one stryke script calls a named verb on any app, in-process or over a local socket, and gets the return value back. Pandoc + LaTeX typeset.',
+      pills: ['Reference', 'gui-automation-bus', 'DRM-free PDF'], price: 20,
+      tiers: [{ name: 'PDF', desc: 'DRM-free PDF download', price: 20 }],
     },
     {
       id: 'gui-automation-bus-reference', name: 'The GUI Automation Bus Reference', glyph: 'gR', category: 'Publications', badge: 'REFERENCE',
@@ -4237,8 +4236,15 @@
       "features": ["Every implemented Emacs Lisp subroutine and special form", "The fusevm-frontend model: Emacs Lisp lowered to the shared bytecode VM", "Generated from the live elisprs source", "The dense companion to The elisprs Book", "DRM-free PDF"]
     },
     "gui-automation-bus-book": {
-      "overview": "The companion book to the GUI automation bus — the cross-app event-routing layer that wires the MenkeTechnologies desktop suite together, letting one app drive another over a shared message bus.",
-      "features": ["The cross-app event-routing architecture", "The message model: how apps subscribe and publish", "Per-app endpoints across the desktop suite", "Worked automation flows spanning multiple apps", "Pandoc + LaTeX typeset, DRM-free PDF"]
+      "overview": "The companion book to the GUI Automation Bus — the typed verb-call layer that turns every app's existing engine command surface into a scriptable API, so one stryke script calls a named verb on any app in the fleet, in-process or over a local socket, and gets the return value back.",
+      "features": [
+        "The verb-call model: a typed, parameterised surface published by each app",
+        "Both transports — in-process and the local socket — behind one call shape",
+        "Reversibility classes (pure / inverse / irreversible) and cross-app transactions",
+        "Per-app endpoints across the desktop suite, read from each app's live bus surface",
+        "Worked automation flows spanning multiple apps",
+        "Pandoc + LaTeX typeset, 244 pages, DRM-free PDF"
+      ]
     },
     "gui-automation-bus-reference": {
       "overview": "The dense reference for the GUI automation bus — its message types, routing model, and per-app endpoints, for scripting the desktop suite.",
