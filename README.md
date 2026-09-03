@@ -43,7 +43,7 @@ arb Packages, Publications):
   (`zpwr-daw`, `zpwr-synth`, `zpwr-fx`, `zpwr-midi-fx`) stay free.
 
 Both tiers are derived from the catalog itself: a product is free when its first
-tier has no price (`store.js:4560`). `docs/report.html` carries the
+tier has no price (`isFree`, `store.js:4479`). `docs/report.html` carries the
 per-category composition table.
 
 **Third-party forks are intentionally excluded** (`fzf-tab`, `zsh-z`, `zunit`,
@@ -212,7 +212,7 @@ var PAYPAL_CLIENT_ID = 'AZZQjvgm…';   // from a Live REST app at developer.pay
 The client ID is a public credential — it ships in client JS and is safe to
 commit. The API secret is never needed (client-side capture requires no
 secret). Blank it out and the PayPal method falls back to a "not configured"
-note instead of rendering the buttons (`store.js:5141-5142`). For
+note instead of rendering the buttons (`store.js:5241-5242`). For
 verified server-side capture, add a serverless function; the client-side flow
 above works on static GitHub Pages with no backend.
 
