@@ -33,8 +33,9 @@ arb Packages, Publications):
   `zthrottle`, `zgo`, `zftp`, `zcontainer`, `zterminal`, `zpwr-daw`; the three
   Audio Plugins `zpwr-synth`, `zpwr-fx`, `zpwr-midi-fx`; plus most Publications —
   every companion book without exception, and the language reference manuals
-  whose subject is itself free (`zshrs`, `strykelang`, `zmax`, `vimlrs`,
-  `elisprs`, `awkrs`, `rubyrs`, `pythonrs`).
+  whose subject is itself free (`strykelang`, `zshrs`, `zmax`, `vimlrs`,
+  `elisprs`, `awkrs`, `rubyrs`, `pythonrs`, `rlang`, `phplang`, `node-js`,
+  `javars`, `scalars`, `groovyrs`, `kotlinrs`, `go-rs`, `tclrs`, `texrs`, `arb`).
 - **Free / open source** — everything else: `zwire`, `zmax-gui`, `zshrs`,
   `stryke`, the Rust CLI tools, the **stryke package ecosystem**, the **arb
   dashboard packages**, the **zmax-native editor plugins**, `zpwr`,
@@ -238,14 +239,14 @@ URL for the wallet buttons, or the Stripe / Braintree SDKs).
 
 ## Hosting
 
-The repo is private and the plan has no GitHub Pages for private repos, so the
-repo carries no Pages deploy workflow — `.github/workflows/ci.yml` is the only
-workflow. The `docs/` pages are mirrored by the meta repo and published at
+The repo carries no Pages deploy workflow and has no Pages site configured —
+`.github/workflows/ci.yml` is the only workflow. The `docs/` pages are mirrored
+by the meta repo and published at
 `https://menketechnologies.github.io/MenkeTechnologiesMeta/app-store/`.
 
 The store itself is pure static files, so any static file server works. To host
-it on GitHub Pages the repo must be public; then enable **Settings → Pages →
-Source: Deploy from a branch → `main` / root**, or via the CLI:
+it on GitHub Pages, enable **Settings → Pages → Source: Deploy from a branch →
+`main` / root**, or via the CLI:
 
 ```
 gh api -X POST repos/MenkeTechnologies/app-store/pages \
