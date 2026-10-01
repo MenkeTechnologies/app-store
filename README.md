@@ -8,7 +8,7 @@
 
 ![Static](https://img.shields.io/badge/static-HTML%20%2F%20CSS%20%2F%20JS-05d9e8?style=flat-square)
 ![No build](https://img.shields.io/badge/build-none-39ff14?style=flat-square)
-![GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-ff2a6d?style=flat-square)
+![Docs](https://img.shields.io/badge/docs-meta%20Pages%20mirror-ff2a6d?style=flat-square)
 ![MenkeTechnologies](https://img.shields.io/badge/MenkeTechnologies-storefront-d300c5?style=flat-square)
 
 ### `[MENKETECHNOLOGIES APP STORE // DEPENDENCY-FREE STATIC STOREFRONT FOR THE ENTIRE CATALOG]`
@@ -214,7 +214,7 @@ commit. The API secret is never needed (client-side capture requires no
 secret). Blank it out and the PayPal method falls back to a "not configured"
 note instead of rendering the buttons (`store.js:5241-5242`). For
 verified server-side capture, add a serverless function; the client-side flow
-above works on static GitHub Pages with no backend.
+above works on any static host with no backend.
 
 **Purchase notification / fulfillment.** PayPal emails the merchant account on
 every captured payment — that email is the notification. Each order is enriched
@@ -236,15 +236,20 @@ which simulates a successful order — **no real charge happens**. Wire each to 
 provider with a client-side or redirect flow (e.g. a Shopify hosted checkout
 URL for the wallet buttons, or the Stripe / Braintree SDKs).
 
-## Hosting on GitHub Pages
+## Hosting
 
-This is a pure static site, so GitHub Pages is the natural host — nothing is
-disallowed. Enable it under repo **Settings → Pages → Source: Deploy from a
-branch → `main` / root**, or via the CLI:
+The repo is private and the plan has no GitHub Pages for private repos, so the
+repo carries no Pages deploy workflow — `.github/workflows/ci.yml` is the only
+workflow. The `docs/` pages are mirrored by the meta repo and published at
+`https://menketechnologies.github.io/MenkeTechnologiesMeta/app-store/`.
+
+The store itself is pure static files, so any static file server works. To host
+it on GitHub Pages the repo must be public; then enable **Settings → Pages →
+Source: Deploy from a branch → `main` / root**, or via the CLI:
 
 ```
 gh api -X POST repos/MenkeTechnologies/app-store/pages \
   -f 'source[branch]=main' -f 'source[path]=/'
 ```
 
-The site then serves at `https://menketechnologies.github.io/app-store/`.
+The site would then serve at `https://menketechnologies.github.io/app-store/`.
