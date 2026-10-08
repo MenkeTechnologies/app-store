@@ -2771,7 +2771,7 @@
         "Sender Identity Firewall — per-sender behavioural baselines flag impersonation and takeover",
         "Revision Ledger — BLAKE3 attachment identity plus content-delta drift across the archive",
         "Cyberpunk HUD interface",
-        "53 engine source modules under 282 tests (225 in-source unit tests + 57 integration tests), recomputed from the tree",
+        "Engine split into source modules under an extensive unit and integration test suite",
         "Embeddable zemail-core engine (rlib + staticlib + cdylib) with a C ABI + C++ wrapper",
         "Owned, no-subscription desktop mail"
       ],
@@ -2806,12 +2806,12 @@
       ]
     },
     "zoffice": {
-      "overview": "A from-scratch office suite in Rust (Tauri v2 desktop app) that replaces Microsoft Office and LibreOffice — documents, spreadsheets, presentations, drawings, formulas and databases behind a cyberpunk HUD. One shared engine, zoffice-core, carries all six modules in ~78k lines of Rust under an extensive test suite: read and write ODF + OOXML, evaluate formulas, render page layout, and export PDF. The crate ships engine and view — a mountable window.mountZoffice(root, opts) surface plus a bare-command Tauri backend — so any app in the family opens .docx / .xlsx / .pptx in its own pane and drives it over the automation bus.",
+      "overview": "A from-scratch office suite in Rust (Tauri v2 desktop app) that replaces Microsoft Office and LibreOffice — documents, spreadsheets, presentations, drawings, formulas and databases behind a cyberpunk HUD. One shared engine, zoffice-core, carries all six modules in pure Rust under an extensive test suite: read and write ODF + OOXML, evaluate formulas, render page layout, and export PDF. The crate ships engine and view — a mountable window.mountZoffice(root, opts) surface plus a bare-command Tauri backend — so any app in the family opens .docx / .xlsx / .pptx in its own pane and drives it over the automation bus.",
       "features": [
         "Six engine modules in one crate — Writer (documents), Calc (spreadsheets), Impress (presentations), Draw, Math and Base",
         "Reads and writes ODF + OOXML (.odt/.docx, .ods/.xlsx, .odp/.pptx) and .csv, with encrypted ODF/OOXML packages, XML digital signatures and OLE2 compound-file parsing",
         "Formula evaluation, page-layout rendering, and PDF export for Writer, Calc and Impress",
-        "~78k lines of Rust in zoffice-core under an extensive test suite",
+        "A pure-Rust zoffice-core engine under an extensive test suite",
         "Scriptable by name over the zgui-bridge socket — every engine command plus every verb the UI registers, callable from stryke",
         "zmerge — a git 3-way merge driver that reconciles parsed .docx/.odt models by content hash instead of failing on the blob, emitting a reopenable document plus a typed conflict set",
         "zblame — structural git-blame attributing each paragraph to the revision that last changed it",
@@ -2829,16 +2829,16 @@
       ]
     },
     "zshrs": {
-      "overview": "A drop-in zsh replacement written in Rust — 915k lines, 861 source files across a 4-crate workspace — that compiles every command to fusevm bytecode, hands hot blocks to a tiered Cranelift JIT emitting x86-64/aarch64 machine code, and persists that bytecode across processes in rkyv images. A persistent worker thread pool replaces fork+exec. Framed as the first Unix shell to JIT-compile to native code: Nushell's IR is interpreted, compiled per parse and discarded at exit; zsh's .zwc is wordcode for zsh's own interpreter.",
+      "overview": "A drop-in zsh replacement written in Rust (a 4-crate workspace) that compiles every command to fusevm bytecode, hands hot blocks to a tiered Cranelift JIT emitting x86-64/aarch64 machine code, and persists that bytecode across processes in rkyv images. A persistent worker thread pool replaces fork+exec. Framed as the first Unix shell to JIT-compile to native code: Nushell's IR is interpreted, compiled per parse and discarded at exit; zsh's .zwc is wordcode for zsh's own interpreter.",
       "features": [
-        "915k lines, 861 source files across a 4-crate workspace — zshrs runtime + zshrs-daemon + znative (the published plugin-ABI SDK) + zshrs-runtime",
+        "A 4-crate workspace — zshrs runtime + zshrs-daemon + znative (the published plugin-ABI SDK) + zshrs-runtime",
         "Structurally split into a strict 1:1 port directory (src/ported/, 106 files, every fn mapped to a real zsh Src/*.c function and enforced by tests/port_purity.rs) and a non-port extensions directory (src/extensions/, 102 files)",
         "Compiles commands to fusevm bytecode with a three-tier Cranelift JIT; rkyv-backed bytecode images with an mmap hot path, plus read-only SQLite mirrors for dbview / SQL inspection only",
         "Persistent worker thread pool (2–18 threads) replaces fork+exec; 23 coreutils commands run in-process at 2000–5000× per invocation",
         "100× warm-start speedup — 717ms cold (lex + parse + compile + cache write) to 7ms warm (deserialize + execute)",
         "243 builtins — 152 zsh ports plus 91 extensions (23 coreutils and the parallel primitives among them)",
         "193 ZLE widgets registered, 47 fish-ported line-editor builtins (syntax highlight, autosuggest, history search, autopair — opt-in, so bare zshrs -f stays byte-identical to zsh -f)",
-        "47,851 tests, 47,035 of them differential assertions against real zsh, plus a 2,604-chunk upstream .ztst runner",
+        "A differential test suite asserting against real zsh, plus an upstream .ztst runner",
         "First shell to publish its native-plugin interface as a stable versioned ABI (cargo add znative, load a cdylib with zmodload -R), and the first Bourne-lineage shell to ship an LSP server and DAP adapter in its own binary",
         "AOP intercepts, parallel primitives (pmap/pgrep/peach), and a JetBrains IDE plugin"
       ]
@@ -3321,7 +3321,7 @@
       ]
     },
     "zterminal": {
-      "overview": "A GPU-accelerated, cross-platform terminal emulator in Rust (OpenGL ES 2.0 glyph-atlas renderer) for the MenkeTechnologies stack — sensible defaults, extensive TOML configuration, and high VTE throughput. It speaks tmux's native wire protocol as a first-class client (no subprocess), renders images inline through all three common terminal image protocols, and carries an automation bus that turns captured pane output into queryable, joinable data. 59,947 lines across 113 files under 600 tests.",
+      "overview": "A GPU-accelerated, cross-platform terminal emulator in Rust (OpenGL ES 2.0 glyph-atlas renderer) for the MenkeTechnologies stack — sensible defaults, extensive TOML configuration, and high VTE throughput. It speaks tmux's native wire protocol as a first-class client (no subprocess), renders images inline through all three common terminal image protocols, and carries an automation bus that turns captured pane output into queryable, joinable data.",
       "features": [
         "OpenGL ES 2.0 glyph-atlas rendering, full xterm-compatible VT parsing (vim, tmux, htop, ncurses), 24-bit truecolor, scrollback, vi mode, search and regex hints",
         "Cross-platform — BSD, Linux, macOS, and Windows; vendored, self-contained build with no external runtime dependencies",
