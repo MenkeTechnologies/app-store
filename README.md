@@ -66,8 +66,9 @@ The download target is chosen automatically:
 - Distinct products (apps, plugins, CLI tools) are explicit objects in the
   `PRODUCTS` array.
 - The stryke packages are generated from a compact table via `strykePkg()`.
-- The other repos (zsh plugins, dev tools, arb packages) are generated via
-  `metaProduct()`. The arb dashboards ship no build artifacts — `arb install
+- Most arb dashboard packages are generated via `arbPkg()`.
+- The other repos (zsh plugins, dev tools, remaining arb packages) are generated
+  via `metaProduct()`. The arb dashboards ship no build artifacts — `arb install
   <name>` is a git clone through the `arb-registry` git index — so they carry
   `hasRelease: false` and link their `/tags` page of source archives.
 - Long-form detail copy (`overview` + rich `features`) lives in the `DETAILS`
